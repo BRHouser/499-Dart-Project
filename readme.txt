@@ -1,6 +1,5 @@
 499 Dart scoreboard project
 
 
-AND THIS IS ME TESTING BECAUSE I WANT TO
 
-Hello
+Yo guys I recommend getting SQLite through visual studio code to allow you to read the databases
