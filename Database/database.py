@@ -88,6 +88,26 @@ def add_information(database_connection, name_of_table, list_of_information):
     database_connection.commit()
     cursor.close()
 
+# Input: the connection to the database, The name of the table
+# The purpose of this function is to delete a table in the database. For instance if a competitor is deleted, then the table containing
+# his information should also be deleted
+def delete_table(database_connection, name_of_table):
+    cursor = database_connection.cursor()
+    cursor.execute("DROP TABLE " + name_of_table + ";")
+    database_connection.commit()
+    cursor.close()
+
+# Input: the connection to the database, the name of the table, an array that contains the information of the row
+# The purpose of this function is to delete the row given
+def delete_row(database_connection, name_of_table, row_array):
+    cursor = database_connection.cursor()
+
+    cursor.execute("SELECT * FROM " + name_of_table)     
+    col_name_list = [tuple[0] for tuple in cursor.description]
+
+    cursor.execute("DELETE FROM " + str(name_of_table) + " WHERE " + col_name_list[0] + "='" + row_array[0] + "';")
+    database_connection.commit()
+    cursor.close()
 
 # JUST TO SHOW HOW EVERYTHING WORKS TOGETHER
 def main():
@@ -96,10 +116,13 @@ def main():
     header_info_2 = ['Dart Statistics', 'Competitor', 'somethingElse']
     list_of_table_names = ["Competitor_Information", "Dart_Information"]
     header_info = [header_info_1, header_info_2]
-    information_to_add = [["2 Banana", "2 Apple", "3 something"], ['1','2','3'], ["SOMETHING", "Marshall", "MMMMM"]]
+    information_to_add = [["Ben Swalley", "Marshall Rosenhoover", "3 something"], ['100','2','3'], ["SOMETHING", "Marshall", "MMMMM"]]
 
     database = create_connection(database, header_info, list_of_table_names)
     add_information(database, "Competitor_Information", information_to_add)
+    delete_row(database, "Competitor_Information", information_to_add[0])
+
+
 
 if __name__ == '__main__':
     main()
