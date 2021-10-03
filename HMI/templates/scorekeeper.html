@@ -9,13 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
             //you can call certain methods by changing the /oooo to something
             //specified by what was clicked. Here is a link that can help with it
             //https://iq.opengenus.org/single-page-application-with-flask-ajax/#:~:text=The%20Javascript%20part%20sends%20requests%20%28requests%20for%20information%29,sends%20back%20the%20required%20information%20to%20the%20front-end.
-            request.open('POST', '/oooo');
+
             request.onload = () => {
                 const response = request.responseText;
                 document.getElementById('headerTitle').innerHTML = response;
-            }; 
-            request.send();
-        };
+             }; 
+            data = {information:"I am testing the send JSON", age:"5"}
+            request.open('POST', '/baseCaseSendInformation');
+            request.send(JSON.stringify(data));
+          };
     });    
 });
 

@@ -1,22 +1,28 @@
 #!flask/bin/python
 from flask import Flask, render_template, request, redirect, Response
+import json
+
+
 
 app = Flask(__name__)
 @app.route('/')
-def createScorekeeper():
+def createMatchSetup():
 	# serve index template
+	return render_template('startmatch.html')
+
+@app.route('/scorekeeper')
+def createScorekeeper():
 	return render_template('scorekeeper.html')
 
 @app.route('/scoreboard')
 def createScoreboard():
 	return render_template('scoreboard.html')
 
-@app.route('/oooo', methods = ['POST'])
+@app.route('/baseCaseSendInformation', methods = ['POST'])
 def worker():
-	# read json + reply
-	# data = request.get_json()
-	result = "THIS CHANGES THE TITLE"
-	return result
+	# read json + reply, Information is in form of type dictionary
+	data = json.loads(request.get_data())
+	return data["information"]
 
 @app.route('/banana', methods = ['POST'])
 def something():
