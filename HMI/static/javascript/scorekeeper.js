@@ -1,7 +1,8 @@
 registerImageMap();
 
 function registerThrow(user_throw) {
-    alert("Throw: " + user_throw)
+    //alert("Throw: " + user_throw)
+    console.log("Throw: " + user_throw)
 }
 
 function mouseoverBoard(board_section) {

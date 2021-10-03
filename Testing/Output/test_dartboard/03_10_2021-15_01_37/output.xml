@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.9.7 on win32)" generated="20211003 15:01:37.743" rpa="false" schemaversion="2">
+<suite id="s1" name="Test Dartboard" source="C:\Users\marsh\Documents\GitHub\499-Dart-Project\Testing\RobotScripts\test_dartboard.robot">
+<test id="s1-t1" name="Test Dartboard">
+<kw name="Navigate to Scorekeeper">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>browser=${browser}</arg>
+<arg>executable_path=C:/Users/marsh/AppData/Local/Programs/Python/Python39/chromedriver.exe</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211003 15:01:37.853" level="INFO">Opening browser 'Chrome' to base url 'None'.</msg>
+<status status="PASS" starttime="20211003 15:01:37.853" endtime="20211003 15:01:38.963"/>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20211003 15:01:38.963" endtime="20211003 15:01:39.077"/>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<arg>${webpage}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20211003 15:01:39.077" level="INFO">Opening url 'http://192.168.1.179:5010/scorekeeper'</msg>
+<status status="PASS" starttime="20211003 15:01:39.077" endtime="20211003 15:01:39.267"/>
+</kw>
+<status status="PASS" starttime="20211003 15:01:37.853" endtime="20211003 15:01:39.267"/>
+</kw>
+<kw name="Test Dartboard">
+<kw name="Hover Over Each Element">
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square1</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:39.268" level="INFO">Simulating Mouse Over on element 'id=square1'.</msg>
+<status status="PASS" starttime="20211003 15:01:39.268" endtime="20211003 15:01:39.542"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square2</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:39.542" level="INFO">Simulating Mouse Over on element 'id=square2'.</msg>
+<status status="PASS" starttime="20211003 15:01:39.542" endtime="20211003 15:01:39.822"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square3</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:39.822" level="INFO">Simulating Mouse Over on element 'id=square3'.</msg>
+<status status="PASS" starttime="20211003 15:01:39.822" endtime="20211003 15:01:40.105"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square4</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:40.105" level="INFO">Simulating Mouse Over on element 'id=square4'.</msg>
+<status status="PASS" starttime="20211003 15:01:40.105" endtime="20211003 15:01:40.370"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square5</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:40.370" level="INFO">Simulating Mouse Over on element 'id=square5'.</msg>
+<status status="PASS" starttime="20211003 15:01:40.370" endtime="20211003 15:01:40.634"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square6</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:40.634" level="INFO">Simulating Mouse Over on element 'id=square6'.</msg>
+<status status="PASS" starttime="20211003 15:01:40.634" endtime="20211003 15:01:40.899"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square7</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:40.900" level="INFO">Simulating Mouse Over on element 'id=square7'.</msg>
+<status status="PASS" starttime="20211003 15:01:40.900" endtime="20211003 15:01:41.172"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square8</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:41.172" level="INFO">Simulating Mouse Over on element 'id=square8'.</msg>
+<status status="PASS" starttime="20211003 15:01:41.172" endtime="20211003 15:01:41.443"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square9</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:41.443" level="INFO">Simulating Mouse Over on element 'id=square9'.</msg>
+<status status="PASS" starttime="20211003 15:01:41.443" endtime="20211003 15:01:41.731"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square10</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:41.731" level="INFO">Simulating Mouse Over on element 'id=square10'.</msg>
+<status status="PASS" starttime="20211003 15:01:41.731" endtime="20211003 15:01:42.000"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square11</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:42.000" level="INFO">Simulating Mouse Over on element 'id=square11'.</msg>
+<status status="PASS" starttime="20211003 15:01:42.000" endtime="20211003 15:01:42.271"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square12</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:42.271" level="INFO">Simulating Mouse Over on element 'id=square12'.</msg>
+<status status="PASS" starttime="20211003 15:01:42.271" endtime="20211003 15:01:42.542"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square13</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:42.542" level="INFO">Simulating Mouse Over on element 'id=square13'.</msg>
+<status status="PASS" starttime="20211003 15:01:42.542" endtime="20211003 15:01:42.820"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square14</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:42.820" level="INFO">Simulating Mouse Over on element 'id=square14'.</msg>
+<status status="PASS" starttime="20211003 15:01:42.820" endtime="20211003 15:01:43.096"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square15</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:43.097" level="INFO">Simulating Mouse Over on element 'id=square15'.</msg>
+<status status="PASS" starttime="20211003 15:01:43.097" endtime="20211003 15:01:43.362"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square16</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:43.362" level="INFO">Simulating Mouse Over on element 'id=square16'.</msg>
+<status status="PASS" starttime="20211003 15:01:43.362" endtime="20211003 15:01:43.630"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square17</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:43.630" level="INFO">Simulating Mouse Over on element 'id=square17'.</msg>
+<status status="PASS" starttime="20211003 15:01:43.630" endtime="20211003 15:01:43.907"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square18</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:43.907" level="INFO">Simulating Mouse Over on element 'id=square18'.</msg>
+<status status="PASS" starttime="20211003 15:01:43.907" endtime="20211003 15:01:44.172"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square19</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:44.173" level="INFO">Simulating Mouse Over on element 'id=square19'.</msg>
+<status status="PASS" starttime="20211003 15:01:44.172" endtime="20211003 15:01:44.449"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square20</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:44.449" level="INFO">Simulating Mouse Over on element 'id=square20'.</msg>
+<status status="PASS" starttime="20211003 15:01:44.449" endtime="20211003 15:01:44.712"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square21</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:44.713" level="INFO">Simulating Mouse Over on element 'id=square21'.</msg>
+<status status="PASS" starttime="20211003 15:01:44.712" endtime="20211003 15:01:44.981"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square22</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:44.982" level="INFO">Simulating Mouse Over on element 'id=square22'.</msg>
+<status status="PASS" starttime="20211003 15:01:44.982" endtime="20211003 15:01:45.258"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square23</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:45.258" level="INFO">Simulating Mouse Over on element 'id=square23'.</msg>
+<status status="PASS" starttime="20211003 15:01:45.258" endtime="20211003 15:01:45.535"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square24</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:45.535" level="INFO">Simulating Mouse Over on element 'id=square24'.</msg>
+<status status="PASS" starttime="20211003 15:01:45.535" endtime="20211003 15:01:45.812"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square25</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:45.813" level="INFO">Simulating Mouse Over on element 'id=square25'.</msg>
+<status status="PASS" starttime="20211003 15:01:45.813" endtime="20211003 15:01:46.096"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square26</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:46.096" level="INFO">Simulating Mouse Over on element 'id=square26'.</msg>
+<status status="PASS" starttime="20211003 15:01:46.096" endtime="20211003 15:01:46.374"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square27</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:46.375" level="INFO">Simulating Mouse Over on element 'id=square27'.</msg>
+<status status="PASS" starttime="20211003 15:01:46.374" endtime="20211003 15:01:46.653"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square28</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:46.654" level="INFO">Simulating Mouse Over on element 'id=square28'.</msg>
+<status status="PASS" starttime="20211003 15:01:46.653" endtime="20211003 15:01:46.934"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square29</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:46.934" level="INFO">Simulating Mouse Over on element 'id=square29'.</msg>
+<status status="PASS" starttime="20211003 15:01:46.934" endtime="20211003 15:01:47.201"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square30</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:47.202" level="INFO">Simulating Mouse Over on element 'id=square30'.</msg>
+<status status="PASS" starttime="20211003 15:01:47.202" endtime="20211003 15:01:47.468"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square31</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:47.468" level="INFO">Simulating Mouse Over on element 'id=square31'.</msg>
+<status status="PASS" starttime="20211003 15:01:47.468" endtime="20211003 15:01:47.733"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square32</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:47.733" level="INFO">Simulating Mouse Over on element 'id=square32'.</msg>
+<status status="PASS" starttime="20211003 15:01:47.733" endtime="20211003 15:01:48.013"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square33</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:48.014" level="INFO">Simulating Mouse Over on element 'id=square33'.</msg>
+<status status="PASS" starttime="20211003 15:01:48.014" endtime="20211003 15:01:48.291"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square34</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:48.291" level="INFO">Simulating Mouse Over on element 'id=square34'.</msg>
+<status status="PASS" starttime="20211003 15:01:48.291" endtime="20211003 15:01:48.575"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square35</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:48.575" level="INFO">Simulating Mouse Over on element 'id=square35'.</msg>
+<status status="PASS" starttime="20211003 15:01:48.575" endtime="20211003 15:01:48.838"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square36</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:48.839" level="INFO">Simulating Mouse Over on element 'id=square36'.</msg>
+<status status="PASS" starttime="20211003 15:01:48.838" endtime="20211003 15:01:49.118"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square37</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:49.119" level="INFO">Simulating Mouse Over on element 'id=square37'.</msg>
+<status status="PASS" starttime="20211003 15:01:49.118" endtime="20211003 15:01:49.396"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square38</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:49.396" level="INFO">Simulating Mouse Over on element 'id=square38'.</msg>
+<status status="PASS" starttime="20211003 15:01:49.396" endtime="20211003 15:01:49.678"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square39</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:49.678" level="INFO">Simulating Mouse Over on element 'id=square39'.</msg>
+<status status="PASS" starttime="20211003 15:01:49.678" endtime="20211003 15:01:49.956"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square40</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:49.956" level="INFO">Simulating Mouse Over on element 'id=square40'.</msg>
+<status status="PASS" starttime="20211003 15:01:49.956" endtime="20211003 15:01:50.234"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square41</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:50.234" level="INFO">Simulating Mouse Over on element 'id=square41'.</msg>
+<status status="PASS" starttime="20211003 15:01:50.234" endtime="20211003 15:01:50.499"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square42</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:50.499" level="INFO">Simulating Mouse Over on element 'id=square42'.</msg>
+<status status="PASS" starttime="20211003 15:01:50.499" endtime="20211003 15:01:50.779"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square43</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:50.780" level="INFO">Simulating Mouse Over on element 'id=square43'.</msg>
+<status status="PASS" starttime="20211003 15:01:50.779" endtime="20211003 15:01:51.049"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square44</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:51.049" level="INFO">Simulating Mouse Over on element 'id=square44'.</msg>
+<status status="PASS" starttime="20211003 15:01:51.049" endtime="20211003 15:01:51.327"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square45</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:51.327" level="INFO">Simulating Mouse Over on element 'id=square45'.</msg>
+<status status="PASS" starttime="20211003 15:01:51.327" endtime="20211003 15:01:51.604"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square46</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:51.605" level="INFO">Simulating Mouse Over on element 'id=square46'.</msg>
+<status status="PASS" starttime="20211003 15:01:51.604" endtime="20211003 15:01:51.885"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square47</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:51.885" level="INFO">Simulating Mouse Over on element 'id=square47'.</msg>
+<status status="PASS" starttime="20211003 15:01:51.885" endtime="20211003 15:01:52.152"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square48</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:52.152" level="INFO">Simulating Mouse Over on element 'id=square48'.</msg>
+<status status="PASS" starttime="20211003 15:01:52.152" endtime="20211003 15:01:52.430"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square49</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:52.431" level="INFO">Simulating Mouse Over on element 'id=square49'.</msg>
+<status status="PASS" starttime="20211003 15:01:52.431" endtime="20211003 15:01:52.710"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square50</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:52.710" level="INFO">Simulating Mouse Over on element 'id=square50'.</msg>
+<status status="PASS" starttime="20211003 15:01:52.710" endtime="20211003 15:01:52.988"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square51</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:52.988" level="INFO">Simulating Mouse Over on element 'id=square51'.</msg>
+<status status="PASS" starttime="20211003 15:01:52.988" endtime="20211003 15:01:53.268"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square52</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:53.269" level="INFO">Simulating Mouse Over on element 'id=square52'.</msg>
+<status status="PASS" starttime="20211003 15:01:53.268" endtime="20211003 15:01:53.535"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square53</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:53.535" level="INFO">Simulating Mouse Over on element 'id=square53'.</msg>
+<status status="PASS" starttime="20211003 15:01:53.535" endtime="20211003 15:01:53.801"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square54</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:53.802" level="INFO">Simulating Mouse Over on element 'id=square54'.</msg>
+<status status="PASS" starttime="20211003 15:01:53.802" endtime="20211003 15:01:54.084"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square55</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:54.084" level="INFO">Simulating Mouse Over on element 'id=square55'.</msg>
+<status status="PASS" starttime="20211003 15:01:54.084" endtime="20211003 15:01:54.348"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square56</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:54.348" level="INFO">Simulating Mouse Over on element 'id=square56'.</msg>
+<status status="PASS" starttime="20211003 15:01:54.348" endtime="20211003 15:01:54.618"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square57</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:54.618" level="INFO">Simulating Mouse Over on element 'id=square57'.</msg>
+<status status="PASS" starttime="20211003 15:01:54.618" endtime="20211003 15:01:54.896"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square58</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:54.896" level="INFO">Simulating Mouse Over on element 'id=square58'.</msg>
+<status status="PASS" starttime="20211003 15:01:54.896" endtime="20211003 15:01:55.159"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square59</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:55.159" level="INFO">Simulating Mouse Over on element 'id=square59'.</msg>
+<status status="PASS" starttime="20211003 15:01:55.159" endtime="20211003 15:01:55.439"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square60</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:55.440" level="INFO">Simulating Mouse Over on element 'id=square60'.</msg>
+<status status="PASS" starttime="20211003 15:01:55.439" endtime="20211003 15:01:55.723"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square61</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:55.724" level="INFO">Simulating Mouse Over on element 'id=square61'.</msg>
+<status status="PASS" starttime="20211003 15:01:55.723" endtime="20211003 15:01:55.991"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square62</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:55.991" level="INFO">Simulating Mouse Over on element 'id=square62'.</msg>
+<status status="PASS" starttime="20211003 15:01:55.991" endtime="20211003 15:01:56.255"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square63</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:56.256" level="INFO">Simulating Mouse Over on element 'id=square63'.</msg>
+<status status="PASS" starttime="20211003 15:01:56.255" endtime="20211003 15:01:56.534"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square64</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:56.535" level="INFO">Simulating Mouse Over on element 'id=square64'.</msg>
+<status status="PASS" starttime="20211003 15:01:56.535" endtime="20211003 15:01:56.814"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square65</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:56.814" level="INFO">Simulating Mouse Over on element 'id=square65'.</msg>
+<status status="PASS" starttime="20211003 15:01:56.814" endtime="20211003 15:01:57.084"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square66</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:57.084" level="INFO">Simulating Mouse Over on element 'id=square66'.</msg>
+<status status="PASS" starttime="20211003 15:01:57.084" endtime="20211003 15:01:57.351"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square67</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:57.351" level="INFO">Simulating Mouse Over on element 'id=square67'.</msg>
+<status status="PASS" starttime="20211003 15:01:57.351" endtime="20211003 15:01:57.630"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square68</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:57.631" level="INFO">Simulating Mouse Over on element 'id=square68'.</msg>
+<status status="PASS" starttime="20211003 15:01:57.630" endtime="20211003 15:01:57.896"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square69</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:57.897" level="INFO">Simulating Mouse Over on element 'id=square69'.</msg>
+<status status="PASS" starttime="20211003 15:01:57.897" endtime="20211003 15:01:58.163"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square70</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:58.163" level="INFO">Simulating Mouse Over on element 'id=square70'.</msg>
+<status status="PASS" starttime="20211003 15:01:58.163" endtime="20211003 15:01:58.440"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square71</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:58.440" level="INFO">Simulating Mouse Over on element 'id=square71'.</msg>
+<status status="PASS" starttime="20211003 15:01:58.440" endtime="20211003 15:01:58.703"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square72</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:58.704" level="INFO">Simulating Mouse Over on element 'id=square72'.</msg>
+<status status="PASS" starttime="20211003 15:01:58.703" endtime="20211003 15:01:58.968"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square73</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:58.968" level="INFO">Simulating Mouse Over on element 'id=square73'.</msg>
+<status status="PASS" starttime="20211003 15:01:58.968" endtime="20211003 15:01:59.248"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square74</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:59.248" level="INFO">Simulating Mouse Over on element 'id=square74'.</msg>
+<status status="PASS" starttime="20211003 15:01:59.248" endtime="20211003 15:01:59.516"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square75</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:59.518" level="INFO">Simulating Mouse Over on element 'id=square75'.</msg>
+<status status="PASS" starttime="20211003 15:01:59.516" endtime="20211003 15:01:59.796"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square76</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:01:59.796" level="INFO">Simulating Mouse Over on element 'id=square76'.</msg>
+<status status="PASS" starttime="20211003 15:01:59.796" endtime="20211003 15:02:00.061"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square77</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:02:00.061" level="INFO">Simulating Mouse Over on element 'id=square77'.</msg>
+<status status="PASS" starttime="20211003 15:02:00.061" endtime="20211003 15:02:00.338"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square78</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:02:00.338" level="INFO">Simulating Mouse Over on element 'id=square78'.</msg>
+<status status="PASS" starttime="20211003 15:02:00.338" endtime="20211003 15:02:00.605"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square79</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:02:00.605" level="INFO">Simulating Mouse Over on element 'id=square79'.</msg>
+<status status="PASS" starttime="20211003 15:02:00.605" endtime="20211003 15:02:00.869"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square80</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:02:00.869" level="INFO">Simulating Mouse Over on element 'id=square80'.</msg>
+<status status="PASS" starttime="20211003 15:02:00.869" endtime="20211003 15:02:01.132"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square81</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.132" level="INFO">Simulating Mouse Over on element 'id=square81'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.132" endtime="20211003 15:02:01.409"/>
+</kw>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square82</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.410" level="INFO">Simulating Mouse Over on element 'id=square82'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.409" endtime="20211003 15:02:01.674"/>
+</kw>
+<status status="PASS" starttime="20211003 15:01:39.268" endtime="20211003 15:02:01.674"/>
+</kw>
+<kw name="Click Each Element">
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square1</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.675" level="INFO">Clicking element 'id=square1'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.675" endtime="20211003 15:02:01.704"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square3</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.704" level="INFO">Clicking element 'id=square3'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.704" endtime="20211003 15:02:01.726"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square4</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.726" level="INFO">Clicking element 'id=square4'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.726" endtime="20211003 15:02:01.748"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square5</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.748" level="INFO">Clicking element 'id=square5'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.748" endtime="20211003 15:02:01.769"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square6</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.770" level="INFO">Clicking element 'id=square6'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.769" endtime="20211003 15:02:01.793"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square7</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.793" level="INFO">Clicking element 'id=square7'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.793" endtime="20211003 15:02:01.814"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square8</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.815" level="INFO">Clicking element 'id=square8'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.814" endtime="20211003 15:02:01.836"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square9</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.837" level="INFO">Clicking element 'id=square9'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.836" endtime="20211003 15:02:01.858"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square10</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.858" level="INFO">Clicking element 'id=square10'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.858" endtime="20211003 15:02:01.880"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square11</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.880" level="INFO">Clicking element 'id=square11'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.880" endtime="20211003 15:02:01.901"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square12</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.902" level="INFO">Clicking element 'id=square12'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.902" endtime="20211003 15:02:01.922"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square13</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.922" level="INFO">Clicking element 'id=square13'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.922" endtime="20211003 15:02:01.943"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square14</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.943" level="INFO">Clicking element 'id=square14'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.943" endtime="20211003 15:02:01.965"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square15</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.965" level="INFO">Clicking element 'id=square15'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.965" endtime="20211003 15:02:01.986"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square16</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:01.986" level="INFO">Clicking element 'id=square16'.</msg>
+<status status="PASS" starttime="20211003 15:02:01.986" endtime="20211003 15:02:02.008"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square17</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.008" level="INFO">Clicking element 'id=square17'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.008" endtime="20211003 15:02:02.029"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square18</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.029" level="INFO">Clicking element 'id=square18'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.029" endtime="20211003 15:02:02.050"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square19</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.050" level="INFO">Clicking element 'id=square19'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.050" endtime="20211003 15:02:02.071"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square20</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.071" level="INFO">Clicking element 'id=square20'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.071" endtime="20211003 15:02:02.091"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square21</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.092" level="INFO">Clicking element 'id=square21'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.091" endtime="20211003 15:02:02.112"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square22</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.113" level="INFO">Clicking element 'id=square22'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.112" endtime="20211003 15:02:02.133"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square23</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.134" level="INFO">Clicking element 'id=square23'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.133" endtime="20211003 15:02:02.154"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square24</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.154" level="INFO">Clicking element 'id=square24'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.154" endtime="20211003 15:02:02.175"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square25</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.175" level="INFO">Clicking element 'id=square25'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.175" endtime="20211003 15:02:02.197"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square26</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.197" level="INFO">Clicking element 'id=square26'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.197" endtime="20211003 15:02:02.220"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square27</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.220" level="INFO">Clicking element 'id=square27'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.220" endtime="20211003 15:02:02.241"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square28</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.241" level="INFO">Clicking element 'id=square28'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.241" endtime="20211003 15:02:02.262"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square29</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.262" level="INFO">Clicking element 'id=square29'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.262" endtime="20211003 15:02:02.283"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square30</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.284" level="INFO">Clicking element 'id=square30'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.283" endtime="20211003 15:02:02.304"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square31</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.304" level="INFO">Clicking element 'id=square31'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.304" endtime="20211003 15:02:02.325"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square32</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.325" level="INFO">Clicking element 'id=square32'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.325" endtime="20211003 15:02:02.346"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square33</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.346" level="INFO">Clicking element 'id=square33'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.346" endtime="20211003 15:02:02.367"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square34</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.367" level="INFO">Clicking element 'id=square34'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.367" endtime="20211003 15:02:02.388"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square35</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.388" level="INFO">Clicking element 'id=square35'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.388" endtime="20211003 15:02:02.409"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square36</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.409" level="INFO">Clicking element 'id=square36'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.409" endtime="20211003 15:02:02.430"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square37</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.431" level="INFO">Clicking element 'id=square37'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.431" endtime="20211003 15:02:02.452"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square38</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.453" level="INFO">Clicking element 'id=square38'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.453" endtime="20211003 15:02:02.474"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square39</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.474" level="INFO">Clicking element 'id=square39'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.474" endtime="20211003 15:02:02.496"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square40</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.496" level="INFO">Clicking element 'id=square40'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.496" endtime="20211003 15:02:02.518"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square41</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.518" level="INFO">Clicking element 'id=square41'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.518" endtime="20211003 15:02:02.539"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square42</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.539" level="INFO">Clicking element 'id=square42'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.539" endtime="20211003 15:02:02.561"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square43</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.561" level="INFO">Clicking element 'id=square43'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.561" endtime="20211003 15:02:02.582"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square44</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.582" level="INFO">Clicking element 'id=square44'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.582" endtime="20211003 15:02:02.603"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square45</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.603" level="INFO">Clicking element 'id=square45'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.603" endtime="20211003 15:02:02.625"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square46</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.625" level="INFO">Clicking element 'id=square46'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.625" endtime="20211003 15:02:02.647"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square47</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.647" level="INFO">Clicking element 'id=square47'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.647" endtime="20211003 15:02:02.668"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square48</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.669" level="INFO">Clicking element 'id=square48'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.668" endtime="20211003 15:02:02.691"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square49</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.691" level="INFO">Clicking element 'id=square49'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.691" endtime="20211003 15:02:02.712"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square50</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.713" level="INFO">Clicking element 'id=square50'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.713" endtime="20211003 15:02:02.734"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square51</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.734" level="INFO">Clicking element 'id=square51'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.734" endtime="20211003 15:02:02.754"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square52</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.755" level="INFO">Clicking element 'id=square52'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.755" endtime="20211003 15:02:02.776"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square53</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.776" level="INFO">Clicking element 'id=square53'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.776" endtime="20211003 15:02:02.797"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square54</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.797" level="INFO">Clicking element 'id=square54'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.797" endtime="20211003 15:02:02.818"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square55</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.819" level="INFO">Clicking element 'id=square55'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.819" endtime="20211003 15:02:02.839"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square56</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.839" level="INFO">Clicking element 'id=square56'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.839" endtime="20211003 15:02:02.860"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square57</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.860" level="INFO">Clicking element 'id=square57'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.860" endtime="20211003 15:02:02.881"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square58</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.882" level="INFO">Clicking element 'id=square58'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.882" endtime="20211003 15:02:02.903"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square59</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.903" level="INFO">Clicking element 'id=square59'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.903" endtime="20211003 15:02:02.924"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square60</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.924" level="INFO">Clicking element 'id=square60'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.924" endtime="20211003 15:02:02.946"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square61</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.946" level="INFO">Clicking element 'id=square61'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.946" endtime="20211003 15:02:02.967"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square62</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.968" level="INFO">Clicking element 'id=square62'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.967" endtime="20211003 15:02:02.988"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square63</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:02.989" level="INFO">Clicking element 'id=square63'.</msg>
+<status status="PASS" starttime="20211003 15:02:02.988" endtime="20211003 15:02:03.010"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square64</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.010" level="INFO">Clicking element 'id=square64'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.010" endtime="20211003 15:02:03.031"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square65</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.031" level="INFO">Clicking element 'id=square65'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.031" endtime="20211003 15:02:03.054"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square66</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.054" level="INFO">Clicking element 'id=square66'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.054" endtime="20211003 15:02:03.074"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square67</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.075" level="INFO">Clicking element 'id=square67'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.075" endtime="20211003 15:02:03.096"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square68</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.096" level="INFO">Clicking element 'id=square68'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.096" endtime="20211003 15:02:03.118"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square69</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.118" level="INFO">Clicking element 'id=square69'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.118" endtime="20211003 15:02:03.140"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square70</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.140" level="INFO">Clicking element 'id=square70'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.140" endtime="20211003 15:02:03.163"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square71</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.164" level="INFO">Clicking element 'id=square71'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.163" endtime="20211003 15:02:03.186"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square72</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.186" level="INFO">Clicking element 'id=square72'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.186" endtime="20211003 15:02:03.206"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square73</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.207" level="INFO">Clicking element 'id=square73'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.206" endtime="20211003 15:02:03.228"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square74</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.229" level="INFO">Clicking element 'id=square74'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.228" endtime="20211003 15:02:03.249"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square75</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.249" level="INFO">Clicking element 'id=square75'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.249" endtime="20211003 15:02:03.270"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square76</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.271" level="INFO">Clicking element 'id=square76'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.271" endtime="20211003 15:02:03.291"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square77</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.292" level="INFO">Clicking element 'id=square77'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.291" endtime="20211003 15:02:03.313"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square78</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.313" level="INFO">Clicking element 'id=square78'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.313" endtime="20211003 15:02:03.334"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square79</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.335" level="INFO">Clicking element 'id=square79'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.334" endtime="20211003 15:02:03.355"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square80</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.356" level="INFO">Clicking element 'id=square80'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.355" endtime="20211003 15:02:03.377"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square81</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.377" level="INFO">Clicking element 'id=square81'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.377" endtime="20211003 15:02:03.399"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square82</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 15:02:03.399" level="INFO">Clicking element 'id=square82'.</msg>
+<status status="PASS" starttime="20211003 15:02:03.399" endtime="20211003 15:02:03.420"/>
+</kw>
+<status status="PASS" starttime="20211003 15:02:01.674" endtime="20211003 15:02:03.420"/>
+</kw>
+<status status="PASS" starttime="20211003 15:01:39.268" endtime="20211003 15:02:03.420"/>
+</kw>
+<status status="PASS" starttime="20211003 15:01:37.852" endtime="20211003 15:02:03.420"/>
+</test>
+<status status="PASS" starttime="20211003 15:01:37.744" endtime="20211003 15:02:03.421"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test Dartboard">Test Dartboard</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

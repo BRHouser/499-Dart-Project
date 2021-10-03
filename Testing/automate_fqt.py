@@ -1,5 +1,6 @@
 import os
 import sys
+from datetime import datetime
 
 # NEED TO CONTROL WHERE THE OUTPUT FILES OF THE ROBOT FILES GO
 
@@ -7,10 +8,10 @@ import sys
 def main():
     project_directory = os.getcwd()
     project_directory = project_directory[0:project_directory.find("Project") + 7]    
-    list_of_tests = os.listdir (project_directory + '/RobotScripts')
+    list_of_tests = os.listdir (project_directory + '/Testing/RobotScripts')
     selected_tests = []
     for input in sys.argv:
-        if input == "automate_fqt.py":
+        if input.endswith("automate_fqt.py"):
             if len(sys.argv) == 1:
                 selected_tests = list_of_tests
                 break
@@ -29,9 +30,12 @@ def main():
             else:
                 print(input + " is not a test")
                 exit()
+
+    os.chdir(project_directory + "/Testing/RobotScripts")
+    output_directory = datetime.now().strftime("%d_%m_%Y-%H_%M_%S")
     for test in selected_tests:
         print(test)
-    #os.system("python -m robot getData.robot ")
+        os.system("python -m robot -d  " + "../Output/" + test[0:test.find(".")] + "/" +  output_directory + "  " + test)
 
 
 if __name__ == '__main__':

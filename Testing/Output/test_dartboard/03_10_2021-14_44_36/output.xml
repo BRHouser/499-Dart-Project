@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.9.7 on win32)" generated="20211003 14:44:36.827" rpa="false" schemaversion="2">
+<suite id="s1" name="Test Dartboard" source="C:\Users\marsh\Documents\GitHub\499-Dart-Project\Testing\RobotScripts\test_dartboard.robot">
+<test id="s1-t1" name="Test Dartboard">
+<kw name="Navigate to Scorekeeper">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>browser=${browser}</arg>
+<arg>executable_path=C:/Users/marsh/AppData/Local/Programs/Python/Python39/chromedriver.exe</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211003 14:44:36.938" level="INFO">Opening browser 'Chrome' to base url 'None'.</msg>
+<status status="PASS" starttime="20211003 14:44:36.938" endtime="20211003 14:44:38.053"/>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20211003 14:44:38.053" endtime="20211003 14:44:38.172"/>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<arg>${webpage}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20211003 14:44:38.172" level="INFO">Opening url 'http://192.168.1.179:5010/scorekeeper'</msg>
+<status status="PASS" starttime="20211003 14:44:38.172" endtime="20211003 14:44:38.372"/>
+</kw>
+<status status="PASS" starttime="20211003 14:44:36.936" endtime="20211003 14:44:38.372"/>
+</kw>
+<kw name="Test Dartboard">
+<kw name="Hover Over Each Element">
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>id=square1</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211003 14:44:38.373" level="INFO">Simulating Mouse Over on element 'id=square1'.</msg>
+<status status="PASS" starttime="20211003 14:44:38.373" endtime="20211003 14:44:38.654"/>
+</kw>
+<status status="PASS" starttime="20211003 14:44:38.373" endtime="20211003 14:44:38.654"/>
+</kw>
+<kw name="Click Each Element">
+<kw name="Click Element" library="Selenium2Library">
+<arg>id=square1</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211003 14:44:38.655" level="INFO">Clicking element 'id=square1'.</msg>
+<status status="PASS" starttime="20211003 14:44:38.655" endtime="20211003 14:44:38.683"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>15</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211003 14:44:53.685" level="INFO">Slept 15 seconds</msg>
+<status status="PASS" starttime="20211003 14:44:38.683" endtime="20211003 14:44:53.685"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20211003 14:44:53.685" endtime="20211003 14:44:55.778"/>
+</kw>
+<status status="PASS" starttime="20211003 14:44:38.654" endtime="20211003 14:44:55.778"/>
+</kw>
+<status status="PASS" starttime="20211003 14:44:38.372" endtime="20211003 14:44:55.778"/>
+</kw>
+<status status="PASS" starttime="20211003 14:44:36.936" endtime="20211003 14:44:55.779"/>
+</test>
+<status status="PASS" starttime="20211003 14:44:36.827" endtime="20211003 14:44:55.780"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test Dartboard">Test Dartboard</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.9.7 on win32)" generated="20211003 14:08:55.774" rpa="false" schemaversion="2">
+<suite id="s1" name="Test Dartboard" source="C:\Users\marsh\Documents\GitHub\499-Dart-Project\Testing\RobotScripts\test_dartboard.robot">
+<test id="s1-t1" name="Test Dartboard">
+<kw name="Navigate to Homepage">
+<kw name="Open Browser">
+<arg>browser=${browser}</arg>
+<msg timestamp="20211003 14:08:55.797" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<status status="FAIL" starttime="20211003 14:08:55.797" endtime="20211003 14:08:55.797"/>
+</kw>
+<kw name="Go To">
+<arg>${webpage}</arg>
+<status status="NOT RUN" starttime="20211003 14:08:55.798" endtime="20211003 14:08:55.798"/>
+</kw>
+<status status="FAIL" starttime="20211003 14:08:55.795" endtime="20211003 14:08:55.798"/>
+</kw>
+<kw name="My Keyword">
+<arg>C:\\Users\\marsh\\Documents\\GitHub\\499-Dart-Project\\Testing\\RobotScripts</arg>
+<status status="NOT RUN" starttime="20211003 14:08:55.799" endtime="20211003 14:08:55.799"/>
+</kw>
+<status status="FAIL" starttime="20211003 14:08:55.795" endtime="20211003 14:08:55.800">No keyword with name 'Open Browser' found.</status>
+</test>
+<status status="FAIL" starttime="20211003 14:08:55.775" endtime="20211003 14:08:55.801"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Test Dartboard">Test Dartboard</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20211003 14:08:55.792" level="ERROR">Error in file 'C:\Users\marsh\Documents\GitHub\499-Dart-Project\Testing\RobotScripts\test_dartboard.robot' on line 4: Importing library 'Selenium2Library' failed: ModuleNotFoundError: No module named 'Selenium2Library'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\marsh\Documents\GitHub\499-Dart-Project\Testing\RobotScripts
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2032.0_x64__qbz5n2kfra8p0\python39.zip
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2032.0_x64__qbz5n2kfra8p0\DLLs
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2032.0_x64__qbz5n2kfra8p0\lib
+  C:\Users\marsh\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0
+  C:\Users\marsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2032.0_x64__qbz5n2kfra8p0
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2032.0_x64__qbz5n2kfra8p0\lib\site-packages</msg>
+</errors>
+</robot>
