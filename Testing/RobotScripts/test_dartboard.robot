@@ -24,6 +24,7 @@ Test Dartboard
     Hover Over Each Element
     Click Each Element
 
+
 Hover Over Each Element
     Mouse Over   id=square1
     Mouse Over   id=square2
@@ -110,7 +111,7 @@ Hover Over Each Element
 
 Click Each Element
     Click Element   id=square1
-    #Click Elemen    id=square2
+    Click Element At Coordinates    id=square2   100   100
     Click Element   id=square3
     Click Element   id=square4
     Click Element   id=square5
@@ -191,8 +192,4 @@ Click Each Element
     Click Element   id=square80
     Click Element   id=square81
     Click Element   id=square82
-    Sleep   60
     Close Browser   
-#My Keyword
-#    [Arguments]    ${path}
-#    Directory Should Exist    ${path}

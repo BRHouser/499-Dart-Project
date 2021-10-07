@@ -17,8 +17,10 @@ def create_connection(database_file_directory, header_of_database, list_of_table
     return connection
 
 # Input: address_of_database (the address of the new database being created or accessed), name_of_database (the name of the table within the database),
-# Input: list_of_wanted_information (list of states that are the same between two tables but the first index has the names of the rows and the last two indexes have the number of seen for each table)
+# Input: header_of_information (the header information of the database in the form of an array)
 def create_database(address_of_database, name_of_database, header_of_database):
+
+
     # creates a connection to the table
     connection = sqlite3.connect(address_of_database)
     cursor = connection.cursor()
@@ -36,8 +38,7 @@ def create_database(address_of_database, name_of_database, header_of_database):
             cursor.execute(sqlite_insert_query)
             x += 1
     except Error as e:
-        print("DEBUG: ERROR WITH CREATING DATABASE OR DATABASE IS ALREADY CREATED")
-
+        print()
     return connection
 
 # Input: Database1 (Connection to a database), Database2 (Connection to a database), 
@@ -63,9 +64,11 @@ def get_information(database_connection, name_of_table):
     return table_information
 
 
-# Input: the database_connection not the cursor, the name of the table to insert information, a 2D array of information wanting to be added
-# The purpose of this array is to update the database
+# Input: the database_connection not the cursor, the name of the table to insert information, a list of information wanting to be added
+# The purpose of this function is to update the database
 def add_information(database_connection, name_of_table, list_of_information):
+    
+
     cursor = database_connection.cursor()
     questionmarks = ''
     insert_information = ''
@@ -73,20 +76,52 @@ def add_information(database_connection, name_of_table, list_of_information):
     # Finds the column information from the original tables
     cursor.execute("SELECT * FROM " + name_of_table)     
     col_name_list = [tuple[0] for tuple in cursor.description]
-    table_information = []
-    table_information.append(col_name_list)
 
     for i in col_name_list:
         if i == col_name_list[0]:
             insert_information += str(i)
             questionmarks = '?'
         else:
-            insert_information += ', ' + i
+            insert_information += ', ' + str(i)
             questionmarks += ',?'
     insert_information = 'INSERT INTO ' + name_of_table +'(' + insert_information + ') VALUES (' + questionmarks + ');'
     cursor.executemany(insert_information, list_of_information)
     database_connection.commit()
     cursor.close()
+
+
+# Input: the database_connection not the cursor, the name of the table to insert information, an array of a row of information wanting to be added
+# The purpose of this function is to update a row in a table based on the id of the row
+def replace_row(database_connection, name_of_table, row_information):
+    insert_row_information = ''
+    insert_column_information = ''
+
+    cursor = database_connection.cursor()
+
+
+    # Finds the column information from the original tables
+    cursor.execute("SELECT * FROM " + name_of_table)     
+    col_name_list = [tuple[0] for tuple in cursor.description]
+
+    for i in range(len(col_name_list)):
+        if i == 0:
+            insert_column_information += str(col_name_list[0])
+            insert_row_information += str(row_information[0])
+        else:
+            insert_column_information += ', ' + str(col_name_list[i])
+            insert_row_information += ', ' + str(row_information[i])
+    execute_string = "UPDATE " + name_of_table + " SET " 
+    for i in range(1,len(row_information)):
+        if i != len(row_information) - 1:
+            execute_string = execute_string + col_name_list[i] + " = '" + row_information[i] +"', "
+        else:
+            execute_string = execute_string + col_name_list[i] + " = '" + row_information[i] + "' "
+    execute_string = execute_string + " WHERE " + col_name_list[0] + " = '" + row_information[0] + "';"
+    cursor.execute(execute_string)
+    database_connection.commit()
+    cursor.close()
+ 
+
 
 # Input: the connection to the database, The name of the table
 # The purpose of this function is to delete a table in the database. For instance if a competitor is deleted, then the table containing
@@ -102,7 +137,7 @@ def delete_table(database_connection, name_of_table):
 def delete_row(database_connection, name_of_table, row_array):
     cursor = database_connection.cursor()
 
-    cursor.execute("SELECT * FROM " + name_of_table)     
+    cursor.execute("SELECT * FROM " + name_of_table)      
     col_name_list = [tuple[0] for tuple in cursor.description]
 
     cursor.execute("DELETE FROM " + str(name_of_table) + " WHERE " + col_name_list[0] + "='" + row_array[0] + "';")
@@ -111,17 +146,21 @@ def delete_row(database_connection, name_of_table, row_array):
 
 # JUST TO SHOW HOW EVERYTHING WORKS TOGETHER
 def main():
-    database = os.getcwd() + "/Dart_Scorer_Database.db"
-    header_info_1 = ["banana", 'apple', 'something']
-    header_info_2 = ['Dart Statistics', 'Competitor', 'somethingElse']
+    database_address = os.getcwd() + "/Dart_Scorer_Database.db"
+    header_info_1 = ["id", "banana", 'apple', 'something']
+    header_info_2 = ["id", 'Dart Statistics', 'Competitor', 'somethingElse']
     list_of_table_names = ["Competitor_Information", "Dart_Information"]
     header_info = [header_info_1, header_info_2]
-    information_to_add = [["Ben Swalley", "Marshall Rosenhoover", "3 something"], ['100','2','3'], ["SOMETHING", "Marshall", "MMMMM"]]
+    information_to_add = [["0", "Ben Swalley", "Marshall Rosenhoover", "3 something"], ["1",'100','2','3'], ["2","SOMETHING", "Marshall", "MMMMM"]]
 
-    database = create_connection(database, header_info, list_of_table_names)
+    database = create_connection(database_address, header_info, list_of_table_names)
+    delete_table(database, "Competitor_Information")
+    database = create_connection(database_address, header_info, list_of_table_names)
+
     add_information(database, "Competitor_Information", information_to_add)
     delete_row(database, "Competitor_Information", information_to_add[0])
 
+    replace_row(database, "Competitor_Information", ["1",'LAUREN','MARSHALL','ANN'])
 
 
 if __name__ == '__main__':
