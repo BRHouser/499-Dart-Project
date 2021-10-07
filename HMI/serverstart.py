@@ -24,6 +24,8 @@ def worker():
 	data = json.loads(request.get_data())
 	return data["information"]
 
+
+
 @app.route('/banana', methods = ['POST'])
 def something():
 	return "SOMETHING"
