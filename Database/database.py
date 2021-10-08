@@ -7,38 +7,13 @@ import os
 # Output: The connection to the database
 # The purpose of this function is to create a connection to an already existing database
 # or create a new database
-def create_connection(database_file_directory, header_of_database, list_of_table_names):
+def create_connection(database_file_directory):
     connection = None
-    try:
-        connection = create_database(database_file_directory, list_of_table_names, header_of_database)
-    except Error as e:
-        connection = sqlite3.connect(database_file_directory)
+   # try:
+   #     connection = create_database(database_file_directory, list_of_table_names, header_of_database)
+   # except Error as e:
+    connection = sqlite3.connect(database_file_directory, check_same_thread=False)
     
-    return connection
-
-# Input: address_of_database (the address of the new database being created or accessed), name_of_database (the name of the table within the database),
-# Input: header_of_information (the header information of the database in the form of an array)
-def create_database(address_of_database, name_of_database, header_of_database):
-
-
-    # creates a connection to the table
-    connection = sqlite3.connect(address_of_database)
-    cursor = connection.cursor()
-    x = 0
-    # checks to see if a table needs to be made
-    try:
-        sqlite_insert_query = ''
-        for header in header_of_database:
-            for i in header:
-                if i == header[0]:
-                    sqlite_insert_query = str(header[0]) + ' str'
-                else:
-                    sqlite_insert_query += ', ' + str(i) + ' str'
-            sqlite_insert_query = 'CREATE TABLE ' + str(name_of_database[x]) + '(' + sqlite_insert_query + ')'
-            cursor.execute(sqlite_insert_query)
-            x += 1
-    except Error as e:
-        print()
     return connection
 
 # Input: Database1 (Connection to a database), Database2 (Connection to a database), 
@@ -68,7 +43,6 @@ def get_information(database_connection, name_of_table):
 # The purpose of this function is to update the database
 def add_information(database_connection, name_of_table, list_of_information):
     
-
     cursor = database_connection.cursor()
     questionmarks = ''
     insert_information = ''
@@ -143,6 +117,21 @@ def delete_row(database_connection, name_of_table, row_array):
     cursor.execute("DELETE FROM " + str(name_of_table) + " WHERE " + col_name_list[0] + "='" + row_array[0] + "';")
     database_connection.commit()
     cursor.close()
+
+# Input: the connection to the database, the name of the table, an array that contains the column information
+# The purpose of this function is to add a table to the database and create a Database if needed
+def add_table(database_connection, name_of_table, array_of_columns):
+    cursor = database_connection.cursor()
+    execute = "CREATE TABLE " + name_of_table + " ( "
+    for column_name in array_of_columns:
+        if column_name == array_of_columns[len(array_of_columns) - 1]:
+            execute =  execute + " " + column_name + " str);"
+        else:
+            execute = execute + column_name + " str, "
+    cursor.execute(execute)
+    database_connection.commit()
+    cursor.close()
+
 
 # JUST TO SHOW HOW EVERYTHING WORKS TOGETHER
 def main():

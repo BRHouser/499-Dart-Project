@@ -1,27 +1,4 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('area').forEach(area => {
-        area.onclick = () => {
-            const request = new XMLHttpRequest();
-            //you can call certain methods by changing the /oooo to something
-            //specified by what was clicked. Here is a link that can help with it
-            //https://iq.opengenus.org/single-page-application-with-flask-ajax/#:~:text=The%20Javascript%20part%20sends%20requests%20%28requests%20for%20information%29,sends%20back%20the%20required%20information%20to%20the%20front-end.
-
-            request.onload = () => {
-                const response = request.responseText;
-                document.getElementById('headerTitle').innerHTML = response;
-             }; 
-            data = {information:"I am testing the send JSON", age:"5"}
-            request.open('POST', '/baseCaseSendInformation');
-            request.send(JSON.stringify(data));
-          };
-    });    
-});
-
-</script>
 
 <html>
     <head>
@@ -36,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="container-fluid" id="main-content" style = "max-height: 100%">
             <div class = "row header" style = "max-height: 10%">
                 <div class= "m-4 col text-center">
-                    <h1 id='headerTitle'>Dart MATCH START UP AND OTHER INFORMATION</h1>
+                    <h1 id='headerTitle'>STUFF</h1>
                 </div>
             </div>
             <div class = "row" style = "height: 85%">
@@ -53,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
                           <a class="dropdown-item" href="#">needs to be dynamic</a>
                         </div>
                     </div>
-                    <h3 class="mt-3">IDK LIKE START MATCH FOR SOMETHING</h3>
+                    <h3 class="mt-3">STUFF</h3>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="matchStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            JUST NEED TO HAVE PLAYER INFORMATION ADD AND MATCH INFO ADD STUFF AND THEN WE CAN CHECK THE HISTORY TOO
+                            STUFF
                         </button>
                         <div class="dropdown-menu" aria-labelledby="matchStatsDropdown">
                           <a class="dropdown-item" href="#">Current Player League Ranks</a>
@@ -64,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                           <a class="dropdown-item" href="#">Average Player League Score</a>
                           <a class="dropdown-item" href="#">180s In Season</a>
                         </div>
-                        <button class="btn btn-primary" type="button" id="StartMatchButton" data-toggle="modal" data-target = "#MatchSetupModal" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary" type="button" id="StartMatchButton" data-toggle="modal" data-target = "#MatchSetupModal" aria-haspopup="true" aria-expanded="false">
                             Setup Match
                         </button>
                         <!-- Modal -->
@@ -120,19 +97,60 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 <div class = "col-9 main-content text-center h-100" id = "score-input" style = "overflow: auto;">
-                    <h1 id="score-preview"></h2>
+                    <h1 id="Information Block"></h2>
+                        <button id = "AddPlayer" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#AddPlayerModal" aria-haspopup="true" aria-expanded="false">
+                            Add Player
+                        </button>
+                        <div class = "modal" id = "AddPlayerModal">
+                            <div class = "modal-dialog">
+                                <div class = "modal-content header">
+                                    <div class = "modal-header">
+                                        <h4 class = "modal-title">Add Player</h4>
+                                        <button type = "button" class = "close" data-dismiss = "modal">&times;
+                                        </button>
+                                    </div>
+                                    <div class = "modal-body">
+                                        <div class="form-group row">
+                                            <div class="col-xs-2 margin-inputtext">
+
+                                                <label for="FirstName">First Name:</label>
+                                                <input type="text" class="form-control" id="FirstName">
+                                            </div>
+                                            <div class="col-xs-3 margin-inputtext">
+                                                <label for="LastName">Last Name:</label>
+                                                <input type="text" class="form-control" id="LastName">                                            
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                            <div class="col-xs-2 margin-inputtext">
+                                                <label for="NumberOfThrows">Total Number of Throws:</label>
+                                                <input type="number" class="form-control" min=0 id="NumberOfThrows">
+                                            </div>
+                                            <div class="col-xs-2 margin-inputtext">
+                                                <label for="Bullseyes">Total Number of BullsEyes:</label>
+                                                <input type="number" class="form-control" min=0 id="Bullseyes">
+                                            </div>
+                                            </div>
+                                            <div class = "modal-footer">
+                                                <button type = "button" class = "btn btn-danger" data-dismiss="modal" onClick="javascript:addPlayer()"> Submit</button>
+                                                <button type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
+                                            </div>
+                                        </div>                                    
+                                    </div>
+                                </div>
+                            </div>                        
                 </div>
-            </div>
             <div class = "row footer" style = "height: 5%">
                 <p>Footer</p>
             </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="{{ url_for('.static', filename='javascript/addplayermodal.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
