@@ -119,6 +119,7 @@ def delete_row(database_connection, name_of_table, row_array):
     cursor.close()
 
 # Input: the connection to the database, the name of the table, an array that contains the column information
+# Output: boolean, true if player is added, false if player is not added
 # The purpose of this function is to add a table to the database and create a Database if needed
 def add_table(database_connection, name_of_table, array_of_columns):
     cursor = database_connection.cursor()
@@ -128,28 +129,35 @@ def add_table(database_connection, name_of_table, array_of_columns):
             execute =  execute + " " + column_name + " str);"
         else:
             execute = execute + column_name + " str, "
-    cursor.execute(execute)
-    database_connection.commit()
-    cursor.close()
+    try:
+        cursor.execute(execute)
+        database_connection.commit()
+        cursor.close()
+        return True
+    except Error as e:
+        return False
+
 
 
 # JUST TO SHOW HOW EVERYTHING WORKS TOGETHER
 def main():
     database_address = os.getcwd() + "/Dart_Scorer_Database.db"
-    header_info_1 = ["id", "banana", 'apple', 'something']
-    header_info_2 = ["id", 'Dart Statistics', 'Competitor', 'somethingElse']
-    list_of_table_names = ["Competitor_Information", "Dart_Information"]
-    header_info = [header_info_1, header_info_2]
-    information_to_add = [["0", "Ben Swalley", "Marshall Rosenhoover", "3 something"], ["1",'100','2','3'], ["2","SOMETHING", "Marshall", "MMMMM"]]
+    #header_info_1 = ["id", "banana", 'apple', 'something']
+   # header_info_2 = ["id", 'Dart Statistics', 'Competitor', 'somethingElse']
+    #list_of_table_names = ["Competitor_Information", "Dart_Information"]
+    #header_info = [header_info_1, header_info_2]
+    #information_to_add = [["0", "Ben Swalley", "Marshall Rosenhoover", "3 something"], ["1",'100','2','3'], ["2","SOMETHING", "Marshall", "MMMMM"]]
 
-    database = create_connection(database_address, header_info, list_of_table_names)
-    delete_table(database, "Competitor_Information")
-    database = create_connection(database_address, header_info, list_of_table_names)
+    #database = create_connection(database_address, header_info, list_of_table_names)
+    database = create_connection(database_address)
+    delete_table(database, "Billy_Bob_Statistics")
+    #delete_table(database, "Competitor_Information")
+    #database = create_connection(database_address, header_info, list_of_table_names)
 
-    add_information(database, "Competitor_Information", information_to_add)
-    delete_row(database, "Competitor_Information", information_to_add[0])
+    #add_information(database, "Competitor_Information", information_to_add)
+    #delete_row(database, "Competitor_Information", information_to_add[0])
 
-    replace_row(database, "Competitor_Information", ["1",'LAUREN','MARSHALL','ANN'])
+    #replace_row(database, "Competitor_Information", ["1",'LAUREN','MARSHALL','ANN'])
 
 
 if __name__ == '__main__':

@@ -26,6 +26,11 @@
     color:whitesmoke;
 }
 
+.notifcation{
+    background-color: whitesmoke;
+    color: var(--color1);
+}
+
 .margin-inputtext {
     margin-bottom:15px;
     margin-left:15px;

@@ -38,8 +38,10 @@ def worker():
 def addPlayer():
 	data = json.loads(request.get_data())
 	columns = ["id", "First_Name", "Last_Name", "Total_Number_of_Throws", "Total_Number_of_BullsEyes"]
-	database.add_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_" + "Statistics", columns)
-	return ''
+	if(database.add_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_" + "Statistics", columns)):
+		return "True"
+	else:
+		return "False"
 
 if __name__ == '__main__':
 	# run!

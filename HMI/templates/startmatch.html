@@ -113,31 +113,31 @@
                                         </button>
                                     </div>
                                     <div class = "modal-body">
-                                        <div class="form-group row">
+                                        <div class="form-group row ">
                                             <div class="col-xs-2 margin-inputtext">
 
                                                 <label for="FirstName">First Name:</label>
-                                                <input type="text" class="form-control" id="FirstName">
+                                                <input placeholder = First type="text" class="form-control" id="FirstName">
                                             </div>
                                             <div class="col-xs-3 margin-inputtext">
                                                 <label for="LastName">Last Name:</label>
-                                                <input type="text" class="form-control" id="LastName">                                            
+                                                <input placeholder = Last type="text" class="form-control" id="LastName">                                            
                                             </div>
                                           </div>
 
                                           <div class="form-group row">
                                             <div class="col-xs-2 margin-inputtext">
                                                 <label for="NumberOfThrows">Total Number of Throws:</label>
-                                                <input type="number" class="form-control" min=0 id="NumberOfThrows">
+                                                <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfThrows">
                                             </div>
                                             <div class="col-xs-2 margin-inputtext">
                                                 <label for="Bullseyes">Total Number of BullsEyes:</label>
-                                                <input type="number" class="form-control" min=0 id="Bullseyes">
+                                                <input placeholder = 0 type="number" class="form-control" min=0 id="Bullseyes">
                                             </div>
                                             </div>
                                             <div class = "modal-footer">
-                                                <button type = "button" class = "btn btn-danger" data-dismiss="modal" onClick="javascript:addPlayer()"> Submit</button>
-                                                <button type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
+                                                <button id="Submit-Button" type = "button" class = "btn btn-danger" onClick="javascript:closeModal()"> Submit</button>
+                                                <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
                                             </div>
                                         </div>                                    
                                     </div>
@@ -149,6 +149,21 @@
             </div>
         </div>
 
+        <div class = "modal" id = "NotificationModal">
+            <div class = "modal-dialog">
+                <div class = "modal-content notification">
+                    <div class = "modal-header">
+                        <h4 class = "modal-title">NOTIFICATION</h4>
+                    </div>
+                    <div class = "modal-body">
+                            <h1 id="ErrorText"></h1>
+                            <div class = "modal-footer">
+                                <button id="Okay-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> Okay </button>
+                            </div>
+                        </div>                                    
+                    </div>
+                </div>
+            </div> 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="{{ url_for('.static', filename='javascript/addplayermodal.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
