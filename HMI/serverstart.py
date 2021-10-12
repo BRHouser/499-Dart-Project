@@ -39,6 +39,9 @@ def addPlayer():
 	data = json.loads(request.get_data())
 	columns = ["id", "First_Name", "Last_Name", "Total_Number_of_Throws", "Total_Number_of_BullsEyes"]
 	if(database.add_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_" + "Statistics", columns)):
+		row = [0, data["firstname"], data["lastname"], data["totalthrows"], data["totalbullseyes"]]
+		name = data["firstname"] + "_" + data["lastname"] + "_" + "Statistics"
+		database.add_information(database_connection, name, [row])
 		return "True"
 	else:
 		return "False"

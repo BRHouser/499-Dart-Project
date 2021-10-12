@@ -39,7 +39,7 @@ def get_information(database_connection, name_of_table):
     return table_information
 
 
-# Input: the database_connection not the cursor, the name of the table to insert information, a list of information wanting to be added
+# Input: the database_connection not the cursor, the name of the table to insert information, a list of information (2d array) wanting to be added
 # The purpose of this function is to update the database
 def add_information(database_connection, name_of_table, list_of_information):
     
@@ -150,7 +150,7 @@ def main():
 
     #database = create_connection(database_address, header_info, list_of_table_names)
     database = create_connection(database_address)
-    delete_table(database, "Billy_Bob_Statistics")
+    delete_table(database, "Marshall_Rosenhoover_Statistics")
     #delete_table(database, "Competitor_Information")
     #database = create_connection(database_address, header_info, list_of_table_names)
 
