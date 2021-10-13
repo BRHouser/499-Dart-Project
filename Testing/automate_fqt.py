@@ -9,6 +9,7 @@ def main():
     project_directory = os.getcwd()
     project_directory = project_directory[0:project_directory.find("Project") + 7]    
     list_of_tests = os.listdir (project_directory + '/Testing/RobotScripts')
+    list_of_tests.remove("resources")
     selected_tests = []
     for input in sys.argv:
         if input.endswith("automate_fqt.py"):
