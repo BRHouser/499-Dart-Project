@@ -42,7 +42,17 @@ def get_information(database_connection, name_of_table):
 # Input: the database_connection not the cursor, the name of the table to insert information, a list of information (2d array) wanting to be added
 # The purpose of this function is to update the database
 def add_information(database_connection, name_of_table, list_of_information):
-    
+    information = get_information(database_connection, name_of_table)
+    if len(information) == 1:
+        counter = 0
+        for x in list_of_information:
+            x.insert(0, counter)
+            counter = counter + 1
+    else:
+        last_index = information[len(information) - 1][0] + 1
+        for x in list_of_information:
+            x.insert(0, last_index)
+            last_index = last_index + 1
     cursor = database_connection.cursor()
     questionmarks = ''
     insert_information = ''
@@ -150,12 +160,15 @@ def main():
 
     #database = create_connection(database_address, header_info, list_of_table_names)
     database = create_connection(database_address)
-    delete_table(database, "Marshall_Rosenhoover_Statistics")
-    #delete_table(database, "Competitor_Information")
+    #delete_table(database, "list_of_players")
+    #add_table(database, "List_of_Players", ["id", "First Name", "Last Name"])
+    #delete_table(database, "Marshall_Rosenhoover_Statistics")
+    #delete_table(database, "Gabe_Henneberger_Statistics")
+    
     #database = create_connection(database_address, header_info, list_of_table_names)
-
-    #add_information(database, "Competitor_Information", information_to_add)
-    #delete_row(database, "Competitor_Information", information_to_add[0])
+    #information_to_add = ["2", "Marshall", "Rosenhoover"]
+    #add_information(database, "Marshall_Rosenhoover_Statistics", [information_to_add])
+    #delete_row(database, "List_of_Players", information_to_add)
 
     #replace_row(database, "Competitor_Information", ["1",'LAUREN','MARSHALL','ANN'])
 

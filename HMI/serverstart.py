@@ -39,12 +39,23 @@ def addPlayer():
 	data = json.loads(request.get_data())
 	columns = ["id", "First_Name", "Last_Name", "Total_Number_of_Throws", "Total_Number_of_BullsEyes"]
 	if(database.add_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_" + "Statistics", columns)):
-		row = [0, data["firstname"], data["lastname"], data["totalthrows"], data["totalbullseyes"]]
+		row = [data["firstname"], data["lastname"], str(data["totalthrows"]), str(data["totalbullseyes"])]
 		name = data["firstname"] + "_" + data["lastname"] + "_" + "Statistics"
 		database.add_information(database_connection, name, [row])
+		row = [data["firstname"], data["lastname"]]
+		database.add_information(database_connection, "List_of_Players", [row])
 		return "True"
 	else:
 		return "False"
+
+@app.route("/getPlayers", methods = ['POST'])
+def getPlayers():
+	information = database.get_information(database_connection, "List_of_Players")
+	send = {}
+	for x in range(1, len(information)):
+		send["Player" + str(x)] = information[x][1] + " " + information[x][2]
+	send = json.dumps(send)
+	return send
 
 if __name__ == '__main__':
 	# run!

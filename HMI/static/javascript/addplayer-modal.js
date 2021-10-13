@@ -29,6 +29,11 @@ async function closeModal(){
     var LastName = document.getElementById("LastName").value;
     var NumberOfThrows = document.getElementById("NumberOfThrows").value;
     var NumberOfBullseyes = document.getElementById("Bullseyes").value;
+    if(NumberOfThrows.trim() == "")
+        NumberOfThrows = 0
+    if(NumberOfBullseyes.trim() == "")
+        NumberOfBullseyes = 0
+
     if(FirstName.trim() == "")
     {
         submit = false;
@@ -45,11 +50,13 @@ async function closeModal(){
         $(notification).modal('toggle');
         return
     }
-    if(NumberOfBullseyes > NumberOfThrows)
+    if(parseInt(NumberOfBullseyes) > parseInt(NumberOfThrows))
     {   
         submit = false;
         resetAddPlayer();
         document.getElementById('ErrorText').innerHTML = "Invalid Input: Number Of BullsEyes";
+        console.log(NumberOfBullseyes)
+        console.log(NumberOfThrows)
         $(notification).modal('toggle');
         return
     }

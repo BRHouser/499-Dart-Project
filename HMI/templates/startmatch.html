@@ -99,52 +99,111 @@
                     <h1 id="Information Block"></h2>
                         <button id = "AddPlayer" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#AddPlayerModal" aria-haspopup="true" aria-expanded="false">
                             Add Player
-                        </button>
-                        <div class = "modal" id = "AddPlayerModal">
-                            <div class = "modal-dialog">
-                                <div class = "modal-content header">
-                                    <div class = "modal-header">
-                                        <h4 class = "modal-title">Add Player</h4>
-                                        <button type = "button" class = "close" data-dismiss = "modal">&times;
-                                        </button>
-                                    </div>
-                                    <div class = "modal-body">
-                                        <div class="form-group row ">
-                                            <div class="col-xs-2 margin-inputtext">
-
-                                                <label for="FirstName">First Name:</label>
-                                                <input placeholder = First type="text" class="form-control" id="FirstName">
-                                            </div>
-                                            <div class="col-xs-3 margin-inputtext">
-                                                <label for="LastName">Last Name:</label>
-                                                <input placeholder = Last type="text" class="form-control" id="LastName">                                            
-                                            </div>
-                                          </div>
-
-                                          <div class="form-group row">
-                                            <div class="col-xs-2 margin-inputtext">
-                                                <label for="NumberOfThrows">Total Number of Throws:</label>
-                                                <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfThrows">
-                                            </div>
-                                            <div class="col-xs-2 margin-inputtext">
-                                                <label for="Bullseyes">Total Number of BullsEyes:</label>
-                                                <input placeholder = 0 type="number" class="form-control" min=0 id="Bullseyes">
-                                            </div>
-                                            </div>
-                                            <div class = "modal-footer">
-                                                <button id="Submit-Button" type = "button" class = "btn btn-danger" onClick="javascript:closeModal()"> Submit</button>
-                                                <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
-                                            </div>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                            </div>                        
+                        </button>   
+                        <button id = "Edit-Player-Throws" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#EditPlayerThrowsModal" aria-haspopup="true" aria-expanded="false">
+                            Edit Player Throws
+                        </button>                        
                 </div>
             <div class = "row footer" style = "height: 5%">
                 <p>Footer</p>
             </div>
         </div>
 
+
+        <!-- MODAL FOR ADD PLAYER-->
+        <div class = "modal" id = "AddPlayerModal">
+            <div class = "modal-dialog">
+                <div class = "modal-content header">
+                    <div class = "modal-header">
+                        <h4 class = "modal-title">Add Player</h4>
+                        <button type = "button" class = "close" data-dismiss = "modal">&times;
+                        </button>
+                    </div>
+                    <div class = "modal-body">
+                        <div class="form-group row ">
+                            <div class="col-xs-2 margin-inputtext">
+
+                                <label for="FirstName">First Name:</label>
+                                <input placeholder = First type="text" class="form-control" id="FirstName">
+                            </div>
+                            <div class="col-xs-3 margin-inputtext">
+                                <label for="LastName">Last Name:</label>
+                                <input placeholder = Last type="text" class="form-control" id="LastName">                                            
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="col-xs-2 margin-inputtext">
+                                <label for="NumberOfThrows">Total Number of Throws:</label>
+                                <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfThrows">
+                            </div>
+                            <div class="col-xs-2 margin-inputtext">
+                                <label for="Bullseyes">Total Number of BullsEyes:</label>
+                                <input placeholder = 0 type="number" class="form-control" min=0 id="Bullseyes">
+                            </div>
+                            </div>
+                            <div class = "modal-footer">
+                                <button id="Submit-Button" type = "button" class = "btn btn-danger" onClick="javascript:closeModal()"> Submit</button>
+                                <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
+                            </div>
+                        </div>                                    
+                    </div>
+                </div>
+            </div>
+
+
+
+        <!-- MODAL FOR  EDIT PLAYER-->
+        <div class = "modal" id = "EditPlayerThrowsModal">
+            <div class = "modal-dialog">
+                <div class = "modal-content header">
+                    <div class = "modal-header">
+                        <h4 class = "modal-title">Edit Player Throws</h4>
+                        <button type = "button" class = "close" data-dismiss = "modal">&times;
+                        </button>
+                    </div>
+                    <div class = "modal-body">
+                        <div class="form-group row ">
+                            <div class="col-xs-2 ">
+                                <div class="dropdown">
+                                    <button onClick = "javascript:getPlayers()" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        CHOOSE PLAYER
+                                    </button>
+                                    <div id = "dynamic-dropdown" class="dropdown-menu" aria-labelledby="ChoosePlayerDropdown">
+                                      <a class="dropdown-item" href="#">needs to be dynamic1</a>
+                                      <a class="dropdown-item" href="#">needs to be dynamic2</a>
+                                      <a class="dropdown-item" href="#">needs to be dynamic2</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 margin-inputtext">
+                                <label for="LastName">Last Name:</label>
+                                <input placeholder = Last type="text" class="form-control" id="LastName">                                            
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="col-xs-2 margin-inputtext">
+                                <label for="NumberOfThrows">Total Number of Throws:</label>
+                                <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfThrows">
+                            </div>
+                            <div class="col-xs-2 margin-inputtext">
+                                <label for="Bullseyes">Total Number of BullsEyes:</label>
+                                <input placeholder = 0 type="number" class="form-control" min=0 id="Bullseyes">
+                            </div>
+                            </div>
+                            <div class = "modal-footer">
+                                <button id="Submit-Button" type = "button" class = "btn btn-danger" onClick="javascript:closeModal()"> Submit</button>
+                                <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
+                            </div>
+                        </div>                                    
+                    </div>
+                </div>
+            </div>
+
+
+
+        <!-- MODAL FOR NOTIFICATIONS-->
         <div class = "modal" id = "NotificationModal">
             <div class = "modal-dialog">
                 <div class = "modal-content notification">
@@ -160,8 +219,11 @@
                     </div>
                 </div>
             </div> 
+
+            
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="{{ url_for('.static', filename='javascript/addplayermodal.js')}}"></script>
+        <script src="{{ url_for('.static', filename='javascript/addplayer-modal.js')}}"></script>
+        <script src="{{ url_for('.static', filename='javascript/changeplayerthrows-modal.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
