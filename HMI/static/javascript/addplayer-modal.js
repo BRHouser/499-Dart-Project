@@ -55,8 +55,6 @@ async function closeModal(){
         submit = false;
         resetAddPlayer();
         document.getElementById('ErrorText').innerHTML = "Invalid Input: Number Of BullsEyes";
-        console.log(NumberOfBullseyes)
-        console.log(NumberOfThrows)
         $(notification).modal('toggle');
         return
     }
@@ -65,6 +63,7 @@ async function closeModal(){
         let response = await addPlayer(FirstName, LastName, NumberOfThrows, NumberOfBullseyes);
         if(response == "True")
         {
+            resetAddPlayer();
             $(popup).modal('toggle');
         }
         else

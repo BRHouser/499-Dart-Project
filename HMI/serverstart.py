@@ -57,6 +57,24 @@ def getPlayers():
 	send = json.dumps(send)
 	return send
 
+
+@app.route("/deletePlayer", methods = ['POST'])
+def deletePlayer():
+	data = json.loads(request.get_data())
+	database.delete_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_Statistics")
+	location = database.get_information(database_connection, "List_of_Players")
+	check = False
+	x = -1
+	while check == False:
+		x = x + 1
+		if str(location[x][1]).strip() == str(data["firstname"]).strip():
+			if str(location[x][2]).strip() == str(data["lastname"]).strip():
+				check = True
+
+	database.delete_row(database_connection, "List_of_Players", location[x])
+	return ""
+
+
 if __name__ == '__main__':
 	# run!
 	app.run("0.0.0.0", "5010", debug=True)

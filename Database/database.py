@@ -124,7 +124,7 @@ def delete_row(database_connection, name_of_table, row_array):
     cursor.execute("SELECT * FROM " + name_of_table)      
     col_name_list = [tuple[0] for tuple in cursor.description]
 
-    cursor.execute("DELETE FROM " + str(name_of_table) + " WHERE " + col_name_list[0] + "='" + row_array[0] + "';")
+    cursor.execute("DELETE FROM " + str(name_of_table) + " WHERE " + str(col_name_list[0]) + "='" + str(row_array[0]) + "';")
     database_connection.commit()
     cursor.close()
 
@@ -166,9 +166,9 @@ def main():
     #delete_table(database, "Gabe_Henneberger_Statistics")
     
     #database = create_connection(database_address, header_info, list_of_table_names)
-    #information_to_add = ["2", "Marshall", "Rosenhoover"]
+    information_to_add = ["0", "Marshall", "Rosenhoover"]
     #add_information(database, "Marshall_Rosenhoover_Statistics", [information_to_add])
-    #delete_row(database, "List_of_Players", information_to_add)
+    delete_row(database, "List_of_Players", information_to_add)
 
     #replace_row(database, "Competitor_Information", ["1",'LAUREN','MARSHALL','ANN'])
 
