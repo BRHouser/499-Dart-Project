@@ -100,9 +100,12 @@
                         <button id = "AddPlayer" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#AddPlayerModal" aria-haspopup="true" aria-expanded="false">
                             Add Player
                         </button>   
-                        <button id = "Edit-Player-Throws" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#DeletePlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button id = "Delete-Player-Throws" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#DeletePlayerModal" aria-haspopup="true" aria-expanded="false">
                             Delete Player
-                        </button>                        
+                        </button>
+                        <button id = "Edit-Player-Throws" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#EditPlayerModal" aria-haspopup="true" aria-expanded="false">
+                            Edit Player
+                        </button>                               
                 </div>
             <div class = "row footer" style = "height: 5%">
                 <p>Footer</p>
@@ -153,7 +156,7 @@
 
 
 
-        <!-- MODAL FOR  DeletePlayer PLAYER-->
+        <!-- MODAL FOR  Delete Player-->
         <div class = "modal" id = "DeletePlayerModal">
             <div class = "modal-dialog">
                 <div class = "modal-content header">
@@ -164,12 +167,12 @@
                     </div>
                     <div class = "modal-body">
                         <div class="form-group row ">
-                            <div class="col-xs-2 ">
+                            <div class="col-xs-2 margin-inputtext">
                                 <div class="dropdown">
-                                    <button onClick = "javascript:getPlayers()" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button onClick = "javascript:getPlayers('0')" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         CHOOSE PLAYER
                                     </button>
-                                    <div id = "dynamic-dropdown" class="dropdown-menu" aria-labelledby="ChoosePlayerDropdown">
+                                    <div id = "dynamic-dropdown0" class="dropdown-menu" aria-labelledby="ChoosePlayerDropdown">
                                       <a class="dropdown-item" href="#">needs to be dynamic1</a>
                                       <a class="dropdown-item" href="#">needs to be dynamic2</a>
                                       <a class="dropdown-item" href="#">needs to be dynamic2</a>
@@ -178,7 +181,7 @@
                             </div>
                           </div>
                             <div class = "modal-footer">
-                                <button id="Delete-Button" type = "button" class = "btn btn-danger" onClick="javascript:deletePlayer()"> Delete</button>
+                                <button id="Delete-Button" type = "button" class = "btn btn-danger" onClick="javascript:deletePlayer('0')"> Delete</button>
                                 <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
                             </div>
                         </div>                                    
@@ -186,7 +189,38 @@
                 </div>
             </div>
 
-
+        <!-- MODAL FOR  Edit PLAYER-->
+        <div class = "modal" id = "EditPlayerModal">
+            <div class = "modal-dialog">
+                <div class = "modal-content header">
+                    <div class = "modal-header">
+                        <h4 class = "modal-title">Edit Player</h4>
+                        <button type = "button" class = "close" data-dismiss = "modal">&times;
+                        </button>
+                    </div>
+                    <div class = "modal-body">
+                        <div class="form-group row ">
+                            <div class="col-xs-2 margin-inputtext">
+                                <div class="dropdown">
+                                    <button onClick = "javascript:getPlayers('1')" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        CHOOSE PLAYER
+                                    </button>
+                                    <div id = "dynamic-dropdown1" class="dropdown-menu" aria-labelledby="ChoosePlayerDropdown">
+                                      <a class="dropdown-item" href="#">needs to be dynamic1</a>
+                                      <a class="dropdown-item" href="#">needs to be dynamic2</a>
+                                      <a class="dropdown-item" href="#">needs to be dynamic2</a>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                            <div class = "modal-footer">
+                                <button id="Delete-Button" type = "button" class = "btn btn-danger"> Delete</button>
+                                <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
+                            </div>
+                        </div>                                    
+                    </div>
+                </div>
+            </div>
 
         <!-- MODAL FOR NOTIFICATIONS-->
         <div class = "modal" id = "NotificationModal">

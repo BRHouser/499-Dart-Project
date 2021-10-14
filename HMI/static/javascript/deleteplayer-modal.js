@@ -10,13 +10,14 @@ function getPlayersList(){
     });
 }
 
-function changeDisplayName(id){
-    var element = document.getElementById("ChoosePlayerDropdown");
+function changeDisplayName(id, num){
+    var element = document.getElementById("ChoosePlayerDropdown" + num);
     element.innerHTML = id
 }
 
-function deletePlayer(){
-    var playerName = document.getElementById("ChoosePlayerDropdown").innerHTML;
+function deletePlayer(num){
+    var playerName = document.getElementById("ChoosePlayerDropdown" + num ).innerHTML;
+    
     if(playerName.trim() == "CHOOSE PLAYER")
     {
         var notification = document.getElementById("NotificationModal");
@@ -29,13 +30,13 @@ function deletePlayer(){
     playerName = playerName.split(" ");
     data = {firstname : playerName[0], lastname: playerName[1]}
     request.send(JSON.stringify(data));
-    document.getElementById("ChoosePlayerDropdown").innerHTML = "CHOOSE PLAYER"
+    document.getElementById("ChoosePlayerDropdown" + num).innerHTML = "CHOOSE PLAYER"
 }
 
-async function getPlayers()
+async function getPlayers(num)
 {
     let players = await getPlayersList();
-    var dropdown = document.getElementById("dynamic-dropdown");
+    var dropdown = document.getElementById("dynamic-dropdown" + num);
 
     while(dropdown.childNodes[0] != null)
     {
@@ -47,7 +48,7 @@ async function getPlayers()
         var element = document.createElement("a")
         element.id = players[key] + "-dropdown"
         element.classList.add("dropdown-item");
-        element.setAttribute("onClick","javascript:changeDisplayName('" + players[key] + "')");
+        element.setAttribute("onClick","javascript:changeDisplayName('" + players[key] + "','"+ num + "')");
         element.href = "#";
         var node = document.createTextNode(players[key])
         element.appendChild(node)

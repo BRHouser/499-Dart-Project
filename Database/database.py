@@ -162,7 +162,7 @@ def main():
     database = create_connection(database_address)
     #delete_table(database, "list_of_players")
     #add_table(database, "List_of_Players", ["id", "First Name", "Last Name"])
-    #delete_table(database, "Marshall_Rosenhoover_Statistics")
+    delete_table(database, "Marshall_Rosenhoover_Statistics")
     #delete_table(database, "Gabe_Henneberger_Statistics")
     
     #database = create_connection(database_address, header_info, list_of_table_names)
