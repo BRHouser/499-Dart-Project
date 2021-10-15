@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, redirect, Response
 import database
 import json
 
+# Directory of the Database
 project_directory = os.getcwd()
 project_directory = project_directory[0:project_directory.find("Project") + 7]    
 database_address = os.getcwd() + "/Database/Dart_Scorer_Database.db"
@@ -12,32 +13,40 @@ database_connection = database.create_connection(database_address)
 
 
 app = Flask(__name__)
+
+# Renders Home Page
 @app.route('/')
 def createMatchSetup():
 	# serve index template
 	return render_template('startmatch.html')
 
+
+# Renders Scorekeeper Page
 @app.route('/scorekeeper')
 def createScorekeeper():
 	return render_template('scorekeeper.html')
 
+
+# Renders Scoreboard Page
 @app.route('/scoreboard')
 def createScoreboard():
 	return render_template('scoreboard.html')
 
-@app.route('/baseCaseSendInformation', methods = ['POST'])
-def worker():
-	# read json + reply, Information is in form of type dictionary
-	data = json.loads(request.get_data())
-	return data["information"]
 
-
-# This function connects the HMI Button 'Add Player' To the database and allows a new table to be made
-# Pertaining to the player just added
+# INPUT: Dictionary with keys: 'firstname', 'lastname', totalthrows', 'totalbullseyes'
+# OUTPUT: True if Player was added to the database, False if Player was not added to the database
+# The purpose of this function is to add a player to the database by recieving data from the 
+# HMI and call add_table and add_information with the information from the dictionary
 @app.route('/addPlayer', methods = ['POST'])
 def addPlayer():
+	# Loads the data from the HMI
 	data = json.loads(request.get_data())
+
+	# Set terms of what the header should be for a player
 	columns = ["id", "First_Name", "Last_Name", "Total_Number_of_Throws", "Total_Number_of_BullsEyes"]
+
+	# If a table was created for the given person, then add the person to the List_of_Players Table and return True
+	# Else return False which means the player is already in the database
 	if(database.add_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_" + "Statistics", columns)):
 		row = [data["firstname"], data["lastname"], str(data["totalthrows"]), str(data["totalbullseyes"])]
 		name = data["firstname"] + "_" + data["lastname"] + "_" + "Statistics"
@@ -48,20 +57,37 @@ def addPlayer():
 	else:
 		return "False"
 
+
+# OUTPUT: A dictionary with all the player names in it 
+# The purpose of this function is to send a dictionary of player names to the HMI by calling get_information 
+# on the List_of_Players table 
 @app.route("/getPlayers", methods = ['POST'])
 def getPlayers():
+	# Gets list of players from database
 	information = database.get_information(database_connection, "List_of_Players")
+
+	# Converts Information into dictionary format
 	send = {}
 	for x in range(1, len(information)):
 		send["Player" + str(x)] = information[x][1] + " " + information[x][2]
+
+	# Converts information into JSON and sends to HMI
 	send = json.dumps(send)
 	return send
 
 
+# INPUT: Dictionary with keys: 'firstname', 'lastname'
+# The purpose of this function is to delete a player from the database by recieving data from the 
+# HMI and call delete_table and delete_row with the information from the dictionary
 @app.route("/deletePlayer", methods = ['POST'])
 def deletePlayer():
+	# Get information
 	data = json.loads(request.get_data())
+
+	# Deletes the Players Statistics
 	database.delete_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_Statistics")
+	
+	# Find the Player in List_of_Players
 	location = database.get_information(database_connection, "List_of_Players")
 	check = False
 	x = -1
@@ -71,21 +97,36 @@ def deletePlayer():
 			if str(location[x][2]).strip() == str(data["lastname"]).strip():
 				check = True
 
+	# Deletes the Player in List_of_Players
 	database.delete_row(database_connection, "List_of_Players", location[x])
 	return ""
 
-@app.route("/getPlayerInformation", methods=["POST"])
-def getPlayerInformation():
+
+# INPUT: Dictionary with keys: 'firstname', 'lastname'
+# OUTPUT: Dictionary with keys as column headers and values as the information per column
+# The purpose of this function is to return the Player's Statistics Table by recieving
+# data from the HMI and call get_information with the information from the dictionary
+@app.route("/getPlayerStatistics", methods=["POST"])
+def getPlayerStatistics():
+	# Get Information from HMI
 	data = json.loads(request.get_data())
+
+	# Gets Information from database
 	information = database.get_information(database_connection, data["firstname"] + "_" + data["lastname"] + "_Statistics")
 	send = {}
 
+	# Puts information into dictionary form
 	x = 0
 	for y in range(len(information[x])):
 		send[information[x][y]] = information[x + 1][y]
+
+	# Convert data to JSON and send it to HMI
 	send = json.dumps(send)
 	return send
 
+
+
+# Main Start Server
 if __name__ == '__main__':
 	# run!
 	app.run("0.0.0.0", "5010", debug=True)
