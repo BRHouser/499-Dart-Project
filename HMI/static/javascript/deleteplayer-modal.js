@@ -15,6 +15,10 @@ function changeDisplayName(id, num){
     element.innerHTML = id
 }
 
+function resetDynamicDropdown(name){
+    document.getElementById(name).innerHTML = "CHOOSE PLAYER"
+}
+
 function deletePlayer(num){
     var playerName = document.getElementById("ChoosePlayerDropdown" + num ).innerHTML;
     
@@ -30,7 +34,7 @@ function deletePlayer(num){
     playerName = playerName.split(" ");
     data = {firstname : playerName[0], lastname: playerName[1]}
     request.send(JSON.stringify(data));
-    document.getElementById("ChoosePlayerDropdown" + num).innerHTML = "CHOOSE PLAYER"
+    resetDynamicDropdown("ChoosePlayerDropdown" + num)
 }
 
 async function getPlayers(num)

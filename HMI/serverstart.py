@@ -74,6 +74,17 @@ def deletePlayer():
 	database.delete_row(database_connection, "List_of_Players", location[x])
 	return ""
 
+@app.route("/getPlayerInformation", methods=["POST"])
+def getPlayerInformation():
+	data = json.loads(request.get_data())
+	information = database.get_information(database_connection, data["firstname"] + "_" + data["lastname"] + "_Statistics")
+	send = {}
+
+	x = 0
+	for y in range(len(information[x])):
+		send[information[x][y]] = information[x + 1][y]
+	send = json.dumps(send)
+	return send
 
 if __name__ == '__main__':
 	# run!
