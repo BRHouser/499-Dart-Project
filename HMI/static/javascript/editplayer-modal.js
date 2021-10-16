@@ -152,7 +152,10 @@ async function displayEditTable(){
         var input = document.createElement("input") 
         input.value = information[key]
         input.id = key + "-row"
-        input.setAttribute("type", "text")
+        if(key.search("Total") != -1)
+            input.setAttribute("type", "number")
+        else
+            input.setAttribute("type", "text")
         input.classList.add("form-control")
         var element = document.createElement("td")
         element.classList.add("col")

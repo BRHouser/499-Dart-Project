@@ -101,10 +101,10 @@
                         <button id = "AddPlayer" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#AddPlayerModal" aria-haspopup="true" aria-expanded="false">
                             Add Player
                         </button>   
-                        <button id = "Delete-Player-Throws" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#DeletePlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button id = "Delete-Player" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#DeletePlayerModal" aria-haspopup="true" aria-expanded="false">
                             Delete Player
                         </button>
-                        <button id = "Edit-Player-Throws" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#EditPlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button id = "Edit-Player" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#EditPlayerModal" aria-haspopup="true" aria-expanded="false">
                             Edit Player
                         </button>                               
                 </div>
@@ -212,7 +212,7 @@
                           </div>
                             <div class = "modal-footer" id="editPlayer-ModalFooter">
                                 <button id="Edit-Button" onClick="javascript:displayEditTable()" type = "button" class = "btn btn-danger"> Edit Player</button>
-                                <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
+                                <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal" onClick="javascript:resetEditPlayer()" > Close </button>
                             </div>
                         </div>                                    
                     </div>
