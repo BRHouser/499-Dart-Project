@@ -1,5 +1,4 @@
 *** Settings ***
-#Documentation     Example using the space separated format.
 Library           OperatingSystem
 Library           Selenium2Library
 
@@ -68,7 +67,7 @@ Add Player
     Click Element   //*[@id="Submit-Button"]
 
 
-Test Add Player Error
+Test AddPlayer Error
     Wait Until Element Is Visible   //*[@id="AddPlayer"]
     Click Element   //*[@id="AddPlayer"]
     Wait Until Element Is Visible   //*[@id="FirstName"]

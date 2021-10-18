@@ -1,0 +1,97 @@
+*Execution Procedure*
+[cols="17,4", width = "100%]
+|===
+|Navigate to HomePage
+|PASS
+
+|Open Browser    browser=Chrome   
+|PASS
+
+|Maximize Browser Window
+|PASS
+
+|Go To           http://192.168.1.177:5010/
+|FAIL
+
+|Test AddPlayer FirstName Error
+|FAIL
+
+|Click AddPlayer
+|FAIL
+
+|Input Text 'Billy' into LastName
+|FAIL
+
+|Input Text '5' into NumberOfTrows
+|FAIL
+
+|Input Text '2' into Bullseyes
+|FAIL
+
+|Click Submit Button
+|FAIL
+
+|Click Okay Button
+|FAIL
+
+|Test AddPlayer LastName Error
+|FAIL
+
+|Input Text 'Billy' into FirstName
+|FAIL
+
+|Input Text '8' into NumberOfThrows
+|FAIL
+
+|Input Text '3' into Bullseyes
+|FAIL
+
+|Click Submit Button
+|FAIL
+
+|Click Okay Button
+|FAIL
+
+|Test AddPlayer BullsEyes Error
+|FAIL
+
+|Input Text 'Billy' into FirstName
+|FAIL
+
+|Input Text 'Bob' into LastName
+|FAIL
+
+|Input Text '10' into NumberOfThrows
+|FAIL
+
+|Input Text '500' into Bullseyes
+|FAIL
+
+|Click Submit Button
+|FAIL
+
+|Click Okay Button
+|FAIL
+
+|Add Player
+|FAIL
+
+|Input Text 'Billy' into FirstName
+|FAIL
+
+|Input Text 'Bob' into LastName
+|FAIL
+
+|Input Text '500' into NumberOfThrows
+|FAIL
+
+|Input Text '21' into Bullseyes
+|FAIL
+
+|Click Submit Button
+|FAIL
+
+|Test AddPlayer Error
+|FAIL
+
+|Click AddPlayer
