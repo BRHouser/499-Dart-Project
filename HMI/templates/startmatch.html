@@ -205,22 +205,22 @@
                         <div class="dropdown">
                             <div class="col-xs-2 margin-inputtext">
                             <!-- First button for Player 1-->
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="Player1SetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button onClick = "javascript:getPlayers('3')" class="btn dropdown-toggle" type="button" id="Player1SetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select Player 1
-                            </button>                                     
-                            <div class="dropdown-menu" aria-labelledby="Player1SetUpDropdown">
-                            <a class="dropdown-item" href="#">Player 1 Test Name</a>
+                            </button>
+                            <div id = "dynamic-dropdown3" class="dropdown-menu" aria-labelledby="Player1SetUpDropdown">
+                              <a class="dropdown-item" href="#"></a>
                             </div>
-                        </div>
+                            </div>
                         </div>
                         <div class = "dropdown">
                             <div class="col-xs-2 margin-inputtext">
                              <!-- Second button for Player 2-->
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="Player2SetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <button onClick = "javascript:getPlayers('4')" class="btn dropdown-toggle" type="button" id="Player2SetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select Player 2
-                            </button>                                            
-                            <div class="dropdown-menu" aria-labelledby="Player2SetUpDropdown">
-                            <a class="dropdown-item" href="#">Player 2 Test Name</a>
+                            </button>
+                            <div id = "dynamic-dropdown4" class="dropdown-menu" aria-labelledby="Player2SetUpDropdown">
+                              <a class="dropdown-item" href="#"></a>
                             </div>
                             </div>
                         </div>
@@ -237,6 +237,18 @@
                             </div>
                             </div>
                         </div>
+                        <div class = "dropdown">
+                            <div class="col-xs-2 margin-inputtext">
+                             <!-- Button for Match Type-->
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="MatchType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Match Type
+                            </button>                                            
+                            <div class="dropdown-menu" aria-labelledby="Player2SetUpDropdown">
+                            <a class="dropdown-item" href="#">Tournament</a>
+                            <a class="dropdown-item" href="#">Game</a>
+                            </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 <div class="form-group row">
@@ -249,7 +261,22 @@
                         <label for="NumberOfLegs"> Number of Legs:</label>
                         <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfLegs">
                     </div>
-                </div>  
+
+                    <div class="col-xs-2 margin-inputtext">
+                        <label for="NumberOfLegs"> Number of Matches:</label>
+                        <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfLegs">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-2 margin-inputtext">
+                        <label for="NumberOfLegs"> Match Location:</label>
+                        <input placeholder = "Location" type="string" class="form-control" min=0 id="MatchLocation">
+                    </div>
+                    <div class="col-xs-2 margin-inputtext">
+                        <label for="NumberOfLegs"> Match Date:</label>
+                        <input placeholder = "Date" type="date" class="form-control" min=0 id="MatchDate">
+                    </div>
+                </div>
                     <!-- Modal Footer -->
                     <div class = "modal-footer">
                         <button type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
