@@ -1,0 +1,220 @@
+*Execution Procedure*
+[cols="17,4", width = "100%]
+|===
+|Navigate to HomePage
+|PASS
+
+|Open Browser    browser=Chrome   
+|PASS
+
+|Maximize Browser Window
+|PASS
+
+|Go To           http://192.168.1.177:5010/
+|PASS
+
+|Test AddPlayer FirstName Error
+|PASS
+
+|Click AddPlayer
+|PASS
+
+|Input Text 'Billy' into LastName
+|PASS
+
+|Input Text '5' into NumberOfThrows
+|PASS
+
+|Input Text '2' into Bullseyes
+|PASS
+
+|Click Submit Button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Test AddPlayer LastName Error
+|PASS
+
+|Input Text 'Billy' into FirstName
+|PASS
+
+|Input Text '8' into NumberOfThrows
+|PASS
+
+|Input Text '3' into Bullseyes
+|PASS
+
+|Click Submit Button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Test AddPlayer BullsEyes Error
+|PASS
+
+|Input Text 'Billy' into FirstName
+|PASS
+
+|Input Text 'Bob' into LastName
+|PASS
+
+|Input Text '10' into NumberOfThrows
+|PASS
+
+|Input Text '500' into Bullseyes
+|PASS
+
+|Click Submit Button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Add Player
+|PASS
+
+|Input Text 'Billy' into FirstName
+|PASS
+
+|Input Text 'Bob' into LastName
+|PASS
+
+|Input Text '500' into NumberOfThrows
+|PASS
+
+|Input Text '21' into Bullseyes
+|PASS
+
+|Click Submit Button
+|PASS
+
+|Test AddPlayer Error
+|PASS
+
+|Click AddPlayer
+|PASS
+
+|Input Text 'Billy' into FirstName
+|PASS
+
+|Input Text 'Bob' into LastName
+|PASS
+
+|Input Text '500' into NumberOfThrows
+|PASS
+
+|Input Text '21' into Bullseyes
+|PASS
+
+|Click Submit Button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Click Close Button
+|PASS
+
+|Test EditPlayer SelectNoPlayer Error
+|PASS
+
+|Click Edit Player
+|PASS
+
+|Click Edit Button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Test EditPlayer FirstName Error
+|PASS
+
+|Click ChoosePlayer
+|PASS
+
+|Click Billy Bob 
+|PASS
+
+|Click Edit Button
+|PASS
+
+|Clear Text from First_Name row
+|PASS
+
+|Click Submit button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Test EditPlayer LastName Error
+|PASS
+
+|Clear Text from Last_Name row
+|PASS
+
+|Click Submit button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Test EditPlayer BullsEyes Error
+|PASS
+
+|Input Text '11111111111111' into Total_Number_of_BullsEyes row
+|PASS
+
+|Click Submit button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Edit Player
+|PASS
+
+|Input Text 'Graham' into First_Name row
+|PASS
+
+|Input Text 'Chase' into Last_Name row
+|PASS
+
+|Input Text '100000' into Total_Number_of_Throws row
+|PASS
+
+|Input Text '12345' into Total_Number_of_BullsEyes row
+|PASS
+
+|Click Submit button
+|PASS
+
+|Test DeletePlayer SelectNoPlayer Error
+|PASS
+
+|Click Delete Player
+|PASS
+
+|Click Delete Button
+|PASS
+
+|Click Okay Button
+|PASS
+
+|Test Delete Player
+|PASS
+
+|Click ChoosePlayer
+|PASS
+
+|Click Graham Chase 
+|PASS
+
+|Click Delete Button
+|PASS
+
+|===
