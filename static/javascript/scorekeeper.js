@@ -8,11 +8,34 @@ let current_player = 0; //player1 = 0, player2 = 1
 initial();
 
 function initial() {
+    sendData();
     registerImageMap();
     $("#previous-button").click(undo);
     $("#bounceout-button").click( function(e) {
         registerThrow("BO");
     })
+}
+
+function sendData() {
+    let data = {
+        "player1": {
+            "score": "101",
+            "leagueStats": "League Win Rate: 50%",
+            "matchStats": "T20s in Match: 2",
+            "perfectLeg": true,
+            "possibleOuts": ""
+        },
+        "player2": {
+            "score": "301",
+            "leagueStats": "League Win Rate: 50%",
+            "matchStats": "T20s in Match: 2",
+            "perfectLeg": true,
+            "possibleOuts": ""
+        }
+    }
+    const request = new XMLHttpRequest();
+    request.open('POST', '/receiveData');
+    request.send(JSON.stringify(data));
 }
 
 function registerThrow(user_throw) {
