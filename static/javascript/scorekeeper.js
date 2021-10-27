@@ -8,7 +8,6 @@ let current_player = 0; //player1 = 0, player2 = 1
 initial();
 
 function initial() {
-    sendData();
     registerImageMap();
     $("#previous-button").click(undo);
     $("#bounceout-button").click( function(e) {
@@ -16,23 +15,7 @@ function initial() {
     })
 }
 
-function sendData() {
-    let data = {
-        "player1": {
-            "score": "101",
-            "leagueStats": "League Win Rate: 50%",
-            "matchStats": "T20s in Match: 2",
-            "perfectLeg": true,
-            "possibleOuts": ""
-        },
-        "player2": {
-            "score": "301",
-            "leagueStats": "League Win Rate: 50%",
-            "matchStats": "T20s in Match: 2",
-            "perfectLeg": true,
-            "possibleOuts": ""
-        }
-    }
+function sendData(data) {
     const request = new XMLHttpRequest();
     request.open('POST', '/receiveData');
     request.send(JSON.stringify(data));
@@ -44,11 +27,13 @@ function registerThrow(user_throw) {
     throws[current_player].push(user_throw)
 
     //prepare for next throw
-    if(current_player == 0) current_player = 1; //toggle current player
-    else current_player = 0;
 
-    if(throws[1].length == 3) {
-        sendThrows();
+
+    if(throws[current_player].length == 3) {
+        sendThrow();
+        if(current_player == 0) current_player = 1; //toggle current player
+        else current_player = 0;
+        turnUpdate();
     }
     turnUpdate();
     console.log(throws);
@@ -69,14 +54,24 @@ function turnUpdate() {
         $("#knockoutDropdownContainer").append(element)
     }
 }
+
 function mouseoverBoard(board_section) {
     //console.log(board_section)
     $("#score-preview").text(board_section)
 }
 
-function sendThrows() { //send scores to db after both players complete their throws
-    alert(JSON.stringify(throws))
+function sendThrow() { //send scores to server after one player completes their throws
+    alert(JSON.stringify(throws[current_player]))
+
+    data = {}
+    if(current_player == 0) {
+        data["player1"] = throws[current_player]
+    }
+    else {
+        data["player2"] = throws[current_player]
+    }
     
+    sendData(data);
     //reset variables
     throws = [[],[]]
 }
@@ -84,9 +79,7 @@ function sendThrows() { //send scores to db after both players complete their th
 function undo() { //undo last entered score
     //pop the previous player's recent throw
     //toggle current player
-    if(throws[0].length != 0) {
-        if(current_player == 0) current_player = 1; //toggle current player
-        else current_player = 0;
+    if(throws[current_player].length != 0) {
 
         throws[current_player].pop();
         turnUpdate();
@@ -103,10 +96,14 @@ function knockOut(throw_num) { //replace throw at throw_num with 0 to represent 
 // Update displayed stats on scoreboard. new_stats is string representing the stat to be displayed
 function updatePlayerStats(new_stats) {
     $("#playerStatsDropdown").text(new_stats)
+    data = {"new_league_stats": new_stats}
+    sendData(data)
 }
 
 function updateMatchStats(new_stats) {
     $("#matchStatsDropdown").text(new_stats)
+    data = {"new_match_stats": new_stats}
+    sendData(data)
 }
 
 //Functions to add content to throw review tables

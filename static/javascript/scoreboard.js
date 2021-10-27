@@ -1,25 +1,18 @@
 //game data: json object following this scheme:
 
-let example_game_data = {
-    "player1": {
-        "score": "301",
-        "leagueStats": "League Win Rate: 50%",
-        "matchStats": "T20s in Match: 2",
-        "perfectLeg": true,
-        "possibleOuts": ""
-    },
-    "player2": {
-        "score": "301",
-        "leagueStats": "League Win Rate: 50%",
-        "matchStats": "T20s in Match: 2",
-        "perfectLeg": true,
-        "possibleOuts": ""
+let won = false;
+let received = false;
+
+mainLoop();
+
+async function mainLoop() {
+    while(!won) {
+        await updateGameState();
     }
 }
 
-updateGameState();
-
 async function updateGameState() {
+    received = false;
     let game_data = await requestGameState();
 
     let player1 = game_data["player1"]
@@ -33,6 +26,7 @@ async function updateGameState() {
     $("#p2-league-stats").text(player2["leagueStats"]);
     $("#p2-match-stats").text(player2["matchStats"]);
     $("#p2-outs").text(player2["possibleOuts"]);
+    received = true
 }
 
 function requestGameState() {

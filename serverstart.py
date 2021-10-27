@@ -132,7 +132,6 @@ def getPlayerStatistics():
 @app.route("/receiveData", methods=["POST"])
 def receiveData():
 	data = json.loads(request.get_data())
-	print(data)
 	receiveData = ReceiveData.ReceiveData(data)
 	return ""
 
