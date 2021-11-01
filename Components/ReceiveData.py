@@ -1,18 +1,20 @@
 import json
 import Components.UpdateCurrentGameState as UpdateCurrentGameState
+import Components.DartRules as DartRules
 
 
 class ReceiveData():
 
     def __init__(self, data):
         self.data = data
+        print("init receive data")
         print(self.data)
         self.updateCurrentGameState = UpdateCurrentGameState.UpdateCurrentGameState()
 
         key = list(data.keys())[0]
 
         if(key == "throws"):
-            self.inputScores(data["keys"])
+            self.inputScores(data["throws"])
         elif(key == "new_match_stats"):
             self.changeDisplayedMatchStats(data["new_match_stats"])
         elif(key == "new_league_stats"):
@@ -43,6 +45,12 @@ class ReceiveData():
     def changeDisplayedLeagueStats(self, key):
         self.updateCurrentGameState.update_displayed_league_stats(key)
 
-    def inputScores(self):
-        pass
+    def inputScores(self, throws):
+        player = list(throws.keys())[0]
+        scores = throws[player]
+        
+        dart_rules = DartRules.DartRules(self.updateCurrentGameState)
+        dart_rules.add_score(player, scores[0])
+        dart_rules.add_score(player, scores[1])
+        dart_rules.add_score(player, scores[2])
 

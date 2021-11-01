@@ -63,12 +63,12 @@ function mouseoverBoard(board_section) {
 function sendThrow() { //send scores to server after one player completes their throws
     alert(JSON.stringify(throws[current_player]))
 
-    data = {}
+    data = {"throws":{}}
     if(current_player == 0) {
-        data["player1"] = throws[current_player]
+        data["throws"]["player1"] = throws[current_player]
     }
     else {
-        data["player2"] = throws[current_player]
+        data["throws"]["player2"] = throws[current_player]
     }
     
     sendData(data);
