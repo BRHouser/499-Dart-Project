@@ -82,6 +82,11 @@ async function submitPlayerChanges(){
     }
 
     //if input is valid then save the changed values
+    //var button = document.getElementById("Submit-Button")
+
+    button.innerHTML = "Edit Player"
+    button.id = "Edit-Button"
+    button.setAttribute("onClick", "javascript:displayEditTable()")
     var popup = document.getElementById('EditPlayerModal');
     $(popup).modal('toggle');
     await deleteChange()
@@ -93,8 +98,16 @@ async function submitPlayerChanges(){
 
 function resetEditPlayer(){
     document.getElementById("ChoosePlayerDropdown1").innerHTML = "CHOOSE PLAYER"
+    try{
     document.getElementById("TABLE-HEAD").remove()
+    } catch(error) {
+        console.log("No table")
+    }
 }
+
+
+
+var button = document.getElementById("Edit-Button")
 
 //The purpose of this function is to display Player information in table
 async function displayEditTable(){
@@ -179,6 +192,6 @@ async function displayEditTable(){
     //changes edit player button to submit button
     button = document.getElementById("Edit-Button")
     button.innerHTML = "Submit"
-    button.id = "Submit-button"
+    button.id = "Submit-Button"
     button.setAttribute("onClick", "javascript:submitPlayerChanges()")
 }
