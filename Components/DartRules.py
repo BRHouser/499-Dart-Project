@@ -10,7 +10,7 @@ class DartRules():
         self.json_data = content
         self.updateCurrentGameState = updateCurrentGameState
 
-    #input: player string ("player1" or "player2"); score string, ("19" "T20", "DB", etc.) 
+    #input: player string ("player1" or "player2"); score string, ("19" "T20", "DB", etc.)
     def add_score(self, player, score):
         registered_score = 0
         score = str(score)
