@@ -40,6 +40,11 @@ html, body {
 }
 
 .name-display {
-    font-size:  60px;
+    font-size:  100px;
+    font-weight: 150;
+}
+
+.stats-display {
+    font-size:  40px;
     font-weight: 150;
 }

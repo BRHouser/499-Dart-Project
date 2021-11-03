@@ -5,6 +5,9 @@ from flask import Flask, render_template, request, redirect, Response
 import database
 import json
 
+import Components.UpdateScoreboard as UpdateScoreboard
+import Components.ReceiveData as ReceiveData
+
 # Directory of the Database
 project_directory = os.getcwd()
 project_directory = project_directory[0:project_directory.find("Project") + 7]    
@@ -124,7 +127,22 @@ def getPlayerStatistics():
 	send = json.dumps(send)
 	return send
 
+# Receive Data
+# INPUT: data from scorekeeper to be processed by ReceiveData component
+@app.route("/receiveData", methods=["POST"])
+def receiveData():
+	data = json.loads(request.get_data())
+	receiveData = ReceiveData.ReceiveData(data)
+	return ""
 
+# Update Scoreboard
+# OUTPUT: current game state json object for scoreboard
+@app.route("/updateScoreboard", methods=["POST"])
+def updateScoreboard():
+	updater = UpdateScoreboard.UpdateScoreboard()
+	return updater.get_current_game_state()
+
+	
 
 # Main Start Server
 if __name__ == '__main__':
