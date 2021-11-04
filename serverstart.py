@@ -14,7 +14,6 @@ project_directory = project_directory[0:project_directory.find("Project") + 7]
 database_address = os.getcwd() + "/Database/Dart_Scorer_Database.db"
 database_connection = database.create_connection(database_address)
 
-
 app = Flask(__name__)
 
 # Renders Home Page
@@ -139,7 +138,12 @@ def receiveData():
 # OUTPUT: current game state json object for scoreboard
 @app.route("/updateScoreboard", methods=["POST"])
 def updateScoreboard():
-	updater = UpdateScoreboard.UpdateScoreboard()
+	print(request.get_data())
+	data = json.loads(request.get_data())
+	first_read = data["first_read"]
+	#todo: send first_read with js
+	updater = UpdateScoreboard.UpdateScoreboard(first_read)
+	if first_read: first_read = False
 	return updater.get_current_game_state()
 
 	

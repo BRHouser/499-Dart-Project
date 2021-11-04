@@ -3,6 +3,8 @@
 let won = false;
 let received = false;
 
+let data = {"first_read": true}
+
 mainLoop();
 
 async function mainLoop() {
@@ -32,9 +34,10 @@ async function updateGameState() {
 function requestGameState() {
     const request = new XMLHttpRequest();
     request.open('POST', '/updateScoreboard');
-    request.send();
+    request.send(JSON.stringify(data));
     return new Promise((resolve) => {
         request.onload = () => {
+            data["first_read"] = false;
             const response = JSON.parse(request.responseText);
             resolve(response);
         }; 
