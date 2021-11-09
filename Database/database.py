@@ -162,15 +162,17 @@ def main():
     database = create_connection(database_address)
     #delete_table(database, "list_of_players")
     #add_table(database, "List_of_Players", ["id", "First Name", "Last Name"])
-    delete_table(database, "Marshall_Rosenhoover_Statistics")
+    #delete_table(database, "Marshall_Rosenhoover_Statistics")
     #delete_table(database, "Gabe_Henneberger_Statistics")
     
     #database = create_connection(database_address, header_info, list_of_table_names)
-    information_to_add = ["0", "Marshall", "Rosenhoover"]
+    #information_to_add = ["0", "Marshall", "Rosenhoover"]
     #add_information(database, "Marshall_Rosenhoover_Statistics", [information_to_add])
-    delete_row(database, "List_of_Players", information_to_add)
-
+    #delete_row(database, "List_of_Players", information_to_add)
     #replace_row(database, "Competitor_Information", ["1",'LAUREN','MARSHALL','ANN'])
+    
+    add_table(database, "Current_Match", ["id", "Player1Name", "Player2Name","Score", "NumberOfLegs", "NumberOfSets", "Location", "Date"])
+
 
 
 if __name__ == '__main__':

@@ -169,7 +169,7 @@
 
         <!-- MODAL FOR NOTIFICATIONS-->
         <div class = "modal" id = "NotificationModal">
-            <div class = "modal-dialog">
+            <div class = "modal-dialog-lg">
                 <div class = "modal-content notification">
                     <div class = "modal-header">
                         <h4 class = "modal-title">NOTIFICATION</h4>
@@ -198,55 +198,52 @@
                     <!-- Modal Body-->
                     <div class = "modal-body">
                         <div class="form-group row">
-                        <div class="dropdown">
                             <div class="col-xs-2 margin-inputtext">
-                            <!-- First button for Player 1-->
-                            <button onClick = "javascript:getPlayers('3')" class="btn dropdown-toggle" type="button" id="Player1SetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Player 1
-                            </button>
-                            <div id = "dynamic-dropdown3" class="dropdown-menu" aria-labelledby="Player1SetUpDropdown">
-                              <a class="dropdown-item" href="#"></a>
+                                <div class="dropdown">
+                                    <!-- First button for Player 1-->
+                                    <button onClick = "javascript:getPlayers('2')" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Select Player 1
+                                    </button>
+                                    <div id = "dynamic-dropdown2" class="dropdown-menu" aria-labelledby="Player1SetUpDropdown">
+                                        <a class="dropdown-item" href="#"></a>
+                                    </div>
+                                </div>
                             </div>
+                            <div class = "dropdown">
+                                <div class="col-xs-2 margin-inputtext">
+                                <!-- Second button for Player 2-->
+                                    <button onClick = "javascript:getPlayers('3')" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Select Player 2
+                                    </button>
+                                    <div id = "dynamic-dropdown3" class="dropdown-menu" aria-labelledby="Player2SetUpDropdown">
+                                        <a class="dropdown-item" href="#"></a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class = "dropdown">
-                            <div class="col-xs-2 margin-inputtext">
-                             <!-- Second button for Player 2-->
-                             <button onClick = "javascript:getPlayers('4')" class="btn dropdown-toggle" type="button" id="Player2SetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Player 2
-                            </button>
-                            <div id = "dynamic-dropdown4" class="dropdown-menu" aria-labelledby="Player2SetUpDropdown">
-                              <a class="dropdown-item" href="#"></a>
-                            </div>
-                            </div>
-                        </div>
                         <div class = "dropdown">
                             <div class="col-xs-2 margin-inputtext">
                                 <!-- Button to select the score amount -->
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="ScoreSetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button onClick = "javascript:ScoreDropdown()" class="btn dropdown-toggle" type="button" id="ScoreSetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select Score
                             </button>                                     
                             <div class="dropdown-menu" aria-labelledby="ScoreSetUpDropdown">
-                                <a class="dropdown-item" href="#">301</a>
-                                <a class="dropdown-item" href="#">501</a>
-                                <a class="dropdown-item" href="#">801</a>
+                                <a class="dropdown-item" href="#"></a>
                             </div>
                             </div>
                         </div>
                         <div class = "dropdown">
                             <div class="col-xs-2 margin-inputtext">
                              <!-- Button for Match Type-->
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="MatchType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button onClick = "javascript:MatchTypeDropdown()" class="btn dropdown-toggle" type="button" id="MatchType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Match Type
                             </button>                                            
-                            <div class="dropdown-menu" aria-labelledby="Player2SetUpDropdown">
-                            <a class="dropdown-item" href="#">Tournament</a>
-                            <a class="dropdown-item" href="#">Game</a>
+                            <div class="dropdown-menu" aria-labelledby="MatchType">
+                            <a class="dropdown-item" href="#"></a>
                             </div>
                             </div>
                         </div>
                         </div>
-                    </div>
+                    
                 <div class="form-group row">
                     <div class="col-xs-2 margin-inputtext">
                         <label for="NumberOfSets"> Number of Sets:</label>
@@ -255,11 +252,6 @@
                 
                     <div class="col-xs-2 margin-inputtext">
                         <label for="NumberOfLegs"> Number of Legs:</label>
-                        <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfLegs">
-                    </div>
-
-                    <div class="col-xs-2 margin-inputtext">
-                        <label for="NumberOfLegs"> Number of Matches:</label>
                         <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfLegs">
                     </div>
                 </div>
@@ -275,15 +267,18 @@
                 </div>
                     <!-- Modal Footer -->
                     <div class = "modal-footer">
-                        <button type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
+                        <button onClick = "javascript:closeMatchModal()" type = "button"  class = "btn btn-danger" data-dismiss="modal"> Submit </button>
+                        <button onClick ="javascript:resetSetupMatch()" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
                     </div>
                                                   
             </div>
             </div>
         </div>
+        </div>
             
             
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="{{ url_for('.static', filename='javascript/matchsetup-modal.js')}}"></script>
         <script src="{{ url_for('.static', filename='javascript/addplayer-modal.js')}}"></script>
         <script src="{{ url_for('.static', filename='javascript/deleteplayer-modal.js')}}"></script>
         <script src="{{ url_for('.static', filename='javascript/editplayer-modal.js')}}"></script>
