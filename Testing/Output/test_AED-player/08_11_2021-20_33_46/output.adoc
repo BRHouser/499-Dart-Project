@@ -1,0 +1,314 @@
+= Add, Edit, Delete Player
+|===
+
+|===
+|{set:cellbgcolor:#01456C}+++
+<strong><color rgb="#FFFFFF">Information</color></strong>+++|
+|{set:cellbgcolor:#FFFFFF}Date: 11/08/2021
+.2+|Witness(es):
+
+|Operator:  Robot
+|Procedure Start Time:  20:33:46
+
+Procedure Stop Time: 20:33:54|Run Assessment: +++<strong><color rbg="#00BB00">PASS</color></strong>+++
+.2+|Feature Traceability: Bullet 1: Allow for league management and maintain competitor statistics. Maintain players and player information.
+|Requirements: NONE
+
+|Notes/Pre-Test Preparations: No Name in the database should be 'Graham Chase' or 'Billy Bob'
+|===
+
+
+[cols="3,11,10", width = "100%]
+|===
+|{set:cellbgcolor:#01456C}|+++
+<strong><color rgb="#FFFFFF">EXECUTION PROCEDURE</color></strong>+++|
+
+|{set:cellbgcolor:#FFFFFF}1.1.0
+|TEST SECTION: Navigate to HomePage
+|
+
+|1.1.1
+|Open Browser    browser=Chrome   
+|Chrome was opened
+
+|1.1.2
+|Maximize Browser Window
+|Maximize Browser Window
+
+|1.1.3
+|Go To           http://192.168.1.177:5010/
+|Go To           http://192.168.1.177:5010/
+
+|{set:cellbgcolor:#FFFFFF}1.2.0
+|TEST SECTION: Test AddPlayer-FirstName Error
+|
+
+|1.2.1
+|Click AddPlayer
+|AddPlayer was clicked
+
+|1.2.2
+|Input Text 'Billy' into LastName
+|'Billy' was inputted into LastName
+
+|1.2.3
+|Input Text '5' into NumberOfThrows
+|'5' was inputted into NumberOfThrows
+
+|1.2.4
+|Input Text '2' into Bullseyes
+|'2' was inputted into Bullseyes
+
+|1.2.5
+|Click Submit Button
+|Submit Button was clicked
+
+|1.2.6
+|Click Okay Button
+|Okay Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}1.3.0
+|TEST SECTION: Test AddPlayer-LastName Error
+|
+
+|1.3.1
+|Input Text 'Billy' into FirstName
+|'Billy' was inputted into FirstName
+
+|1.3.2
+|Input Text '8' into NumberOfThrows
+|'8' was inputted into NumberOfThrows
+
+|1.3.3
+|Input Text '3' into Bullseyes
+|'3' was inputted into Bullseyes
+
+|1.3.4
+|Click Submit Button
+|Submit Button was clicked
+
+|1.3.5
+|Click Okay Button
+|Okay Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}1.4.0
+|TEST SECTION: Test AddPlayer-BullsEyes Error
+|
+
+|1.4.1
+|Input Text 'Billy' into FirstName
+|'Billy' was inputted into FirstName
+
+|1.4.2
+|Input Text 'Bob' into LastName
+|'Bob' was inputted into LastName
+
+|1.4.3
+|Input Text '10' into NumberOfThrows
+|'10' was inputted into NumberOfThrows
+
+|1.4.4
+|Input Text '500' into Bullseyes
+|'500' was inputted into Bullseyes
+
+|1.4.5
+|Click Submit Button
+|Submit Button was clicked
+
+|1.4.6
+|Click Okay Button
+|Okay Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}1.5.0
+|TEST SECTION: Add Player
+|
+
+|1.5.1
+|Input Text 'Billy' into FirstName
+|'Billy' was inputted into FirstName
+
+|1.5.2
+|Input Text 'Bob' into LastName
+|'Bob' was inputted into LastName
+
+|1.5.3
+|Input Text '500' into NumberOfThrows
+|'500' was inputted into NumberOfThrows
+
+|1.5.4
+|Input Text '21' into Bullseyes
+|'21' was inputted into Bullseyes
+
+|1.5.5
+|Click Submit Button
+|Submit Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}1.6.0
+|TEST SECTION: Test AddPlayer Error
+|
+
+|1.6.1
+|Click AddPlayer
+|AddPlayer was clicked
+
+|1.6.2
+|Input Text 'Billy' into FirstName
+|'Billy' was inputted into FirstName
+
+|1.6.3
+|Input Text 'Bob' into LastName
+|'Bob' was inputted into LastName
+
+|1.6.4
+|Input Text '500' into NumberOfThrows
+|'500' was inputted into NumberOfThrows
+
+|1.6.5
+|Input Text '21' into Bullseyes
+|'21' was inputted into Bullseyes
+
+|1.6.6
+|Click Submit Button
+|Submit Button was clicked
+
+|1.6.7
+|Click Okay Button
+|Okay Button was clicked
+
+|1.6.8
+|Click Close Button
+|Close Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}2.1.0
+|TEST SECTION: Test EditPlayer-SelectNoPlayer Error
+|
+
+|2.1.1
+|Click Edit Player
+|Edit Player was clicked
+
+|2.1.2
+|Click Edit Button
+|Edit Button was clicked
+
+|2.1.3
+|Click Okay Button
+|Okay Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}2.2.0
+|TEST SECTION: Test EditPlayer-FirstName Error
+|
+
+|2.2.1
+|Click ChoosePlayer
+|ChoosePlayer was clicked
+
+|2.2.2
+|Click Billy Bob 
+|Billy Bob  was clicked
+
+|2.2.3
+|Click Edit Button
+|Edit Button was clicked
+
+|2.2.4
+|Clear Text from First_Name row
+|Text was cleared from First_Name row
+
+|2.2.5
+|Click Edit Button
+|Edit Button was clicked
+
+|2.2.6
+|Click Okay Button
+|Okay Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}2.3.0
+|TEST SECTION: Test EditPlayer-LastName Error
+|
+
+|2.3.1
+|Clear Text from Last_Name row
+|Text was cleared from Last_Name row
+
+|2.3.2
+|Click Edit Button
+|Edit Button was clicked
+
+|2.3.3
+|Click Okay Button
+|Okay Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}2.4.0
+|TEST SECTION: Test EditPlayer-BullsEyes Error
+|
+
+|2.4.1
+|Input Text '11111111111111' into Total_Number_of_BullsEyes row
+|'11111111111111' was inputted into Total_Number_of_BullsEyes row
+
+|2.4.2
+|Click Edit Button
+|Edit Button was clicked
+
+|2.4.3
+|Click Okay Button
+|Okay Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}2.5.0
+|TEST SECTION: Edit Player
+|
+
+|2.5.1
+|Input Text 'Graham' into First_Name row
+|'Graham' was inputted into First_Name row
+
+|2.5.2
+|Input Text 'Chase' into Last_Name row
+|'Chase' was inputted into Last_Name row
+
+|2.5.3
+|Input Text '100000' into Total_Number_of_Throws row
+|'100000' was inputted into Total_Number_of_Throws row
+
+|2.5.4
+|Input Text '12345' into Total_Number_of_BullsEyes row
+|'12345' was inputted into Total_Number_of_BullsEyes row
+
+|2.5.5
+|Click Edit Button
+|Edit Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}3.1.0
+|TEST SECTION: Test DeletePlayer-SelectNoPlayer Error
+|
+
+|3.1.1
+|Click Delete Player
+|Delete Player was clicked
+
+|3.1.2
+|Click Delete Button
+|Delete Button was clicked
+
+|3.1.3
+|Click Okay Button
+|Okay Button was clicked
+
+|{set:cellbgcolor:#FFFFFF}3.2.0
+|TEST SECTION: Test Delete Player
+|
+
+|3.2.1
+|Click ChoosePlayer
+|ChoosePlayer was clicked
+
+|3.2.2
+|Click Graham Chase 
+|Graham Chase  was clicked
+
+|3.2.3
+|Click Delete Button
+|Delete Button was clicked
+
+|===

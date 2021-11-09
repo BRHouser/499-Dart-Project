@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.9.7 on win32)" generated="20211108 20:33:46.567" rpa="false" schemaversion="2">
+<suite id="s1" name="test AED-player" source="C:\Users\marsh\Documents\GitHub\499-Dart-Project\Testing\RobotScripts\test_AED-player.robot">
+<test id="s1-t1" name="Test AddPlayer">
+<kw name="Navigate to HomePage">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>browser=${browser}</arg>
+<arg>executable_path=C:/Users/marsh/AppData/Local/Programs/Python/Python39/chromedriver.exe</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211108 20:33:46.690" level="INFO">Opening browser 'Chrome' to base url 'None'.</msg>
+<status status="PASS" starttime="20211108 20:33:46.690" endtime="20211108 20:33:47.860"/>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20211108 20:33:47.860" endtime="20211108 20:33:47.974"/>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<arg>${webpage}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20211108 20:33:47.975" level="INFO">Opening url 'http://192.168.1.177:5010/'</msg>
+<status status="PASS" starttime="20211108 20:33:47.974" endtime="20211108 20:33:48.514"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:46.689" endtime="20211108 20:33:48.514"/>
+</kw>
+<kw name="Test AddPlayer-FirstName Error">
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="AddPlayer"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.515" level="INFO">Clicking element '//*[@id="AddPlayer"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.515" endtime="20211108 20:33:48.550"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="LastName"]</arg>
+<arg>Billy</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.550" level="INFO">Typing text 'Billy' into text field '//*[@id="LastName"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.550" endtime="20211108 20:33:48.600"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="NumberOfThrows"]</arg>
+<arg>5</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.601" level="INFO">Typing text '5' into text field '//*[@id="NumberOfThrows"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.600" endtime="20211108 20:33:48.642"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Bullseyes"]</arg>
+<arg>2</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.642" level="INFO">Typing text '2' into text field '//*[@id="Bullseyes"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.642" endtime="20211108 20:33:48.682"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Submit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.683" level="INFO">Clicking element '//*[@id="Submit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.682" endtime="20211108 20:33:48.710"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.711" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.711" endtime="20211108 20:33:48.734"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:48.514" endtime="20211108 20:33:48.734"/>
+</kw>
+<kw name="Test AddPlayer-LastName Error">
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="FirstName"]</arg>
+<arg>Billy</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.735" level="INFO">Typing text 'Billy' into text field '//*[@id="FirstName"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.735" endtime="20211108 20:33:48.778"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="NumberOfThrows"]</arg>
+<arg>8</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.778" level="INFO">Typing text '8' into text field '//*[@id="NumberOfThrows"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.778" endtime="20211108 20:33:48.804"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Bullseyes"]</arg>
+<arg>3</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.805" level="INFO">Typing text '3' into text field '//*[@id="Bullseyes"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.805" endtime="20211108 20:33:48.832"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Submit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.832" level="INFO">Clicking element '//*[@id="Submit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.832" endtime="20211108 20:33:48.848"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.848" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.848" endtime="20211108 20:33:48.862"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:48.734" endtime="20211108 20:33:48.862"/>
+</kw>
+<kw name="Test AddPlayer-BullsEyes Error">
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="FirstName"]</arg>
+<arg>Billy</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.863" level="INFO">Typing text 'Billy' into text field '//*[@id="FirstName"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.863" endtime="20211108 20:33:48.890"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="LastName"]</arg>
+<arg>Bob</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.891" level="INFO">Typing text 'Bob' into text field '//*[@id="LastName"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.890" endtime="20211108 20:33:48.917"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="NumberOfThrows"]</arg>
+<arg>10</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.917" level="INFO">Typing text '10' into text field '//*[@id="NumberOfThrows"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.917" endtime="20211108 20:33:48.944"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Bullseyes"]</arg>
+<arg>500</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.944" level="INFO">Typing text '500' into text field '//*[@id="Bullseyes"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.944" endtime="20211108 20:33:48.971"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Submit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.971" level="INFO">Clicking element '//*[@id="Submit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.971" endtime="20211108 20:33:48.987"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:48.987" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:48.987" endtime="20211108 20:33:49.002"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:48.863" endtime="20211108 20:33:49.002"/>
+</kw>
+<kw name="Add Player">
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="FirstName"]</arg>
+<arg>Billy</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.003" level="INFO">Typing text 'Billy' into text field '//*[@id="FirstName"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.003" endtime="20211108 20:33:49.030"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="LastName"]</arg>
+<arg>Bob</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.031" level="INFO">Typing text 'Bob' into text field '//*[@id="LastName"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.031" endtime="20211108 20:33:49.057"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="NumberOfThrows"]</arg>
+<arg>500</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.058" level="INFO">Typing text '500' into text field '//*[@id="NumberOfThrows"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.058" endtime="20211108 20:33:49.085"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Bullseyes"]</arg>
+<arg>21</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.086" level="INFO">Typing text '21' into text field '//*[@id="Bullseyes"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.085" endtime="20211108 20:33:49.112"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Submit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.112" level="INFO">Clicking element '//*[@id="Submit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.112" endtime="20211108 20:33:49.128"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:49.002" endtime="20211108 20:33:49.128"/>
+</kw>
+<kw name="Test AddPlayer Error">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>//*[@id="AddPlayer"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211108 20:33:49.129" endtime="20211108 20:33:49.140"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="AddPlayer"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.140" level="INFO">Clicking element '//*[@id="AddPlayer"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.140" endtime="20211108 20:33:49.155"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>//*[@id="FirstName"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211108 20:33:49.155" endtime="20211108 20:33:49.166"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="FirstName"]</arg>
+<arg>Billy</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.166" level="INFO">Typing text 'Billy' into text field '//*[@id="FirstName"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.166" endtime="20211108 20:33:49.193"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="LastName"]</arg>
+<arg>Bob</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.193" level="INFO">Typing text 'Bob' into text field '//*[@id="LastName"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.193" endtime="20211108 20:33:49.218"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="NumberOfThrows"]</arg>
+<arg>500</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.218" level="INFO">Typing text '500' into text field '//*[@id="NumberOfThrows"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.218" endtime="20211108 20:33:49.245"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Bullseyes"]</arg>
+<arg>21</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.245" level="INFO">Typing text '21' into text field '//*[@id="Bullseyes"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.245" endtime="20211108 20:33:49.271"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>//*[@id="Submit-Button"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211108 20:33:49.271" endtime="20211108 20:33:49.279"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Submit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.279" level="INFO">Clicking element '//*[@id="Submit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.279" endtime="20211108 20:33:49.294"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211108 20:33:49.294" endtime="20211108 20:33:49.303"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.303" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.303" endtime="20211108 20:33:49.318"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>//*[@id="Close-Button"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211108 20:33:49.318" endtime="20211108 20:33:49.330"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Close-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.331" level="INFO">Clicking element '//*[@id="Close-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.330" endtime="20211108 20:33:49.351"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:49.129" endtime="20211108 20:33:49.351"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:46.689" endtime="20211108 20:33:49.352"/>
+</test>
+<test id="s1-t2" name="Test EditPlayer">
+<kw name="Test EditPlayer-SelectNoPlayer Error">
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Edit-Player"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.353" level="INFO">Clicking element '//*[@id="Edit-Player"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.353" endtime="20211108 20:33:49.377"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Edit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.378" level="INFO">Clicking element '//*[@id="Edit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.377" endtime="20211108 20:33:49.400"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.401" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.400" endtime="20211108 20:33:49.414"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:49.353" endtime="20211108 20:33:49.414"/>
+</kw>
+<kw name="Test EditPlayer-FirstName Error">
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="ChoosePlayerDropdown1"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.415" level="INFO">Clicking element '//*[@id="ChoosePlayerDropdown1"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.415" endtime="20211108 20:33:49.441"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Billy Bob-dropdown"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.442" level="INFO">Clicking element '//*[@id="Billy Bob-dropdown"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.441" endtime="20211108 20:33:49.469"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Edit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.469" level="INFO">Clicking element '//*[@id="Edit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.469" endtime="20211108 20:33:49.484"/>
+</kw>
+<kw name="Clear Element Text" library="Selenium2Library">
+<arg>//*[@id="First_Name-row"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" starttime="20211108 20:33:49.484" endtime="20211108 20:33:49.511"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Edit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.511" level="INFO">Clicking element '//*[@id="Edit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.511" endtime="20211108 20:33:49.529"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.530" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.529" endtime="20211108 20:33:49.543"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:49.415" endtime="20211108 20:33:49.543"/>
+</kw>
+<kw name="Test EditPlayer-LastName Error">
+<kw name="Clear Element Text" library="Selenium2Library">
+<arg>//*[@id="Last_Name-row"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" starttime="20211108 20:33:49.544" endtime="20211108 20:33:49.568"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Edit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.568" level="INFO">Clicking element '//*[@id="Edit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.568" endtime="20211108 20:33:49.583"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.583" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.583" endtime="20211108 20:33:49.597"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:49.543" endtime="20211108 20:33:49.597"/>
+</kw>
+<kw name="Test EditPlayer-BullsEyes Error">
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Total_Number_of_BullsEyes-row"]</arg>
+<arg>11111111111111</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.597" level="INFO">Typing text '11111111111111' into text field '//*[@id="Total_Number_of_BullsEyes-row"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.597" endtime="20211108 20:33:49.645"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Edit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.646" level="INFO">Clicking element '//*[@id="Edit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.645" endtime="20211108 20:33:49.660"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.660" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.660" endtime="20211108 20:33:49.674"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:49.597" endtime="20211108 20:33:49.674"/>
+</kw>
+<kw name="Edit Player">
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="First_Name-row"]</arg>
+<arg>Graham</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.675" level="INFO">Typing text 'Graham' into text field '//*[@id="First_Name-row"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.675" endtime="20211108 20:33:49.708"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Last_Name-row"]</arg>
+<arg>Chase</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.708" level="INFO">Typing text 'Chase' into text field '//*[@id="Last_Name-row"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.708" endtime="20211108 20:33:49.740"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Total_Number_of_Throws-row"]</arg>
+<arg>100000</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.740" level="INFO">Typing text '100000' into text field '//*[@id="Total_Number_of_Throws-row"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.740" endtime="20211108 20:33:49.781"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="Total_Number_of_BullsEyes-row"]</arg>
+<arg>12345</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.781" level="INFO">Typing text '12345' into text field '//*[@id="Total_Number_of_BullsEyes-row"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.781" endtime="20211108 20:33:49.808"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Edit-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:49.809" level="INFO">Clicking element '//*[@id="Edit-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:49.808" endtime="20211108 20:33:49.825"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211108 20:33:50.833" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211108 20:33:49.825" endtime="20211108 20:33:50.833"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:49.674" endtime="20211108 20:33:50.833"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:49.352" endtime="20211108 20:33:50.833"/>
+</test>
+<test id="s1-t3" name="Test DeletePlayer">
+<kw name="Test DeletePlayer-SelectNoPlayer Error">
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Delete-Player"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:50.835" level="INFO">Clicking element '//*[@id="Delete-Player"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:50.835" endtime="20211108 20:33:50.860"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Delete-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:50.860" level="INFO">Clicking element '//*[@id="Delete-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:50.860" endtime="20211108 20:33:50.883"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Okay-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:50.883" level="INFO">Clicking element '//*[@id="Okay-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:50.883" endtime="20211108 20:33:50.897"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:50.835" endtime="20211108 20:33:50.897"/>
+</kw>
+<kw name="Test Delete Player">
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="ChoosePlayerDropdown0"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:50.898" level="INFO">Clicking element '//*[@id="ChoosePlayerDropdown0"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:50.898" endtime="20211108 20:33:50.922"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Graham Chase-dropdown"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:50.922" level="INFO">Clicking element '//*[@id="Graham Chase-dropdown"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:50.922" endtime="20211108 20:33:50.946"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@id="Delete-Button"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211108 20:33:50.947" level="INFO">Clicking element '//*[@id="Delete-Button"]'.</msg>
+<status status="PASS" starttime="20211108 20:33:50.947" endtime="20211108 20:33:50.961"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211108 20:33:51.977" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211108 20:33:50.961" endtime="20211108 20:33:51.977"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20211108 20:33:51.977" endtime="20211108 20:33:54.055"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:50.898" endtime="20211108 20:33:54.056"/>
+</kw>
+<status status="PASS" starttime="20211108 20:33:50.834" endtime="20211108 20:33:54.056"/>
+</test>
+<status status="PASS" starttime="20211108 20:33:46.568" endtime="20211108 20:33:54.057"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="test AED-player">test AED-player</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

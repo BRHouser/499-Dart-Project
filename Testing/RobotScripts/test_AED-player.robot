@@ -94,19 +94,19 @@ Test EditPlayer-FirstName Error
     Click Element   //*[@id="Billy Bob-dropdown"]
     Click Element   //*[@id="Edit-Button"]
     Clear Element Text      //*[@id="First_Name-row"]        
-    Click Element   //*[@id="Submit-button"]       
+    Click Element   //*[@id="Edit-Button"]       
     Click Element   //*[@id="Okay-Button"]
 
 
 Test EditPlayer-LastName Error
     Clear Element Text      //*[@id="Last_Name-row"]       
-    Click Element   //*[@id="Submit-button"]
+    Click Element   //*[@id="Edit-Button"]
     Click Element   //*[@id="Okay-Button"]
 
 
 Test EditPlayer-BullsEyes Error
     Input Text      //*[@id="Total_Number_of_BullsEyes-row"]     11111111111111    
-    Click Element   //*[@id="Submit-button"]
+    Click Element   //*[@id="Edit-Button"]
     Click Element   //*[@id="Okay-Button"]
 
 
@@ -115,7 +115,7 @@ Edit Player
     Input Text      //*[@id="Last_Name-row"]    Chase
     Input Text      //*[@id="Total_Number_of_Throws-row"]    100000
     Input Text      //*[@id="Total_Number_of_BullsEyes-row"]   12345    
-    Click Element   //*[@id="Submit-button"]
+    Click Element   //*[@id="Edit-Button"]
     Sleep   1
 
 Test DeletePlayer-SelectNoPlayer Error

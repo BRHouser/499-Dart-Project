@@ -1,0 +1,4 @@
+Test Name: Add, Edit, Delete Player
+Test Traceability: Bullet 1: Allow for league management and maintain competitor statistics. Maintain players and player information.
+Requirements: NONE
+Pre-Test Preparations: No Name in the database should be 'Graham Chase' or 'Billy Bob'

@@ -85,7 +85,6 @@ async function submitPlayerChanges(){
     //var button = document.getElementById("Submit-Button")
 
     button.innerHTML = "Edit Player"
-    button.id = "Edit-Button"
     button.setAttribute("onClick", "javascript:displayEditTable()")
     var popup = document.getElementById('EditPlayerModal');
     $(popup).modal('toggle');
@@ -192,6 +191,5 @@ async function displayEditTable(){
     //changes edit player button to submit button
     button = document.getElementById("Edit-Button")
     button.innerHTML = "Submit"
-    button.id = "Submit-Button"
     button.setAttribute("onClick", "javascript:submitPlayerChanges()")
 }

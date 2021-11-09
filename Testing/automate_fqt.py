@@ -4,6 +4,14 @@ from datetime import datetime
 
 # NEED TO CONTROL WHERE THE OUTPUT FILES OF THE ROBOT FILES GO
 
+start_time = 0
+end_time = 0
+test_name = "TEST NAME"
+date = datetime.now().strftime("%m/%d/%Y")
+requirements = "NONE"
+traceability = "NONE"
+preparations = "NONE"
+
 
 def createDoc(test, output):
     inTestCases = False
@@ -21,6 +29,7 @@ def createDoc(test, output):
     counter = 0
     check = 0
     for line in output_doc.readlines():
+        bob = line
         if line.startswith("<kw") and checkElement(line):
             status = True
             if line.find("library") == -1:
@@ -37,6 +46,10 @@ def createDoc(test, output):
                     fail = False
                     header = len(important_words) - 1
             test = line
+
+        if line.find('creenshot') != -1:
+            status = False
+            continue
 
         if line.startswith("<kw") and not checkElement(line):
             status = False
@@ -55,7 +68,6 @@ def createDoc(test, output):
                 check = counter
                 continue
             else:
-
                 important_words.append("FAIL")
                 check = counter
 
@@ -103,56 +115,119 @@ def createDoc(test, output):
 
     x = 0
     make_output = open(output + "/output.adoc", "w+")
-    make_output.write("*Execution Procedure*")
-    make_output.write('\n[cols="17,4", width = "100%]')
+    make_output.write("= " + test_name + "|===\n\n|===\n")
+    make_output.write('|{set:cellbgcolor:#01456C}+++\n<strong><color rgb="#FFFFFF">Information</color></strong>+++|\n')
+    make_output.write('|{set:cellbgcolor:#FFFFFF}Date: '+ date +'\n')
+    make_output.write('.2+|Witness(es):\n\n')
+    make_output.write('|Operator:  Robot\n')
+    make_output.write('|Procedure Start Time:  ' + str(start_time) + '\n')
+    make_output.write('\nProcedure Stop Time: ' + str(end_time))
+    if fail:
+        make_output.write('|Run Assessment: +++<strong><color rbg="#CC0000">FAIL</color></strong>+++')
+    else:
+        make_output.write('|Run Assessment: +++<strong><color rbg="#00BB00">PASS</color></strong>+++')
+    make_output.write('\n.2+|Feature Traceability: ' + traceability)
+    make_output.write('|Requirements: '+ requirements +'\n')
+    make_output.write('|Notes/Pre-Test Preparations: '+ preparations +'\n')
+    make_output.write("|===\n\n")
+    make_output.write('\n[cols="3,11,10", width = "100%]')
     make_output.write("\n|===")
-
+    make_output.write('\n|{set:cellbgcolor:#01456C}|+++\n<strong><color rgb="#FFFFFF">EXECUTION PROCEDURE</color></strong>+++|\n')
     if important_words[0] == "FAIL":
         fail = True
     else:
         fail = False
 
+    main_test = 0
+    secondary_test = 0
+    third_test = 0
+    fail_rest = False
     for a in testlist:
+        secondary_test = 0
+        third_test = 0
+        main_test = main_test + 1
         for b in a:
+            third_test = 0
             if checkElement(b[0]):
-                make_output.write("\n|" + convertRobotLine(b[0], variables))
-                if not fail and important_words[x] == "FAIL":
-                    fail = True
-                if fail:
-                    make_output.write("\n|FAIL\n")
-                else:
-                    make_output.write("\n|PASS\n")
+                secondary_test = secondary_test + 1
+                make_output.write("\n|{set:cellbgcolor:#FFFFFF}" + str(main_test) + "." + str(secondary_test) +  "." + str(third_test))
+                make_output.write("\n|TEST SECTION: " + b[0] + "\n")
+                if fail_rest == False:
+                    if important_words[x] == "FAIL":
+                        fail = True
+                if fail or fail_rest:
+                #    make_output.write("\n|FAIL\n")
+                    if fail_rest == False:
+                        fail = False
+                #else:
+                    #make_output.write("\n|PASS\n")
+                
+                make_output.write("|\n")
                 x = x + 1
             for c in range(1, len(b)):
                 if checkElement(b[c]):
+                    third_test = third_test + 1
+                    make_output.write("\n|" + str(main_test) + "." + str(secondary_test) +  "." + str(third_test))
                     make_output.write("\n|" + convertRobotLine(b[c], variables))
-                    x = x + 1
+                    
+                    if fail_rest:
+                        make_output.write("\n|FAIL\n")
+                        continue
 
-                    if not fail and important_words[x] == "FAIL":
+                    if important_words[x] == "FAIL":
                         fail = True
                     if fail:
-                        make_output.write("\n|FAIL\n")
+                        make_output.write("\n|DID NOT SUCCEED IN PERFORMING TASK\n")
+                        fail_rest = True
                     else:
-                        make_output.write("\n|PASS\n")
+                        make_output.write("\n|"+ convertPASS(b[c], variables) +"\n")
+                    x = x + 1 
+
 
     make_output.write("\n|===")
     
+def convertPASS(element, variables):
+    item = element
+    if item.find("${") != -1:
+        for key in variables:
+            if str(key).strip() == item[item.find("${"): item.find("}") + 1].strip():
+                item = item[0:item.find("${")] + str(variables[key]) + item[item.find("}") + 1:len(item)]
+                break
+
+    if item.find("Click Element") != -1:
+        item = item[item.find('@id=') + 5: len(item) - 2] + " was clicked"
+    elif item.find("Input Text") != - 1:
+        item = "'" + item[item.find('"]') + 2:len(item)].strip() + "' was inputted into " + item[item.find("@id=") + 5:item.find('"]')]
+    elif item.find("Clear Element Text") != -1:
+        item = "Text was cleared from " + item[item.find('@id=') + 5: len(item) - 2]
+    elif item.find("executable_path") != -1:
+        item = "Chrome was opened"
+
+    if item.find("ropdown") != -1:
+        item = item[0:item.find("ropdown") - 1] +  item[item.find("ropdown") + 7: len(item)]
+    if item.find("ChoosePlayer") != -1:
+        item = item[0:item.find("ChoosePlayer") + 12] +  item[item.find("ChoosePlayer") + 13: len(item)]
+    while item.find("-") != -1:
+        item = item[0:item.find("-")] + " " + item[item.find("-") + 1: len(item)]
+
+    return item
+
 
 def convertRobotLine(element, variables):
     item = element
-    if element.find("${") != -1:
+    if item.find("${") != -1:
         for key in variables:
-            if str(key).strip() == element[element.find("${"): element.find("}") + 1].strip():
-                item = item[0:element.find("${")] + str(variables[key]) + element[element.find("}") + 1:len(element)]
+            if str(key).strip() == item[item.find("${"): item.find("}") + 1].strip():
+                item = item[0:item.find("${")] + str(variables[key]) + item[item.find("}") + 1:len(item)]
                 break
 
-    if element.find("Click Element") != -1:
-        item = element[0:element.find("Element")] + element[element.find('@id=') + 5: len(element) - 2]
-    elif element.find("Input Text") != - 1:
-        item = "Input Text '" + element[element.find('"]') + 2:len(element)].strip() + "' into " + element[element.find("@id=") + 5:element.find('"]')]
-    elif element.find("Clear Element Text") != -1:
-        item = "Clear Text from " + element[element.find('@id=') + 5: len(element) - 2]
-    elif element.find("executable_path") != -1:
+    if item.find("Click Element") != -1:
+        item = item[0:item.find("Element")] + item[item.find('@id=') + 5: len(item) - 2]
+    elif item.find("Input Text") != - 1:
+        item = "Input Text '" + item[item.find('"]') + 2:len(item)].strip() + "' into " + item[item.find("@id=") + 5:item.find('"]')]
+    elif item.find("Clear Element Text") != -1:
+        item = "Clear Text from " + item[item.find('@id=') + 5: len(item) - 2]
+    elif item.find("executable_path") != -1:
         item = item[0:item.find("executable_path")]
 
     if item.find("ropdown") != -1:
@@ -163,7 +238,6 @@ def convertRobotLine(element, variables):
         item = item[0:item.find("-")] + " " + item[item.find("-") + 1: len(item)]
 
     return item
-
 
 def checkElement(element):
     if len(element) == 1:
@@ -177,11 +251,28 @@ def checkElement(element):
 
     return True
 
+def setTestInfo(testname):
+    global test_name
+    global requirements
+    global traceability
+    global preparations
+    test_info = open("resources/" + testname + ".txt")
+    for line in test_info.readlines():
+        if line.startswith("Test Name"):
+            test_name = line[line.find(":") + 2: len(line)]
+        elif line.startswith("Test Traceability"):
+            traceability = line[line.find(":") + 2: len(line)]
+        elif line.startswith("Requirements"):
+            requirements = line[line.find(":") + 2: len(line)]
+        elif line.startswith("Pre-Test Preparations"):
+            preparations = line[line.find(":") + 2: len(line)]
+
+
 def main():
     project_directory = os.getcwd()
     project_directory = project_directory[0:project_directory.find("Project") + 7]    
     list_of_tests = os.listdir (project_directory + '/Testing/RobotScripts')
-    #list_of_tests.remove("resources")
+    list_of_tests.remove("resources")
     selected_tests = []
     for input in sys.argv:
         if input.endswith("automate_fqt.py"):
@@ -203,13 +294,17 @@ def main():
             else:
                 print(input + " is not a test")
                 exit()
-
+    directory = datetime.now().strftime("%d_%m_%Y-%H_%M_%S")
     os.chdir(project_directory + "/Testing/RobotScripts")
-    output_directory = datetime.now().strftime("%d_%m_%Y-%H_%M_%S")
+    global start_time
+    global end_time
     for test in selected_tests:
-        os.system("python -m robot -d  " + "../Output/" + test[0:test.find(".")] + "/" +  output_directory + "  " + test)
-        createDoc(test, "../Output/" + test[0:test.find(".")] + "/" +  output_directory)
-        os.system("asciidoctor-pdf " + "../Output/" + test[0:test.find(".")] + "/" +  output_directory + "/output.adoc")
+        setTestInfo(test[0:test.find(".")])
+        start_time = datetime.now().strftime("%H:%M:%S")
+        os.system("python -m robot -d  " + "../Output/" + test[0:test.find(".")] + "/" +  directory + "  " + test)
+        end_time = datetime.now().strftime("%H:%M:%S")
+        createDoc(test, "../Output/" + test[0:test.find(".")] + "/" +  directory)
+        os.system("asciidoctor-pdf " + "../Output/" + test[0:test.find(".")] + "/" +  directory + "/output.adoc")
 
 
 
