@@ -53,4 +53,6 @@ class ReceiveData():
         dart_rules.add_score(player, scores[0])
         dart_rules.add_score(player, scores[1])
         dart_rules.add_score(player, scores[2])
+        dart_rules.register_statistics(player,scores)
+
 

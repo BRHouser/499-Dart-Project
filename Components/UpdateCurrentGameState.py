@@ -25,10 +25,21 @@ class UpdateCurrentGameState():
         with open(self.json_path, "w") as data:
             data.write(json.dumps(content))
 
-    def update_player_score(self, player, new_score):
+    def update_player_score(self, player, new_score, t20s, dbl_bulls):
         with open(self.json_path) as data:
             content = json.loads(data.read())
         #todo: lookup statistics from archive
         content[player]["score"] = new_score
+        content[player]["t20s_hit"]=t20s
+        content[player]["dbl_bulls_hit"]=dbl_bulls
         with open(self.json_path, "w") as data:
             data.write(json.dumps(content))
+
+    def update_current_match_stats(self,player,match_180s,current_turn_avg):
+        with open(self.json_path) as data:
+            content = json.loads(data.read())
+        content[player]["match_180s"]=match_180s
+        content[player]["current_turn_avg"]=current_turn_avg
+        with open(self.json_path, "w") as data:
+            data.write(json.dumps(content))
+
