@@ -1,6 +1,6 @@
 function addMatch(P1Name, P2Name, ScoreLimit, MatchType, NumbersOfSets, NumberOfLegs, Location, DateOfMatch)
 { 
-    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, NumbersOfSets:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), Location:Location, DateOfMatch:DateOfMatch}
+    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, SetNumber:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), Location:Location, DateOfMatch:DateOfMatch}
     const request = new XMLHttpRequest();
     request.open('POST', '/addMatch');
     request.send(JSON.stringify(data));
@@ -50,7 +50,8 @@ async function closeMatchModal(){
     var NumberOfLegs = document.getElementById("NumberOfLegs").value;
     var Location = document.getElementById("MatchLocation").value;
     var Date = document.getElementById("MatchDate").value;
-
+    
+    window.alert(Player1)
     if(Player1.trim() == "Select Player 1")
     {
         submit = false;
