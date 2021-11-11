@@ -202,7 +202,7 @@
                                 <div class="dropdown">
                                     <!-- First button for Player 1-->
                                     <button onClick = "javascript:getPlayers('2')" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Select Player 1
+                                    Select Player 1
                                     </button>
                                     <div id = "dynamic-dropdown2" class="dropdown-menu" aria-labelledby="Player1SetUpDropdown">
                                         <a class="dropdown-item" href="#"></a>
@@ -213,37 +213,46 @@
                                 <div class="col-xs-2 margin-inputtext">
                                 <!-- Second button for Player 2-->
                                     <button onClick = "javascript:getPlayers('3')" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Select Player 2
+                                    Select Player 2
                                     </button>
                                     <div id = "dynamic-dropdown3" class="dropdown-menu" aria-labelledby="Player2SetUpDropdown">
                                         <a class="dropdown-item" href="#"></a>
                                     </div>
                                 </div>
                             </div>
+                            </div>
+                        <div class="form-group row">
                         <div class = "dropdown">
                             <div class="col-xs-2 margin-inputtext">
-                                <!-- Button to select the score amount -->
-                            <button onClick = "javascript:ScoreDropdown()" class="btn dropdown-toggle" type="button" id="ScoreSetUpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Score
-                            </button>                                     
-                            <div class="dropdown-menu" aria-labelledby="ScoreSetUpDropdown">
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Score select</label>
+                                    <select class="form-control" id="ScoreSelect">
+                                      <option>301</option>
+                                      <option>501</option>
+                                      <option>801</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class = "dropdown">
                             <div class="col-xs-2 margin-inputtext">
                              <!-- Button for Match Type-->
-                            <button onClick = "javascript:MatchTypeDropdown()" class="btn dropdown-toggle" type="button" id="MatchType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <!--<button onClick = "javascript:MatchTypeDropdown()" class="btn dropdown-toggle" type="button" id="MatchType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Match Type
                             </button>                                            
                             <div class="dropdown-menu" aria-labelledby="MatchType">
                             <a class="dropdown-item" href="#"></a>
-                            </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Match Type select</label>
+                                <select class="form-control" id="MatchTypeSelect">
+                                  <option>Tournament</option>
+                                  <option>Game</option>
+                                </select>
                             </div>
                         </div>
                         </div>
-                    
+                    </div>
                 <div class="form-group row">
                     <div class="col-xs-2 margin-inputtext">
                         <label for="NumberOfSets"> Number of Sets:</label>

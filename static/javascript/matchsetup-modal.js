@@ -1,6 +1,6 @@
-function addMatch(P1Name, P2Name, ScoreLimit, NumberOfLegs, NumbersOfSets, Location, DateOfMatch, MatchType)
+function addMatch(P1Name, P2Name, ScoreLimit, MatchType, NumbersOfSets, NumberOfLegs, Location, DateOfMatch)
 {
-    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, NumberOfLegs:NumberOfLegs, NumbersOfSets:NumbersOfSets, Location:Location, DateOfMatch:DateOfMatch, MatchType:MatchType}
+    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, NumbersOfSets:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), Location:Location, DateOfMatch:DateOfMatch}
     const request = new XMLHttpRequest();
     request.open('POST', '/addMatch');
     request.send(JSON.stringify(data));
@@ -27,18 +27,6 @@ function resetSetupMatch()
     } catch(error) {
         console.log("No table")
     }
-    document.getElementById("ScoreSetUpDropdown").innerHTML = "Score"
-    try{
-    document.getElementById("TABLE-HEAD").remove()
-    } catch(error) {
-        console.log("No table")
-    }
-    document.getElementById("MatchType").innerHTML = "Match Type"
-    try{
-    document.getElementById("TABLE-HEAD").remove()
-    } catch(error) {
-        console.log("No table")
-    }
     document.getElementById("NumberOfSets").value = 0;
     document.getElementById("NumberOfLegs").value = 0;
     document.getElementById("MatchLocation").value = "";
@@ -54,8 +42,8 @@ async function closeMatchModal(){
     var notification = document.getElementById("NotificationModal");
     var Player1 = document.getElementById("ChoosePlayerDropdown2").value;
     var Player2 = document.getElementById("ChoosePlayerDropdown3").value;
-    var Score = document.getElementById("ScoreSetUpDropdown").value;
-    var MatchType = document.getElementById("MatchType").value;
+    var Score = document.getElementById("ScoreSelect").value;
+    var MatchType = document.getElementById("MatchTypeSelect").value;
     var NumberOfSets = document.getElementById("NumberOfSets").value;
     var NumberOfLegs = document.getElementById("NumberOfLegs").value;
     var Location = document.getElementById("MatchLocation").value;
@@ -99,7 +87,7 @@ async function closeMatchModal(){
         return
     }
 
-    if(NumberOfSets.trim() == "")
+    if(NumberOfSets.trim() == "0")
     {   
         submit = false;
         resetSetupMatch();
@@ -108,7 +96,7 @@ async function closeMatchModal(){
         return
     }
 
-    if(NumberOfLegs.trim() == "")
+    if(NumberOfLegs.trim() == "0")
     {   
         submit = false;
         resetSetupMatch();
@@ -138,77 +126,11 @@ async function closeMatchModal(){
     //if everything is correct then submit the information
     if(submit)
     {
-        let response = await addMatch(Player1Name, Player2Name, Score, NumberOfLegs, NumberOfSets, Location, Date, MatchType);
+        let response = await addMatch(Player1, Player2, Score, MatchType, NumberOfSets, NumberOfLegs, Location, Date);
         if(response == "True")
         {
             resetSetupMatch();
             $(popup).modal('toggle');
         }
-        //else //if player is in system throw notification
-        //{
-        //    resetAddPlayer();
-         //   document.getElementById('ErrorText').innerHTML = " is already in system";
-          //  $(notification).modal('toggle');
-        //}
     }
 }
-
-function changeScoreName(score){
-    var element = document.getElementById("ScoreSetUpDropdown");
-    element.innerHTML = score
-}
-
-function ScoreDropdown()
-{
-    let list = ['301','501','801']
-
-    var dropdown = document.getElementById("ScoreSetUpDropdown");
-    //deletes all previous elements in the dropdown
-    while(dropdown.childNodes[0] != null)
-    {
-        dropdown.removeChild(dropdown.childNodes[0]);
-    }
-
-    for (var i in list)
-    {
-        var element = document.createElement("a");
-        element.id = list[i] +"-dropdown";
-        element.classList.add("dropdown-item");
-        element.setAttribute("onClick","javascript:changeScoreName('" + list[i] + "')");
-        element.href = "#";
-        var node = document.createTextNode(list[i]);
-        element.appendChild(node);
-        dropdown.appendChild(element);
-    }
-
-}
-
-function changeMatchType(type){
-    var element = document.getElementById("MatchType");
-    element.innerHTML = type
-}
-
-function MatchTypeDropdown()
-{
-    let list = ['Tournament','Match']
-
-    var dropdown = document.getElementById("MatchType");
-    //deletes all previous elements in the dropdown
-    while(dropdown.childNodes[0] != null)
-    {
-        dropdown.removeChild(dropdown.childNodes[0]);
-    }
-
-    for (var i in list)
-    {
-        var element = document.createElement("a")
-        element.id = list[i] +"-dropdown"
-        element.classList.add("dropdown-item");
-        element.setAttribute("onClick","javascript:changeMatchType('" + list[i] + "')");
-        element.href = "#";
-        var node = document.createTextNode(list[i])
-        element.appendChild(node)
-        dropdown.appendChild(element)
-    }
-}
-

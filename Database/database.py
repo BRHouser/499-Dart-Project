@@ -171,7 +171,7 @@ def main():
     #delete_row(database, "List_of_Players", information_to_add)
     #replace_row(database, "Competitor_Information", ["1",'LAUREN','MARSHALL','ANN'])
     
-    add_table(database, "Current_Match", ["id", "Player1Name", "Player2Name","Score", "NumberOfLegs", "NumberOfSets", "Location", "Date"])
+    #add_table(database, "Current_Match", ["id", "Player1Name", "Player2Name","Score", "NumberOfLegs", "NumberOfSets", "Location", "Date"])
 
 
 

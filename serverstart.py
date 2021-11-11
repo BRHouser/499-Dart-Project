@@ -146,6 +146,15 @@ def updateScoreboard():
 	if first_read: first_read = False
 	return updater.get_current_game_state()
 
+# Adds Match to Current Match table
+@app.route('/addMatch', methods = ['POST'])
+def addMatch():
+	# Loads the data from the HMI
+	data = json.loads(request.get_data())
+
+	#Adds the match created to current_match
+	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["NumberOfSets"]), str(data["NumberOfLegs"]), data["Location"], data["DateOfMatch"]]
+	database.add_information(database_connection, "Current_Match", [row])
 	
 
 # Main Start Server
