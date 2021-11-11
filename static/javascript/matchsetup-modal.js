@@ -69,7 +69,7 @@ async function closeMatchModal(){
         return
     }
 
-    if(Score.trim() == "")
+    if(Score.trim() == "Score")
     {   
         submit = false;
         resetSetupMatch();
@@ -78,7 +78,7 @@ async function closeMatchModal(){
         return
     }
 
-    if(MatchType.trim() == "")
+    if(MatchType.trim() == "Match Type")
     {   
         submit = false;
         resetSetupMatch();
