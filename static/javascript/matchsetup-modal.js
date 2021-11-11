@@ -27,6 +27,8 @@ function resetSetupMatch()
     } catch(error) {
         console.log("No table")
     }
+    document.getElementById("ScoreSelect").selectedIndex = 0;
+    document.getElementById("MatchTypeSelect").selectedIndex = 0;
     document.getElementById("NumberOfSets").value = 0;
     document.getElementById("NumberOfLegs").value = 0;
     document.getElementById("MatchLocation").value = "";
