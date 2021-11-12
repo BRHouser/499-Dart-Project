@@ -155,7 +155,7 @@ def addMatch():
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["Location"], data["DateOfMatch"]]
 	database.add_information(database_connection, "Current_Match", [row])
-	
+	return ""
 
 # Main Start Server
 if __name__ == '__main__':

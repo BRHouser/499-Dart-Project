@@ -42,8 +42,8 @@ async function closeMatchModal(){
     submit = true;
     var popup = document.getElementById('MatchSetupModal');
     var notification = document.getElementById("NotificationModal");
-    var Player1 = document.getElementById("ChoosePlayerDropdown2").value;
-    var Player2 = document.getElementById("ChoosePlayerDropdown3").value;
+    var Player1 = document.getElementById("ChoosePlayerDropdown2").innerHTML;
+    var Player2 = document.getElementById("ChoosePlayerDropdown3").innerHTML;
     var Score = document.getElementById("ScoreSelect").value;
     var MatchType = document.getElementById("MatchTypeSelect").value;
     var NumberOfSets = document.getElementById("NumberOfSets").value;
@@ -51,7 +51,6 @@ async function closeMatchModal(){
     var Location = document.getElementById("MatchLocation").value;
     var Date = document.getElementById("MatchDate").value;
     
-    window.alert(Player1)
     if(Player1.trim() == "Select Player 1")
     {
         submit = false;
