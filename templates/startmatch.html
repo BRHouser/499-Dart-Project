@@ -3,61 +3,32 @@
 
 <html>
     <head>
-        <title>Dart MATCH START UP AND OTHER INFORMATION</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" media="all" href="{{ url_for('.static', filename='css/startmatch.css')}}">
 
     </head>
-
-    <body style = "max-height: 100%">
-
-        <div class="container-fluid" id="main-content" style = "max-height: 100%">
-            <div class = "row header" style = "max-height: 10%">
-                <div class= "m-4 col text-center">
-                    <h1 id='headerTitle'>STUFF</h1>
-                </div>
-            </div>
-            <div class = "row" style = "height: 90%">
-                <div class = "col-3 sidebar h-100" id = "side-menu" style = "overflow: auto;">
-
-                    <h3 class="mt-3">Display Players, needs to be dynamic for players in database</h3>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="playerStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            PLAYER NAME IG
+    <body style = "height: 100%; overflow: hidden;">
+        <div class="row d-flex sidebar" style = "height: 100%" id="main-content">
+            <div class = "col my-auto" style = "height: 100%">
+                <div class = "main-content text-center" id = "score-input" style = "overflow: auto;">
+                    <div class="overlay has-bg-img rounded h-10rem my-2" style = "padding-left: 10%; padding-right: 10%; height: 100%; background-repeat: no-repeat; background-size: 100% 100%; background-image: url('static/images/opening_screen.gif')">
+                        <div class="overlay-content align-items-end text-center" style="margin-top: 100%;">COMPETITION DART SCOREKEEPER MACHINE</div>
+                    <h1 id="Information Block"></h1>
+                        <button style="margin-top: 5%;" id = "Match-Setup" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#MatchSetupModal" aria-haspopup="true" aria-expanded="false">
+                            Start Match
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="playerStatsDropdown">
-                          <a class="dropdown-item" href="#">needs to be dynamic</a>
-                          <a class="dropdown-item" href="#">needs to be dynamic</a>
-                          <a class="dropdown-item" href="#">needs to be dynamic</a>
-                        </div>
-                    </div>
-                    <h3 class="mt-3">STUFF</h3>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="matchStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            STUFF
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="matchStatsDropdown">
-                          <a class="dropdown-item" href="#">Current Player League Ranks</a>
-                          <a class="dropdown-item" href="#">Last Match Win</a>
-                          <a class="dropdown-item" href="#">Average Player League Score</a>
-                          <a class="dropdown-item" href="#">180s In Season</a>
-                        </div>
-                        <button class="btn btn-secondary" type="button" id="StartMatchButton" data-toggle="modal" data-target = "#MatchSetupModal" aria-haspopup="true" aria-expanded="false">
-                            Setup Match
-                        </button>
-                    </div>
-                </div>
-                <div class = "col-9 main-content text-center h-100" id = "score-input" style = "overflow: auto;">
-                    <h1 id="Information Block"></h2>
-                        <button id = "AddPlayer" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#AddPlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button style="margin-top: 5%;" id = "AddPlayer" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#AddPlayerModal" aria-haspopup="true" aria-expanded="false">
                             Add Player
                         </button>   
-                        <button id = "Delete-Player" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#DeletePlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button style="margin-top: 5%;" id = "Delete-Player" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#DeletePlayerModal" aria-haspopup="true" aria-expanded="false">
                             Delete Player
                         </button>
-                        <button id = "Edit-Player" type="button" class="btn btn-secondary" data-toggle="modal" data-target = "#EditPlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button style="margin-top: 5%;" id = "Edit-Player" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#EditPlayerModal" aria-haspopup="true" aria-expanded="false">
                             Edit Player
-                        </button>                               
+                        </button> 
+                        </div>
+
+                </div>             
                 </div>
         </div>
 
@@ -266,7 +237,7 @@
                 </div>
                     <!-- Modal Footer -->
                     <div class = "modal-footer">
-                        <button onClick = "javascript:closeMatchModal()" type = "button"  class = "btn btn-danger" data-dismiss="modal"> Submit </button>
+                        <button onClick = "javascript:closeMatchModal()" type = "button"  class = "btn btn-danger" data-dismiss="modal"> Start Match </button>
                         <button onClick ="javascript:resetSetupMatch()" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
                     </div>
                                                   
