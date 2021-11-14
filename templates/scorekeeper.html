@@ -106,7 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <h1 class="mt-3" id="player-label">Player 1, Throw 1</h1>
                     <!-- Image Map for dartboard -->
+                    <!-- <div class="overlay mt-1" style = " background-repeat: no-repeat; background-image: url('static/images/dart-board-1614051_640.png')"> -->
+
                     <img class="mt-1" src="{{ url_for('.static', filename='images/dart-board-1614051_640.png')}}" usemap="#image-map">
+                    <img class = "circle-size" src="{{ url_for('.static', filename='images/circle.png')}}">
 
                     <map name="image-map">
                         <area id="square1" alt="DB" class="DB" href="" coords="307,307,14" shape="circle">

@@ -25,3 +25,12 @@
     background-color: var(--color3);
     color:whitesmoke;
 }
+
+.circle-size{
+    height: 25px;
+    width: 25px;
+}
+
+.dartboard-background{
+    margin-right: 10%;
+}
