@@ -14,6 +14,9 @@ function initial() {
     $("#bounceout-button").click( function(e) {
         registerThrow("BO");
     })
+    $("#nextturn-button").click( function(e) {
+        nextTurn();
+    })
 }
 
 function sendData(data) {
@@ -23,25 +26,36 @@ function sendData(data) {
 }
 
 function registerThrow(user_throw, e) {
-    var sidebar_width = $("#side-menu").outerWidth();
-    var header_height = $("#header").height();
+    if(throws[current_player].length < 3) {
 
-    //alert("clientX: " + (e.clientX-sidebar_width) + " - clientY: " + (e.clientY - header_height))
-    //alert("Throw: " + user_throw)
-    var new_icon = document.createElement("div");
-    new_icon.className = "throw-icon";
-    new_icon.style.top = e.clientY - header_height-7.5;
-    new_icon.style.left = e.clientX-sidebar_width-7.5;
+        if(e != undefined) {
+            var sidebar_width = $("#side-menu").outerWidth();
+            var header_height = $("#header").height();
 
-    $("#throw-icon-container").append(new_icon);
-    throw_icons.push(new_icon);
+            //alert("clientX: " + (e.clientX-sidebar_width) + " - clientY: " + (e.clientY - header_height))
+            //alert("Throw: " + user_throw)
+            var new_icon = document.createElement("div");
+            new_icon.className = "throw-icon";
+            new_icon.style.left = e.clientX-sidebar_width-7.5;
+            new_icon.style.top = e.clientY - header_height-7.5;
 
-    console.log("Throw: " + user_throw)
-    throws[current_player].push(user_throw)
+            $("#throw-icon-container").append(new_icon);
+            throw_icons.push(new_icon);
+        }
+        else {
+            throw_icons.push(undefined);
+        }
+        console.log("Throw: " + user_throw)
+        throws[current_player].push(user_throw)
 
-    //prepare for next throw
+        //prepare for next throw
+        if(throws[current_player].length < 3)
+            turnUpdate();
+        console.log(throws);
+    }
+}
 
-
+function nextTurn() {
     if(throws[current_player].length == 3) {
         $("#throw-icon-container").empty();
         sendThrow();
@@ -49,8 +63,6 @@ function registerThrow(user_throw, e) {
         else current_player = 0;
         turnUpdate();        
     }
-    turnUpdate();
-    console.log(throws);
 }
 
 function turnUpdate() {
@@ -97,7 +109,8 @@ function undo() { //undo last entered score
     if(throws[current_player].length != 0) {
 
         let icon = throw_icons.pop();
-        icon.remove();
+        if(icon != undefined)
+            icon.remove();
         throws[current_player].pop();
         turnUpdate();
         console.log(throws)
@@ -169,7 +182,7 @@ function registerImageMap() { //register events for the entire board
 
     $(".B").click(function(e) {
         e.preventDefault();
-        registerThrow("B");
+        registerThrow("B", e);
     })
     $(".B").mouseover(function(e) {
         e.preventDefault();
@@ -178,7 +191,7 @@ function registerImageMap() { //register events for the entire board
 
     $(".DB").click(function(e) {
         e.preventDefault();
-        registerThrow("DB");
+        registerThrow("DB", e);
     })
     $(".DB").mouseover(function(e) {
         e.preventDefault();
