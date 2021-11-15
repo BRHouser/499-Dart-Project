@@ -31,7 +31,7 @@ class DartRules():
         total_dbl_bulls=dbl_bulls+self.json_data[player]["dbl_bulls_hit"]
 
         diff = current_score - value
-        if(diff < 0):
+        if(diff < 0 or diff == 1):
             registered_score = 0
         elif(diff == 0):
             if(score.find("D") >= 0):
