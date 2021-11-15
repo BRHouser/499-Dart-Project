@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <body style = "max-height: 100%">
 
         <div class="container-fluid" id="main-content" style = "max-height: 100%">
-            <div class = "row header" style = "max-height: 10%">
+            <div class = "row header" id="header" style = "max-height: 10%">
                 <div class= "m-4 col text-center">
                     <h1 id='headerTitle'>Dart Scorekeeper</h1>
                 </div>
@@ -108,8 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <!-- Image Map for dartboard -->
                     <!-- <div class="overlay mt-1" style = " background-repeat: no-repeat; background-image: url('static/images/dart-board-1614051_640.png')"> -->
 
-                    <img class="mt-1" src="{{ url_for('.static', filename='images/dart-board-1614051_640.png')}}" usemap="#image-map">
-                    <img class = "circle-size" src="{{ url_for('.static', filename='images/circle.png')}}">
+                    <img class="dartboard-image mt-1" src="{{ url_for('.static', filename='images/dart-board-1614051_640.png')}}" usemap="#image-map">
+                    <div id="throw-icon-container">
+                    </div>
+                    
 
                     <map name="image-map">
                         <area id="square1" alt="DB" class="DB" href="" coords="307,307,14" shape="circle">
@@ -210,8 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>
-                    </br>
-                    <button type="button" class="btn btn-secondary mt-3">Next Turn</button>
                 </div>
             </div>
         </div>

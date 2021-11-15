@@ -1,6 +1,7 @@
 //scores are sent to db at the end of each turn
 let throws = [[],[]] //array of two lists of strings to represent throws in turn, ex: [["20", "D19", "B"], ["DB", "D20", "17"]]
 //throws[0] = player1's throws, throws[1] = player2
+let throw_icons = [];
 
 // Player 1 always throws first
 let current_player = 0; //player1 = 0, player2 = 1
@@ -21,8 +22,20 @@ function sendData(data) {
     request.send(JSON.stringify(data));
 }
 
-function registerThrow(user_throw) {
+function registerThrow(user_throw, e) {
+    var sidebar_width = $("#side-menu").outerWidth();
+    var header_height = $("#header").height();
+
+    //alert("clientX: " + (e.clientX-sidebar_width) + " - clientY: " + (e.clientY - header_height))
     //alert("Throw: " + user_throw)
+    var new_icon = document.createElement("div");
+    new_icon.className = "throw-icon";
+    new_icon.style.top = e.clientY - header_height-7.5;
+    new_icon.style.left = e.clientX-sidebar_width-7.5;
+
+    $("#throw-icon-container").append(new_icon);
+    throw_icons.push(new_icon);
+
     console.log("Throw: " + user_throw)
     throws[current_player].push(user_throw)
 
@@ -30,10 +43,11 @@ function registerThrow(user_throw) {
 
 
     if(throws[current_player].length == 3) {
+        $("#throw-icon-container").empty();
         sendThrow();
         if(current_player == 0) current_player = 1; //toggle current player
         else current_player = 0;
-        turnUpdate();
+        turnUpdate();        
     }
     turnUpdate();
     console.log(throws);
@@ -53,6 +67,7 @@ function turnUpdate() {
         element.href = "javascript:knockOut(" + i + ")";
         $("#knockoutDropdownContainer").append(element)
     }
+
 }
 
 function mouseoverBoard(board_section) {
@@ -61,7 +76,7 @@ function mouseoverBoard(board_section) {
 }
 
 function sendThrow() { //send scores to server after one player completes their throws
-    alert(JSON.stringify(throws[current_player]))
+    //alert(JSON.stringify(throws[current_player]))
 
     data = {"throws":{}}
     if(current_player == 0) {
@@ -81,6 +96,8 @@ function undo() { //undo last entered score
     //toggle current player
     if(throws[current_player].length != 0) {
 
+        let icon = throw_icons.pop();
+        icon.remove();
         throws[current_player].pop();
         turnUpdate();
         console.log(throws)
@@ -173,7 +190,7 @@ function registerNum(num) { //register onclick events for one section of the boa
     var num_class = "." + num;
     $(num_class).click(function(e) {
         e.preventDefault();
-        registerThrow(num);
+        registerThrow(num, e);
     })
     $(num_class).mouseover(function(e) {
         e.preventDefault();
@@ -184,7 +201,7 @@ function registerNum(num) { //register onclick events for one section of the boa
     var t_num = "T" + num;
     $(num_class).click(function(e) {
         e.preventDefault();
-        registerThrow(t_num);
+        registerThrow(t_num, e);
     })
     $(num_class).mouseover(function(e) {
         e.preventDefault();
@@ -195,7 +212,7 @@ function registerNum(num) { //register onclick events for one section of the boa
     var d_num = "D" + num;
     $(num_class).click(function(e) {
         e.preventDefault();
-        registerThrow(d_num);
+        registerThrow(d_num, e);
     })
     $(num_class).mouseover(function(e) {
         e.preventDefault();
