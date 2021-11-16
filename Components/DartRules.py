@@ -27,8 +27,10 @@ class DartRules():
         elif(value==50):
             dbl_bulls=dbl_bulls+1
         #get the total numbers of each
-        total_t20s=t20s+self.json_data[player]["t20s_hit"]
-        total_dbl_bulls=dbl_bulls+self.json_data[player]["dbl_bulls_hit"]
+        
+        # commented out because of keyerror
+        #total_t20s=t20s+self.json_data[player]["t20s_hit"]
+        #total_dbl_bulls=dbl_bulls+self.json_data[player]["dbl_bulls_hit"]
 
         diff = current_score - value
         if(diff < 0 or diff == 1):
@@ -41,7 +43,7 @@ class DartRules():
 
         new_score = current_score - registered_score
         print("new score: " + str(new_score))
-        self.updateCurrentGameState.update_player_score(player, new_score, total_t20s, total_dbl_bulls)
+        self.updateCurrentGameState.update_player_score(player, new_score)
         self.refresh()
 
     def refresh(self):

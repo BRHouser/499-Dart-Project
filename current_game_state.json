@@ -1,1 +1,30 @@
-{"player1": {"score": 2, "leagueStats": "Average Turn Score:", "matchStats": "Average Player League Score:", "perfectLeg": true, "possibleOuts": "", "t20s_hit": 29, "dbl_bulls_hit": 9, "match_180s": 4, "current_turn_avg": 7.333333333333333}, "player2": {"score": 13, "leagueStats": "Average Turn Score:", "matchStats": "Average Player League Score:", "perfectLeg": true, "possibleOuts": "", "t20s_hit": 16, "dbl_bulls_hit": 3, "match_180s": 2, "current_turn_avg": 39.0}, "stats": {"player1": {}, "player2": {}}}
+{
+    "game": {
+        "current_set": 0,
+        "current_leg": 0,
+        "current_turn": 0,
+        "sets": "2",
+        "legs": "5",
+        "score": "801"
+    },
+    "player1": {
+        "name": "Anthony Dohogne",
+        "score": "801",
+        "leagueStats": "",
+        "matchStats": "",
+        "perfectLeg": true,
+        "possibleOuts": ""
+    },
+    "player2": {
+        "name": "Test Test",
+        "score": "801",
+        "leagueStats": "",
+        "matchStats": "",
+        "perfectLeg": true,
+        "possibleOuts": ""
+    },
+    "stats": {
+        "player1": {},
+        "player2": {}
+    }
+}
