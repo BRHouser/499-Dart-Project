@@ -7,6 +7,7 @@ import json
 
 import Components.UpdateScoreboard as UpdateScoreboard
 import Components.ReceiveData as ReceiveData
+import Components.GameSetup as GameSetup
 
 # Directory of the Database
 project_directory = os.getcwd()
@@ -151,7 +152,8 @@ def updateScoreboard():
 def addMatch():
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
-	print(data)
+	#print(data)
+	game_setup = GameSetup.GameSetup(data)
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["Location"], data["DateOfMatch"]]
 	database.add_information(database_connection, "Current_Match", [row])

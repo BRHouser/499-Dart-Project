@@ -3,6 +3,9 @@ let throws = [[],[]] //array of two lists of strings to represent throws in turn
 //throws[0] = player1's throws, throws[1] = player2
 let throw_icons = [];
 
+let previous_state = [[],[],[],[]];
+let previous_icons = [[],[],[],[]];
+
 // Player 1 always throws first
 let current_player = 0; //player1 = 0, player2 = 1
 
@@ -39,13 +42,19 @@ function registerThrow(user_throw, e) {
             new_icon.style.left = e.clientX-sidebar_width-7.5;
             new_icon.style.top = e.clientY - header_height-7.5;
 
+            previous_icons[throws[current_player].length] = throw_icons.slice(0);
+
             $("#throw-icon-container").append(new_icon);
             throw_icons.push(new_icon);
         }
         else {
+            previous_icons[throws[current_player].length] = throw_icons.slice(0);
             throw_icons.push(undefined);
         }
-        console.log("Throw: " + user_throw)
+        previous_state[throws[current_player].length] = throws[current_player].slice(0)
+        //console.log(previous_state)
+
+        //console.log("Throw: " + user_throw)
         throws[current_player].push(user_throw)
 
         //prepare for next throw
@@ -101,6 +110,9 @@ function sendThrow() { //send scores to server after one player completes their 
     sendData(data);
     //reset variables
     throws = [[],[]]
+    throw_icons = [];
+    previous_state = [[],[],[],[]];
+    previous_icons = [[],[],[],[]];
 }
 
 function undo() { //undo last entered score
@@ -108,10 +120,15 @@ function undo() { //undo last entered score
     //toggle current player
     if(throws[current_player].length != 0) {
 
-        let icon = throw_icons.pop();
-        if(icon != undefined)
-            icon.remove();
-        throws[current_player].pop();
+        throw_icons = previous_icons[throws[current_player].length-1].slice(0);
+        //let icon = throw_icons.pop();
+        //if(icon != undefined)
+        //    icon.remove();
+        $("#throw-icon-container").empty();
+        throw_icons.forEach(icon => $("#throw-icon-container").append(icon));
+        
+
+        throws[current_player] = previous_state[throws[current_player].length-1].slice(0);
         turnUpdate();
         console.log(throws)
     }
@@ -120,6 +137,11 @@ function undo() { //undo last entered score
 function knockOut(throw_num) { //replace throw at throw_num with 0 to represent knocked out dart
     console.log("knock out")
     throws[current_player][throw_num] = "KO";
+    icon = throw_icons[throw_num];
+    if(icon != undefined)
+        icon.remove();
+    throw_icons[throw_num] = undefined;
+    
     //disable dropdown after knockOut set (reset after throw)
 }
 

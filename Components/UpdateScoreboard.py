@@ -19,14 +19,14 @@ class UpdateScoreboard():
         return os.stat('current_game_state.json').st_mtime > req_time
 
     def get_current_game_state(self):
-        print("get current game state")
+        #print("get current game state")
         #busy wait until game state is updated, return current game state when it is
         req_time = time.time()
         if self.first_read:
             with open('current_game_state.json') as data:
                 content = data.read()
             return content
-        print("busy wait")
+        #print("busy wait")
         while not self.is_updated(req_time):
             time.sleep(.25)
     
