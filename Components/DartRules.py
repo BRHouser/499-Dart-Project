@@ -9,48 +9,59 @@ class DartRules():
             content = json.load(data)
         self.json_data = content
         self.updateCurrentGameState = updateCurrentGameState
+        self.bust = False
 
     #input: player string ("player1" or "player2"); score string, ("19" "T20", "DB", etc.) 
     def add_score(self, player, score):
-        registered_score = 0
-        score = str(score)
-        value = self.get_score_value(score)
-        current_score = int(self.json_data[player]["score"])
-        print(value)
-
-        #reset counters for triple 20 and double bullseye
-        t20s=0
-        dbl_bulls=0
-        #check the scores
-        if(value==60):
-            t20s=t20s+1
-        elif(value==50):
-            dbl_bulls=dbl_bulls+1
-        #get the total numbers of each
-        
-        # commented out because of keyerror
-        #total_t20s=t20s+self.json_data[player]["t20s_hit"]
-        #total_dbl_bulls=dbl_bulls+self.json_data[player]["dbl_bulls_hit"]
-
-        diff = current_score - value
-        if(diff < 0 or diff == 1):
+        if not self.bust:
             registered_score = 0
-        elif(diff == 0):
-            if(score.find("D") >= 0):
+            score = str(score)
+            value = self.get_score_value(score)
+            current_score = int(self.json_data[player]["score"])
+            print(value)
+
+            #reset counters for triple 20 and double bullseye
+            t20s=0
+            dbl_bulls=0
+            #check the scores
+            if(value==60):
+                t20s=t20s+1
+            elif(value==50):
+                dbl_bulls=dbl_bulls+1
+            #get the total numbers of each
+            
+            # commented out because of keyerror
+            #total_t20s=t20s+self.json_data[player]["t20s_hit"]
+            #total_dbl_bulls=dbl_bulls+self.json_data[player]["dbl_bulls_hit"]
+
+            diff = current_score - value
+            if(diff < 0 or diff == 1):
+                registered_score = 0
+                self.bust = True
+            elif(diff == 0):
+                if(score.find("D") >= 0):
+                    registered_score = value
+            else:
                 registered_score = value
-        else:
-            registered_score = value
 
-        new_score = current_score - registered_score
-        print("new score: " + str(new_score))
-        self.updateCurrentGameState.update_player_score(player, new_score)
-        self.refresh()
+            new_score = current_score - registered_score
+            print("new score: " + str(new_score))
+            self.updateCurrentGameState.update_player_score(player, new_score)
 
+            #check for win
+            if new_score == 0:
+                self.bust = True #prevent scores from carrying over to next leg
+                self.updateCurrentGameState.leg_win(player)
+
+            self.refresh()
+
+    # reload json_data from current game state json
     def refresh(self):
         with open(self.json_path) as data:
             content = json.load(data)
         self.json_data = content
 
+    # input: score string from scorekeeper; output: numerical value
     def get_score_value(self, score):
         retval = 0
         if(score.find("DB") >= 0):
@@ -66,6 +77,8 @@ class DartRules():
         
         return retval
 
+    #player string ("player1" or "player2"); score list, (["19" "T20", "DB"])
+    # registers throws to current game and league statistics 
     def register_statistics(self, player, scores):
         throw1=self.get_score_value(str(scores[0]))
         throw2=self.get_score_value(str(scores[1]))
@@ -85,7 +98,8 @@ class DartRules():
         self.updateCurrentGameState.update_current_match_stats(player,match_180s,current_turn_avg)
         self.refresh()
         pass
-    
+
+    # input
     def calculate_winning_throws(self, player):
         score = self.updateCurrentGameState.get_player_score(player)
         winning_throws = []

@@ -19,7 +19,7 @@ class UpdateCurrentGameState():
         content["player1"]["matchStats"] = new_key + ":"
         content["player2"]["matchStats"] = new_key + ":"
         with open(self.json_path, "w") as data:
-            data.write(json.dumps(content))
+            data.write(json.dumps(content, ensure_ascii=False, indent=4))
 
     #replace currently displayed league stats. read new legaue stats from the archive
     def update_displayed_league_stats(self, new_key):
@@ -29,7 +29,7 @@ class UpdateCurrentGameState():
         content["player1"]["leagueStats"] = new_key + ":"
         content["player2"]["leagueStats"] = new_key + ":"
         with open(self.json_path, "w") as data:
-            data.write(json.dumps(content))
+            data.write(json.dumps(content, ensure_ascii=False, indent=4))
 
     def update_player_score(self, player, new_score):
         with open(self.json_path) as data:
@@ -38,7 +38,7 @@ class UpdateCurrentGameState():
         content[player]["score"] = new_score
 
         with open(self.json_path, "w") as data:
-            data.write(json.dumps(content))
+            data.write(json.dumps(content, ensure_ascii=False, indent=4))
 
     def update_current_match_stats(self,player,match_180s,current_turn_avg):
         with open(self.json_path) as data:
@@ -46,5 +46,40 @@ class UpdateCurrentGameState():
         content[player]["match_180s"]=match_180s
         content[player]["current_turn_avg"]=current_turn_avg
         with open(self.json_path, "w") as data:
-            data.write(json.dumps(content))
+            data.write(json.dumps(content, ensure_ascii=False, indent=4))
 
+    # call when a player's score hits 0; input: player string "player1" or "player2"
+    def leg_win(self, player):
+        with open(self.json_path) as data:
+            content = json.loads(data.read())
+
+        print(player + " wins the leg!")
+        #reset scores
+        reset_score = content["game"]["score"]
+        content["player1"]["score"] = reset_score
+        content["player2"]["score"] = reset_score
+        
+        #add leg win to player
+        content[player]["legsWon"] += 1
+        content["game"]["current_leg"] += 1
+        
+        #check for set win
+        if content[player]["legsWon"] == content["game"]["legs"]:
+            #reset legs won
+            print(player + " wins the set!")
+            content["player1"]["legsWon"] = 0
+            content["player2"]["legsWon"] = 0
+            content["game"]["current_leg"] += 0
+            #add set win to player
+            content[player]["setsWon"] += 1
+            content["game"]["current_set"] += 1
+
+            #check for game win
+            if content[player]["setsWon"] == content["game"]["sets"]:
+                print(player + "wins the game!")
+                #TODO: add win state
+
+        #TODO: which player goes first in the next leg?
+
+        with open(self.json_path, "w") as data:
+            data.write(json.dumps(content, ensure_ascii=False, indent=4))

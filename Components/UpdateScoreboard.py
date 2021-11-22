@@ -11,7 +11,7 @@ class UpdateScoreboard():
     def __init__(self, first_read):
 
         self.first_read = first_read
-        print(first_read)
+        #print(first_read)
 
     def is_updated(self, req_time):
         #checks if current game state has been updated

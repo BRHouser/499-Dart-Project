@@ -22,9 +22,9 @@ class GameSetup():
 
     def set_game_info(self):
 
-        self.init_data["game"]["sets"] = self.game_data["SetNumber"]
-        self.init_data["game"]["legs"] = self.game_data["NumberOfLegs"]
-        self.init_data["game"]["score"] = self.game_data["Score"]
+        self.init_data["game"]["sets"] = int(self.game_data["SetNumber"])
+        self.init_data["game"]["legs"] = int(self.game_data["NumberOfLegs"])
+        self.init_data["game"]["score"] = int(self.game_data["Score"])
 
         self.init_data["player1"]["name"] = self.game_data["Player1Name"]
         self.init_data["player1"]["score"] = self.game_data["Score"]

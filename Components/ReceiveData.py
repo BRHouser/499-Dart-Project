@@ -19,10 +19,6 @@ class ReceiveData():
             self.changeDisplayedMatchStats(data["new_match_stats"])
         elif(key == "new_league_stats"):
             self.changeDisplayedLeagueStats(data["new_league_stats"])
-        
-        #temporary testing below
-        #with open('test.json', 'w') as f:
-        #    f.write(str(json.dumps(data)))
 
     #data can either look like:
     change_stats = {
@@ -46,6 +42,7 @@ class ReceiveData():
         self.updateCurrentGameState.update_displayed_league_stats(key)
 
     def inputScores(self, throws):
+        # key of throw data is "player1" or "player2"
         player = list(throws.keys())[0]
         scores = throws[player]
         
