@@ -203,11 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h2>Dartboard Position:</h2>
                         <h2 id="score-preview">None</h2>
                     </div>
-                    <div class = "col-50 main-content">
-                            <button type="button" style="margin-top: 5%;" id="previous-button" class="btn btn-secondary btn-block">Previous Throw</button>                            
+                    <div class = "col-50 main-content">                         
                             <button type="button" style="margin-top: 5%;" class="btn btn-secondary btn-block">Foul</button>
                             <button type="button" style="margin-top: 5%;" id="bounceout-button" class="btn btn-secondary btn-block">Bounce Out</button>
-                            <button type="button" style="margin-top: 5%;" id="nextturn-button" class="btn btn-secondary btn-block">Next Turn</button>
                             <div class="dropdown">
                                 <button type="button" style="margin-top: 5%;" class="btn btn-secondary btn-block dropdown-toggle"type="button" id="knockoutDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Knock Out
@@ -215,6 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div id="knockoutDropdownContainer" class="btn-block dropdown-menu" aria-labelledby="knockoutDropdown">
                                     <a class="dropdown-item" href="javascript:updateMatchStats('Current Player League Ranks')">Current Player League Ranks</a>
                                 </div>
+                            <br>
+                            <button type="button" style="margin-top: 5%;" id="previous-button" class="btn btn-secondary btn-block">Previous Throw</button>   
+                            <button type="button" style="margin-top: 5%;" id="nextturn-button" class="btn btn-secondary btn-block">Next Turn</button>
                         </div>
                     </div>
                 </div>

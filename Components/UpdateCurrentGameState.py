@@ -4,6 +4,7 @@ class UpdateCurrentGameState():
 
     def __init__(self):
         self.json_path = "current_game_state.json"
+        self.new_leg = False
 
 
     #create initial current_game_state json
@@ -69,7 +70,7 @@ class UpdateCurrentGameState():
             print(player + " wins the set!")
             content["player1"]["legsWon"] = 0
             content["player2"]["legsWon"] = 0
-            content["game"]["current_leg"] += 0
+            content["game"]["current_leg"] = 0
             #add set win to player
             content[player]["setsWon"] += 1
             content["game"]["current_set"] += 1
@@ -80,6 +81,21 @@ class UpdateCurrentGameState():
                 #TODO: add win state
 
         #TODO: which player goes first in the next leg?
+        content["game"]["current_turn"] = 0
+        self.new_leg = True
+        #bug: this gets undone by the toggle_turn call in ReceiveData.py
+
+        with open(self.json_path, "w") as data:
+            data.write(json.dumps(content, ensure_ascii=False, indent=4))
+
+    def toggle_turn(self):
+        with open(self.json_path) as data:
+            content = json.loads(data.read())
+
+        if content["game"]["current_turn"] == 0:
+            content["game"]["current_turn"] = 1
+        else:
+            content["game"]["current_turn"] = 0
 
         with open(self.json_path, "w") as data:
             data.write(json.dumps(content, ensure_ascii=False, indent=4))

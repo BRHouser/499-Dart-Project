@@ -50,6 +50,12 @@ class ReceiveData():
         dart_rules.add_score(player, scores[0])
         dart_rules.add_score(player, scores[1])
         dart_rules.add_score(player, scores[2])
+
+        # toggle player
+        if(not self.updateCurrentGameState.new_leg):
+            self.updateCurrentGameState.toggle_turn()
+        else:
+            self.updateCurrentGameState.new_leg = False
         # commented out because of keyerror
         #dart_rules.register_statistics(player,scores)
 

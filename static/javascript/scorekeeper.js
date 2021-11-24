@@ -8,10 +8,15 @@ let previous_icons = [[],[],[],[]];
 
 // Player 1 always throws first
 let current_player = 0; //player1 = 0, player2 = 1
+let won = false
+
+let request_data = {"first_read": true}
+
+let last_leg = 0
 
 initial();
 
-function initial() {
+async function initial() {
     registerImageMap();
     $("#previous-button").click(undo);
     $("#bounceout-button").click( function(e) {
@@ -20,6 +25,22 @@ function initial() {
     $("#nextturn-button").click( function(e) {
         nextTurn();
     })
+
+    while(!won) {
+        received = false;
+        let game_data = await requestGameState();
+        console.log(game_data)
+        if(current_player != game_data["game"]["current_turn"] || last_leg != game_data["game"]["current_leg"]) {
+            current_player = game_data["game"]["current_turn"]
+            turnUpdate();
+            throws = [[],[]]
+            throw_icons = [];
+            previous_state = [[],[],[],[]];
+            previous_icons = [[],[],[],[]];
+        }
+        received = true;
+        last_leg = game_data["game"]["current_leg"]
+    }
 }
 
 function sendData(data) {
@@ -67,10 +88,7 @@ function registerThrow(user_throw, e) {
 function nextTurn() {
     if(throws[current_player].length == 3) {
         $("#throw-icon-container").empty();
-        sendThrow();
-        if(current_player == 0) current_player = 1; //toggle current player
-        else current_player = 0;
-        turnUpdate();        
+        sendThrow();   
     }
 }
 
@@ -109,10 +127,7 @@ function sendThrow() { //send scores to server after one player completes their 
     
     sendData(data);
     //reset variables
-    throws = [[],[]]
-    throw_icons = [];
-    previous_state = [[],[],[],[]];
-    previous_icons = [[],[],[],[]];
+
 }
 
 function undo() { //undo last entered score
@@ -156,6 +171,19 @@ function updateMatchStats(new_stats) {
     $("#matchStatsDropdown").text(new_stats)
     data = {"new_match_stats": new_stats}
     sendData(data)
+}
+
+function requestGameState() {
+    const request = new XMLHttpRequest();
+    request.open('POST', '/updateScoreboard');
+    request.send(JSON.stringify(request_data));
+    return new Promise((resolve) => {
+        request.onload = () => {
+            request_data["first_read"] = false;
+            const response = JSON.parse(request.responseText);
+            resolve(response);
+        }; 
+    });
 }
 
 //Functions to add content to throw review tables

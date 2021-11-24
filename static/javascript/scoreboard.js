@@ -34,6 +34,9 @@ async function updateGameState() {
     $("#p2-match-stats").text(player2["matchStats"]);
     $("#p2-outs").text(player2["possibleOuts"]);
     $("#p2-name").text(player2["name"]);
+
+    $("#leg-header").text("Leg: " + game_data["game"]["current_leg"] + " / "  + game_data["game"]["legs"])
+    $("#set-header").text("Set: " + game_data["game"]["current_set"] + " / "  + game_data["game"]["sets"])
     received = true
 }
 
