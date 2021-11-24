@@ -64,7 +64,13 @@ class DartRules():
     # input: score string from scorekeeper; output: numerical value
     def get_score_value(self, score):
         retval = 0
-        if(score.find("DB") >= 0):
+        if(score == "KO"):
+            retval = 0
+        elif(score == "F"):
+            retval = 0
+        elif(score == "BO"):
+            retval = 0
+        elif(score.find("DB") >= 0):
             retval = 50
         elif(score.find("B") >= 0):
             retval = 25

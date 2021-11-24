@@ -12,7 +12,7 @@ let won = false
 
 let request_data = {"first_read": true}
 
-let last_leg = 0
+let last_leg_wins = 0
 
 initial();
 
@@ -30,16 +30,16 @@ async function initial() {
         received = false;
         let game_data = await requestGameState();
         console.log(game_data)
-        if(current_player != game_data["game"]["current_turn"] || last_leg != game_data["game"]["current_leg"]) {
+        if(current_player != game_data["game"]["current_turn"] || last_leg_wins != game_data["player1"]["legsWon"] + game_data["player2"]["legsWon"]) {
             current_player = game_data["game"]["current_turn"]
-            turnUpdate();
             throws = [[],[]]
             throw_icons = [];
             previous_state = [[],[],[],[]];
             previous_icons = [[],[],[],[]];
+            turnUpdate();
         }
         received = true;
-        last_leg = game_data["game"]["current_leg"]
+        last_leg_wins = game_data["player1"]["legsWon"] + game_data["player2"]["legsWon"]
     }
 }
 
