@@ -37,9 +37,11 @@ class ReceiveData():
 
     def changeDisplayedMatchStats(self, key):
         self.updateCurrentGameState.update_displayed_match_stats(key)
+        self.updateCurrentGameState.write()
 
     def changeDisplayedLeagueStats(self, key):
         self.updateCurrentGameState.update_displayed_league_stats(key)
+        self.updateCurrentGameState.write()
 
     def inputScores(self, throws):
         # key of throw data is "player1" or "player2"
@@ -51,6 +53,11 @@ class ReceiveData():
         dart_rules.add_score(player, scores[1])
         dart_rules.add_score(player, scores[2])
 
+        # update current stats
+        keys = self.updateCurrentGameState.get_displayed_stats()
+        self.changeDisplayedMatchStats(keys[0])
+        self.changeDisplayedLeagueStats(keys[1])
+
         # toggle player
         if(not self.updateCurrentGameState.new_leg):
             self.updateCurrentGameState.toggle_turn()
@@ -58,5 +65,8 @@ class ReceiveData():
             self.updateCurrentGameState.new_leg = False
         # commented out because of keyerror
         #dart_rules.register_statistics(player,scores)
+        print(self.updateCurrentGameState.get_content())
+
+        self.updateCurrentGameState.write()
 
 

@@ -162,14 +162,14 @@ function knockOut(throw_num) { //replace throw at throw_num with 0 to represent 
 
 // Update displayed stats on scoreboard. new_stats is string representing the stat to be displayed
 function updatePlayerStats(new_stats) {
-    $("#playerStatsDropdown").text(new_stats)
-    data = {"new_league_stats": new_stats}
+    $("#matchStatsDropdown").text(new_stats)
+    data = {"new_match_stats": new_stats}
     sendData(data)
 }
 
 function updateMatchStats(new_stats) {
-    $("#matchStatsDropdown").text(new_stats)
-    data = {"new_match_stats": new_stats}
+    $("#leagueStatsDropdown").text(new_stats)
+    data = {"new_league_stats": new_stats}
     sendData(data)
 }
 

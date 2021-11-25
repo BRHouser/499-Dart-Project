@@ -25,7 +25,7 @@ function requestGameState() { //request gamestate from server (server returns em
     });
 }
 
-function resumeGame() {
+function resumeGame() { 
     if(current_game) {
         console.log("resume")
         window.open("/scorekeeper", '_blank').focus();

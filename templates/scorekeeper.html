@@ -44,21 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <h3 class="mt-3">Display Player Statistics</h3>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="playerStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="matchStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Average Turn Score
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="playerStatsDropdown">
+                        <div class="dropdown-menu" aria-labelledby="matchStatsDropdown">
                           <a class="dropdown-item" href="javascript:updatePlayerStats('Average Turn Score')">Average Turn Score</a>
                           <a class="dropdown-item" href="javascript:updatePlayerStats('180s In Match')">180s In Match</a>
                           <a class="dropdown-item" href="javascript:updatePlayerStats('Best Turn Score')">Best Turn Score</a>
+                          <a class="dropdown-item" href="javascript:updatePlayerStats('Triple 20s Thrown')">Triple 20s Thrown</a>
+                          <a class="dropdown-item" href="javascript:updatePlayerStats('Bulls Thrown')">Bulls Thrown</a>
                         </div>
                     </div>
                     <h3 class="mt-3">Display Match Statistics</h3>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="matchStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="leagueStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Current Player League Ranks
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="matchStatsDropdown">
+                        <div class="dropdown-menu" aria-labelledby="leagueStatsDropdown">
                           <a class="dropdown-item" href="javascript:updateMatchStats('Current Player League Ranks')">Current Player League Ranks</a>
                           <a class="dropdown-item" href="javascript:updateMatchStats('Last Match Win')">Last Match Win</a>
                           <a class="dropdown-item" href="javascript:updateMatchStats('Average Player League Score')">Average Player League Score</a>

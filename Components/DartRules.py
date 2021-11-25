@@ -5,34 +5,22 @@ class DartRules():
 
     def __init__(self, updateCurrentGameState):
         self.json_path = "current_game_state.json"
-        with open(self.json_path) as data:
-            content = json.load(data)
-        self.json_data = content
+
+        self.json_data = updateCurrentGameState.get_content()
         self.updateCurrentGameState = updateCurrentGameState
         self.bust = False
+        self.throw_sum = 0
+        self.throws = 0
 
     #input: player string ("player1" or "player2"); score string, ("19" "T20", "DB", etc.) 
     def add_score(self, player, score):
         if not self.bust:
+            self.throws += 1
             registered_score = 0
             score = str(score)
             value = self.get_score_value(score)
             current_score = int(self.json_data[player]["score"])
             print(value)
-
-            #reset counters for triple 20 and double bullseye
-            t20s=0
-            dbl_bulls=0
-            #check the scores
-            if(value==60):
-                t20s=t20s+1
-            elif(value==50):
-                dbl_bulls=dbl_bulls+1
-            #get the total numbers of each
-            
-            # commented out because of keyerror
-            #total_t20s=t20s+self.json_data[player]["t20s_hit"]
-            #total_dbl_bulls=dbl_bulls+self.json_data[player]["dbl_bulls_hit"]
 
             diff = current_score - value
             if(diff < 0 or diff == 1):
@@ -45,21 +33,25 @@ class DartRules():
                 registered_score = value
 
             new_score = current_score - registered_score
-            print("new score: " + str(new_score))
+            self.throw_sum += registered_score
+
+            #print("new score: " + str(new_score))
+            #print("sum: " + str(self.throw_sum))
+            print(self.throws)
             self.updateCurrentGameState.update_player_score(player, new_score)
+
+            self.refresh()
+            self.register_statistics(player, score)
 
             #check for win
             if new_score == 0:
                 self.bust = True #prevent scores from carrying over to next leg
                 self.updateCurrentGameState.leg_win(player)
 
-            self.refresh()
-
     # reload json_data from current game state json
     def refresh(self):
-        with open(self.json_path) as data:
-            content = json.load(data)
-        self.json_data = content
+        self.json_data = self.updateCurrentGameState.get_content()
+        #print(self.json_data)
 
     # input: score string from scorekeeper; output: numerical value
     def get_score_value(self, score):
@@ -85,25 +77,53 @@ class DartRules():
 
     #player string ("player1" or "player2"); score list, (["19" "T20", "DB"])
     # registers throws to current game and league statistics 
-    def register_statistics(self, player, scores):
-        throw1=self.get_score_value(str(scores[0]))
-        throw2=self.get_score_value(str(scores[1]))
-        throw3=self.get_score_value(str(scores[2]))
-        turn_sum=throw1+throw2+throw3
+    def register_statistics(self, player, score):
+        
+        print("registers stats: " + score)
+        #Current Match
+        stats = self.json_data["stats"][player]
+        print(stats)
 
-        print(turn_sum)
-        #Check for 180
-        match_180s=self.json_data[player]["match_180s"]
-        if (turn_sum==180):
-            match_180s+=1
-        #Find avg score for this turn
-        current_turn_avg=turn_sum/3
-        print(current_turn_avg)
+        if(self.throws == 3):
+            stats["turns"] += 1
+
+            #Average turn score
+            current = stats["sum"]
+            print("sum: " + str(current))
+            new = (current)/stats["turns"]
+            self.updateCurrentGameState.update_current_match_stats(player, "Average Turn Score", new)
+
+            #180s in match
+            current = stats["current"]["180s In Match"]
+            if self.throw_sum == 180:
+                new = stats["current"]["180s In Match"] + 1
+                self.updateCurrentGameState.update_current_match_stats(player, "180s In Match", new)
+
+            #best turn score
+            current = stats["current"]["Best Turn Score"]
+            print(current)
+            if self.throw_sum > current:
+                self.updateCurrentGameState.update_current_match_stats(player, "Best Turn Score", self.throw_sum)
+
+
+
+        #bulls thrown
+        if score == "B" or score == "DB":
+            new = stats["current"]["Bulls Thrown"] + 1
+            self.updateCurrentGameState.update_current_match_stats(player, "Bulls Thrown", new)
+        
+        #T20s thrown
+        if score == "T20":
+            new = stats["current"]["Triple 20s Thrown"] + 1
+            self.updateCurrentGameState.update_current_match_stats(player, "Triple 20s Thrown", new)
+
+        #League
+
+
         #TODO Get avg score per turn and avg score per dart
 
-        self.updateCurrentGameState.update_current_match_stats(player,match_180s,current_turn_avg)
+        #self.updateCurrentGameState.update_current_match_stats(player,match_180s,current_turn_avg)
         self.refresh()
-        pass
 
     # input
     def calculate_winning_throws(self, player):
