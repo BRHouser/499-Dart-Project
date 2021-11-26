@@ -85,6 +85,24 @@ class UpdateCurrentGameState():
             self.content["game"]["current_turn"] = 0
             self.content["stats"]["player2"]["turns"] += 1
 
+    #append "data" object representing throw data to current throw history list
+    def log_throw(self, data):
+        print(data)
+        set = self.content["game"]["current_set"]
+        leg = self.content["game"]["current_leg"]
+
+        print(set)
+        print(leg)
+        print(len(self.content["throwHistory"]))
+
+        if set >= len(self.content["throwHistory"]):
+            self.content["throwHistory"].append([])
+
+        if leg >= len(self.content["throwHistory"][set]):
+            self.content["throwHistory"][set].append([])
+
+        self.content["throwHistory"][set][leg].append(data)
+
     # returns list of displayed match and league stats keys. list[0] = match stats key, list[1] = league stats key
     def get_displayed_stats(self):
         

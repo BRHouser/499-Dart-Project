@@ -12,9 +12,22 @@ class DartRules():
         self.throw_sum = 0
         self.throws = 0
 
+        self.throw_data = {
+            "player": 0,
+            "throws": [],
+            "score": 0
+        }
+
+
+        # TODO: init new throw entry in score history
+
     #input: player string ("player1" or "player2"); score string, ("19" "T20", "DB", etc.) 
     def add_score(self, player, score):
         if not self.bust:
+
+            self.throw_data["player"] = player
+            self.throw_data["throws"].append(score)
+
             self.throws += 1
             registered_score = 0
             score = str(score)
@@ -43,8 +56,11 @@ class DartRules():
             self.refresh()
             self.register_statistics(player, score)
 
+            self.throw_data["score"] = new_score
+
             #check for win
             if new_score == 0:
+                self.updateCurrentGameState.log_throw(self.get_throw_data())
                 self.bust = True #prevent scores from carrying over to next leg
                 self.updateCurrentGameState.leg_win(player)
 
@@ -124,6 +140,10 @@ class DartRules():
 
         #self.updateCurrentGameState.update_current_match_stats(player,match_180s,current_turn_avg)
         self.refresh()
+
+    #return self.throw_data
+    def get_throw_data(self):
+        return self.throw_data
 
     # input
     def calculate_winning_throws(self, player):

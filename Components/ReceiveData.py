@@ -60,12 +60,13 @@ class ReceiveData():
 
         # toggle player
         if(not self.updateCurrentGameState.new_leg):
+            self.updateCurrentGameState.log_throw(dart_rules.get_throw_data())
             self.updateCurrentGameState.toggle_turn()
         else:
             self.updateCurrentGameState.new_leg = False
         # commented out because of keyerror
         #dart_rules.register_statistics(player,scores)
-        print(self.updateCurrentGameState.get_content())
+        
 
         self.updateCurrentGameState.write()
 
