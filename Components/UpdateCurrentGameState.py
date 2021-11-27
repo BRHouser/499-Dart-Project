@@ -50,6 +50,13 @@ class UpdateCurrentGameState():
         reset_score = self.content["game"]["score"]
         self.content["player1"]["score"] = reset_score
         self.content["player2"]["score"] = reset_score
+
+        self.content["player1"]["perfectLeg"] = True
+        self.content["player2"]["perfectLeg"] = True
+
+        self.content["player1"]["possibleOuts"] = ""
+        self.content["player2"]["possibleOuts"] = ""
+
         
         #add leg win to player
         self.content[player]["legsWon"] += 1
@@ -74,6 +81,14 @@ class UpdateCurrentGameState():
         #TODO: which player goes first in the next leg?
         self.content["game"]["current_turn"] = 0
         self.new_leg = True
+
+    #set the perfect leg value for player to val (True or False)
+    def perfect_leg(self, player, val):
+        self.content[player]["perfectLeg"] = val
+
+    #set suggested outs for player. val = string such as "T20, T20, DB"
+    def possible_outs(self, player, val):
+        self.content[player]["possibleOuts"] = "Suggested Outs: " + val
 
     #switch player turns after turn is over
     def toggle_turn(self):

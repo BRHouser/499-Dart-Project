@@ -51,6 +51,14 @@ class DartRules():
             #print("new score: " + str(new_score))
             #print("sum: " + str(self.throw_sum))
             print(self.throws)
+
+            if value != 60:
+                self.updateCurrentGameState.perfect_leg(player, False)
+            if new_score < 170:
+                #outs = ""
+                outs = " ".join(self.calculate_winning_throws(new_score))
+                self.updateCurrentGameState.possible_outs(player, outs)
+
             self.updateCurrentGameState.update_player_score(player, new_score)
 
             self.refresh()
@@ -146,8 +154,7 @@ class DartRules():
         return self.throw_data
 
     # input
-    def calculate_winning_throws(self, player):
-        score = self.updateCurrentGameState.get_player_score(player)
+    def calculate_winning_throws(self, score):
         winning_throws = []
         if (score == 170):
             winning_throws = ['T20', 'T20', 'DB']
@@ -311,5 +318,6 @@ class DartRules():
             winning_throws = ['BO', 'BO', 'D2']
         elif (score == 2):
             winning_throws = ['BO', 'BO', 'D1']
-        pass
+        
+        return winning_throws
     
