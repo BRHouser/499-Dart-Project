@@ -70,6 +70,15 @@ async function closeMatchModal(){
         return
     }
 
+    if(Player2.trim() == Player1.trim())
+    {
+        submit = false;
+        resetSetupMatch();
+        document.getElementById('ErrorText').innerHTML = "Invalid Input: Players are the same";
+        $(notification).modal('toggle');
+        return
+    }
+
     if(Score.trim() == "Score")
     {   
         submit = false;
