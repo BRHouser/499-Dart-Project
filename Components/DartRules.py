@@ -353,16 +353,16 @@ class DartRules():
             winning_throws = ['BO', 'T9', 'D20']
         elif (score == 66):
             winning_throws = ['BO', 'D8', 'DB']
-        elif (score == 65): #ToDO check if it is SB
-            winning_throws = ['BO', 'SB', 'D20']
+        elif (score == 65):
+            winning_throws = ['BO', 'B', 'D20']
         elif (score == 64):
             winning_throws = ['BO', 'D7', 'DB']
         elif (score == 63):
             winning_throws = ['BO', 'T17', 'D6']
         elif (score == 62):
             winning_throws = ['BO', 'D6', 'DB']
-        elif (score == 61): #ToDo check if it is
-            winning_throws = ['BO', 'SB', 'D18']
+        elif (score == 61):
+            winning_throws = ['BO', 'B', 'D18']
         elif (score == 60):
             winning_throws = ['BO', 'D5', 'DB']
         elif (score == 59):
