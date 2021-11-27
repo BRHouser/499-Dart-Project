@@ -232,8 +232,9 @@ class DartRules():
             winning_throws = ['T19', 'T16', 'D12']
         elif (score == 126):
             winning_throws = ['D8', 'T20', 'DB']
-        elif (score == 125): # TODO:Check the single bull
-            winning_throws = ['SB','T20','D20']
+        elif (score == 125): # TODO:Check the single bull.. 
+            #Ben: single bull is 'B'
+            winning_throws = ['B','T20','D20']
         elif (score == 124):
             winning_throws = ['D7', 'T20', 'DB']
         elif (score == 123):

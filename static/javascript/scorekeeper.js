@@ -13,6 +13,7 @@ let won = false
 let request_data = {"first_read": true}
 
 let last_leg_wins = 0
+let loop = true
 
 initial();
 
@@ -26,42 +27,50 @@ async function initial() {
         nextTurn();
     })
 
-    while(!won) {
+    while(loop) {
         received = false;
         // sync with server
         let game_data = await requestGameState();
-        //console.log(JSON.stringify(game_data["throwHistory"]))
-        
-        // fill in throw history with server data
 
-        $("#reviewThrows").empty()
+        if(Object.keys(game_data).length === 0) {
+            alert("no game");
+            //TODO: popup that prompts return to home screen
+            won = true;
+        }
+        else {
+            //console.log(JSON.stringify(game_data["throwHistory"]))
+            
+            // fill in throw history with server data
 
-        var current_set = game_data["game"]["current_set"]
+            $("#reviewThrows").empty()
 
-        for(var i = 0; i < current_set+1; i++) { // set loop
-            if(game_data["throwHistory"][i] != null) {
-                for(var j = 0; j < game_data["throwHistory"][i].length; j++) { // leg loop   
-                    if(game_data["throwHistory"][i][j] != null) {
-                        temp_length = game_data["throwHistory"][i][j].length
-                        for(var k = 0; k < temp_length; k++) { // turn loop
-                            //console.log(temp_length)
-                            if(k % 2 != 0) {
-                                buildTable(game_data["throwHistory"][i][j][k-1],
-                                        game_data["throwHistory"][i][j][k],
-                                        i, j, (k+1)/2);
-                            }
-                            else {
-                                //check for win
-                                if(game_data["throwHistory"][i][j][k]["score"] == 0) {
-                                    console.log("leg win " + game_data["throwHistory"][i][j][k]["player"])
+            var current_set = game_data["game"]["current_set"]
 
-                                    var empty = {"throws":["","",""], "score": game_data["throwHistory"][i][j][k-1]["score"]}
+            for(var i = 0; i < current_set+1; i++) { // set loop
+                if(game_data["throwHistory"][i] != null) {
+                    for(var j = 0; j < game_data["throwHistory"][i].length; j++) { // leg loop   
+                        if(game_data["throwHistory"][i][j] != null) {
+                            temp_length = game_data["throwHistory"][i][j].length
+                            for(var k = 0; k < temp_length; k++) { // turn loop
+                                //console.log(temp_length)
+                                if(k % 2 != 0) {
+                                    buildTable(game_data["throwHistory"][i][j][k-1],
+                                            game_data["throwHistory"][i][j][k],
+                                            i, j, (k+1)/2);
+                                }
+                                else {
+                                    //check for win
+                                    if(game_data["throwHistory"][i][j][k]["score"] == 0) {
+                                        console.log("leg win " + game_data["throwHistory"][i][j][k]["player"])
 
-                                    if(game_data["throwHistory"][i][j][k]["player"] == "player1") {
-                                        buildTable(game_data["throwHistory"][i][j][k], empty, i, j, (k/2)+1);
-                                    }
-                                    else {
-                                        buildTable(empty, game_data["throwHistory"][i][j][k], i, j, (k/2)+1);
+                                        var empty = {"throws":["","",""], "score": game_data["throwHistory"][i][j][k-1]["score"]}
+
+                                        if(game_data["throwHistory"][i][j][k]["player"] == "player1") {
+                                            buildTable(game_data["throwHistory"][i][j][k], empty, i, j, (k/2)+1);
+                                        }
+                                        else {
+                                            buildTable(empty, game_data["throwHistory"][i][j][k], i, j, (k/2)+1);
+                                        }
                                     }
                                 }
                             }
@@ -92,7 +101,7 @@ function sendData(data) {
 }
 
 function registerThrow(user_throw, e) {
-    if(throws[current_player].length < 3) {
+    if(throws[current_player].length < 3 && !won) {
 
         if(e != undefined) {
             var sidebar_width = $("#side-menu").outerWidth();

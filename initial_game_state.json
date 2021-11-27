@@ -5,7 +5,9 @@
         "current_turn": 0,
         "sets": 0,
         "legs": 0,
-        "score": 0
+        "score": 0,
+        "won": false,
+        "winner": ""
     },
     "player1": {
         "name": "",

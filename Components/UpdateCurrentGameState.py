@@ -1,4 +1,6 @@
 import json
+import os
+import time
 
 class UpdateCurrentGameState():
 
@@ -6,8 +8,11 @@ class UpdateCurrentGameState():
         self.json_path = "current_game_state.json"
         self.new_leg = False
         print("init updater")
-        with open(self.json_path) as data:
-            self.content = json.loads(data.read())
+        try:
+            with open(self.json_path) as data:
+                self.content = json.loads(data.read())
+        except FileNotFoundError:
+            print("Game not initialized")
 
     #create initial current_game_state json
     def initalize_game(self, data):
@@ -42,6 +47,10 @@ class UpdateCurrentGameState():
 
         self.content["stats"][player]["current"][key] = value
 
+    def update_league_stats(self, player, key, value):
+        #TODO fill in to update archive with lifetime stats
+        pass
+
 
     # call when a player's score hits 0; input: player string "player1" or "player2"
     def leg_win(self, player):
@@ -63,6 +72,8 @@ class UpdateCurrentGameState():
         self.content["game"]["current_leg"] += 1
         
         #check for set win
+        game_win = False
+
         if self.content[player]["legsWon"] == self.content["game"]["legs"]:
             #reset legs won
             print(player + " wins the set!")
@@ -77,10 +88,27 @@ class UpdateCurrentGameState():
             if self.content[player]["setsWon"] == self.content["game"]["sets"]:
                 print(player + "wins the game!")
                 #TODO: add win state
+                game_win = True
+                self.game_over(player)
 
         #TODO: which player goes first in the next leg?
-        self.content["game"]["current_turn"] = 0
-        self.new_leg = True
+
+        if not game_win:
+            self.content["game"]["current_turn"] = 0
+            self.new_leg = True
+
+    def game_over(self, player):
+        self.content["game"]["won"] = True
+        self.content["game"]["winner"] = player
+        self.write()
+
+        #wait for scoreboard and scorekeeper to download current_game_state.json
+        time.sleep(1)
+        #register game to archive
+        print("delete game state")
+        #os.remove(self.json_path)
+        self.content = {}
+        self.write()
 
     #set the perfect leg value for player to val (True or False)
     def perfect_leg(self, player, val):
