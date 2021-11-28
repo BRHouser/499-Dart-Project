@@ -15,6 +15,9 @@ let request_data = {"first_read": true}
 let last_leg_wins = 0
 let loop = true
 
+let names = ["Player 1", "Player2"]
+
+
 initial();
 
 async function initial() {
@@ -32,21 +35,23 @@ async function initial() {
         // sync with server
         let game_data = await requestGameState();
 
-        if(Object.keys(game_data).length === 0) {
+        if(Object.keys(game_data).length === 0) { // no game in progress
             //alert("no game");
-            //TODO: popup that prompts return to home screen
             $("#noGameModal").modal("show");
             won = true;
         }
-        else {
-            //console.log(JSON.stringify(game_data["throwHistory"]))
+        else { // game in progress
             
-            // fill in throw history with server data
+            //collect player names
+            names[0] = game_data["player1"]["name"]
+            names[1] = game_data["player2"]["name"]
 
+            // fill in throw history with server data
             $("#reviewThrows").empty()
 
             var current_set = game_data["game"]["current_set"]
 
+            //loop through sets, legs, throws to fill in history
             for(var i = 0; i < current_set+1; i++) { // set loop
                 if(game_data["throwHistory"][i] != null) {
                     for(var j = 0; j < game_data["throwHistory"][i].length; j++) { // leg loop   
@@ -79,19 +84,23 @@ async function initial() {
                     }
                 }
             }
-        }
 
-        // if turn is out of sync or a new leg has begun
-        if(current_player != game_data["game"]["current_turn"] || last_leg_wins != game_data["player1"]["legsWon"] + game_data["player2"]["legsWon"]) {
-            current_player = game_data["game"]["current_turn"]
-            throws = [[],[]]
-            throw_icons = [];
-            previous_state = [[],[],[],[]];
-            previous_icons = [[],[],[],[]];
-            turnUpdate();
+            // if turn is out of sync or a new leg has begun
+            if(current_player != game_data["game"]["current_turn"] || last_leg_wins != game_data["player1"]["legsWon"] + game_data["player2"]["legsWon"]) {
+                current_player = game_data["game"]["current_turn"]
+                throws = [[],[]]
+                throw_icons = [];
+                previous_state = [[],[],[],[]];
+                previous_icons = [[],[],[],[]];
+                turnUpdate();
+            }
+            else {
+                var label_str = names[current_player] + ", Throw " + (throws[current_player].length + 1);
+                $("#player-label").text(label_str);
+            }
+            received = true;
+            last_leg_wins = game_data["player1"]["legsWon"] + game_data["player2"]["legsWon"]
         }
-        received = true;
-        last_leg_wins = game_data["player1"]["legsWon"] + game_data["player2"]["legsWon"]
     }
 }
 
@@ -170,7 +179,7 @@ function nextTurn() {
 }
 
 function turnUpdate() {
-    var label_str = "Player " + (current_player + 1) + ", Throw " + (throws[current_player].length + 1);
+    var label_str = names[current_player] + ", Throw " + (throws[current_player].length + 1);
     $("#player-label").text(label_str);
 
     if(throws[current_player].length < 3) {
@@ -190,6 +199,7 @@ function turnUpdate() {
 
 }
 
+//update preview display
 function mouseoverBoard(board_section) {
     //console.log(board_section)
     $("#score-preview").text(board_section)
@@ -271,27 +281,39 @@ function requestGameState() {
 
 //Input: player1 throw data and player2 throw data. runs after both players throw
 function buildTable(player1, player2, set, leg, turn) {
-    console.log("Build table")
-    console.log(player1)
-    console.log(player2)
+    //console.log("Build table")
+    //console.log(player1)
+    //console.log(player2)
+
+    //swap player data if out of order
+    if(player1["player"] == "player2") {
+        let temp = player1
+        player1 = player2
+        player2 = temp
+    }
 
     newTable(set, leg, turn)
-    var id = "tbody" + set + leg + turn
+    var id = "tbody" + set + leg + turn;
 
     for(var i = 0; i < 3; i++) {
         if(player1["throws"].length < i) { //player 1 did not complete 3 throws
-            appendTableRow(i+1, "", player2["throws"][i], id)
+            appendTableRow(i+1, "", player2["throws"][i], id);
         }
         else if(player2["throws"].length < i) {  //player 2 did not complete 3 throws
-            appendTableRow(i+1, player1["throws"][i], "", id)
+            appendTableRow(i+1, player1["throws"][i], "", id);
         }
         else {
-            appendTableRow(i+1, player1["throws"][i], player2["throws"][i], id) 
+            appendTableRow(i+1, player1["throws"][i], player2["throws"][i], id) ;
         }
     }
-    appendTableRow("Final Score", player1["score"], player2["score"], id)
-    endTableRow()
-    //newTable()
+    appendTableRow("Final Score", player1["score"], player2["score"], id);
+    endTableRow();
+
+
+    //move table to top of list
+    var table = $("#table" + set + leg + turn);
+    $("#reviewThrows").prepend(table);
+
 }
 
 //Functions to add content to throw review tables
@@ -299,9 +321,17 @@ function newTable(set, leg, turn) {
     var template = document.querySelector("#throw-header")
     var clone = template.content.cloneNode(true)
 
+    var table = clone.querySelector("div")
+    table.id = "table" + set + leg + turn
+
     //add turn header
     var h = clone.querySelector("h4")
     h.textContent = "Set " + set + ", Leg " + leg + ", Turn " + turn;
+
+    var th = clone.querySelectorAll("th")
+    th[1].textContent = names[0]
+    th[2].textContent = names[1]
+
 
     var tbody = clone.querySelector("tbody")
     tbody.id = "tbody" + set + leg + turn

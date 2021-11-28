@@ -94,7 +94,14 @@ class UpdateCurrentGameState():
         #TODO: which player goes first in the next leg?
 
         if not game_win:
-            self.content["game"]["current_turn"] = 0
+            last = self.content["game"]["lastStarter"]
+            if(last == 0):
+                self.content["game"]["current_turn"] = 1
+                self.content["game"]["lastStarter"] = 1
+            else:
+                self.content["game"]["current_turn"] = 0
+                self.content["game"]["lastStarter"] = 0
+                
             self.new_leg = True
 
     def game_over(self, player):
