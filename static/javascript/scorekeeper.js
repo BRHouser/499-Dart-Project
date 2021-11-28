@@ -30,6 +30,8 @@ async function initial() {
         nextTurn();
     })
 
+    $("#foulButton").click(foul);
+
     while(loop) {
         received = false;
         // sync with server
@@ -92,6 +94,8 @@ async function initial() {
                 throw_icons = [];
                 previous_state = [[],[],[],[]];
                 previous_icons = [[],[],[],[]];
+                $("#throw-icon-container").empty();
+                throwDisplayUpdate();
                 turnUpdate();
             }
             else {
@@ -189,7 +193,7 @@ function turnUpdate() {
     //update knock out dropdown for next player
     $("#knockoutDropdownContainer").empty();
 
-    for(let i = 0; i < throws[current_player].length; i++) {
+    for(let i = 0; i < throws[current_player].length; i++) { // fill in knockout dropdown
         var element = document.createElement("a");
         element.className = "dropdown-item";
         element.textContent = "Throw " + (i + 1) + ": " + throws[current_player][i];
@@ -225,20 +229,28 @@ function undo() { //undo last entered score
     //pop the previous player's recent throw
     if(throws[current_player].length != 0) {
 
-        throw_icons = previous_icons[throws[current_player].length-1].slice(0);
-        //let icon = throw_icons.pop();
-        //if(icon != undefined)
-        //    icon.remove();
-        $("#throw-icon-container").empty();
-        throw_icons.forEach(icon => $("#throw-icon-container").append(icon));
-               
-        throws[current_player] = previous_state[throws[current_player].length-1].slice(0);
+        if(throws[current_player].includes("F")) { // reset everything to undo foul
+            console.log("undo foul")
+            throws = [[],[]]
+            throw_icons = [];
+            previous_state = [[],[],[],[]];
+            previous_icons = [[],[],[],[]];
+            throwDisplayUpdate();
+            turnUpdate();
+        }
+        else {
+            throw_icons = previous_icons[throws[current_player].length-1].slice(0);
+            $("#throw-icon-container").empty();
+            throw_icons.forEach(icon => $("#throw-icon-container").append(icon));
+                
+            throws[current_player] = previous_state[throws[current_player].length-1].slice(0);
 
-        //reupdate throw display
-        throwDisplayUpdate();
+            //reupdate throw display
+            throwDisplayUpdate();
 
-        turnUpdate();
-        //console.log(throws)
+            turnUpdate();
+            //console.log(throws)
+        }
     }
 }
 
@@ -251,6 +263,22 @@ function knockOut(throw_num) { //replace throw at throw_num with 0 to represent 
     throw_icons[throw_num] = undefined;
     
     //disable dropdown after knockOut set (reset after throw)
+}
+
+//set throws to all fouls and end turn
+function foul() {
+    if(throws[current_player].length < 3) {
+        $("#throw-icon-container").empty();
+        console.log("foul")
+        throws[current_player] = ["F", "F", "F"]
+        throwDisplayUpdate()
+        if(throws[current_player].length == 3) {
+            //console.log("remove disabled")
+            $("#nextturn-button").removeClass("disabled")
+        }
+    }
+
+    //turnUpdate();
 }
 
 // Update displayed stats on scoreboard. new_stats is string representing the stat to be displayed

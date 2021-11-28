@@ -22,7 +22,7 @@ async function updateGameState() {
 
         let player1 = game_data["player1"]
         $("#p1-score").text(player1["score"]);
-        $('#p1-legs-won').text("Legs won in current set: " + player1["legsWon"] + ", Sets won: " + player1["setsWon"])
+        $('#p1-legs-won').text("Legs: " + player1["legsWon"] + " / " +  game_data["game"]["legs"] + ", Sets: " + player1["setsWon"] + " / " + game_data["game"]["sets"])
         $("#p1-league-stats").text(player1["leagueStats"]);
         $("#p1-match-stats").text(player1["matchStats"]);
         $("#p1-outs").text(player1["possibleOuts"]);
@@ -36,7 +36,7 @@ async function updateGameState() {
 
         let player2 = game_data["player2"]
         $("#p2-score").text(player2["score"]);
-        $('#p2-legs-won').text("Legs won in current set: " + player2["legsWon"] + ", Sets won: " + player2["setsWon"])
+        $('#p2-legs-won').text("Legs: " + player2["legsWon"] + " / " +  game_data["game"]["legs"] + ", Sets: " + player2["setsWon"] + " / " + game_data["game"]["sets"])
         $("#p2-league-stats").text(player2["leagueStats"]);
         $("#p2-match-stats").text(player2["matchStats"]);
         $("#p2-outs").text(player2["possibleOuts"]);
@@ -48,8 +48,18 @@ async function updateGameState() {
             $("#p2-perfect-leg").text("");
         }
 
-        $("#leg-header").text("Leg: " + game_data["game"]["current_leg"] + " / "  + game_data["game"]["legs"])
-        $("#set-header").text("Set: " + game_data["game"]["current_set"] + " / "  + game_data["game"]["sets"])
+        $("#main-header").text(player1["name"] + " vs. " + player2["name"])
+        //$("#leg-header").text("Best of " + game_data["game"]["legs"] + "legs")
+        //$("#set-header").text("Best of " + game_data["game"]["sets"] + "sets")
+
+        if(game_data["game"]["current_turn"] == 0) {
+            $("#p1-throwing").text("Now throwing")
+            $("#p2-throwing").text("")
+        }
+        else {
+            $("#p2-throwing").text("Now throwing")
+            $("#p1-throwing").text("")
+        }
 
         if(game_data["game"]["won"]) {
             //alert(game_data["game"]["winner"])
@@ -60,7 +70,8 @@ async function updateGameState() {
             $("#p1-league-stats").text("");
             $("#p1-match-stats").text("");
             $("#p1-outs").text("");
-            $("#p2-perfect-leg").text("");
+            $("#p1-perfect-leg").text("");
+            $("#p1-throwing").text("");
             
             $("#p2-score").text("");
             $('#p2-legs-won').text("");
@@ -68,6 +79,7 @@ async function updateGameState() {
             $("#p2-match-stats").text("");
             $("#p2-outs").text("");
             $("#p2-perfect-leg").text("");
+            $("#p2-throwing").text("");
 
 
             if(winner == "player1") {
