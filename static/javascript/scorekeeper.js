@@ -33,8 +33,9 @@ async function initial() {
         let game_data = await requestGameState();
 
         if(Object.keys(game_data).length === 0) {
-            alert("no game");
+            //alert("no game");
             //TODO: popup that prompts return to home screen
+            $("#noGameModal").modal("show");
             won = true;
         }
         else {
@@ -123,22 +124,47 @@ function registerThrow(user_throw, e) {
             previous_icons[throws[current_player].length] = throw_icons.slice(0);
             throw_icons.push(undefined);
         }
-        previous_state[throws[current_player].length] = throws[current_player].slice(0)
+        previous_state[throws[current_player].length] = throws[current_player].slice(0);
         //console.log(previous_state)
 
         //console.log("Throw: " + user_throw)
-        throws[current_player].push(user_throw)
+        throws[current_player].push(user_throw);
+
+        //update throw display
+        throwDisplayUpdate();
 
         //prepare for next throw
         if(throws[current_player].length < 3)
             turnUpdate();
         //console.log(throws);
     }
+    if(throws[current_player].length == 3) {
+        //console.log("remove disabled")
+        $("#nextturn-button").removeClass("disabled")
+    }
+}
+
+function throwDisplayUpdate() {
+    let t = throws[current_player];
+    
+
+    if(t.length == 0) {
+        
+        $("#throwsDisplayHeader").css("display", "none");
+    }
+    else {
+        $("#throwsDisplayHeader").css("display", "block");
+    }
+
+    let text = t.join(", ");
+    console.log(text)
+    $("#throwsDisplay").text(text);
 }
 
 function nextTurn() {
     if(throws[current_player].length == 3) {
         $("#throw-icon-container").empty();
+        $("#nextturn-button").addClass("disabled")
         sendThrow();   
     }
 }
@@ -146,6 +172,10 @@ function nextTurn() {
 function turnUpdate() {
     var label_str = "Player " + (current_player + 1) + ", Throw " + (throws[current_player].length + 1);
     $("#player-label").text(label_str);
+
+    if(throws[current_player].length < 3) {
+        $("#nextturn-button").addClass("disabled")
+    } //re-disable next turn button
 
     //update knock out dropdown for next player
     $("#knockoutDropdownContainer").empty();
@@ -183,7 +213,6 @@ function sendThrow() { //send scores to server after one player completes their 
 
 function undo() { //undo last entered score
     //pop the previous player's recent throw
-    //toggle current player
     if(throws[current_player].length != 0) {
 
         throw_icons = previous_icons[throws[current_player].length-1].slice(0);
@@ -192,9 +221,12 @@ function undo() { //undo last entered score
         //    icon.remove();
         $("#throw-icon-container").empty();
         throw_icons.forEach(icon => $("#throw-icon-container").append(icon));
-        
-
+               
         throws[current_player] = previous_state[throws[current_player].length-1].slice(0);
+
+        //reupdate throw display
+        throwDisplayUpdate();
+
         turnUpdate();
         //console.log(throws)
     }
