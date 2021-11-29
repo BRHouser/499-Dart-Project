@@ -118,6 +118,7 @@ class DartRules():
             current = stats["sum"]
             print("sum: " + str(current))
             new = (current)/stats["turns"]
+            new = round(new, 2)
             self.updateCurrentGameState.update_current_match_stats(player, "Average Turn Score", new)
 
             #180s in match
