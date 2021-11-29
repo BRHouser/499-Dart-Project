@@ -1,6 +1,6 @@
-function addMatch(P1Name, P2Name, ScoreLimit, MatchType, NumbersOfSets, NumberOfLegs, Location, DateOfMatch)
+function addMatch(P1Name, P2Name, ScoreLimit, MatchType, NumbersOfSets, NumberOfLegs, Location, Official, DateOfMatch)
 { 
-    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, SetNumber:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), Location:Location, DateOfMatch:DateOfMatch}
+    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, SetNumber:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), MatchOfficial:Official, Location:Location, DateOfMatch:DateOfMatch}
     const request = new XMLHttpRequest();
     request.open('POST', '/addMatch');
     request.send(JSON.stringify(data));
@@ -31,7 +31,7 @@ function resetSetupMatch()
     document.getElementById("MatchTypeSelect").selectedIndex = 0;
     document.getElementById("NumberOfSets").value = 0;
     document.getElementById("NumberOfLegs").value = 0;
-    document.getElementById("MatchLocation").value = "";
+    document.getElementById("Official").value = "";
     document.getElementById("MatchLocation").value = "";
     document.getElementById("MatchDate").value = ""; ///////////////////////////////////
 
@@ -48,6 +48,7 @@ async function closeMatchModal(){
     var MatchType = document.getElementById("MatchTypeSelect").value;
     var NumberOfSets = document.getElementById("NumberOfSets").value;
     var NumberOfLegs = document.getElementById("NumberOfLegs").value;
+    var OfficialMatch = document.getElementById("Official").value;
     var Location = document.getElementById("MatchLocation").value;
     var Date = document.getElementById("MatchDate").value;
     
@@ -115,6 +116,15 @@ async function closeMatchModal(){
         return
     }
 
+    if(OfficialMatch.trim() == "")
+    {   
+        submit = false;
+        resetSetupMatch();
+        document.getElementById('ErrorText').innerHTML = "Invalid Input: Official Name";
+        $(notification).modal('toggle');
+        return
+    }
+
     if(Location.trim() == "")
     {   
         submit = false;
@@ -136,11 +146,11 @@ async function closeMatchModal(){
     //if everything is correct then submit the information
     if(submit)
     {
-        let response = await addMatch(Player1, Player2, Score, MatchType, NumberOfSets, NumberOfLegs, Location, Date);
+        let response = await addMatch(Player1, Player2, Score, MatchType, NumberOfSets, NumberOfLegs, OfficialMatch, Location, Date);
         if(response == "True")
         {
             resetSetupMatch();
-            $(popup).modal('toggle');
+            //$(popup).modal('toggle');
         }
     }
 }

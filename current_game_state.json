@@ -3,28 +3,62 @@
         "current_set": 0,
         "current_leg": 0,
         "current_turn": 0,
-        "sets": "2",
-        "legs": "5",
-        "score": "801"
+        "sets": 2,
+        "legs": 2,
+        "score": 301,
+        "won": false,
+        "winner": "",
+        "lastStarter": 0
     },
     "player1": {
         "name": "Anthony Dohogne",
-        "score": "801",
+        "score": "301",
         "leagueStats": "",
-        "matchStats": "",
+        "matchStats": "Average Turn Score: 0",
         "perfectLeg": true,
-        "possibleOuts": ""
+        "possibleOuts": "",
+        "setsWon": 0,
+        "legsWon": 0
     },
     "player2": {
         "name": "Test Test",
-        "score": "801",
+        "score": "301",
         "leagueStats": "",
-        "matchStats": "",
+        "matchStats": "Average Turn Score: 0",
         "perfectLeg": true,
-        "possibleOuts": ""
+        "possibleOuts": "",
+        "setsWon": 0,
+        "legsWon": 0
     },
     "stats": {
-        "player1": {},
-        "player2": {}
-    }
+        "player1": {
+            "turns": 0,
+            "sum": 0,
+            "current": {
+                "Average Turn Score": 0,
+                "180s In Match": 0,
+                "Best Turn Score": 0,
+                "Bulls Thrown": 0,
+                "Triple 20s Thrown": 0
+            },
+            "league": {}
+        },
+        "player2": {
+            "turns": 0,
+            "sum": 0,
+            "current": {
+                "Average Turn Score": 0,
+                "180s In Match": 0,
+                "Best Turn Score": 0,
+                "Bulls Thrown": 0,
+                "Triple 20s Thrown": 0
+            },
+            "league": {}
+        }
+    },
+    "throwHistory": [
+        [
+            []
+        ]
+    ]
 }

@@ -155,9 +155,9 @@ def addMatch():
 	#print(data)
 	game_setup = GameSetup.GameSetup(data)
 	#Adds the match created to current_match
-	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["Location"], data["DateOfMatch"]]
-	database.add_information(database_connection, "Current_Match", [row])
-	return ""
+	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["Location"],  data["MatchOfficial"],  data["DateOfMatch"]]
+	database.add_information(database_connection, "List_Matches", [row])
+	return "True"
 
 # Main Start Server
 if __name__ == '__main__':
