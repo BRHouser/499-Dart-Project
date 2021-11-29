@@ -1,6 +1,6 @@
 //game data: json object following this scheme:
 
-let won = false;
+let loop = true;
 let received = false;
 
 let data = {"first_read": true}
@@ -8,7 +8,7 @@ let data = {"first_read": true}
 mainLoop();
 
 async function mainLoop() {
-    while(!won) {
+    while(loop) {
         await updateGameState();
     }
 }
@@ -20,9 +20,16 @@ async function updateGameState() {
     if(Object.keys(game_data).length != 0) {
         //TODO: display match location, date, and game info in header
 
+        let sets_num = game_data["game"]["sets"]
+
         let player1 = game_data["player1"]
         $("#p1-score").text(player1["score"]);
-        $('#p1-legs-won').text("Legs: " + player1["legsWon"] + " / " +  game_data["game"]["legs"] + ", Sets: " + player1["setsWon"] + " / " + game_data["game"]["sets"])
+        if(sets_num > 1) {
+            $('#p1-legs-won').text("Legs: " + player1["legsWon"] + " / " +  game_data["game"]["legs"] + ", Sets: " + player1["setsWon"] + " / " + game_data["game"]["sets"])
+        }
+        else {
+            $('#p1-legs-won').text("Legs: " + player1["legsWon"] + " / " +  game_data["game"]["legs"])
+        }
         $("#p1-league-stats").text(player1["leagueStats"]);
         $("#p1-match-stats").text(player1["matchStats"]);
         $("#p1-outs").text(player1["possibleOuts"]);
@@ -36,8 +43,12 @@ async function updateGameState() {
 
         let player2 = game_data["player2"]
         $("#p2-score").text(player2["score"]);
-        $('#p2-legs-won').text("Legs: " + player2["legsWon"] + " / " +  game_data["game"]["legs"] + ", Sets: " + player2["setsWon"] + " / " + game_data["game"]["sets"])
-        $("#p2-league-stats").text(player2["leagueStats"]);
+        if(sets_num > 1) {
+            $('#p2-legs-won').text("Legs: " + player2["legsWon"] + " / " +  game_data["game"]["legs"] + ", Sets: " + player2["setsWon"] + " / " + game_data["game"]["sets"])
+        }
+        else {
+            $('#p2-legs-won').text("Legs: " + player2["legsWon"] + " / " +  game_data["game"]["legs"])
+        }        $("#p2-league-stats").text(player2["leagueStats"]);
         $("#p2-match-stats").text(player2["matchStats"]);
         $("#p2-outs").text(player2["possibleOuts"]);
         $("#p2-name").text(player2["name"]);

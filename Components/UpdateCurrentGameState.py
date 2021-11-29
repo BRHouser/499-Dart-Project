@@ -101,7 +101,7 @@ class UpdateCurrentGameState():
             else:
                 self.content["game"]["current_turn"] = 0
                 self.content["game"]["lastStarter"] = 0
-                
+
             self.new_leg = True
 
     def game_over(self, player):
@@ -123,7 +123,7 @@ class UpdateCurrentGameState():
 
     #set suggested outs for player. val = string such as "T20, T20, DB"
     def possible_outs(self, player, val):
-        self.content[player]["possibleOuts"] = "Suggested Outs: " + val
+        self.content[player]["possibleOuts"] = "Outs: " + val
 
     #switch player turns after turn is over
     def toggle_turn(self):

@@ -52,6 +52,7 @@ async function initial() {
             $("#reviewThrows").empty()
 
             var current_set = game_data["game"]["current_set"]
+            var sets = game_data["game"]["sets"]
 
             //loop through sets, legs, throws to fill in history
             for(var i = 0; i < current_set+1; i++) { // set loop
@@ -64,7 +65,7 @@ async function initial() {
                                 if(k % 2 != 0) {
                                     buildTable(game_data["throwHistory"][i][j][k-1],
                                             game_data["throwHistory"][i][j][k],
-                                            i, j, (k+1)/2);
+                                            i, j, (k+1)/2, sets);
                                 }
                                 else {
                                     //check for win
@@ -74,10 +75,10 @@ async function initial() {
                                         var empty = {"throws":["","",""], "score": game_data["throwHistory"][i][j][k-1]["score"]}
 
                                         if(game_data["throwHistory"][i][j][k]["player"] == "player1") {
-                                            buildTable(game_data["throwHistory"][i][j][k], empty, i, j, (k/2)+1);
+                                            buildTable(game_data["throwHistory"][i][j][k], empty, i, j, (k/2)+1), sets;
                                         }
                                         else {
-                                            buildTable(empty, game_data["throwHistory"][i][j][k], i, j, (k/2)+1);
+                                            buildTable(empty, game_data["throwHistory"][i][j][k], i, j, (k/2)+1, sets);
                                         }
                                     }
                                 }
@@ -308,11 +309,12 @@ function requestGameState() {
 }
 
 //Input: player1 throw data and player2 throw data. runs after both players throw
-function buildTable(player1, player2, set, leg, turn) {
+function buildTable(player1, player2, set, leg, turn, sets) {
     //console.log("Build table")
     //console.log(player1)
     //console.log(player2)
 
+    
     //swap player data if out of order
     if(player1["player"] == "player2") {
         let temp = player1
@@ -320,7 +322,7 @@ function buildTable(player1, player2, set, leg, turn) {
         player2 = temp
     }
 
-    newTable(set, leg, turn)
+    newTable(set, leg, turn, sets)
     var id = "tbody" + set + leg + turn;
 
     for(var i = 0; i < 3; i++) {
@@ -345,7 +347,7 @@ function buildTable(player1, player2, set, leg, turn) {
 }
 
 //Functions to add content to throw review tables
-function newTable(set, leg, turn) {
+function newTable(set, leg, turn, sets) {
     var template = document.querySelector("#throw-header")
     var clone = template.content.cloneNode(true)
 
@@ -354,7 +356,11 @@ function newTable(set, leg, turn) {
 
     //add turn header
     var h = clone.querySelector("h4")
-    h.textContent = "Set " + set + ", Leg " + leg + ", Turn " + turn;
+    h.textContent = "Leg " + (leg+1) + ", Turn " + turn;
+    if(sets > 1) {
+        h.textContent = "Set " + (set+1) + ", Leg " + (leg+1) + ", Turn " + turn;
+    }
+
 
     var th = clone.querySelectorAll("th")
     th[1].textContent = names[0]

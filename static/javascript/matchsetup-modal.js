@@ -154,3 +154,13 @@ async function closeMatchModal(){
         }
     }
 }
+
+//display sets selector for championship play
+function showSets() {
+    $("#setsPicker").show();
+}
+
+//hide sets selector for normal play
+function hideSets() {
+    $("#setsPicker").hide();
+}

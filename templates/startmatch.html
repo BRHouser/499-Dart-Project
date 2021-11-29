@@ -127,7 +127,7 @@
                             <div class="col-xs-2 margin-inputtext">
                                 <div class="dropdown">
                                     <button onClick = "javascript:getPlayers('1')" class="btn dropdown-toggle" type="button" id="ChoosePlayerDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        CHOOSE PLAYER
+                                        Choose Player
                                     </button>
                                     <div id = "dynamic-dropdown1" class="dropdown-menu" aria-labelledby="ChoosePlayerDropdown1">
                                       <a class="dropdown-item" href="#"></a>
@@ -212,23 +212,23 @@
                             <div class="col-xs-2 margin-inputtext">
                             <div class="mdb-select md-form">
                                 <select class="form-control" id="MatchTypeSelect">
-                                <option value="" disabled selected>Match Type</option>
-                                  <option>Tournament</option>
-                                  <option>Game</option>
+                                    <option value="" disabled selected>Match Type</option>
+                                    <option onClick="javascript:hideSets()">Game</option>
+                                    <option onClick="javascript:showSets()">Championship</option>
                                 </select>
                             </div>
                         </div>
                         </div>
 
                 <div class="form-group row">
-                    <div class="col-xs-2 margin-inputtext">
+                    <div id="setsPicker" class="col-xs-2 margin-inputtext" style="display: none">
                         <label for="NumberOfSets"> Number of Sets:</label>
-                        <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfSets">
+                        <input placeholder = 1 type="number" class="form-control" min=1 id="NumberOfSets">
                     </div>
                 
                     <div class="col-xs-2 margin-inputtext">
                         <label for="NumberOfLegs"> Number of Legs:</label>
-                        <input placeholder = 0 type="number" class="form-control" min=0 id="NumberOfLegs">
+                        <input placeholder = 1 type="number" class="form-control" min=1 id="NumberOfLegs">
                     </div>
                 </div>
                 <div class="form-group row">

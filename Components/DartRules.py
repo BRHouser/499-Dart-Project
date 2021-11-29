@@ -234,7 +234,7 @@ class DartRules():
             winning_throws = ['D8', 'T20', 'DB']
         elif (score == 125): # TODO:Check the single bull.. 
             #Ben: single bull is 'B'
-            winning_throws = ['B','T20','D20']
+            winning_throws = ['25','T20','D20']
         elif (score == 124):
             winning_throws = ['D7', 'T20', 'DB']
         elif (score == 123):
@@ -264,7 +264,7 @@ class DartRules():
         elif (score == 111):
             winning_throws = ['T19', '14', 'D20']
         elif (score == 110):
-            winning_throws = ['BO', 'T20', 'DB']
+            winning_throws = [ 'T20', 'DB']
         elif (score == 109):
             winning_throws = ['T20', '9', 'D20']
         elif (score == 108):
@@ -276,7 +276,7 @@ class DartRules():
         elif (score == 105):
             winning_throws = ['T19', '8', 'D20']
         elif (score == 104):
-            winning_throws = ['BO', 'T18', 'DB']
+            winning_throws = [ 'T18', 'DB']
         elif (score == 103):
             winning_throws = ['T19', '6', 'D20']
         elif (score == 102):
@@ -284,203 +284,203 @@ class DartRules():
         elif (score == 101):
             winning_throws = ['T20', '9', 'D16']
         elif (score == 100):
-            winning_throws = ['BO', 'DB', 'DB']
+            winning_throws = [ 'DB', 'DB']
         elif (score == 99):
             winning_throws = ['T19', '10', 'D16']
         elif (score == 98):
-            winning_throws = ['BO', 'T16', 'DB']
+            winning_throws = [ 'T16', 'DB']
         elif (score == 97):
-            winning_throws = ['BO', 'T19', 'D20']
+            winning_throws = [ 'T19', 'D20']
         elif (score == 96):
             winning_throws = ['1', 'T15', 'DB']
         elif (score == 95):
-            winning_throws = ['BO', 'T19', 'D19']
+            winning_throws = [ 'T19', 'D19']
         elif (score == 94):
             winning_throws = ['D1', 'T14', 'DB']
         elif (score == 93):
-            winning_throws = ['BO', 'T19', 'D18']
+            winning_throws = [ 'T19', 'D18']
         elif (score == 92):
-            winning_throws = ['BO', 'T14', 'DB']
+            winning_throws = [ 'T14', 'DB']
         elif (score == 91):
-            winning_throws = ['BO', 'T17', 'D20']
+            winning_throws = [ 'T17', 'D20']
         elif (score == 90):
-            winning_throws = ['BO', 'D20', 'DB']
+            winning_throws = [ 'D20', 'DB']
         elif (score == 89):
-            winning_throws = ['BO', 'T19', 'D16']
+            winning_throws = [ 'T19', 'D16']
         elif (score == 88):
-            winning_throws = ['BO', 'D19', 'DB']
+            winning_throws = [ 'D19', 'DB']
         elif (score == 87):
-            winning_throws = ['BO', 'T17', 'D18']
+            winning_throws = [ 'T17', 'D18']
         elif (score == 86):
-            winning_throws = ['BO', 'D18', 'DB']
+            winning_throws = [ 'D18', 'DB']
         elif (score == 85):
-            winning_throws = ['BO', 'T15', 'D20']
+            winning_throws = [ 'T15', 'D20']
         elif (score == 84):
-            winning_throws = ['BO', 'D17', 'DB']
+            winning_throws = [ 'D17', 'DB']
         elif (score == 83):
-            winning_throws = ['BO', 'T17', 'D16']
+            winning_throws = [ 'T17', 'D16']
         elif (score == 82):
-            winning_throws = ['BO', 'D16', 'DB']
+            winning_throws = [ 'D16', 'DB']
         elif (score == 81):
-            winning_throws = ['BO', 'T19', 'D12']
+            winning_throws = [ 'T19', 'D12']
         elif (score == 80):
-            winning_throws = ['BO', 'D15', 'DB']
+            winning_throws = [ 'D15', 'DB']
         elif (score == 79):
-            winning_throws = ['BO', 'T19', 'D11']
+            winning_throws = [ 'T19', 'D11']
         elif (score == 78):
-            winning_throws = ['BO', 'D14', 'DB']
+            winning_throws = [ 'D14', 'DB']
         elif (score == 77):
-            winning_throws = ['BO', 'T19', 'D10']
+            winning_throws = [ 'T19', 'D10']
         elif (score == 76):
-            winning_throws = ['BO', 'D13', 'DB']
+            winning_throws = [ 'D13', 'DB']
         elif (score == 75):
-            winning_throws = ['BO', 'T17', 'D12']
+            winning_throws = [ 'T17', 'D12']
         elif (score == 74):
-            winning_throws = ['BO', 'D12', 'DB']
+            winning_throws = [ 'D12', 'DB']
         elif (score == 73):
-            winning_throws = ['BO', 'T19', 'D8']
+            winning_throws = [ 'T19', 'D8']
         elif (score == 72):
-            winning_throws = ['BO', 'D11', 'DB']
+            winning_throws = [ 'D11', 'DB']
         elif (score == 71):
-            winning_throws = ['BO', 'T13', 'D16']
+            winning_throws = [ 'T13', 'D16']
         elif (score == 70):
-            winning_throws = ['BO', 'D10', 'DB']
+            winning_throws = [ 'D10', 'DB']
         elif (score == 69):
-            winning_throws = ['BO', 'T19', 'D6']
+            winning_throws = [ 'T19', 'D6']
         elif (score == 68):
-            winning_throws = ['BO', 'D9', 'DB']
+            winning_throws = [ 'D9', 'DB']
         elif (score == 67):
-            winning_throws = ['BO', 'T9', 'D20']
+            winning_throws = [ 'T9', 'D20']
         elif (score == 66):
-            winning_throws = ['BO', 'D8', 'DB']
+            winning_throws = [ 'D8', 'DB']
         elif (score == 65):
-            winning_throws = ['BO', 'B', 'D20']
+            winning_throws = [ '25', 'D20']
         elif (score == 64):
-            winning_throws = ['BO', 'D7', 'DB']
+            winning_throws = [ 'D7', 'DB']
         elif (score == 63):
-            winning_throws = ['BO', 'T17', 'D6']
+            winning_throws = [ 'T17', 'D6']
         elif (score == 62):
-            winning_throws = ['BO', 'D6', 'DB']
+            winning_throws = [ 'D6', 'DB']
         elif (score == 61):
-            winning_throws = ['BO', 'B', 'D18']
+            winning_throws = [ '25', 'D18']
         elif (score == 60):
-            winning_throws = ['BO', 'D5', 'DB']
+            winning_throws = [ 'D5', 'DB']
         elif (score == 59):
-            winning_throws = ['BO', '19', 'D20']
+            winning_throws = [ '19', 'D20']
         elif (score == 58):
-            winning_throws = ['BO', 'D4', 'DB']
+            winning_throws = [ 'D4', 'DB']
         elif (score == 57):
-            winning_throws = ['BO', '17', 'D20']
+            winning_throws = [ '17', 'D20']
         elif (score == 56):
-            winning_throws = ['BO', 'D3', 'DB']
+            winning_throws = [ 'D3', 'DB']
         elif (score == 55):
-            winning_throws = ['BO', '15', 'D20']
+            winning_throws = [ '15', 'D20']
         elif (score == 54):
-            winning_throws = ['BO', 'D2', 'DB']
+            winning_throws = [ 'D2', 'DB']
         elif (score == 53):
-            winning_throws = ['BO', '13', 'D20']
+            winning_throws = [ '13', 'D20']
         elif (score == 52):
-            winning_throws = ['BO', 'D1', 'DB']
+            winning_throws = [ 'D1', 'DB']
         elif (score == 51):
-            winning_throws = ['BO', '11', 'D20']
+            winning_throws = [ '11', 'D20']
         elif (score == 50):
-            winning_throws = ['BO', 'BO', 'DB']
+            winning_throws = [  'DB']
         elif (score == 49):
-            winning_throws = ['BO', '9', 'D20']
+            winning_throws = [ '9', 'D20']
         elif (score == 48):
-            winning_throws = ['BO', 'D4', 'D20']
+            winning_throws = [ 'D4', 'D20']
         elif (score == 47):
-            winning_throws = ['BO', '7', 'D20']
+            winning_throws = [ '7', 'D20']
         elif (score == 46):
-            winning_throws = ['BO', 'D3', 'D20']
+            winning_throws = [ 'D3', 'D20']
         elif (score == 45):
-            winning_throws = ['BO', '5', 'D20']
+            winning_throws = [ '5', 'D20']
         elif (score == 44):
-            winning_throws = ['BO', 'D2', 'D20']
+            winning_throws = [ 'D2', 'D20']
         elif (score == 43):
-            winning_throws = ['BO', '3', 'D20']
+            winning_throws = [ '3', 'D20']
         elif (score == 42):
-            winning_throws = ['BO', 'D1', 'D20']
+            winning_throws = [ 'D1', 'D20']
         elif (score == 41):
-            winning_throws = ['BO', '1', 'D20']
+            winning_throws = [ '1', 'D20']
         elif (score == 40):
-            winning_throws = ['BO', 'BO', 'D20']
+            winning_throws = [  'D20']
         elif (score == 39):
-            winning_throws = ['BO', '7', 'D16']
+            winning_throws = [ '7', 'D16']
         elif (score == 38):
-            winning_throws = ['BO', 'BO', 'D19']
+            winning_throws = [  'D19']
         elif (score == 37):
-            winning_throws = ['BO', '5', 'D16']
+            winning_throws = [ '5', 'D16']
         elif (score == 36):
-            winning_throws = ['BO', 'BO', 'D18']
+            winning_throws = [  'D18']
         elif (score == 35):
-            winning_throws = ['BO', '3', 'D16']
+            winning_throws = [ '3', 'D16']
         elif (score == 34):
-            winning_throws = ['BO', 'BO', 'D17']
+            winning_throws = [  'D17']
         elif (score == 33):
-            winning_throws = ['BO', '1', 'D16']
+            winning_throws = [ '1', 'D16']
         elif (score == 32):
-            winning_throws = ['BO', 'BO', 'D16']
+            winning_throws = [  'D16']
         elif (score == 31):
-            winning_throws = ['BO', '15', 'D8']
+            winning_throws = [ '15', 'D8']
         elif (score == 30):
-            winning_throws = ['BO', 'BO', 'D15']
+            winning_throws = [  'D15']
         elif (score == 29):
-            winning_throws = ['BO', '13', 'D8']
+            winning_throws = [ '13', 'D8']
         elif (score == 28):
-            winning_throws = ['BO', 'BO', 'D14']
+            winning_throws = [  'D14']
         elif (score == 27):
-            winning_throws = ['BO', '11', 'D8']
+            winning_throws = [ '11', 'D8']
         elif (score == 26):
-            winning_throws = ['BO', 'BO', 'D13']
+            winning_throws = [  'D13']
         elif (score == 25):
-            winning_throws = ['BO', '9', 'D8']
+            winning_throws = [ '9', 'D8']
         elif (score == 24):
-            winning_throws = ['BO', 'BO', 'D12']
+            winning_throws = [  'D12']
         elif (score == 23):
-            winning_throws = ['BO', '7', 'D8']
+            winning_throws = [ '7', 'D8']
         elif (score == 22):
-            winning_throws = ['BO', 'BO', 'D11']
+            winning_throws = [  'D11']
         elif (score == 21):
-            winning_throws = ['BO', '5', 'D8']
+            winning_throws = [ '5', 'D8']
         elif (score == 20):
-            winning_throws = ['BO', 'BO', 'D10']
+            winning_throws = [  'D10']
         elif (score == 19):
-            winning_throws = ['BO', '3', 'D8']
+            winning_throws = [ '3', 'D8']
         elif (score == 18):
-            winning_throws = ['BO', 'BO', 'D9']
+            winning_throws = [  'D9']
         elif (score == 17):
-            winning_throws = ['BO', '1', 'D8']
+            winning_throws = [ '1', 'D8']
         elif (score == 16):
-            winning_throws = ['BO', 'BO', 'D8']
+            winning_throws = [  'D8']
         elif (score == 15):
-            winning_throws = ['BO', '5', 'D5']
+            winning_throws = [ '5', 'D5']
         elif (score == 14):
-            winning_throws = ['BO', 'BO', 'D7']
+            winning_throws = [  'D7']
         elif (score == 13):
-            winning_throws = ['BO', '3', 'D5']
+            winning_throws = [ '3', 'D5']
         elif (score == 12):
-            winning_throws = ['BO', 'BO', 'D6']
+            winning_throws = [  'D6']
         elif (score == 11):
-            winning_throws = ['BO', '1', 'D5']
+            winning_throws = [ '1', 'D5']
         elif (score == 10):
-            winning_throws = ['BO', 'BO', 'D5']
+            winning_throws = [  'D5']
         elif (score == 9):
-            winning_throws = ['BO', '5', 'D4']
+            winning_throws = [ '5', 'D4']
         elif (score == 8):
-            winning_throws = ['BO', 'BO', 'D4']
+            winning_throws = [  'D4']
         elif (score == 7):
-            winning_throws = ['BO', '3', 'D4']
+            winning_throws = [ '3', 'D4']
         elif (score == 6):
-            winning_throws = ['BO', 'BO', 'D3']
+            winning_throws = [  'D3']
         elif (score == 5):
-            winning_throws = ['BO', '1', 'D4']
+            winning_throws = [ '1', 'D4']
         elif (score == 4):
-            winning_throws = ['BO', 'BO', 'D2']
+            winning_throws = [  'D2']
         elif (score == 3):
-            winning_throws = ['BO', '1', 'D2']
+            winning_throws = [ '1', 'D2']
         elif (score == 2):
-            winning_throws = ['BO', 'BO', 'D1']
+            winning_throws = [  'D1']
         
         return winning_throws
     
