@@ -2,6 +2,8 @@ import json
 import os
 import time
 
+#Class to make any changes to and read info about current game state json
+#Author: Ben Houser
 class UpdateCurrentGameState():
 
     def __init__(self):

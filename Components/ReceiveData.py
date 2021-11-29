@@ -2,6 +2,8 @@ import json
 import Components.UpdateCurrentGameState as UpdateCurrentGameState
 import Components.DartRules as DartRules
 
+#Class to process all incoming data from scorekeeper: change displayed stats or upload scores
+#Author: Ben Houser
 
 class ReceiveData():
 
@@ -43,17 +45,19 @@ class ReceiveData():
         self.updateCurrentGameState.update_displayed_league_stats(key)
         self.updateCurrentGameState.write()
 
+    # Input: dict with format of "throws" dictionary found above
     def inputScores(self, throws):
         # key of throw data is "player1" or "player2"
         player = list(throws.keys())[0]
         scores = throws[player]
         
+        # add scores one by one
         dart_rules = DartRules.DartRules(self.updateCurrentGameState)
         dart_rules.add_score(player, scores[0])
         dart_rules.add_score(player, scores[1])
         dart_rules.add_score(player, scores[2])
 
-        # update current stats
+        # update current stats because they have been recalculated by dart rules
         keys = self.updateCurrentGameState.get_displayed_stats()
         self.changeDisplayedMatchStats(keys[0])
         self.changeDisplayedLeagueStats(keys[1])
@@ -63,11 +67,9 @@ class ReceiveData():
             self.updateCurrentGameState.log_throw(dart_rules.get_throw_data())
             self.updateCurrentGameState.toggle_turn()
         else:
-            self.updateCurrentGameState.new_leg = False
-        # commented out because of keyerror
-        #dart_rules.register_statistics(player,scores)
-        
+            self.updateCurrentGameState.new_leg = False        
 
+        #write current game state to updated scoreboard & scorekeeper
         self.updateCurrentGameState.write()
 
 

@@ -1,4 +1,5 @@
-//game data: json object following this scheme:
+// JS file to request game data and update scoreboard 
+// Author: Ben Houser
 
 let loop = true;
 let received = false;

@@ -1,6 +1,9 @@
 import json
 import Components.UpdateCurrentGameState as UpdateCurrentGameState
 
+#Class to set up the game, takes in form data from match setup webpage
+#Author: Ben Houser
+
 class GameSetup():
 
     # Open empty game state json, populate with game data, save to current_game_state.json

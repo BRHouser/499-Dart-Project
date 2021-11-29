@@ -1,6 +1,9 @@
 import json
 import Components.UpdateCurrentGameState as UpdateCurrentGameState
 
+#Class to apply dart gameplay rules: score arithmetic, check for win, calculate outs, and register dart statistics.
+#Authors: Ben Houser and Anthony Dohogne
+
 class DartRules():
 
     def __init__(self, updateCurrentGameState):

@@ -1,26 +1,34 @@
+// JS file to control scorekeeper.
+// Author: Ben Houser
+
 //scores are sent to db at the end of each turn
 let throws = [[],[]] //array of two lists of strings to represent throws in turn, ex: [["20", "D19", "B"], ["DB", "D20", "17"]]
 //throws[0] = player1's throws, throws[1] = player2
+
+//list of throw icon DOM elements
 let throw_icons = [];
 
+//history of throws and icons
 let previous_state = [[],[],[],[]];
 let previous_icons = [[],[],[],[]];
 
-// Player 1 always throws first
 let current_player = 0; //player1 = 0, player2 = 1
 let won = false
 
+// data to be sent to UpdateScoreboard module
 let request_data = {"first_read": true}
 
+//number of legs played in current set; used to tell if a new set/leg has begun
 let last_leg_wins = 0
 let loop = true
 
+//list container both player's names
 let names = ["Player 1", "Player2"]
-
 
 initial();
 
 async function initial() {
+    //register events
     registerImageMap();
     $("#previous-button").click(undo);
     $("#bounceout-button").click( function(e) {
@@ -29,9 +37,9 @@ async function initial() {
     $("#nextturn-button").click( function(e) {
         nextTurn();
     })
-
     $("#foulButton").click(foul);
 
+    // main loop
     while(loop) {
         received = false;
         // sync with server
@@ -61,8 +69,7 @@ async function initial() {
                         if(game_data["throwHistory"][i][j] != null) {
                             temp_length = game_data["throwHistory"][i][j].length
                             for(var k = 0; k < temp_length; k++) { // turn loop
-                                //console.log(temp_length)
-                                if(k % 2 != 0) {
+                                if(k % 2 != 0) { // if on even turn
                                     buildTable(game_data["throwHistory"][i][j][k-1],
                                             game_data["throwHistory"][i][j][k],
                                             i, j, (k+1)/2, sets);
@@ -70,7 +77,7 @@ async function initial() {
                                 else {
                                     //check for win
                                     if(game_data["throwHistory"][i][j][k]["score"] == 0) {
-                                        console.log("leg win " + game_data["throwHistory"][i][j][k]["player"])
+                                        //console.log("leg win " + game_data["throwHistory"][i][j][k]["player"])
 
                                         var empty = {"throws":["","",""], "score": game_data["throwHistory"][i][j][k-1]["score"]}
 
@@ -273,13 +280,8 @@ function foul() {
         console.log("foul")
         throws[current_player] = ["F", "F", "F"]
         throwDisplayUpdate()
-        if(throws[current_player].length == 3) {
-            //console.log("remove disabled")
-            $("#nextturn-button").removeClass("disabled")
-        }
+        $("#nextturn-button").removeClass("disabled")
     }
-
-    //turnUpdate();
 }
 
 // Update displayed stats on scoreboard. new_stats is string representing the stat to be displayed
