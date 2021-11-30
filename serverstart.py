@@ -4,7 +4,7 @@ import os
 from flask import Flask, render_template, request, redirect, Response
 import database
 import json
-
+import time
 import Components.UpdateScoreboard as UpdateScoreboard
 import Components.ReceiveData as ReceiveData
 import Components.GameSetup as GameSetup
@@ -150,11 +150,6 @@ def updateScoreboard():
 # Adds Match to Current Match table
 @app.route('/addMatch', methods = ['POST'])
 def addMatch():
-	#variables
-	MatchID = None
-	MatchName = None
-	Player1ID = None
-	Player2ID = None
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
 	print(data)
@@ -162,30 +157,23 @@ def addMatch():
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
 	database.add_information(database_connection, "List_Matches", [row])
-	information = database.get_information(database_connection, "List_Matches")
-	for x in range(len(information)):
-		if(data["NameofMatch"] == information[x][8]):
-			MatchName = information[x][8]
-			MatchID = information[x][0]
-	playerinformation = database.get_information(database_connection, "List_of_Players")
-	for y in range(len(playerinformation)):
-		if(data["Player1Name"] == playerinformation[y][1] +" " + playerinformation[y][2]):
-			Player1ID = playerinformation[y][1] +" " + playerinformation[y][2]
-		if(data["Player2Name"] == playerinformation[y][1] +" "+ playerinformation[y][2]):
-			Player2ID = playerinformation[y][1] +" " + playerinformation[y][2]
-	row = [MatchID, MatchName, Player1ID, Player2ID, "1", "1", "0", data["Score"]]
-	database.add_information(database_connection, "Throws", [row])
-	return "True"
-#	columns = ["id", "LegNumber"]
-	# Creates a table to store each legs of the match
-#	if(database.add_table(database_connection,  data["NameofMatch"] + "_Legs", columns)):
-#		name = data["NameofMatch"] + "_Legs"
-#		for x in range(int(data["NumberOfLegs"])):
-#			row = [x]
-#			database.add_information(database_connection, name, [row])
-#		return "True"
-#	else:
-#		return "False"
+	
+	# Set terms of what the header should be for the legs table
+	columns = ["id", "Leg", "Throw_1", "Throw_2",  "Throw_3", "Score"]
+
+	# If a table was created for the given person, then add the person to the List_of_Players Table and return True
+	# Else return False which means the player is already in the database
+	name1 = data['NameofMatch'].replace(' ', "_") + "_" + data["Player1Name"].replace(' ', '_') + "_" + "Record"
+	name2 = data['NameofMatch'].replace(' ', "_") + "_" + data["Player2Name"].replace(' ', '_') + "_" + "Record"
+	if database.add_table(database_connection, name1, columns) and database.add_table(database_connection, name2, columns):
+		row = [1, 'START', 'START', 'START', data['Score']]
+		database.add_information(database_connection, name1, [row])
+		row = [1, 'START', 'START', 'START', data['Score']]
+		database.add_information(database_connection, name2, [row])
+		return "True"
+	else:
+		return "False"	
+
 
 # OUTPUT: A dictionary with all the Matches in it 
 # The purpose of this function is to send a dictionary of Matchs to the HMI by calling get_information 

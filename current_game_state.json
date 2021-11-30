@@ -2,28 +2,28 @@
     "game": {
         "current_set": 0,
         "current_leg": 0,
-        "current_turn": 1,
-        "sets": 2,
-        "legs": 2,
-        "score": 301,
+        "current_turn": 0,
+        "sets": 5,
+        "legs": 3,
+        "score": 801,
         "won": false,
         "winner": "",
         "lastStarter": 0
     },
     "player1": {
-        "name": "Ben Houser",
-        "score": 181,
-        "leagueStats": ": ",
-        "matchStats": "Average Turn Score: 120.0",
-        "perfectLeg": false,
+        "name": "Anthony Dohogne",
+        "score": "801",
+        "leagueStats": "",
+        "matchStats": "Average Turn Score: 0",
+        "perfectLeg": true,
         "possibleOuts": "",
         "setsWon": 0,
         "legsWon": 0
     },
     "player2": {
-        "name": "Mitchell Dodson",
-        "score": "301",
-        "leagueStats": ": ",
+        "name": "Tyler Chan",
+        "score": "801",
+        "leagueStats": "",
         "matchStats": "Average Turn Score: 0",
         "perfectLeg": true,
         "possibleOuts": "",
@@ -32,13 +32,13 @@
     },
     "stats": {
         "player1": {
-            "turns": 2,
-            "sum": 120,
+            "turns": 0,
+            "sum": 0,
             "current": {
-                "Average Turn Score": 120.0,
+                "Average Turn Score": 0,
                 "180s In Match": 0,
-                "Best Turn Score": 120,
-                "Bulls Thrown": 2,
+                "Best Turn Score": 0,
+                "Bulls Thrown": 0,
                 "Triple 20s Thrown": 0
             },
             "league": {}
@@ -58,17 +58,7 @@
     },
     "throwHistory": [
         [
-            [
-                {
-                    "player": "player1",
-                    "throws": [
-                        20,
-                        "DB",
-                        "DB"
-                    ],
-                    "score": 181
-                }
-            ]
+            []
         ]
     ]
 }
