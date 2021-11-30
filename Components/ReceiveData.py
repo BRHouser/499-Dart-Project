@@ -58,18 +58,21 @@ class ReceiveData():
         dart_rules.add_score(player, scores[2])
 
         # update current stats because they have been recalculated by dart rules
-        keys = self.updateCurrentGameState.get_displayed_stats()
-        self.changeDisplayedMatchStats(keys[0])
-        self.changeDisplayedLeagueStats(keys[1])
+        try:
+            keys = self.updateCurrentGameState.get_displayed_stats()
+            self.changeDisplayedMatchStats(keys[0])
+            self.changeDisplayedLeagueStats(keys[1])
 
-        # toggle player
-        if(not self.updateCurrentGameState.new_leg):
-            self.updateCurrentGameState.log_throw(dart_rules.get_throw_data())
-            self.updateCurrentGameState.toggle_turn()
-        else:
-            self.updateCurrentGameState.new_leg = False        
+            # toggle player
+            if(not self.updateCurrentGameState.new_leg):
+                self.updateCurrentGameState.log_throw(dart_rules.get_throw_data())
+                self.updateCurrentGameState.toggle_turn()
+            else:
+                self.updateCurrentGameState.new_leg = False        
 
-        #write current game state to updated scoreboard & scorekeeper
-        self.updateCurrentGameState.write()
+            #write current game state to updated scoreboard & scorekeeper
+            self.updateCurrentGameState.write()
+        except:
+            print("game complete")
 
 

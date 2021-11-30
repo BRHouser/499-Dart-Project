@@ -1,5 +1,6 @@
 import json
 import Components.UpdateCurrentGameState as UpdateCurrentGameState
+import Components.LeagueStats as LeagueStats
 
 #Class to apply dart gameplay rules: score arithmetic, check for win, calculate outs, and register dart statistics.
 #Authors: Ben Houser and Anthony Dohogne
@@ -145,12 +146,33 @@ class DartRules():
             new = stats["current"]["Triple 20s Thrown"] + 1
             self.updateCurrentGameState.update_current_match_stats(player, "Triple 20s Thrown", new)
 
-        #League
+        #League stats
+
+        LS = LeagueStats.LeagueStats()
+        name = self.json_data[player]["name"]
+
+        #Average League Score
+        if(self.throws == 3):
+
+            #Average turn score
+            current = LS.get_stat(name, "sum")
+            turns = LS.increment_turn(name)
+
+            new = (current)/turns
+            new = round(new, 2)
+            LS.update_stat(name, "Average League Score", new)
+
+            #Lifetime 180s
+            if self.throw_sum == 180:
+                old = LS.get_stat(name, "Lifetime 180s")
+                LS.update_stat(name, "Lifetime 180s", old + 1)
+            
+
+
 
 
         #TODO Get avg score per turn and avg score per dart
 
-        #self.updateCurrentGameState.update_current_match_stats(player,match_180s,current_turn_avg)
         self.refresh()
 
     #return self.throw_data

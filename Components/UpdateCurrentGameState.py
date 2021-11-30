@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import Components.LeagueStats as LeagueStats
 
 #Class to make any changes to and read info about current game state json
 #Author: Ben Houser
@@ -20,27 +21,37 @@ class UpdateCurrentGameState():
     def initalize_game(self, data):
         with open(self.json_path, "w") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
+        self.content = data
 
     #replace currently displayed match stats. read new match stats from "stats" section of current game state json
     def update_displayed_match_stats(self, new_key):
-        #todo: lookup statistics from current game state json
-        print("update game stats")
+        new_key = new_key.replace("\n", "").strip()
         self.content["player1"]["matchStats"] = new_key + ": " + str(self.content["stats"]["player1"]["current"][new_key])
         self.content["player2"]["matchStats"] = new_key + ": " + str(self.content["stats"]["player2"]["current"][new_key])
 
 
     #replace currently displayed league stats. read new legaue stats from the archive
     def update_displayed_league_stats(self, new_key):
+
+        new_key = new_key.replace("\n", "").strip()
+
         #todo: lookup statistics from archive
         print("update league stats")
-        self.content["player1"]["leagueStats"] = new_key + ": "
-        self.content["player2"]["leagueStats"] = new_key + ": "
+        LS = LeagueStats.LeagueStats()
+        name1 = self.content["player1"]["name"]
+        name2 = self.content["player2"]["name"]
+
+        self.content["player1"]["leagueStats"] = new_key + ": " + str(LS.get_stat(name1, new_key))
+        self.content["player2"]["leagueStats"] = new_key + ": " + str(LS.get_stat(name2, new_key))
 
     def update_player_score(self, player, new_score):
 
         old = self.content[player]["score"]
         val = int(old) - new_score
         self.content["stats"][player]["sum"] += val
+        LS = LeagueStats.LeagueStats()
+        LS.add_score(self.content[player]["name"], val)
+
         self.content[player]["score"] = new_score
 
 
@@ -48,10 +59,6 @@ class UpdateCurrentGameState():
         #change the current match stats
 
         self.content["stats"][player]["current"][key] = value
-
-    def update_league_stats(self, player, key, value):
-        #TODO fill in to update archive with lifetime stats
-        pass
 
 
     # call when a player's score hits 0; input: player string "player1" or "player2"
@@ -110,6 +117,13 @@ class UpdateCurrentGameState():
         self.content["game"]["won"] = True
         self.content["game"]["winner"] = player
         self.write()
+
+        name = self.content[player]["name"]
+
+        LS = LeagueStats.LeagueStats()
+        LS.increment_win(name)
+        LS.update_stat(name, "Last Win", self.content["game"]["date"])
+        LS.update_ranks()
 
         #wait for scoreboard and scorekeeper to download current_game_state.json
         time.sleep(1)

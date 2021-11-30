@@ -19,6 +19,7 @@ class GameSetup():
             self.init_data = json.load(f)
 
         self.set_game_info()
+        
 
         updateCurrentGameState = UpdateCurrentGameState.UpdateCurrentGameState()
         updateCurrentGameState.initalize_game(self.init_data)
@@ -31,13 +32,19 @@ class GameSetup():
 
         try:
             self.init_data["game"]["sets"] = int(self.game_data["SetNumber"])
+            if int(self.game_data["SetNumber"]) == 0:
+                self.init_data["game"]["sets"] = 1
         except:
             self.init_data["game"]["sets"] = 1
         try:
             self.init_data["game"]["legs"] = int(self.game_data["NumberOfLegs"])
+            if int(self.game_data["NumberOfLegs"]) == 0:
+                self.init_data["game"]["legs"] = 1
         except:
             self.init_data["game"]["legs"] = 1
+        
         self.init_data["game"]["score"] = int(self.game_data["Score"])
+        self.init_data["game"]["date"] = self.game_data["DateOfMatch"]
 
         self.init_data["player1"]["name"] = self.game_data["Player1Name"]
         self.init_data["player1"]["score"] = self.game_data["Score"]
