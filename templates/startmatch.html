@@ -11,24 +11,34 @@
         <div class="row d-flex sidebar" style = "height: 100%" id="main-content">
             <div class = "col my-auto" style = "height: 100%">
                 <div class = "main-content text-center" id = "score-input" style = "overflow: auto;">
-                    <div class="overlay has-bg-img rounded h-10rem my-2" style = "padding-left: 10%; padding-right: 10%; height: 100%; background-repeat: no-repeat; background-size: 100% 100%; background-image: url('static/images/opening_screen.gif')">
-                    <h1 class="header" style="padding-top: 25px;" id="Information Block">COMPETITION SCORER HOME PAGE</h1>
-                        <button style="margin-top: 4%;" id = "Match-Setup" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#MatchSetupModal" aria-haspopup="true" aria-expanded="false">
+                    <h1 class="header" style="padding-top: 25px; padding-bottom:25px;" id="Information Block">Competition Dart Scorer</h1>
+                    <div class="d-flex flex-column justify-content-around overlay rounded h-10rem my-2" style = "padding-left: 10%; padding-right: 10%; height: 100%;">
+                        <button id = "Match-Setup" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#MatchSetupModal" aria-haspopup="true" aria-expanded="false">
                             Start New Match
                         </button>
-                        <button style="margin-top: 4%;" id = "ResumeGame" type="button" class="btn btn-secondary btn-lg btn-block disabled" onClick="javascript:resumeGame()">
+                        <a href="scoreboard">
+                            <button href="scoreboard" type="button" class="btn btn-secondary btn-lg btn-block">
+                                Open Scoreboard
+                            </button>
+                        </a>
+                        <a href="scorekeeper">
+                            <button type="button" class="btn btn-secondary btn-lg btn-block">
+                                Open Scorekeeper
+                            </button>
+                        </a>
+                        <button id = "ResumeGame" type="button" class="btn btn-secondary btn-lg btn-block disabled" onClick="javascript:resumeGame()">
                             Resume Game
                         </button>
-                        <button style="margin-top: 4%;" id = "ReviewMatch" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#MatchReviewModal" aria-haspopup="true" aria-expanded="false">
+                        <button id = "ReviewMatch" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#MatchReviewModal" aria-haspopup="true" aria-expanded="false">
                             Review Match
                         </button>  
-                        <button style="margin-top: 4%;" id = "AddPlayer" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#AddPlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button id = "AddPlayer" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#AddPlayerModal" aria-haspopup="true" aria-expanded="false">
                             Add Player
                         </button>   
-                        <button style="margin-top: 4%;" id = "Delete-Player" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#DeletePlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button id = "Delete-Player" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#DeletePlayerModal" aria-haspopup="true" aria-expanded="false">
                             Delete Player
                         </button>
-                        <button style="margin-top: 4%;" id = "Edit-Player" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#EditPlayerModal" aria-haspopup="true" aria-expanded="false">
+                        <button id = "Edit-Player" type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target = "#EditPlayerModal" aria-haspopup="true" aria-expanded="false">
                             Edit Player
                         </button>
                         
