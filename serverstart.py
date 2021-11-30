@@ -150,6 +150,7 @@ def updateScoreboard():
 # Adds Match to Current Match table
 @app.route('/addMatch', methods = ['POST'])
 def addMatch():
+	id = 0
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
 	#print(data)
@@ -157,8 +158,34 @@ def addMatch():
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["Location"],  data["MatchOfficial"],  data["DateOfMatch"]]
 	database.add_information(database_connection, "List_Matches", [row])
-	return "True"
+	columns = ["id", "MatchID" "LegNumber"]
+	# Creates a table to store each legs of the match
+	if(database.add_table(database_connection, "Match" + id + "_Legs", columns)):
+		id = id + 1
+		name = data["firstname"] + "_" + data["lastname"] + "_" + "Statistics"
+#		database.add_information(database_connection, name, [row])
+#		row = [data["firstname"], data["lastname"]]
+#		database.add_information(database_connection, "List_of_Players", [row])
+		return "True"
+#	else:
+#		return "False"
 
+# OUTPUT: A dictionary with all the Matches in it 
+# The purpose of this function is to send a dictionary of Matchs to the HMI by calling get_information 
+# on the List_Matches table 
+@app.route("/getMatches", methods = ['POST'])
+def getMatches():
+	# Gets list of matches from database
+	information = database.get_information(database_connection, "List_Matches")
+
+	# Converts Information into dictionary format
+	send = {}
+	for x in range(1, len(information)):
+		send["Match" + str(x)] = information[x][0]
+	# Converts information into JSON and sends to HMI
+	send = json.dumps(send)
+	return send
+	
 # Main Start Server
 if __name__ == '__main__':
 	# run!
