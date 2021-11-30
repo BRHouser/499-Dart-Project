@@ -157,6 +157,7 @@ def addMatch():
 	Player2ID = None
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
+	print(data)
 	game_setup = GameSetup.GameSetup(data)
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
@@ -204,11 +205,39 @@ def getMatches():
 
 @app.route("/AddThrows", methods = ['POST'])
 def AddThrows():
+	MatchID = None
+	MatchName = None
+	Player1ID = None
+	Player2ID = None
+	# Loads the data from the HMI
 	data = json.loads(request.get_data())
-	for key in data:
-		if key == "throw":
-			x=0
-
+	#Adds the match created to current_match
+	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
+	database.add_information(database_connection, "List_Matches", [row])
+	information = database.get_information(database_connection, "List_Matches")
+	for x in range(len(information)):
+		if(data["NameofMatch"] == information[x][8]):
+			MatchName = information[x][8]
+			MatchID = information[x][0]
+	playerinformation = database.get_information(database_connection, "List_of_Players")
+	for y in range(len(playerinformation)):
+		if(data["Player1Name"] == playerinformation[y][1] +" " + playerinformation[y][2]):
+			Player1ID = playerinformation[y][1] +" " + playerinformation[y][2]
+		if(data["Player2Name"] == playerinformation[y][1] +" "+ playerinformation[y][2]):
+			Player2ID = playerinformation[y][1] +" " + playerinformation[y][2]
+	Throws = data["throwHistory"]
+	#Throw1 = Throws[0]
+	#Throw2= Throws[1]
+	#Throw3 = Throws[2]
+	game = data['game']
+	CurrentLeg = game[1]
+	turn = game[2]
+	for i in range(3):
+		row = [MatchID, MatchName, Player1ID, Player2ID, CurrentLeg, turn, Throws[i], data["Score"]]
+		print("HATRED FOR THIS OMGGGGGG")
+		print(row)
+		database.add_information(database_connection, "Throws", [row])
+	#database.add_information(database_connection, "Throws", [row])
 	
 
 # Main Start Server

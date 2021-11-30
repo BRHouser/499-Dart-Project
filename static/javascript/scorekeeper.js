@@ -186,7 +186,8 @@ function nextTurn() {
     if(throws[current_player].length == 3) {
         $("#throw-icon-container").empty();
         $("#nextturn-button").addClass("disabled")
-        sendThrow();   
+        sendThrow();
+        ThrowsArchive();   
     }
 }
 
@@ -451,4 +452,18 @@ function registerNum(num) { //register onclick events for one section of the boa
         e.preventDefault();
         mouseoverBoard(d_num);
     })
+}
+
+function ThrowsArchive()
+{ 
+    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, SetNumber:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), MatchOfficial:Official, NameofMatch: MatchName, Location:Location, DateOfMatch:DateOfMatch}
+    const request = new XMLHttpRequest();
+    request.open('POST', '/AddThrows');
+    request.send(JSON.stringify(data));
+    return new Promise((resolve) => {
+        request.onload = () => {
+            const response = request.responseText;
+            resolve(response);
+        }; 
+    });
 }

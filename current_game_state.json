@@ -2,28 +2,28 @@
     "game": {
         "current_set": 0,
         "current_leg": 0,
-        "current_turn": 0,
+        "current_turn": 1,
         "sets": 2,
         "legs": 2,
-        "score": 501,
+        "score": 301,
         "won": false,
         "winner": "",
         "lastStarter": 0
     },
     "player1": {
-        "name": "Test Test",
-        "score": "501",
-        "leagueStats": "",
-        "matchStats": "Average Turn Score: 0",
-        "perfectLeg": true,
+        "name": "Ben Houser",
+        "score": 181,
+        "leagueStats": ": ",
+        "matchStats": "Average Turn Score: 120.0",
+        "perfectLeg": false,
         "possibleOuts": "",
         "setsWon": 0,
         "legsWon": 0
     },
     "player2": {
-        "name": "Ben Houser",
-        "score": "501",
-        "leagueStats": "",
+        "name": "Mitchell Dodson",
+        "score": "301",
+        "leagueStats": ": ",
         "matchStats": "Average Turn Score: 0",
         "perfectLeg": true,
         "possibleOuts": "",
@@ -32,13 +32,13 @@
     },
     "stats": {
         "player1": {
-            "turns": 0,
-            "sum": 0,
+            "turns": 2,
+            "sum": 120,
             "current": {
-                "Average Turn Score": 0,
+                "Average Turn Score": 120.0,
                 "180s In Match": 0,
-                "Best Turn Score": 0,
-                "Bulls Thrown": 0,
+                "Best Turn Score": 120,
+                "Bulls Thrown": 2,
                 "Triple 20s Thrown": 0
             },
             "league": {}
@@ -58,7 +58,17 @@
     },
     "throwHistory": [
         [
-            []
+            [
+                {
+                    "player": "player1",
+                    "throws": [
+                        20,
+                        "DB",
+                        "DB"
+                    ],
+                    "score": 181
+                }
+            ]
         ]
     ]
 }
