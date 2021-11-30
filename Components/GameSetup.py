@@ -25,7 +25,11 @@ class GameSetup():
 
     def set_game_info(self):
 
-        self.init_data["game"]["sets"] = int(self.game_data["SetNumber"])
+
+        try:
+            self.init_data["game"]["sets"] = int(self.game_data["SetNumber"])
+        except:
+            self.init_data["game"]["sets"] = 1
         self.init_data["game"]["legs"] = int(self.game_data["NumberOfLegs"])
         self.init_data["game"]["score"] = int(self.game_data["Score"])
 
