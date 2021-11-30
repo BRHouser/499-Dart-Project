@@ -1,6 +1,6 @@
-function addMatch(P1Name, P2Name, ScoreLimit, MatchType, NumbersOfSets, NumberOfLegs, Official, MatchName,Location,DateOfMatch)
+function addMatch(P1Name, P2Name, ScoreLimit, MatchType, NumbersOfSets, NumberOfLegs, Official, MatchName,Location,DateOfMatch,MatchStats,LeagueStats)
 { 
-    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, SetNumber:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), MatchOfficial:Official, NameofMatch: MatchName, Location:Location, DateOfMatch:DateOfMatch}
+    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, SetNumber:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), MatchOfficial:Official, NameofMatch: MatchName, Location:Location, DateOfMatch:DateOfMatch, MatchStats:MatchStats, LeagueStats:LeagueStats}
     const request = new XMLHttpRequest();
     request.open('POST', '/addMatch');
     request.send(JSON.stringify(data));
@@ -53,6 +53,8 @@ async function closeMatchModal(){
     var Location = document.getElementById("MatchLocation").value;
     var Date = document.getElementById("MatchDate").value; 
     var NumberOfSets = document.getElementById("NumberOfSets").value;
+    var MatchStats = document.getElementById("matchStatsDropdown").innerHTML;
+    var LeagueStats = document.getElementById("leagueStatsDropdown").innerHTML;
 
     if(MatchType.trim() == "Game"){
         NumberOfSets = document.getElementById('NumberOfSets').value = 0;
@@ -163,7 +165,7 @@ async function closeMatchModal(){
     //if everything is correct then submit the information
     if(submit)
     {
-        let response = await addMatch(Player1, Player2, Score, MatchType, NumberOfSets, NumberOfLegs, OfficialMatch, Match_Name, Location, Date);
+        let response = await addMatch(Player1, Player2, Score, MatchType, NumberOfSets, NumberOfLegs, OfficialMatch, Match_Name, Location, Date, MatchStats, LeagueStats);
         if(response == "True")
         {
             resetSetupMatch();
@@ -196,4 +198,12 @@ function showSets() {
 //hide sets selector for normal play
 function hideSets() {
     $("#setsPicker").hide();
+}
+
+function updateLeagueStats(val) {
+    $("#leagueStatsDropdown").text(val)
+}
+
+function updateMatchStats(val) {
+    $("#matchStatsDropdown").text(val)
 }

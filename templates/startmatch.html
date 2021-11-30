@@ -284,31 +284,31 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-xs-2 margin-inputtext">
-                    <label for="NumberOfSets">Match Stats:</label>
+                    <label>Match Stats:</label>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="matchStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Average Turn Score
                         </button>
                         <div class="dropdown-menu" aria-labelledby="matchStatsDropdown">
-                          <a class="dropdown-item" href="javascript:updatePlayerStats('Average Turn Score')">Average Turn Score</a>
-                          <a class="dropdown-item" href="javascript:updatePlayerStats('180s In Match')">180s In Match</a>
-                          <a class="dropdown-item" href="javascript:updatePlayerStats('Best Turn Score')">Best Turn Score</a>
-                          <a class="dropdown-item" href="javascript:updatePlayerStats('Triple 20s Thrown')">Triple 20s Thrown</a>
-                          <a class="dropdown-item" href="javascript:updatePlayerStats('Bulls Thrown')">Bulls Thrown</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('Average Turn Score')">Average Turn Score</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('180s In Match')">180s In Match</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('Best Turn Score')">Best Turn Score</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('Triple 20s Thrown')">Triple 20s Thrown</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('Bulls Thrown')">Bulls Thrown</a>
                         </div>
                     </div>
                     </div>
                     <div class="col-xs-2 margin-inputtext">
-                    <label for="NumberOfSets">League Stats:</label>
+                    <label>League Stats:</label>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="leagueStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Current Player League Ranks
                         </button>
                         <div class="dropdown-menu" aria-labelledby="leagueStatsDropdown">
-                          <a class="dropdown-item" href="javascript:updateMatchStats('Current Player League Ranks')">Current Player League Ranks</a>
-                          <a class="dropdown-item" href="javascript:updateMatchStats('Last Match Win')">Last Match Win</a>
-                          <a class="dropdown-item" href="javascript:updateMatchStats('Average Player League Score')">Average Player League Score</a>
-                          <a class="dropdown-item" href="javascript:updateMatchStats('180s In Season')">180s In Season</a>
+                          <a class="dropdown-item" href="javascript:updateLeagueStats('Current Player League Ranks')">Current Player League Ranks</a>
+                          <a class="dropdown-item" href="javascript:updateLeagueStats('Last League Win')">Last League Win</a>
+                          <a class="dropdown-item" href="javascript:updateLeagueStats('Average Player League Score')">Average Player League Score</a>
+                          <a class="dropdown-item" href="javascript:updateLeagueStats('180s In Season')">180s In Season</a>
                         </div>
                     </div>
                     </div>
@@ -331,7 +331,6 @@
         <script src="{{ url_for('.static', filename='javascript/addplayer-modal.js')}}"></script>
         <script src="{{ url_for('.static', filename='javascript/deleteplayer-modal.js')}}"></script>
         <script src="{{ url_for('.static', filename='javascript/editplayer-modal.js')}}"></script>
-        <script src="{{ url_for('.static', filename='javascript/scorekeeper.js')}}"></script>
         <script src="{{ url_for('.static', filename='javascript/reviewmatch-modal.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

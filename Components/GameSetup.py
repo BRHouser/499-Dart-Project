@@ -22,6 +22,9 @@ class GameSetup():
 
         updateCurrentGameState = UpdateCurrentGameState.UpdateCurrentGameState()
         updateCurrentGameState.initalize_game(self.init_data)
+        updateCurrentGameState.update_displayed_league_stats(game_data["LeagueStats"])
+        updateCurrentGameState.update_displayed_match_stats(game_data["MatchStats"])
+        updateCurrentGameState.write()
 
     def set_game_info(self):
 
@@ -30,7 +33,10 @@ class GameSetup():
             self.init_data["game"]["sets"] = int(self.game_data["SetNumber"])
         except:
             self.init_data["game"]["sets"] = 1
-        self.init_data["game"]["legs"] = int(self.game_data["NumberOfLegs"])
+        try:
+            self.init_data["game"]["legs"] = int(self.game_data["NumberOfLegs"])
+        except:
+            self.init_data["game"]["legs"] = 1
         self.init_data["game"]["score"] = int(self.game_data["Score"])
 
         self.init_data["player1"]["name"] = self.game_data["Player1Name"]
@@ -38,6 +44,3 @@ class GameSetup():
 
         self.init_data["player2"]["name"] = self.game_data["Player2Name"]
         self.init_data["player2"]["score"] = self.game_data["Score"]
-
-        print(self.init_data)
-        
