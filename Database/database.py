@@ -139,7 +139,7 @@ def add_table(database_connection, name_of_table, array_of_columns):
             execute =  execute + " " + column_name + " str);"
         else:
             execute = execute + column_name + " str, "
-    try:
+    try:    #'CREATE TABLE some ( id str, SET str, LEG str, Throw_1 str, Throw_2 str, Throw_3 str,  Score str);'
         cursor.execute(execute)
         database_connection.commit()
         cursor.close()
@@ -160,12 +160,13 @@ def main():
 
     #database = create_connection(database_address, header_info, list_of_table_names)
     database = create_connection(database_address)
-    info = get_information(database, "List_Matches")
-    for x in info:
-        delete_row(database, "List_Matches", x)
-    delete_table(database, "THE_BIG_CHUNGUS_Mitchell_Dodson_Record")
+    #info = get_information(database, "List_Matches")
+    #for x in info:
+    #    delete_row(database, "List_Matches", x)
+    #delete_table(database, "THE_BIG_CHUNGUS_Tyler_Chan_Record")
+    delete_table(database, "some")
+    #add_table(database, "some", ["id", "_Set_", "_Leg_", "Throw_1", "Throw_2",  "Throw_3", "Score"])
 
-    #add_table(database, "List_of_Players", ["id", "First Name", "Last Name"])
     #delete_table(database, "Gabe_Henneberger_Statistics")
     
     #database = create_connection(database_address, header_info, list_of_table_names)

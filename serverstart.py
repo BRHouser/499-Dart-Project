@@ -159,16 +159,16 @@ def addMatch():
 	database.add_information(database_connection, "List_Matches", [row])
 	
 	# Set terms of what the header should be for the legs table
-	columns = ["id", "Leg", "Throw_1", "Throw_2",  "Throw_3", "Score"]
+	columns = ["id", "_Set_", "_Leg_", "Throw_1", "Throw_2",  "Throw_3", "Score"]
 
 	# If a table was created for the given person, then add the person to the List_of_Players Table and return True
 	# Else return False which means the player is already in the database
 	name1 = data['NameofMatch'].replace(' ', "_") + "_" + data["Player1Name"].replace(' ', '_') + "_" + "Record"
 	name2 = data['NameofMatch'].replace(' ', "_") + "_" + data["Player2Name"].replace(' ', '_') + "_" + "Record"
 	if database.add_table(database_connection, name1, columns) and database.add_table(database_connection, name2, columns):
-		row = [1, 'START', 'START', 'START', data['Score']]
+		row = [1, 1, 'START', 'START', 'START', data['Score']]
 		database.add_information(database_connection, name1, [row])
-		row = [1, 'START', 'START', 'START', data['Score']]
+		row = [1, 1, 'START', 'START', 'START', data['Score']]
 		database.add_information(database_connection, name2, [row])
 		return "True"
 	else:
