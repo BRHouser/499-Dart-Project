@@ -150,22 +150,39 @@ def updateScoreboard():
 # Adds Match to Current Match table
 @app.route('/addMatch', methods = ['POST'])
 def addMatch():
-	id = 0
+	#variables
+	MatchID = None
+	MatchName = None
+	Player1ID = None
+	Player2ID = None
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
 	game_setup = GameSetup.GameSetup(data)
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
 	database.add_information(database_connection, "List_Matches", [row])
-#	columns = ["id", "MatchID" "LegNumber"]
-	# Creates a table to store each legs of the match
-#	if(database.add_table(database_connection, "Match" + id + "_Legs", columns)):
-#		id = id + 1
-#		name = data["firstname"] + "_" + data["lastname"] + "_" + "Statistics"
-#		database.add_information(database_connection, name, [row])
-#		row = [data["firstname"], data["lastname"]]
-#		database.add_information(database_connection, "List_of_Players", [row])
+	information = database.get_information(database_connection, "List_Matches")
+	for x in range(len(information)):
+		if(data["NameofMatch"] == information[x][8]):
+			MatchName = information[x][8]
+			MatchID = information[x][0]
+	playerinformation = database.get_information(database_connection, "List_of_Players")
+	for y in range(len(playerinformation)):
+		if(data["Player1Name"] == playerinformation[y][1] +" " + playerinformation[y][2]):
+			Player1ID = playerinformation[y][1] +" " + playerinformation[y][2]
+		if(data["Player2Name"] == playerinformation[y][1] +" "+ playerinformation[y][2]):
+			Player2ID = playerinformation[y][1] +" " + playerinformation[y][2]
+	row = [MatchID, MatchName, Player1ID, Player2ID, "1", "1", "0", data["Score"]]
+	database.add_information(database_connection, "Throws", [row])
 	return "True"
+#	columns = ["id", "LegNumber"]
+	# Creates a table to store each legs of the match
+#	if(database.add_table(database_connection,  data["NameofMatch"] + "_Legs", columns)):
+#		name = data["NameofMatch"] + "_Legs"
+#		for x in range(int(data["NumberOfLegs"])):
+#			row = [x]
+#			database.add_information(database_connection, name, [row])
+#		return "True"
 #	else:
 #		return "False"
 
@@ -184,7 +201,16 @@ def getMatches():
 	# Converts information into JSON and sends to HMI
 	send = json.dumps(send)
 	return send
+
+@app.route("/AddThrows", methods = ['POST'])
+def AddThrows():
+	data = json.loads(request.get_data())
+	for key in data:
+		if key == "throw":
+			x=0
+
 	
+
 # Main Start Server
 if __name__ == '__main__':
 	# run!
