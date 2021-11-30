@@ -8,7 +8,6 @@ start_time = 0
 end_time = 0
 test_name = "TEST NAME"
 date = datetime.now().strftime("%m/%d/%Y")
-requirements = "NONE"
 traceability = "NONE"
 preparations = "NONE"
 
@@ -126,13 +125,12 @@ def createDoc(test, output):
         make_output.write('|Run Assessment: +++<strong><color rbg="#CC0000">FAIL</color></strong>+++')
     else:
         make_output.write('|Run Assessment: +++<strong><color rbg="#00BB00">PASS</color></strong>+++')
-    make_output.write('\n.2+|Feature Traceability: ' + traceability)
-    make_output.write('|Requirements: '+ requirements +'\n')
+    make_output.write('\n|Feature Traceability: ' + traceability)
     make_output.write('|Notes/Pre-Test Preparations: '+ preparations +'\n')
     make_output.write("|===\n\n")
-    make_output.write('\n[cols="3,11,10", width = "100%]')
+    make_output.write('\n[cols="2,11,10,5", width = "100%]')
     make_output.write("\n|===")
-    make_output.write('\n|{set:cellbgcolor:#01456C}|+++\n<strong><color rgb="#FFFFFF">EXECUTION PROCEDURE</color></strong>+++|\n')
+    make_output.write('\n|{set:cellbgcolor:#01456C}|+++\n<strong><color rgb="#FFFFFF">EXECUTION PROCEDURE</color></strong>+++\n|+++<strong><color rgb="#FFFFFF">EXPECTED RESULT</color></strong>+++\n|+++<strong><color rgb="#FFFFFF">SUCESSFULLY EXECUTED</color></strong>+++\n')
     if important_words[0] == "FAIL":
         fail = True
     else:
@@ -151,7 +149,7 @@ def createDoc(test, output):
             if checkElement(b[0]):
                 secondary_test = secondary_test + 1
                 make_output.write("\n|{set:cellbgcolor:#FFFFFF}" + str(main_test) + "." + str(secondary_test) +  "." + str(third_test))
-                make_output.write("\n|TEST SECTION: " + b[0] + "\n")
+                make_output.write("\n|TEST SECTION: " + b[0] + "|\n")
                 if fail_rest == False:
                     if important_words[x] == "FAIL":
                         fail = True
@@ -177,10 +175,12 @@ def createDoc(test, output):
                     if important_words[x] == "FAIL":
                         fail = True
                     if fail:
-                        make_output.write("\n|DID NOT SUCCEED IN PERFORMING TASK\n")
+                        make_output.write("\n|DID NOT SUCCEED IN PERFORMING TASK")
+                        make_output.write("\n|No\n")
                         fail_rest = True
                     else:
-                        make_output.write("\n|"+ convertPASS(b[c], variables) +"\n")
+                        make_output.write("\n|"+ convertPASS(b[c], variables))
+                        make_output.write("\n|Yes\n")
                     x = x + 1 
 
 
@@ -253,7 +253,6 @@ def checkElement(element):
 
 def setTestInfo(testname):
     global test_name
-    global requirements
     global traceability
     global preparations
     test_info = open("resources/" + testname + ".txt")
@@ -262,8 +261,6 @@ def setTestInfo(testname):
             test_name = line[line.find(":") + 2: len(line)]
         elif line.startswith("Test Traceability"):
             traceability = line[line.find(":") + 2: len(line)]
-        elif line.startswith("Requirements"):
-            requirements = line[line.find(":") + 2: len(line)]
         elif line.startswith("Pre-Test Preparations"):
             preparations = line[line.find(":") + 2: len(line)]
 
