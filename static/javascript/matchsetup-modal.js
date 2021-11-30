@@ -155,6 +155,15 @@ async function closeMatchModal(){
     }
 }
 
+function toggleSets(val){
+    if(val == "Game") {
+        hideSets();
+    }
+    else {
+        showSets();
+    }
+}
+
 //display sets selector for championship play
 function showSets() {
     $("#setsPicker").show();

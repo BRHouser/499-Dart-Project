@@ -211,10 +211,10 @@
                             </div>
                             <div class="col-xs-2 margin-inputtext">
                             <div class="mdb-select md-form">
-                                <select class="form-control" id="MatchTypeSelect">
+                                <select onchange="toggleSets(this.value)" class="form-control" id="MatchTypeSelect">
                                     <option value="" disabled selected>Match Type</option>
-                                    <option onClick="javascript:hideSets()">Game</option>
-                                    <option onClick="javascript:showSets()">Championship</option>
+                                    <option>Game</option>
+                                    <option>Championship</option>
                                 </select>
                             </div>
                         </div>
