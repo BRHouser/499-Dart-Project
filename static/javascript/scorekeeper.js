@@ -288,6 +288,7 @@ function knockOut(throw_num) { //replace throw at throw_num with 0 to represent 
     if(icon != undefined)
         icon.remove();
     throw_icons[throw_num] = undefined;
+    throwDisplayUpdate();
     
     //disable dropdown after knockOut set (reset after throw)
 }
@@ -298,7 +299,7 @@ function foul() {
         $("#throw-icon-container").empty();
         //console.log("foul")
         throws[current_player] = ["F", "F", "F"]
-        throwDisplayUpdate()
+        throwDisplayUpdate();
         $("#nextturn-button").removeClass("disabled")
     }
 }
