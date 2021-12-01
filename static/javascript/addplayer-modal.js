@@ -1,11 +1,15 @@
 //Input FirstName (String): The first name of the Player
 //Input LastName (String): The last name of the Player
-//Input NumberOfThrows (String): The total number of thrown darts by the player
-//Input NumberOfBullseyes (String): The total number of bullseyes by the player
 //The purpose of this function is to add the changed player in the database by calling the server function addPlayer
-function addPlayer(FirstName, LastName, NumberOfThrows, NumberOfBullseyes)
+async function addPlayer(FirstName, LastName)
 {
-    data = {firstname: FirstName, lastname: LastName, totalthrows: NumberOfThrows.toString(), totalbullseyes: NumberOfBullseyes.toString()}
+    let player_list = await getPlayersListForAddPlayer();
+    league_rank = player_list.length
+    if(league_rank == undefined)
+    {
+        league_rank = 0
+    }
+    data = {firstname: FirstName, lastname: LastName, LeagueRank: league_rank, LastWin: 'None', Average_League_Score: "None", Lifetime_180s: "None", Number_of_wins: 0}
     const request = new XMLHttpRequest();
     request.open('POST', '/addPlayer');
     request.send(JSON.stringify(data));
@@ -18,13 +22,23 @@ function addPlayer(FirstName, LastName, NumberOfThrows, NumberOfBullseyes)
 }
 
 
+//The purpose of this function is to call the function getPlayers in the server and return a dictionary
+function getPlayersListForAddPlayer(){
+    const request = new XMLHttpRequest();
+    request.open('POST', '/getPlayers');
+    request.send();
+    return new Promise((resolve) => {
+        request.onload = () => {
+            const response = JSON.parse(request.responseText);
+            resolve(response);
+        }; 
+    });
+}
 //The purpose of this function is to reset the elements in the addplayer modal
 function resetAddPlayer()
 {
     document.getElementById("FirstName").value = "";
     document.getElementById("LastName").value = "";
-    document.getElementById("NumberOfThrows").value = 0;
-    document.getElementById("Bullseyes").value = 0;
 }
 
 
@@ -37,14 +51,6 @@ async function closeModal(){
     var notification = document.getElementById("NotificationModal");
     var FirstName = document.getElementById("FirstName").value;
     var LastName = document.getElementById("LastName").value;
-    var NumberOfThrows = document.getElementById("NumberOfThrows").value;
-    var NumberOfBullseyes = document.getElementById("Bullseyes").value;
-
-    //checks to see if input was put for the throws
-    if(NumberOfThrows.trim() == "")
-        NumberOfThrows = 0
-    if(NumberOfBullseyes.trim() == "")
-        NumberOfBullseyes = 0
 
     //Checks to see if the firstname is valid
     if(FirstName.trim() == "")
@@ -66,22 +72,12 @@ async function closeModal(){
         return
     }
 
-    //Checks to see if the throws are valid
-    if(parseInt(NumberOfBullseyes) > parseInt(NumberOfThrows))
-    {   
-        submit = false;
-        resetAddPlayer();
-        document.getElementById('ErrorText').innerHTML = "Invalid Input: Number Of BullsEyes";
-        $(notification).modal('toggle');
-        return
-    }
-
     //if everything is correct then submit the information
     if(submit)
     {
         //checks to see if player is already in system
         //if not then add player
-        let response = await addPlayer(FirstName, LastName, NumberOfThrows, NumberOfBullseyes);
+        let response = await addPlayer(FirstName, LastName);
         if(response == "True")
         {
             resetAddPlayer();

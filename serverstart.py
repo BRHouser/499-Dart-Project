@@ -46,12 +46,11 @@ def addPlayer():
 	data = json.loads(request.get_data())
 
 	# Set terms of what the header should be for a player
-	columns = ["id", "First_Name", "Last_Name", "Total_Number_of_Throws", "Total_Number_of_BullsEyes"]
-
+	columns = ["id", "First_Name", "Last_Name", "League_Rank", "Last_Win", "Average_League_Score", "Lifetime_180s", "Number_of_Wins"]
 	# If a table was created for the given person, then add the person to the List_of_Players Table and return True
 	# Else return False which means the player is already in the database
 	if(database.add_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_" + "Statistics", columns)):
-		row = [data["firstname"], data["lastname"], str(data["totalthrows"]), str(data["totalbullseyes"])]
+		row = [data["firstname"], data["lastname"], str(data["LeagueRank"]), str(data["LastWin"]), str(data['Average_League_Score']), str(data['Lifetime_180s']), str(data['Number_of_wins'])]
 		name = data["firstname"] + "_" + data["lastname"] + "_" + "Statistics"
 		database.add_information(database_connection, name, [row])
 		row = [data["firstname"], data["lastname"]]

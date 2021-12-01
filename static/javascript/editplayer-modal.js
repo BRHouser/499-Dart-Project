@@ -1,4 +1,4 @@
-//Input firstname (String): The first name of the Player
+ //Input firstname (String): The first name of the Player
 //Input lastname (String): The last name of the Player
 //Ouput dictionary of the table of specified person
 //The purpose of this function is to call getPlayerStatistics in the server
@@ -15,6 +15,18 @@ function getPlayerInformation(firstName, lastName){
     });  
 }
 
+//The purpose of this function is to call the function getPlayers in the server and return a dictionary
+function getPlayersListForEditPlayer(){
+    const request = new XMLHttpRequest();
+    request.open('POST', '/getPlayers');
+    request.send();
+    return new Promise((resolve) => {
+        request.onload = () => {
+            const response = JSON.parse(request.responseText);
+            resolve(response);
+        }; 
+    });
+}
 
 //The purpose of this function is to delete the changed player in the database by calling server function deletePlayer
 function deleteChange(){
@@ -34,12 +46,10 @@ function deleteChange(){
 
 //Input firstname (String): The first name of the Player
 //Input lastname (String): The last name of the Player
-//Input throws (String): The total number of thrown darts by the player
-//Input bullseyes (String): The total number of bullseyes by the player
 //The purpose of this function is to add the changed player in the database by calling the server function addPlayer
-function addChange(firstname, lastname, throws, bullseyes){
+function addChange(firstname, lastname, leaguerank, lastwin, averageLeagueScore, lifetime_180s, Number_of_wins){
 
-    data = {firstname: firstname, lastname: lastname, totalthrows: throws.toString(), totalbullseyes: bullseyes.toString()}
+    data = {firstname: firstname, lastname: lastname, LeagueRank: leaguerank, LastWin: lastwin, Average_League_Score: averageLeagueScore, Lifetime_180s: lifetime_180s, Number_of_wins: Number_of_wins}
     const request = new XMLHttpRequest();
     request.open("POST", "/addPlayer")
     request.send(JSON.stringify(data))
@@ -54,12 +64,16 @@ function addChange(firstname, lastname, throws, bullseyes){
 
 //Submit Button changes will call deleteChange and addChange to edit player information
 //addChange will not be called until deleteChange is completed
-async function submitPlayerChanges(){
+async function submitPlayerChanges(){	    
     var new_firstname = document.getElementById("First_Name-row").value
     var new_lastname = document.getElementById("Last_Name-row").value
-    var new_totalthrows = document.getElementById("Total_Number_of_Throws-row").value
-    var new_totalbullseyes = document.getElementById("Total_Number_of_BullsEyes-row").value
+    var new_LeagueRank = document.getElementById("League_Rank-row").value
+    var new_Last_Win = document.getElementById("Last_Win-row").value
+    var new_Average_League_Score = document.getElementById("Average_League_Score-row").value
+    var new_Lifetime_180s = document.getElementById("Lifetime_180s-row").value
+    var new_Number_of_wins = document.getElementById("Number_of_Wins-row").value
     var notification = document.getElementById("NotificationModal");
+
 
     //Checks to see if Information is valid
     if(new_firstname.trim() == "")
@@ -74,11 +88,18 @@ async function submitPlayerChanges(){
         $(notification).modal('toggle');
         return
     }
-    if(parseInt(new_totalbullseyes) > parseInt(new_totalthrows))
-    {   
-        document.getElementById('ErrorText').innerHTML = "Invalid Input: Number Of BullsEyes";
-        $(notification).modal('toggle');
-        return
+    let player_list = await getPlayersListForEditPlayer()
+    var old_name = document.getElementById("ChoosePlayerDropdown1").innerHTML.trim()
+    if(old_name != new_firstname + " " + new_lastname)
+    {    
+        for(var key in player_list)
+        {
+            if(new_firstname + " " + new_lastname == player_list[key]){
+                document.getElementById('ErrorText').innerHTML = "Invalid Input: Name Taken";
+                $(notification).modal('toggle');
+                return
+            }
+        }
     }
 
     //if input is valid then save the changed values
@@ -86,22 +107,32 @@ async function submitPlayerChanges(){
 
     button.innerHTML = "Edit Player"
     button.setAttribute("onClick", "javascript:displayEditTable()")
+    if(new_Number_of_wins == 0)
+        new_Number_of_wins = "None"
+    if(new_Average_League_Score == 0)
+        new_Average_League_Score = "None"
+    if(new_LeagueRank == 0)
+        new_LeagueRank = "None"
+    
     var popup = document.getElementById('EditPlayerModal');
     $(popup).modal('toggle');
     await deleteChange()
-    await addChange(new_firstname, new_lastname, new_totalthrows, new_totalbullseyes)
+    await addChange(new_firstname, new_lastname, new_LeagueRank, new_Last_Win, new_Average_League_Score, new_Lifetime_180s, new_Number_of_wins)
     resetEditPlayer()
 
 }
 
 
 function resetEditPlayer(){
+    button.innerHTML = "Edit Player"
+    button.setAttribute("onClick", "javascript:displayEditTable()")
     document.getElementById("ChoosePlayerDropdown1").innerHTML = "CHOOSE PLAYER"
     try{
     document.getElementById("TABLE-HEAD").remove()
     } catch(error) {
         console.log("No table")
     }
+
 }
 
 
@@ -164,7 +195,8 @@ async function displayEditTable(){
         var input = document.createElement("input") 
         input.value = information[key]
         input.id = key + "-row"
-        if(key.search("Total") != -1)
+        key = key.trim()
+        if(key == 'League_Rank' || key == 'Average_League_Score' || key == 'Lifetime_180s' || key == 'Number_of_Wins')
             input.setAttribute("type", "number")
         else
             input.setAttribute("type", "text")
