@@ -20,6 +20,9 @@ let request_data = {"first_read": true}
 
 //number of legs played in current set; used to tell if a new set/leg has begun
 let last_leg_wins = 0
+let last_match_stats = ""
+let last_league_stats = ""
+
 let loop = true
 
 //list container both player's names
@@ -113,18 +116,38 @@ async function initial() {
                 turnUpdate();
                 LegUpdate();
             }
-            else {
-                var label_str = names[current_player] + ", Throw " + (throws[current_player].length + 1);
-                $("#player-label").text(label_str);
+            else { //TODO: this runs if you update the stats after the last throw
 
-                // possible bug fix
-                if(throws[current_player].length == 3) {
-                    console.log("out of sequence bug")
-                    request_data = {"first_read": true}
+                var this_league_stats = game_data["player1"]["leagueStats"]
+                this_league_stats = this_league_stats.substring(0, this_league_stats.search(":"))
+                var this_match_stats = game_data["player1"]["matchStats"]
+                this_match_stats = this_match_stats.substring(0, this_match_stats.search(":"))
+
+                //console.log(last_league_stats)
+                //console.log(this_league_stats)
+                //console.log(last_match_stats)
+                //console.log(this_match_stats)
+                //console.log((this_league_stats === last_league_stats && this_match_stats === last_match_stats))
+
+                if((this_league_stats === last_league_stats && this_match_stats === last_match_stats)) {
+
+                    var label_str = names[current_player] + ", Throw " + (throws[current_player].length + 1);
+                    $("#player-label").text(label_str);
+
+                    // possible bug fix
+                    if(throws[current_player].length == 3) {
+                        console.log("out of sequence bug")
+                        request_data = {"first_read": true}
+                    }
                 }
             }
             received = true;
             last_leg_wins = game_data["player1"]["legsWon"] + game_data["player2"]["legsWon"]
+            
+            last_league_stats = game_data["player1"]["leagueStats"]
+            last_league_stats = last_league_stats.substring(0, last_league_stats.search(":"))
+            last_match_stats = game_data["player1"]["matchStats"]
+            last_match_stats = last_match_stats.substring(0, last_match_stats.search(":"))
         }
     }
 }
