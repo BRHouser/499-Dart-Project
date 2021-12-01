@@ -131,14 +131,16 @@ async function initial() {
 
                 if((this_league_stats === last_league_stats && this_match_stats === last_match_stats)) {
 
-                    var label_str = names[current_player] + ", Throw " + (throws[current_player].length + 1);
-                    $("#player-label").text(label_str);
-
                     // possible bug fix
                     if(throws[current_player].length == 3) {
                         console.log("out of sequence bug")
                         request_data = {"first_read": true}
                     }
+                }
+
+                if($("#player-label").text() == "Player 1, Throw 1") {
+                    var label_str = names[current_player] + ", Throw " + (throws[current_player].length + 1);
+                    $("#player-label").text(label_str);
                 }
             }
             received = true;
