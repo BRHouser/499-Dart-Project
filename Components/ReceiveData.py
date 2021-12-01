@@ -9,8 +9,8 @@ class ReceiveData():
 
     def __init__(self, data):
         self.data = data
-        print("init receive data")
-        print(self.data)
+        #print("init receive data")
+        #print(self.data)
         self.updateCurrentGameState = UpdateCurrentGameState.UpdateCurrentGameState()
 
         key = list(data.keys())[0]

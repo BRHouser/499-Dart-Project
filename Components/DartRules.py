@@ -59,9 +59,9 @@ class DartRules():
             if value != 60:
                 self.updateCurrentGameState.perfect_leg(player, False)
             if new_score < 170:
-                #outs = ""
-                outs = " ".join(self.calculate_winning_throws(new_score))
-                self.updateCurrentGameState.possible_outs(player, outs)
+                outs = self.calculate_winning_throws(new_score)
+                if(len(outs) > 0):
+                    self.updateCurrentGameState.possible_outs(player, " ".join(outs))
 
             self.updateCurrentGameState.update_player_score(player, new_score)
 
