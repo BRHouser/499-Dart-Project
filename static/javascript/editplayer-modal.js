@@ -111,8 +111,6 @@ async function submitPlayerChanges(){
     //if input is valid then save the changed values
     //var button = document.getElementById("Submit-Button")
 
-    button.innerHTML = "Edit Player"
-    button.setAttribute("onClick", "javascript:displayEditTable()")
     if(new_Number_of_wins == 0)
         new_Number_of_wins = "None"
     if(new_Average_League_Score == 0)
