@@ -12,8 +12,13 @@ function getMatchList(){
 }
 
 function changeDisplay(id, num){
-    var element = document.getElementById("MatchDropdown" + num);
+    var element = document.getElementById("MatchDrop" + num);
     element.innerHTML = id
+    window.alert(id)
+}
+
+function resetReviewMatch(){
+    document.getElementById("MatchDrop0").innerHTML = "Choose Match"
 }
 
 async function getMatch(num)
