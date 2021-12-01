@@ -43,6 +43,7 @@ class DartRules():
             if(diff < 0 or diff == 1):
                 registered_score = 0
                 self.bust = True
+                self.updateCurrentGameState.perfect_leg(player, False)
             elif(diff == 0):
                 if(score.find("D") >= 0):
                     registered_score = value
