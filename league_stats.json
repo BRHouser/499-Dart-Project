@@ -9,11 +9,20 @@
         "Wins": 0
     },
     "Test Test": {
-        "turns": 1,
-        "sum": 31,
+        "turns": 3,
+        "sum": 88,
         "League Rank": 2,
         "Last Win": "No Wins",
-        "Average League Score": 31.0,
+        "Average League Score": 29.33,
+        "Lifetime 180s": 0,
+        "Wins": 0
+    },
+    "Ben Houser": {
+        "turns": 1,
+        "sum": 22,
+        "League Rank": 3,
+        "Last Win": "No Wins",
+        "Average League Score": 22.0,
         "Lifetime 180s": 0,
         "Wins": 0
     }

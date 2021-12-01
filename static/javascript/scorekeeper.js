@@ -58,9 +58,10 @@ async function initial() {
 
             //display match name
            var Name = game_data["game"]['MatchName']
-           window.alert(Name)
            $('#MatchNameDisplay').text(Name)
 
+           //display the starting leg
+           $('#LegNumberDisplay').text(String(last_leg_wins + 1))
             // fill in throw history with server data
             $("#reviewThrows").empty()
 
@@ -110,6 +111,7 @@ async function initial() {
                 $("#throw-icon-container").empty();
                 throwDisplayUpdate();
                 turnUpdate();
+                LegUpdate();
             }
             else {
                 var label_str = names[current_player] + ", Throw " + (throws[current_player].length + 1);
@@ -214,6 +216,12 @@ function turnUpdate() {
         element.href = "javascript:knockOut(" + i + ")";
         $("#knockoutDropdownContainer").append(element)
     }
+
+}
+
+function LegUpdate() {
+    var text = String(last_leg_wins + 1)
+    $('#LegNumberDisplay').text(text)
 
 }
 
