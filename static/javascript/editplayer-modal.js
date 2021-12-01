@@ -88,6 +88,12 @@ async function submitPlayerChanges(){
         $(notification).modal('toggle');
         return
     }
+    if(new_Last_Win.trim() == "")
+    {
+        document.getElementById('ErrorText').innerHTML = "Invalid Input: Last_Win";
+        $(notification).modal('toggle');
+        return
+    }
     let player_list = await getPlayersListForEditPlayer()
     var old_name = document.getElementById("ChoosePlayerDropdown1").innerHTML.trim()
     if(old_name != new_firstname + " " + new_lastname)
@@ -113,7 +119,30 @@ async function submitPlayerChanges(){
         new_Average_League_Score = "None"
     if(new_LeagueRank == 0)
         new_LeagueRank = "None"
-    
+    if(new_Average_League_Score < 0)
+    {
+        document.getElementById('ErrorText').innerHTML = "Invalid Input: Average_League_Score";
+        $(notification).modal('toggle');
+        return
+    }
+    if(new_LeagueRank < 0)
+    {
+        document.getElementById('ErrorText').innerHTML = "Invalid Input: League_Rank";
+        $(notification).modal('toggle');
+        return
+    }
+    if(new_Number_of_wins < 0)
+    {
+        document.getElementById('ErrorText').innerHTML = "Invalid Input: Number_of_wins";
+        $(notification).modal('toggle');
+        return
+    }
+    if(new_Lifetime_180s < 0)
+    {
+        document.getElementById('ErrorText').innerHTML = "Invalid Input: Lifetime_180s";
+        $(notification).modal('toggle');
+        return
+    }    
     var popup = document.getElementById('EditPlayerModal');
     $(popup).modal('toggle');
     await deleteChange()
