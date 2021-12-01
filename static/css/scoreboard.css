@@ -35,16 +35,16 @@ html, body {
 }
 
 .score-display {
-    font-size:  190px;
+    font-size: calc(900% + 1vw + 1vh);
     font-weight: 400;
 }
 
 .name-display {
-    font-size:  80px;
+    font-size: calc(500% + 1vw + 1vh);
     font-weight: 150;
 }
 
 .stats-display {
-    font-size:  37px;
+    font-size: calc(60% + 1vw + 1vh);
     font-weight: 150;
 }

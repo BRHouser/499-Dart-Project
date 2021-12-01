@@ -5,7 +5,7 @@
         <link rel="stylesheet" media="all" href="{{ url_for('.static', filename='css/scoreboard.css')}}">
     </head>
 
-    <body>
+    <body style="max-height: 100%; overflow: hidden;">
 
         <div class="container-fluid min-100" id="main-content">
             <div class = "row header" style = "height: 10%">
@@ -14,7 +14,7 @@
             <div class = "row sidebar" style = "height: 90%">
                 <div class="col">
                     <div class = "text-center d-flex flex-column" id = "player1">
-                        <h1 id="p1-name" class = "name-display">Player 1</h1>
+                        <h1 id="p1-name" style="max-height:143px; overflow: hidden;" class = "name-display">Player 1</h1>
                         <p class="stats-display" id="p1-throwing"></p>
                         <p class="stats-display" id="p1-legs-won">Legs : 0, Sets : 0</p>
                         <p class="score-display" id="p1-score">301</p>
