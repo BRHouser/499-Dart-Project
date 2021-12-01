@@ -1,5 +1,6 @@
 import json
 import Components.UpdateCurrentGameState as UpdateCurrentGameState
+import Components.LeagueStats as LeagueStats
 
 #Class to set up the game, takes in form data from match setup webpage
 #Author: Ben Houser
@@ -13,12 +14,16 @@ class GameSetup():
         self.active_json = "current_game_state.json"
         self.game_data = game_data
 
-        print(game_data)
+        #print(game_data)
 
         with open(self.init_json) as f:
             self.init_data = json.load(f)
 
         self.set_game_info()
+
+        LS = LeagueStats.LeagueStats()
+        LS.add_player(self.game_data["Player1Name"])
+        LS.add_player(self.game_data["Player2Name"])
         
 
         updateCurrentGameState = UpdateCurrentGameState.UpdateCurrentGameState()
