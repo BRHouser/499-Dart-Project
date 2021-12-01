@@ -119,7 +119,7 @@ async function initial() {
 
                 // possible bug fix
                 if(throws[current_player].length == 3) {
-                    alert("out of sequence bug")
+                    console.log("out of sequence bug")
                     request_data = {"first_read": true}
                 }
             }
