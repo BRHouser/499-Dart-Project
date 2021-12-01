@@ -116,6 +116,12 @@ async function initial() {
             else {
                 var label_str = names[current_player] + ", Throw " + (throws[current_player].length + 1);
                 $("#player-label").text(label_str);
+
+                // possible bug fix
+                if(throws[current_player].length == 3) {
+                    alert("out of sequence bug")
+                    request_data = {"first_read": true}
+                }
             }
             received = true;
             last_leg_wins = game_data["player1"]["legsWon"] + game_data["player2"]["legsWon"]
@@ -185,7 +191,6 @@ function throwDisplayUpdate() {
     }
 
     let text = t.join(", ");
-    console.log(text)
     $("#throwsDisplay").text(text);
 }
 
@@ -252,7 +257,7 @@ function undo() { //undo last entered score
     if(throws[current_player].length != 0) {
 
         if(throws[current_player].includes("F")) { // reset everything to undo foul
-            console.log("undo foul")
+            //console.log("undo foul")
             throws = [[],[]]
             throw_icons = [];
             previous_state = [[],[],[],[]];
@@ -277,7 +282,7 @@ function undo() { //undo last entered score
 }
 
 function knockOut(throw_num) { //replace throw at throw_num with 0 to represent knocked out dart
-    console.log("knock out")
+    //console.log("knock out")
     throws[current_player][throw_num] = "KO";
     icon = throw_icons[throw_num];
     if(icon != undefined)
@@ -291,7 +296,7 @@ function knockOut(throw_num) { //replace throw at throw_num with 0 to represent 
 function foul() {
     if(throws[current_player].length < 3) {
         $("#throw-icon-container").empty();
-        console.log("foul")
+        //console.log("foul")
         throws[current_player] = ["F", "F", "F"]
         throwDisplayUpdate()
         $("#nextturn-button").removeClass("disabled")

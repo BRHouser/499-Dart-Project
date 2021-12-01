@@ -37,7 +37,7 @@ class DartRules():
             score = str(score)
             value = self.get_score_value(score)
             current_score = int(self.json_data[player]["score"])
-            print(value)
+            #print(value)
 
             diff = current_score - value
             if(diff < 0 or diff == 1):
@@ -54,7 +54,7 @@ class DartRules():
 
             #print("new score: " + str(new_score))
             #print("sum: " + str(self.throw_sum))
-            print(self.throws)
+            #print(self.throws)
 
             if value != 60:
                 self.updateCurrentGameState.perfect_leg(player, False)
@@ -107,20 +107,19 @@ class DartRules():
     # registers throws to current game and league statistics 
     def register_statistics(self, player, score):
         
-        print("registers stats: " + score)
+        #print("registers stats: " + score)
         #Current Match
         stats = self.json_data["stats"][player]
-        print(stats)
+        #print(stats)
 
         if(self.throws == 3):
-            stats["turns"] += 1
-
             #Average turn score
             current = stats["sum"]
             print("sum: " + str(current))
             new = (current)/stats["turns"]
             new = round(new, 2)
             self.updateCurrentGameState.update_current_match_stats(player, "Average Turn Score", new)
+            stats["turns"] += 1
 
             #180s in match
             current = stats["current"]["180s In Match"]
@@ -130,7 +129,7 @@ class DartRules():
 
             #best turn score
             current = stats["current"]["Best Turn Score"]
-            print(current)
+            #print(current)
             if self.throw_sum > current:
                 self.updateCurrentGameState.update_current_match_stats(player, "Best Turn Score", self.throw_sum)
 

@@ -36,6 +36,8 @@ function resetSetupMatch()
     document.getElementById("MatchLocation").value = "";
     document.getElementById("MatchDate").value = ""; ///////////////////////////////////
 
+    hideSets();
+
 }
 
 async function closeMatchModal(){

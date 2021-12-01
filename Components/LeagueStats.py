@@ -41,13 +41,16 @@ class LeagueStats():
         self.write()
         return self.content[player]["turns"]
 
+    # add win to player's stats
     def increment_win(self, player):
         self.add_player(player)
-        print("win for " + player)
+        #print("win for " + player)
         self.content[player]["Wins"] +=1
         
         self.write()
 
+    # refresh rankings
+    # ranking is based on number of wins
     def update_ranks(self):
         player_list = []
         for key in list(self.content.keys()): # for each player
@@ -59,7 +62,13 @@ class LeagueStats():
 
         player_list.sort(reverse = True, key = self.sort_func) # sort by most wins (first is highest)
 
+        print(self.content)
+
+        print(player_list)
+
         for count, pair in enumerate(player_list):
+            print(count)
+            print(pair)
             self.content[pair[0]]["League Rank"] = count + 1
 
         self.write()

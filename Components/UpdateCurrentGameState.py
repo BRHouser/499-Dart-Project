@@ -10,7 +10,7 @@ class UpdateCurrentGameState():
     def __init__(self):
         self.json_path = "current_game_state.json"
         self.new_leg = False
-        print("init updater")
+        #print("init updater")
         try:
             with open(self.json_path) as data:
                 self.content = json.loads(data.read())
@@ -36,7 +36,7 @@ class UpdateCurrentGameState():
         new_key = new_key.replace("\n", "").strip()
 
         #todo: lookup statistics from archive
-        print("update league stats")
+        #print("update league stats")
         LS = LeagueStats.LeagueStats()
         name1 = self.content["player1"]["name"]
         name2 = self.content["player2"]["name"]
@@ -128,7 +128,7 @@ class UpdateCurrentGameState():
         #wait for scoreboard and scorekeeper to download current_game_state.json
         time.sleep(1)
         #register game to archive
-        print("delete game state")
+        #print("delete game state")
         #os.remove(self.json_path)
         self.content = {}
         self.write()
@@ -146,20 +146,18 @@ class UpdateCurrentGameState():
 
         if self.content["game"]["current_turn"] == 0:
             self.content["game"]["current_turn"] = 1
-            self.content["stats"]["player1"]["turns"] += 1
         else:
             self.content["game"]["current_turn"] = 0
-            self.content["stats"]["player2"]["turns"] += 1
 
     #append "data" object representing throw data to current throw history list
     def log_throw(self, data):
-        print(data)
+        #print(data)
         set = self.content["game"]["current_set"]
         leg = self.content["game"]["current_leg"]
 
-        print(set)
-        print(leg)
-        print(len(self.content["throwHistory"]))
+        #print(set)
+        #print(leg)
+        #print(len(self.content["throwHistory"]))
 
         if set >= len(self.content["throwHistory"]):
             self.content["throwHistory"].append([])

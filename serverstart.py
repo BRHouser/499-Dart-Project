@@ -139,7 +139,7 @@ def receiveData():
 # OUTPUT: current game state json object for scoreboard
 @app.route("/updateScoreboard", methods=["POST"])
 def updateScoreboard():
-	print(request.get_data())
+	#print(request.get_data())
 	data = json.loads(request.get_data())
 	first_read = data["first_read"]
 	#todo: send first_read with js
@@ -152,7 +152,7 @@ def updateScoreboard():
 def addMatch():
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
-	print(data)
+	#print(data)
 	game_setup = GameSetup.GameSetup(data)
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
@@ -222,7 +222,7 @@ def AddThrows():
 	turn = game[2]
 	for i in range(3):
 		row = [MatchID, MatchName, Player1ID, Player2ID, CurrentLeg, turn, Throws[i], data["Score"]]
-		print("HATRED FOR THIS OMGGGGGG")
+		#print("HATRED FOR THIS OMGGGGGG")
 		print(row)
 		database.add_information(database_connection, "Throws", [row])
 	#database.add_information(database_connection, "Throws", [row])

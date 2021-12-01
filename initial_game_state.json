@@ -34,7 +34,7 @@
     },
     "stats": {
         "player1": {
-            "turns": 0,
+            "turns": 1,
             "sum": 0,
             "current": {
                 "Average Turn Score": 0,
@@ -48,7 +48,7 @@
             }
         },
         "player2": {
-            "turns": 0,
+            "turns": 1,
             "sum": 0,
             "current": {
                 "Average Turn Score": 0,
