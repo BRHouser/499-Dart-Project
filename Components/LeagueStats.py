@@ -62,15 +62,20 @@ class LeagueStats():
 
         player_list.sort(reverse = True, key = self.sort_func) # sort by most wins (first is highest)
 
-        print(self.content)
+        #print("\n")
 
-        print(player_list)
+        #print(player_list)
+        count = 1
 
-        for count, pair in enumerate(player_list):
-            print(count)
-            print(pair)
-            self.content[pair[0]]["League Rank"] = count + 1
+        #TODO: obscure bug: if there are no players in league_stats.json, upon starting a game the two players will both be ranked 2
+        for pair in player_list:
+            #print(count)
+            #print(pair[0])
+            self.content[pair[0]]["League Rank"] = count
+            count += 1
+            #print(self.content)
 
+        #print(self.content)
         self.write()
 
     def sort_func(self, pair):
