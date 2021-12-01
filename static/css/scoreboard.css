@@ -45,6 +45,6 @@ html, body {
 }
 
 .stats-display {
-    font-size: calc(60% + 1vw + 1vh);
+    font-size: calc(56% + 1vw + 1vh);
     font-weight: 150;
 }
