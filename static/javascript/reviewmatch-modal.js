@@ -17,7 +17,7 @@ function changeDisplay(id, num){
 }
 
 function resetReviewMatch(){
-    document.getElementById("MatchDrop0").innerHTML = "Choose Match"
+    document.getElementById("MatchDrop1").innerHTML = "Choose Match"
 }
 
 async function getMatch(num)
