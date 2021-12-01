@@ -45,6 +45,7 @@ class GameSetup():
         
         self.init_data["game"]["score"] = int(self.game_data["Score"])
         self.init_data["game"]["date"] = self.game_data["DateOfMatch"]
+        self.init_data["game"]["MatchName"] = self.game_data["NameofMatch"]
 
         self.init_data["player1"]["name"] = self.game_data["Player1Name"]
         self.init_data["player1"]["score"] = self.game_data["Score"]

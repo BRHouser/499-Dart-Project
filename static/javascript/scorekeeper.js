@@ -44,7 +44,7 @@ async function initial() {
         received = false;
         // sync with server
         let game_data = await requestGameState();
-
+        console.log(game_data)
         if(Object.keys(game_data).length === 0) { // no game in progress
             //alert("no game");
             $("#noGameModal").modal("show");
@@ -55,6 +55,11 @@ async function initial() {
             //collect player names
             names[0] = game_data["player1"]["name"]
             names[1] = game_data["player2"]["name"]
+
+            //display match name
+           var Name = game_data["game"]['MatchName']
+           window.alert(Name)
+           $('#MatchNameDisplay').text(Name)
 
             // fill in throw history with server data
             $("#reviewThrows").empty()

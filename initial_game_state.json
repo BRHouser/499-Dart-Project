@@ -9,6 +9,7 @@
         "won": false,
         "winner": "",
         "lastStarter": 0,
+        "MatchName": "",
         "date": ""
     },
     "player1": {
