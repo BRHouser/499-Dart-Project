@@ -14,6 +14,9 @@ function getMatchList(){
 function changeDisplay(id, num){
     var element = document.getElementById("MatchDrop" + num);
     element.innerHTML = id
+    data = {"ReviewMatch":{}}
+    data["ReviewMatch"]["NameOfMatch"] = id
+    sendData2(data)
 }
 
 function resetReviewMatch(){
@@ -48,6 +51,26 @@ async function getMatch(num)
 
 }
 
+function togglePlayerDropdown(val){
+    if (val != null){
+        showPlayer()
+    }
+    else{
+        hidePlayer()
+    }
+
+}
+
+//display sets selector for championship play
+function showPlayer() {
+    $("#ChoosePlayerDropdown4").show();
+}
+
+//hide sets selector for normal play
+function hidePlayer() {
+    $("#ChoosePlayerDropdown4").hide();
+}
+
 //The purpose of this function is to call the function getPlayers in the server and return a dictionary
 function getPlayersListFromMatch(){
     const request = new XMLHttpRequest();
@@ -71,6 +94,7 @@ function changeDisplayPlayer(id, num){
 async function getPlayersFromMatch(num)
 {
     //calls to get the players and waits til they are recieved
+    window.alert("Working?")
     let players = await getPlayersListFromMatch();
 
     var dropdown = document.getElementById("dynamic-dropdown" + num);
@@ -94,4 +118,10 @@ async function getPlayersFromMatch(num)
         dropdown.appendChild(element)
     }
 
+}
+
+function sendData2(data) {
+    const request = new XMLHttpRequest();
+    request.open('POST', '/receiveData');
+    request.send(JSON.stringify(data));
 }
