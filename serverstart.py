@@ -190,42 +190,25 @@ def getMatches():
 	send = json.dumps(send)
 	return send
 
-@app.route("/AddThrows", methods = ['POST'])
-def AddThrows():
-	MatchID = None
-	MatchName = None
-	Player1ID = None
-	Player2ID = None
-	# Loads the data from the HMI
-	data = json.loads(request.get_data())
-	#Adds the match created to current_match
-	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
-	database.add_information(database_connection, "List_Matches", [row])
+
+# OUTPUT: A dictionary with all the Matches in it 
+# The purpose of this function is to send a dictionary of Matchs to the HMI by calling get_information 
+# on the List_Matches table 
+@app.route("/getPlayersMatch", methods = ['POST'])
+def getPlayersMatches():
+	# Gets list of matches from database
 	information = database.get_information(database_connection, "List_Matches")
-	for x in range(len(information)):
-		if(data["NameofMatch"] == information[x][8]):
-			MatchName = information[x][8]
-			MatchID = information[x][0]
-	playerinformation = database.get_information(database_connection, "List_of_Players")
-	for y in range(len(playerinformation)):
-		if(data["Player1Name"] == playerinformation[y][1] +" " + playerinformation[y][2]):
-			Player1ID = playerinformation[y][1] +" " + playerinformation[y][2]
-		if(data["Player2Name"] == playerinformation[y][1] +" "+ playerinformation[y][2]):
-			Player2ID = playerinformation[y][1] +" " + playerinformation[y][2]
-	Throws = data["throwHistory"]
-	#Throw1 = Throws[0]
-	#Throw2= Throws[1]
-	#Throw3 = Throws[2]
-	game = data['game']
-	CurrentLeg = game[1]
-	turn = game[2]
-	for i in range(3):
-		row = [MatchID, MatchName, Player1ID, Player2ID, CurrentLeg, turn, Throws[i], data["Score"]]
-		#print("HATRED FOR THIS OMGGGGGG")
-		print(row)
-		database.add_information(database_connection, "Throws", [row])
-	#database.add_information(database_connection, "Throws", [row])
-	
+	data = json.loads(request.get_data())
+	# Converts Information into dictionary format
+	send = {}
+	for x in range(1, len(information)):
+		if(data["game"]["MatchName"] == information[x][8]):
+			send["Player" + str(x)] = information[x][1]
+			send["Player" + str(x)] = information[x][2]
+	# Converts information into JSON and sends to HMI
+	send = json.dumps(send)
+	return send
+
 
 # Main Start Server
 if __name__ == '__main__':
