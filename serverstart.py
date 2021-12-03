@@ -199,14 +199,12 @@ def getPlayersMatches():
 	# Gets list of matches from database
 	information = database.get_information(database_connection, "List_Matches")
 	data = json.loads(request.get_data())
-	print("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOK HEEEEEEEEEEEERRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-	print(data["ReviewMatch"]["NameOfMatch"])
 	# Converts Information into dictionary format
 	send = {}
 	for x in range(1, len(information)):
-		if(data["game"]["MatchName"] == data["ReviewMatch"]["NameOfMatch"]):
-			send["Player1"] = information[x][1]
-			send["Player2"] = information[x][2]
+		if(data["game"]["MatchName"] == information[x][8]):
+			send["Player" + str(x)] = information[x][1]
+			send["Player" + str(x)] = information[x][2]
 	# Converts information into JSON and sends to HMI
 	send = json.dumps(send)
 	return send
