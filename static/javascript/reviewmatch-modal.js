@@ -14,6 +14,9 @@ function getMatchList(){
 function changeDisplay(id, num){
     var element = document.getElementById("MatchDrop" + num);
     element.innerHTML = id
+    data = {"ReviewMatch":{}}
+    data["ReviewMatch"]["NameOfMatch"] = id
+    sendData2(data)
 }
 
 function resetReviewMatch(){
@@ -48,112 +51,77 @@ async function getMatch(num)
 
 }
 
+function togglePlayerDropdown(val){
+    if (val != null){
+        showPlayer()
+    }
+    else{
+        hidePlayer()
+    }
+
+}
+
+//display sets selector for championship play
+function showPlayer() {
+    $("#ChoosePlayerDropdown4").show();
+}
+
+//hide sets selector for normal play
+function hidePlayer() {
+    $("#ChoosePlayerDropdown4").hide();
+}
+
 //The purpose of this function is to call the function getPlayers in the server and return a dictionary
-function getMatchInformation(MatchName){
+function getPlayersListFromMatch(){
     const request = new XMLHttpRequest();
-    request.open('POST', '/getMatchInformation');
-    data = {matchname: MatchName}
-    request.send(JSON.stringify(data));
+    request.open('POST', '/getPlayersMatch');
+    request.send();
     return new Promise((resolve) => {
         request.onload = () => {
             const response = JSON.parse(request.responseText);
             resolve(response);
         }; 
-    }); 
+    });
 }
 
+function changeDisplayPlayer(id, num){
+    var element = document.getElementById("ChoosePlayerDropdown" + num);
+    element.innerHTML = id
+}
 
-async function displaySelectPlayerTable(){
-    //table initialize
-    var insertTable = document.getElementById("ReviewMatch-ModalBody");
-    var footer = document.getElementById("ReviewMatch-ModalFooter")
-    var table = document.createElement("table")
-    table.id = "TABLE-HEAD"
-    var tablehead = document.createElement("thead")
-    var tablebody = document.createElement("tbody")
-    var tr = document.createElement("tr")
-    var MatchName = document.getElementById("MatchDrop1").innerHTML;
-    
+//Input num (String): The dynamic dropdown number that needs to be changed
+//The purpose of this function is to give the dynamic dropdown elements
+async function getPlayersFromMatch(num)
+{
+    //calls to get the players and waits til they are recieved
+    window.alert("Working?")
+    let players = await getPlayersListFromMatch();
 
-    //Check to see if  has been chosen
-    if(MatchName.trim() == "Choose Match")
+    var dropdown = document.getElementById("dynamic-dropdown" + num);
+
+    //deletes all previous elements in the dropdown
+    while(dropdown.childNodes[0] != null)
     {
-        var notification = document.getElementById("NotificationModal");
-        document.getElementById('ErrorText').innerHTML = "Invalid Input: Match is not in System";
-        $(notification).modal('toggle');
-        return
+        dropdown.removeChild(dropdown.childNodes[0]);
     }
 
-
-    data = {matchname: MatchName}
-
-    
-    var information = await getMatchInformation(data["matchname"])
-
-    //creates the headers of the table
-    var tr = document.createElement("tr")
-    tr.classList.add("d-flex")
-    for(var key in information)
+    //repopulates the dropdown with the current players in the database
+    for(var key in players)
     {
-        if(key == "id")
-            continue
-        var element = document.createElement("th")
-        element.id = key + "-col"
-        element.classList.add("col")
-        var node = document.createTextNode(key)
+        var element = document.createElement("a")
+        element.id = players[key] + "-dropdown"
+        element.classList.add("dropdown-item");
+        element.setAttribute("onClick","javascript:changeDisplayPlayer('" + players[key] + "','"+ num + "')");
+        element.href = "#";
+        var node = document.createTextNode(players[key])
         element.appendChild(node)
-        tr.appendChild(element)
-        tablehead.appendChild(tr)
+        dropdown.appendChild(element)
     }
 
-
-    //creates the rows of the table
-    var tr = document.createElement("tr")
-    tr.classList.add("d-flex")
-    window.alert(information)
-    for(key in information)
-    {
-        if(key == "id")
-            continue
-        var input = document.createElement("input")
-        input.value = information[key]
-        input.id = key + "-row"
-        key = key.trim()
-        if(key == "Player"){
-            input.setAttribute("type","text")
-        }
-        else{
-            input.setAttribute("type", "number")
-        }
-        input.classList.add("form-control")
-        var element = document.createElement("td")
-        element.classList.add("col")
-        element.appendChild(input)
-        tr.appendChild(element)
-        tablebody.appendChild(tr)
-
-    }
-    //append the information to table
-    table.appendChild(tablehead)
-    table.appendChild(tablebody)
-
-    //table features
-    table.classList.add("table")
-    table.classList.add("table-dark")
-
-    //location of table
-    insertTable.insertBefore(table, footer);
 }
 
-function resetReviewPlayer(){
-    review = document.getElementById("Review-Button")
-    review.innerHTML = "Review Match"
-    review.setAttribute("onClick", "javascript:displaySelectPlayerTable()")
-    document.getElementById("MatchDrop1").innerHTML = "Choose Match"
-    try{
-    document.getElementById("TABLE-HEAD").remove()
-    } catch(error) {
-        console.log("No table")
-    }
-
+function sendData2(data) {
+    const request = new XMLHttpRequest();
+    request.open('POST', '/receiveData');
+    request.send(JSON.stringify(data));
 }
