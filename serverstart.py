@@ -151,6 +151,8 @@ def updateScoreboard():
 def addMatch():
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
+	#print(data)
+	game_setup = GameSetup.GameSetup(data)
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
 	database.add_information(database_connection, "List_Matches", [row])
