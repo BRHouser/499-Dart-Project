@@ -51,6 +51,25 @@ async function getMatch(num)
 
 }
 
+function togglePlayerDropdown(val){
+    if (val != null){
+        showPlayer()
+    }
+    else{
+        hidePlayer()
+    }
+
+}
+
+//display sets selector for championship play
+function showPlayer() {
+    $("#ChoosePlayerDropdown4").show();
+}
+
+//hide sets selector for normal play
+function hidePlayer() {
+    $("#ChoosePlayerDropdown4").hide();
+}
 
 //The purpose of this function is to call the function getPlayers in the server and return a dictionary
 function getPlayersListFromMatch(){
@@ -65,3 +84,44 @@ function getPlayersListFromMatch(){
     });
 }
 
+function changeDisplayPlayer(id, num){
+    var element = document.getElementById("ChoosePlayerDropdown" + num);
+    element.innerHTML = id
+}
+
+//Input num (String): The dynamic dropdown number that needs to be changed
+//The purpose of this function is to give the dynamic dropdown elements
+async function getPlayersFromMatch(num)
+{
+    //calls to get the players and waits til they are recieved
+    window.alert("Working?")
+    let players = await getPlayersListFromMatch();
+
+    var dropdown = document.getElementById("dynamic-dropdown" + num);
+
+    //deletes all previous elements in the dropdown
+    while(dropdown.childNodes[0] != null)
+    {
+        dropdown.removeChild(dropdown.childNodes[0]);
+    }
+
+    //repopulates the dropdown with the current players in the database
+    for(var key in players)
+    {
+        var element = document.createElement("a")
+        element.id = players[key] + "-dropdown"
+        element.classList.add("dropdown-item");
+        element.setAttribute("onClick","javascript:changeDisplayPlayer('" + players[key] + "','"+ num + "')");
+        element.href = "#";
+        var node = document.createTextNode(players[key])
+        element.appendChild(node)
+        dropdown.appendChild(element)
+    }
+
+}
+
+function sendData2(data) {
+    const request = new XMLHttpRequest();
+    request.open('POST', '/receiveData');
+    request.send(JSON.stringify(data));
+}
