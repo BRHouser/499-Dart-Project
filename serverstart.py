@@ -152,7 +152,6 @@ def addMatch():
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
 	#print(data)
-	game_setup = GameSetup.GameSetup(data)
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
 	database.add_information(database_connection, "List_Matches", [row])
@@ -190,24 +189,54 @@ def getMatches():
 	send = json.dumps(send)
 	return send
 
-
-# OUTPUT: A dictionary with all the Matches in it 
-# The purpose of this function is to send a dictionary of Matchs to the HMI by calling get_information 
-# on the List_Matches table 
-@app.route("/getPlayersMatch", methods = ['POST'])
-def getPlayersMatches():
-	# Gets list of matches from database
-	information = database.get_information(database_connection, "List_Matches")
+@app.route("/getMatchInformation", methods = ['POST'])
+def getMatchInformation():
+	# Get Information from HMI
 	data = json.loads(request.get_data())
-	print("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOK HEEEEEEEEEEEERRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-	print(data["ReviewMatch"]["NameOfMatch"])
-	# Converts Information into dictionary format
+
+	# Gets Information from database
+	information = database.get_information(database_connection, "List_Matches")
 	send = {}
-	for x in range(1, len(information)):
-		if(data["game"]["MatchName"] == data["ReviewMatch"]["NameOfMatch"]):
-			send["Player1"] = information[x][1]
-			send["Player2"] = information[x][2]
-	# Converts information into JSON and sends to HMI
+	# Puts information into dictionary form
+	for y in range(len(information)):
+		if(data["matchname"] == information[y][8]):
+			player1 = information[y][1]
+			player2 = information[y][2]
+	name1 = data['matchname'].replace(' ', "_") + "_" + player1.replace(' ', '_') + "_" + "Record"
+	name2 = data['matchname'].replace(' ', "_") + "_" + player2.replace(' ', '_') + "_" + "Record"
+	player1info = database.get_information(database_connection, name1)
+	print("\n\n\n\n\n")
+	print(information)
+	print("\n\n\n\n")
+	print(player1info)
+	print("\n\n\n\n")
+
+	player2info = database.get_information(database_connection, name2)
+	x = 0
+	z = 0
+	for y in range(len(player1info[x])):
+		#print('X = ' + str(x))
+		#try:
+		print("Z = " + str(x))
+		zmod = z % 2
+		print("Z % 2 =" + str(zmod))
+		if(z % 2 == 0):
+			send[player1info[x][y]] = player1info[x + 1][y]
+			send["Player"] = information[x + 1][1]
+		else:
+			send[player2info[x][y]] = player2info[x + 1][y]
+			print("I came in here")
+			send["Player"] = information[x + 1][2]
+		#send[player2info[x][y]] = player2info[x+1][y]
+		#except:
+		#	print("No more throws")
+		#remainder = y % 7
+		#print("YYYYYY" + str(y))
+		#print(remainder)
+		#if (remainder == 0):
+		#	x = x + 1
+		z = z + 1
+	# Convert data to JSON and send it to HMI
 	send = json.dumps(send)
 	return send
 
