@@ -152,7 +152,6 @@ def addMatch():
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
 	#print(data)
-	game_setup = GameSetup.GameSetup(data)
 	#Adds the match created to current_match
 	row = [data["Player1Name"], data["Player2Name"], data["Score"], data["MatchType"], str(data["SetNumber"]) , str(data["NumberOfLegs"]), data["MatchOfficial"], data["NameofMatch"], data["Location"], data["DateOfMatch"]]
 	database.add_information(database_connection, "List_Matches", [row])
@@ -199,8 +198,6 @@ def getPlayersMatches():
 	# Gets list of matches from database
 	information = database.get_information(database_connection, "List_Matches")
 	data = json.loads(request.get_data())
-	print("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOK HEEEEEEEEEEEERRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-	print(data["ReviewMatch"]["NameOfMatch"])
 	# Converts Information into dictionary format
 	send = {}
 	for x in range(1, len(information)):
