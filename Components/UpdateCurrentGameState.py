@@ -2,6 +2,7 @@ import json
 import os
 import time
 import Components.LeagueStats as LeagueStats
+import Components.MatchHistory as MatchHistory
 
 #Class to make any changes to and read info about current game state json
 #Author: Ben Houser
@@ -124,6 +125,10 @@ class UpdateCurrentGameState():
         LS.increment_win(name)
         LS.update_stat(name, "Last Win", self.content["game"]["date"])
         LS.update_ranks()
+
+        MH = MatchHistory.MatchHistory()
+        MH.add_match(self.content["throwHistory"],self.content["game"]["MatchName"],self.content["player1"]["name"],self.content["player2"]["name"])
+
 
         #wait for scoreboard and scorekeeper to download current_game_state.json
         time.sleep(1)

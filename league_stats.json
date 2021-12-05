@@ -2,7 +2,7 @@
     "Anthony Dohogne": {
         "turns": 2,
         "sum": 55,
-        "League Rank": 1,
+        "League Rank": 3,
         "Last Win": "No Wins",
         "Average League Score": 27.5,
         "Lifetime 180s": 0,
@@ -11,7 +11,7 @@
     "Test Test": {
         "turns": 3,
         "sum": 88,
-        "League Rank": 2,
+        "League Rank": 4,
         "Last Win": "No Wins",
         "Average League Score": 29.33,
         "Lifetime 180s": 0,
@@ -20,9 +20,36 @@
     "Ben Houser": {
         "turns": 1,
         "sum": 22,
-        "League Rank": 3,
+        "League Rank": 5,
         "Last Win": "No Wins",
         "Average League Score": 22.0,
+        "Lifetime 180s": 0,
+        "Wins": 0
+    },
+    "Marshall Rosenhoover": {
+        "turns": 15,
+        "sum": 1658,
+        "League Rank": 2,
+        "Last Win": "2021-12-05",
+        "Average League Score": 110.53,
+        "Lifetime 180s": 4,
+        "Wins": 3
+    },
+    "John Doe": {
+        "turns": 19,
+        "sum": 2018,
+        "League Rank": 1,
+        "Last Win": "2021-12-05",
+        "Average League Score": 102.74,
+        "Lifetime 180s": 5,
+        "Wins": 4
+    },
+    "Jane Doe": {
+        "turns": 8,
+        "sum": 318,
+        "League Rank": 6,
+        "Last Win": "No Wins",
+        "Average League Score": 39.75,
         "Lifetime 180s": 0,
         "Wins": 0
     }
