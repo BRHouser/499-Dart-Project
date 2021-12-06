@@ -35,6 +35,7 @@ class LeagueStats():
         self.write()
 
     def delete_player(self, name):
+        print("HERE")
         #IMPLEMENT HERE PLZ          
 
     def increment_turn(self, player):

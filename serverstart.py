@@ -44,8 +44,8 @@ def createScoreboard():
 def addPlayer():
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
-	print(data)
 	LS = LeagueStats.LeagueStats()
+	LS.delete_player(str(data['firstname'] + " " + str(data['lastname'])))
 	LS.update_stat(str(data['firstname'] + " " + str(data['lastname'])), "Last Win", data['LastWin'])
 	LS.update_stat(str(data['firstname'] + " " + str(data['lastname'])), "Average League Score", int(data['Average_League_Score']))
 	LS.update_stat(str(data['firstname'] + " " + str(data['lastname'])), "Lifetime 180s", int(data['Lifetime_180s']))
