@@ -91,6 +91,11 @@ class LeagueStats():
         
         self.write()
 
+    def delete_player(self, player):
+        self.content.pop(player, None)
+        self.update_ranks()
+        self.write()
+
     def write(self):
         with open(self.json_path, "w") as data:
             data.write(json.dumps(self.content, ensure_ascii=False, indent=4))
