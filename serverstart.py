@@ -1,3 +1,4 @@
+
 import sys
 sys.path.append('Database')
 import os
@@ -10,12 +11,19 @@ import Components.GameSetup as GameSetup
 import Components.LeagueStats as LeagueStats
 
 # Directory of the Database
+
+#TODO: make sure this doesn't break executable
 project_directory = os.getcwd()
+#print(project_directory)
 project_directory = project_directory[0:project_directory.find("Project") + 7]    
-database_address = os.getcwd() + "/Database/Dart_Scorer_Database.db"
+database_address = os.getcwd() + "\Database\Dart_Scorer_Database.db"
+#print(os.path.exists(database_address))
 database_connection = database.create_connection(database_address)
 
+
+
 app = Flask(__name__)
+
 
 # Renders Home Page
 @app.route('/')

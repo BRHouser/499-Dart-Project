@@ -492,19 +492,19 @@ class DartRules():
         elif (score == 10):
             winning_throws = [  'D5']
         elif (score == 9):
-            winning_throws = [ '5', 'D4']
+            winning_throws = [ '5', 'D2']
         elif (score == 8):
             winning_throws = [  'D4']
         elif (score == 7):
-            winning_throws = [ '3', 'D4']
+            winning_throws = [ '3', 'D2']
         elif (score == 6):
             winning_throws = [  'D3']
         elif (score == 5):
-            winning_throws = [ '1', 'D4']
+            winning_throws = [ '1', 'D2']
         elif (score == 4):
             winning_throws = [  'D2']
         elif (score == 3):
-            winning_throws = [ '1', 'D2']
+            winning_throws = [ '1', 'D1']
         elif (score == 2):
             winning_throws = [  'D1']
         
