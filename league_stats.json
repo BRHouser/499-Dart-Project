@@ -1,20 +1,20 @@
 {
+    "Gabe Henneberger": {
+        "turns": 2,
+        "sum": 301,
+        "League Rank": 1,
+        "Last Win": "2021-12-06",
+        "Average League Score": 150.5,
+        "Lifetime 180s": 1,
+        "Wins": 7
+    },
     "Marshall Rosenhoover": {
-        "turns": 0,
-        "sum": 0,
+        "turns": 1,
+        "sum": 174,
         "League Rank": 2,
         "Last Win": "None",
-        "Average League Score": 0,
+        "Average League Score": 174.0,
         "Lifetime 180s": 0,
         "Wins": 4
-    },
-    "Gabe Henneberger": {
-        "turns": 0,
-        "sum": 0,
-        "League Rank": 1,
-        "Last Win": "None",
-        "Average League Score": 0,
-        "Lifetime 180s": 0,
-        "Wins": 6
     }
 }

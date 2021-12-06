@@ -129,16 +129,17 @@ def deletePlayer():
 def getPlayerStatistics():
 	# Get Information from HMI
 	data = json.loads(request.get_data())
-
+	LS = LeagueStats.LeagueStats()
+	
 	# Gets Information from database
-	information = database.get_information(database_connection, data["firstname"] + "_" + data["lastname"] + "_Statistics")
 	send = {}
-
-	# Puts information into dictionary form
-	x = 0
-	for y in range(len(information[x])):
-		send[information[x][y]] = information[x + 1][y]
-	print(send)
+	send["First_Name"] = data['firstname']
+	send['Last_Name'] = data['lastname']
+	send["Last_Win"] = LS.get_stat(str(data["firstname"] + " " + data["lastname"]), "Last Win")
+	send["Average_League_Score"] = LS.get_stat(str(data["firstname"] + " " + data["lastname"]), "Average League Score")
+	send["Number_of_Wins"] = LS.get_stat(str(data["firstname"] + " " + data["lastname"]), "Wins")
+	send["Lifetime_180s"] = LS.get_stat(str(data["firstname"] + " " + data["lastname"]), "Lifetime 180s")
+	
 	# Convert data to JSON and send it to HMI
 	send = json.dumps(send)
 	return send
