@@ -192,7 +192,7 @@
                         <div class="form-group row ">
                             <div class="col-xs-2 margin-inputtext">
                                 <div class="dropdown">
-                                    <button onClick = "javascript:getMatch('1')" class="btn dropdown-toggle" type="button" id="MatchDrop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button onClick = "javascript:fillDropdown()" class="btn dropdown-toggle" type="button" id="MatchDrop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Choose Match
                                     </button>
                                     <div id = "MatchDropdown1" class="dropdown-menu" aria-labelledby="MatchDrop1">
@@ -200,12 +200,17 @@
                                     </div>
                                 </div>
                             </div>
-                          </div>
-                            <div class = "modal-footer" id="MatchReview-ModalFooter">
-                                <button id="Review-Button" onClick="javascript:displayEditTable()" type = "button" class = "btn btn-danger"> Review Match</button>
-                                <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal" onClick="javascript:resetReviewMatch()" > Close </button>
-                            </div>
-                        </div>                                    
+                        </div>
+                        <h3 id="matchReviewHeader"></h3>
+                        <h4 id="matchReviewSubheader"></h4>
+                        <div id="reviewContainer" style="overflow:auto">
+                              
+                        </div>
+                    </div>  
+                    <div class = "modal-footer" id="MatchReview-ModalFooter">
+                    <button id="Close-Button" type = "button" class = "btn btn-danger" data-dismiss="modal" onClick="javascript:resetReviewMatch()" > Close </button>
+                    </div>
+                                                          
                     </div>
                 </div>
             </div>
@@ -341,6 +346,35 @@
             </div>
         </div>
         </div>
+
+        <!-- Templates for review match tables -->
+        <template id="throw-header">
+            <div>
+                <table class="table table-dark">
+                    <h4 class="leg-header"></h4>
+                    <thead>
+                        <tr>
+                            <th scope="col">Throw #</th>
+                            <th scope="col">Player 1</th>
+                            <th scope="col">Player 2</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            
+        </template>
+        <template id="throw-row">
+            <tr>
+                <th scope="row">1</th>
+                <td></td>
+                <td></td>
+            </tr>
+        </template>
+        <template id="throw-bottom">
+                    </tbody>
+                </table>
+            </div>
+        </template>
             
             
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

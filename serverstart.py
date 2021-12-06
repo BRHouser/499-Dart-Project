@@ -224,6 +224,21 @@ def getPlayersMatches():
 	send = json.dumps(send)
 	return send
 
+# OUTPUT: Reads and returns match_history.json
+@app.route("/getMatchesJson", methods = ['POST'])
+def getMatchesJson():
+
+	
+	try:
+		with open("match_history.json") as data:
+			content = json.loads(data.read())
+	except FileNotFoundError:
+		content = {}
+
+	# Converts information into JSON and sends to HMI
+	send = json.dumps(content)
+	return send
+
 
 # Main Start Server
 if __name__ == '__main__':

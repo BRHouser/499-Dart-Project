@@ -127,7 +127,7 @@ class UpdateCurrentGameState():
         LS.update_ranks()
 
         MH = MatchHistory.MatchHistory()
-        MH.add_match(self.content["throwHistory"],self.content["game"]["MatchName"],self.content["player1"]["name"],self.content["player2"]["name"])
+        MH.add_match(self.content["throwHistory"],self.content["game"]["MatchName"],self.content["player1"]["name"],self.content["player2"]["name"], self.content["game"]["date"])
 
 
         #wait for scoreboard and scorekeeper to download current_game_state.json

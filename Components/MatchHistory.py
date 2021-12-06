@@ -14,12 +14,13 @@ class MatchHistory():
         with open(self.json_path) as data:
                 self.content = json.loads(data.read())
 
-    def add_match(self,game,matchName,p1Name,p2Name):
+    def add_match(self,game,matchName,p1Name,p2Name, date):
         if matchName not in list(self.content.keys()):
             self.content[matchName]=self.initial
             self.content[matchName]["player1"]=p1Name
             self.content[matchName]["player2"]=p2Name
             self.content[matchName]["throws"]=game
+            self.content[matchName]["date"]=date
             self.write()
 
     def write(self):
