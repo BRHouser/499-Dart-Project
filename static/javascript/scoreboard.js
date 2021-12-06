@@ -66,10 +66,14 @@ async function updateGameState() {
 
         if(game_data["game"]["current_turn"] == 0) {
             $("#p1-throwing").text("Now throwing")
+            $("#player1").addClass("now-throwing")
+            $("#player2").removeClass("now-throwing")
             $("#p2-throwing").text("")
         }
         else {
             $("#p2-throwing").text("Now throwing")
+            $("#player2").addClass("now-throwing")
+            $("#player1").removeClass("now-throwing")
             $("#p1-throwing").text("")
         }
 
@@ -77,16 +81,16 @@ async function updateGameState() {
             //alert(game_data["game"]["winner"])
             let winner = game_data["game"]["winner"]
 
-            $("#p1-score").text("");
-            $('#p1-legs-won').text("");
+            //$("#p1-score").text("");
+            //$('#p1-legs-won').text("");
             $("#p1-league-stats").text("");
             $("#p1-match-stats").text("");
             $("#p1-outs").text("");
             $("#p1-perfect-leg").text("");
             $("#p1-throwing").text("");
             
-            $("#p2-score").text("");
-            $('#p2-legs-won').text("");
+            //$("#p2-score").text("");
+            //$('#p2-legs-won').text("");
             $("#p2-league-stats").text("");
             $("#p2-match-stats").text("");
             $("#p2-outs").text("");

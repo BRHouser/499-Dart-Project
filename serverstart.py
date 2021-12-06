@@ -5,6 +5,8 @@ import os
 from flask import Flask, render_template, request, redirect, Response
 import database
 import json
+import webbrowser
+
 import Components.UpdateScoreboard as UpdateScoreboard
 import Components.ReceiveData as ReceiveData
 import Components.GameSetup as GameSetup
@@ -226,4 +228,8 @@ def getPlayersMatches():
 # Main Start Server
 if __name__ == '__main__':
 	# run!
-	app.run("0.0.0.0", "5010", debug=True)
+	url = "http://localhost:5010/"
+	print(url)
+	webbrowser.open(url)
+
+	app.run("0.0.0.0", "5010", debug=False)

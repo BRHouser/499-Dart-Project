@@ -47,7 +47,7 @@ async function initial() {
         received = false;
         // sync with server
         let game_data = await requestGameState();
-        console.log(game_data)
+        //console.log(game_data)
         if(Object.keys(game_data).length === 0) { // no game in progress
             //alert("no game");
             $("#noGameModal").modal("show");
@@ -55,6 +55,15 @@ async function initial() {
         }
         else { // game in progress
             
+            if(game_data["game"]["won"]) {
+                console.log("win detected")
+                $("#winModal").modal("show");
+                won = true;
+                loop = false;
+                
+                break
+            }
+
             //collect player names
             names[0] = game_data["player1"]["name"]
             names[1] = game_data["player2"]["name"]
@@ -496,18 +505,4 @@ function registerNum(num) { //register onclick events for one section of the boa
         e.preventDefault();
         mouseoverBoard(d_num);
     })
-}
-
-function ThrowsArchive()
-{ 
-    data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, SetNumber:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), MatchOfficial:Official, NameofMatch: MatchName, Location:Location, DateOfMatch:DateOfMatch}
-    const request = new XMLHttpRequest();
-    request.open('POST', '/AddThrows');
-    request.send(JSON.stringify(data));
-    return new Promise((resolve) => {
-        request.onload = () => {
-            const response = request.responseText;
-            resolve(response);
-        }; 
-    });
 }

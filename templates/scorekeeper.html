@@ -47,7 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               </div>
             </div>
-          </div>
+        </div>
+
+        <div class="modal" id="winModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">No Game</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Game complete! Please return to the <a href="/">homepage</a> to start a new game.</p>
+                </div>
+              </div>
+            </div>
+        </div>
 
         <div class="container-fluid" id="main-content" style = "max-height: 100%">
             <div class = "row header" id="header" style = "max-height: 10%">

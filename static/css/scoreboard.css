@@ -48,3 +48,8 @@ html, body {
     font-size: calc(56% + 1vw + 1vh);
     font-weight: 150;
 }
+
+.now-throwing {
+    border-style: solid;
+    border-color: white;
+}
