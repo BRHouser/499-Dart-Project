@@ -3,13 +3,7 @@
 //The purpose of this function is to add the changed player in the database by calling the server function addPlayer
 async function addPlayer(FirstName, LastName)
 {
-    let player_list = await getPlayersListForAddPlayer();
-    league_rank = player_list.length
-    if(league_rank == undefined)
-    {
-        league_rank = 0
-    }
-    data = {firstname: FirstName, lastname: LastName, LeagueRank: league_rank, LastWin: 'None', Average_League_Score: "None", Lifetime_180s: "None", Number_of_wins: 0}
+    data = {firstname: FirstName, lastname: LastName, LastWin: 'None', Average_League_Score: 0, Lifetime_180s: 0, Number_of_wins: 0}
     const request = new XMLHttpRequest();
     request.open('POST', '/addPlayer');
     request.send(JSON.stringify(data));

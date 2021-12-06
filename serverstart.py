@@ -4,10 +4,10 @@ import os
 from flask import Flask, render_template, request, redirect, Response
 import database
 import json
-import time
 import Components.UpdateScoreboard as UpdateScoreboard
 import Components.ReceiveData as ReceiveData
 import Components.GameSetup as GameSetup
+import Components.LeagueStats as LeagueStats
 
 # Directory of the Database
 project_directory = os.getcwd()
@@ -44,13 +44,20 @@ def createScoreboard():
 def addPlayer():
 	# Loads the data from the HMI
 	data = json.loads(request.get_data())
+	print(data)
+	LS = LeagueStats.LeagueStats()
+	LS.update_stat(str(data['firstname'] + " " + str(data['lastname'])), "Last Win", data['LastWin'])
+	LS.update_stat(str(data['firstname'] + " " + str(data['lastname'])), "Average League Score", int(data['Average_League_Score']))
+	LS.update_stat(str(data['firstname'] + " " + str(data['lastname'])), "Lifetime 180s", int(data['Lifetime_180s']))
+	LS.update_stat(str(data['firstname'] + " " + str(data['lastname'])), "Wins", int(data['Number_of_wins']))
+	LS.update_ranks()
 
 	# Set terms of what the header should be for a player
-	columns = ["id", "First_Name", "Last_Name", "League_Rank", "Last_Win", "Average_League_Score", "Lifetime_180s", "Number_of_Wins"]
+	columns = ["id", "First_Name", "Last_Name", "Last_Win", "Average_League_Score", "Lifetime_180s", "Number_of_Wins"]
 	# If a table was created for the given person, then add the person to the List_of_Players Table and return True
 	# Else return False which means the player is already in the database
 	if(database.add_table(database_connection, data["firstname"] + "_" + data["lastname"] + "_" + "Statistics", columns)):
-		row = [data["firstname"], data["lastname"], str(data["LeagueRank"]), str(data["LastWin"]), str(data['Average_League_Score']), str(data['Lifetime_180s']), str(data['Number_of_wins'])]
+		row = [data["firstname"], data["lastname"], str(data["LastWin"]), str(data['Average_League_Score']), str(data['Lifetime_180s']), str(data['Number_of_wins'])]
 		name = data["firstname"] + "_" + data["lastname"] + "_" + "Statistics"
 		database.add_information(database_connection, name, [row])
 		row = [data["firstname"], data["lastname"]]
@@ -121,7 +128,7 @@ def getPlayerStatistics():
 	x = 0
 	for y in range(len(information[x])):
 		send[information[x][y]] = information[x + 1][y]
-
+	print(send)
 	# Convert data to JSON and send it to HMI
 	send = json.dumps(send)
 	return send
@@ -160,8 +167,6 @@ def addMatch():
 	# Set terms of what the header should be for the legs table
 	columns = ["id", "_Set_", "_Leg_", "Throw_1", "Throw_2",  "Throw_3", "Score"]
 
-	# If a table was created for the given person, then add the person to the List_of_Players Table and return True
-	# Else return False which means the player is already in the database
 	name1 = data['NameofMatch'].replace(' ', "_") + "_" + data["Player1Name"].replace(' ', '_') + "_" + "Record"
 	name2 = data['NameofMatch'].replace(' ', "_") + "_" + data["Player2Name"].replace(' ', '_') + "_" + "Record"
 	if database.add_table(database_connection, name1, columns) and database.add_table(database_connection, name2, columns):

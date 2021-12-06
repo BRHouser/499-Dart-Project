@@ -104,7 +104,7 @@
                             </div>
                           </div>
                             <div class = "modal-footer">
-                                <button id="Delete-Button" type = "button" class = "btn btn-danger" onClick="javascript:deletePlayer('0')"> Delete</button>
+                                <button id="Delete-Button" type = "button" class = "btn btn-danger" data-toggle="modal" data-target = "#CheckModal" aria-haspopup="true" aria-expanded="false"> Delete</button>
                                 <button id="Close-Button" onClick="javascript:resetDynamicDropdown('ChoosePlayerDropdown0')" type = "button" class = "btn btn-danger" data-dismiss="modal"> Close </button>
                             </div>
                         </div>                                    
@@ -143,6 +143,24 @@
                 </div>
             </div>
 
+        <!-- MODAL FOR DELETE PLAYER CHECK-->
+        <div class = "modal" id = "CheckModal">
+            <div class = "modal-dialog-lg">
+                <div class = "modal-content notification">
+                    <div class = "modal-header">
+                        <h4 class = "modal-title"></h4>
+                    </div>
+                    <div class = "modal-body">
+                            <h1>Are you sure you want to delete your player from the database?</h1>
+                            <div class = "modal-footer">
+                                <button id="Delete-Button" type = "button" class = "btn btn-danger" onClick="javascript:deletePlayer('0')" data-dismiss="modal"> Delete</button>
+                                <button id="Okay-Button" type = "button" class = "btn btn-danger" data-dismiss="modal"> No </button>
+                            </div>
+                        </div>                                    
+                    </div>
+                </div>
+            </div> 
+
         <!-- MODAL FOR NOTIFICATIONS-->
         <div class = "modal" id = "NotificationModal">
             <div class = "modal-dialog-lg">
@@ -159,7 +177,6 @@
                     </div>
                 </div>
             </div> 
-
 
             <!-- MODAL FOR  Match Review-->
         <div class = "modal" id = "MatchReviewModal">

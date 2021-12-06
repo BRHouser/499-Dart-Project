@@ -47,9 +47,9 @@ function deleteChange(){
 //Input firstname (String): The first name of the Player
 //Input lastname (String): The last name of the Player
 //The purpose of this function is to add the changed player in the database by calling the server function addPlayer
-function addChange(firstname, lastname, leaguerank, lastwin, averageLeagueScore, lifetime_180s, Number_of_wins){
+function addChange(firstname, lastname, lastwin, averageLeagueScore, lifetime_180s, Number_of_wins){
 
-    data = {firstname: firstname, lastname: lastname, LeagueRank: leaguerank, LastWin: lastwin, Average_League_Score: averageLeagueScore, Lifetime_180s: lifetime_180s, Number_of_wins: Number_of_wins}
+    data = {firstname: firstname, lastname: lastname, LastWin: lastwin, Average_League_Score: averageLeagueScore, Lifetime_180s: lifetime_180s, Number_of_wins: Number_of_wins}
     const request = new XMLHttpRequest();
     request.open("POST", "/addPlayer")
     request.send(JSON.stringify(data))
@@ -67,7 +67,6 @@ function addChange(firstname, lastname, leaguerank, lastwin, averageLeagueScore,
 async function submitPlayerChanges(){	    
     var new_firstname = document.getElementById("First_Name-row").value
     var new_lastname = document.getElementById("Last_Name-row").value
-    var new_LeagueRank = document.getElementById("League_Rank-row").value
     var new_Last_Win = document.getElementById("Last_Win-row").value
     var new_Average_League_Score = document.getElementById("Average_League_Score-row").value
     var new_Lifetime_180s = document.getElementById("Lifetime_180s-row").value
@@ -110,22 +109,15 @@ async function submitPlayerChanges(){
 
     //if input is valid then save the changed values
     //var button = document.getElementById("Submit-Button")
-
-    if(new_Number_of_wins == 0)
-        new_Number_of_wins = "None"
-    if(new_Average_League_Score == 0)
-        new_Average_League_Score = "None"
-    if(new_LeagueRank == 0)
-        new_LeagueRank = "None"
+    if(new_Average_League_Score == "None")
+        new_Average_League_Score = 0
+    if(new_Number_of_wins == "None")
+        new_Number_of_wins = 0
+    if(new_Lifetime_180s == "None")
+        new_Lifetime_180s = 0
     if(new_Average_League_Score < 0)
     {
         document.getElementById('ErrorText').innerHTML = "Invalid Input: Average_League_Score";
-        $(notification).modal('toggle');
-        return
-    }
-    if(new_LeagueRank < 0)
-    {
-        document.getElementById('ErrorText').innerHTML = "Invalid Input: League_Rank";
         $(notification).modal('toggle');
         return
     }
@@ -144,7 +136,7 @@ async function submitPlayerChanges(){
     var popup = document.getElementById('EditPlayerModal');
     $(popup).modal('toggle');
     await deleteChange()
-    await addChange(new_firstname, new_lastname, new_LeagueRank, new_Last_Win, new_Average_League_Score, new_Lifetime_180s, new_Number_of_wins)
+    await addChange(new_firstname, new_lastname, new_Last_Win, new_Average_League_Score, new_Lifetime_180s, new_Number_of_wins)
     resetEditPlayer()
 
 }
@@ -223,7 +215,7 @@ async function displayEditTable(){
         input.value = information[key]
         input.id = key + "-row"
         key = key.trim()
-        if(key == 'League_Rank' || key == 'Average_League_Score' || key == 'Lifetime_180s' || key == 'Number_of_Wins')
+        if(key == 'Average_League_Score' || key == 'Lifetime_180s' || key == 'Number_of_Wins')
             input.setAttribute("type", "number")
         else
             input.setAttribute("type", "text")

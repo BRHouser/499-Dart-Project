@@ -160,15 +160,11 @@ def main():
 
     #database = create_connection(database_address, header_info, list_of_table_names)
     database = create_connection(database_address)
-    info = get_information(database, "List_Matches")
+    info = get_information(database, "List_of_Players")
     for x in info:
-        delete_row(database, "List_Matches", x)
-    #delete_table(database, "THE_BIG_CHUNGUS_Tyler_Chan_Record")
+        delete_row(database, "List_of_Players", x)
+    delete_table(database, "Marshall_Rosenhoover_Statistics")
     #add_table(database, "some", ["id", "_Set_", "_Leg_", "Throw_1", "Throw_2",  "Throw_3", "Score"])
-    #delete_table(database, "THE_BIG_CHUNGUS2_Tyler_Chan_Record")
-    #delete_table(database, "THE_BIG_CHUNGUS2_Marshall_Rosenhoover_Record")
-    delete_table(database, "Zelda_Test_Test_Record")
-    delete_table(database, "Zelda_Mitchell_Dodson_Record")
     #delete_table(database, "ddddd_Tyler_Chan_Record")
     #delete_table(database, "ddddd_Marshall_Rosenhoover_Record")
     #delete_table(database, "Gabe_Henneberger_Statistics")

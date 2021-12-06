@@ -62,5 +62,11 @@ a:active {
 @media (min-width: 768px) {
   .modal-xl {
     width: 90%;
-   max-width:1400px;
+    max-width:1400px;
   }}
+
+@media (min-width: 768px) {
+  .btn-block {
+    margin-left: 25%;
+    width: 50%;
+    }}

@@ -34,6 +34,9 @@ class LeagueStats():
         self.content[player][stat] = val 
         self.write()
 
+    def delete_player(self, name):
+        #IMPLEMENT HERE PLZ          
+
     def increment_turn(self, player):
         self.add_player(player)
         self.content[player]["turns"] +=1
