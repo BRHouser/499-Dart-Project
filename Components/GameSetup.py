@@ -8,13 +8,11 @@ import Components.LeagueStats as LeagueStats
 class GameSetup():
 
     # Open empty game state json, populate with game data, save to current_game_state.json
-    # Inout: game_data is json object sent to server from Start Match modal
+    # Input: game_data is json object sent to server from Start Match modal
     def __init__(self, game_data):
         self.init_json = "initial_game_state.json"
         self.active_json = "current_game_state.json"
         self.game_data = game_data
-
-        #print(game_data)
 
         with open(self.init_json) as f:
             self.init_data = json.load(f)
@@ -32,9 +30,8 @@ class GameSetup():
         updateCurrentGameState.update_displayed_match_stats(game_data["MatchStats"])
         updateCurrentGameState.write()
 
+    # The purpose of this function is to set the json for dart competition match information given by the user
     def set_game_info(self):
-
-
         try:
             self.init_data["game"]["sets"] = int(self.game_data["SetNumber"])
             if int(self.game_data["SetNumber"]) == 0:

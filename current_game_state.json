@@ -1,1 +1,76 @@
-{}
+{
+    "game": {
+        "current_set": 0,
+        "current_leg": 0,
+        "current_turn": 1,
+        "sets": 1,
+        "legs": 1,
+        "score": 301,
+        "won": false,
+        "winner": "",
+        "lastStarter": 0,
+        "MatchName": "Demo1",
+        "date": "2021-12-06"
+    },
+    "player1": {
+        "name": "Gabe Henneberger",
+        "score": 220,
+        "leagueStats": "League Rank: 1",
+        "matchStats": "Triple 20s Thrown: 1",
+        "perfectLeg": false,
+        "possibleOuts": "",
+        "setsWon": 0,
+        "legsWon": 0
+    },
+    "player2": {
+        "name": "Marshall Rosenhoover",
+        "score": "301",
+        "leagueStats": "League Rank: 3",
+        "matchStats": "Triple 20s Thrown: 0",
+        "perfectLeg": true,
+        "possibleOuts": "",
+        "setsWon": 0,
+        "legsWon": 0
+    },
+    "stats": {
+        "player1": {
+            "turns": 2,
+            "sum": 81,
+            "current": {
+                "Average Turn Score": 81.0,
+                "180s In Match": 0,
+                "Best Turn Score": 81,
+                "Bulls Thrown": 0,
+                "Triple 20s Thrown": 1
+            },
+            "league": {}
+        },
+        "player2": {
+            "turns": 1,
+            "sum": 0,
+            "current": {
+                "Average Turn Score": 0,
+                "180s In Match": 0,
+                "Best Turn Score": 0,
+                "Bulls Thrown": 0,
+                "Triple 20s Thrown": 0
+            },
+            "league": {}
+        }
+    },
+    "throwHistory": [
+        [
+            [
+                {
+                    "player": "player1",
+                    "throws": [
+                        1,
+                        20,
+                        "T20"
+                    ],
+                    "score": 220
+                }
+            ]
+        ]
+    ]
+}

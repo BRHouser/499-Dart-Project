@@ -1,16 +1,13 @@
-import json
 import Components.UpdateCurrentGameState as UpdateCurrentGameState
 import Components.DartRules as DartRules
 
-#Class to process all incoming data from scorekeeper: change displayed stats or upload scores
-#Author: Ben Houser
-
+# Class to process all incoming data from scorekeeper: change displayed stats or upload scores
+# Author: Ben Houser
 class ReceiveData():
 
+    # TODO: what is the clear purpose of this, I dont think I could describe it accurately
     def __init__(self, data):
         self.data = data
-        #print("init receive data")
-        #print(self.data)
         self.updateCurrentGameState = UpdateCurrentGameState.UpdateCurrentGameState()
 
         key = list(data.keys())[0]
@@ -22,6 +19,7 @@ class ReceiveData():
         elif(key == "new_league_stats"):
             self.changeDisplayedLeagueStats(data["new_league_stats"])
 
+    # TODO: Is change_stats needed anymore? if not needed rework input for input scores
     #data can either look like:
     change_stats = {
         "new_match_stats": "180s in Match"
@@ -37,15 +35,20 @@ class ReceiveData():
         }
     }    
 
+    # Input: key: The specified statistic to display
+    # The purpose of this function is to change the displayed match statistic on the scoreboard
     def changeDisplayedMatchStats(self, key):
         self.updateCurrentGameState.update_displayed_match_stats(key)
         self.updateCurrentGameState.write()
 
+    # Input: key: The specified statistic to display
+    # The purpose of this function is to change the displayed League statistic on the scoreboard
     def changeDisplayedLeagueStats(self, key):
         self.updateCurrentGameState.update_displayed_league_stats(key)
         self.updateCurrentGameState.write()
 
     # Input: dict with format of "throws" dictionary found above
+    # The purpose of this function is to add score and recalculate statistics for given player
     def inputScores(self, throws):
         # key of throw data is "player1" or "player2"
         player = list(throws.keys())[0]

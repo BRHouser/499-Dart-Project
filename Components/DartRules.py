@@ -1,5 +1,3 @@
-import json
-import Components.UpdateCurrentGameState as UpdateCurrentGameState
 import Components.LeagueStats as LeagueStats
 
 #Class to apply dart gameplay rules: score arithmetic, check for win, calculate outs, and register dart statistics.
@@ -7,68 +5,67 @@ import Components.LeagueStats as LeagueStats
 
 class DartRules():
 
+    # TODO: updateCurrentGameState: Contains .... may want to check the purpose of this function that I described because I wasnt sure
+    #  The purpose of this function is to set the initial values of the game
     def __init__(self, updateCurrentGameState):
         self.json_path = "current_game_state.json"
-
         self.json_data = updateCurrentGameState.get_content()
         self.updateCurrentGameState = updateCurrentGameState
         self.bust = False
         self.throw_sum = 0
         self.throws = 0
 
-        self.throw_data = {
+        self.throw_data = {        
             "player": 0,
             "throws": [],
             "score": 0
         }
 
 
-        # TODO: init new throw entry in score history
-
-    #input: player string ("player1" or "player2"); score string, ("19" "T20", "DB", etc.) 
+    # Input: player string ("player1" or "player2") 
+    # Input: score: The throws dart score ("19" "T20", "DB", etc.)
+    # The purpose of this function is to reevalute the score of a player given the darts he/she just thrown
     def add_score(self, player, score):
-        if not self.bust:
+        if not self.bust:                               # If still able to get to 0 score
 
-            self.throw_data["player"] = player
-            self.throw_data["throws"].append(score)
+            self.throw_data["player"] = player          # Define which player 
+            self.throw_data["throws"].append(score)     # Add score to specific player
 
-            self.throws += 1
-            registered_score = 0
-            score = str(score)
-            value = self.get_score_value(score)
+            self.throws += 1                            # total throws increment
+            registered_score = 0                        # Score from darts thrown
+
+            # Score before darts thrown
+            score = str(score)                          
+            value = self.get_score_value(score)         
             current_score = int(self.json_data[player]["score"])
-            #print(value)
 
-            diff = current_score - value
-            if(diff < 0 or diff == 1):
+
+            diff = current_score - value                # difference between the scores 
+            if(diff < 0 or diff == 1):                  # if not able to score a 0
                 registered_score = 0
                 self.bust = True
                 self.updateCurrentGameState.perfect_leg(player, False)
-            elif(diff == 0):
+            elif(diff == 0):                            # TODO: What does this if statement check
                 if(score.find("D") >= 0):
                     registered_score = value
-            else:
+            else:                                       # TODO: What is left
                 registered_score = value
 
-            new_score = current_score - registered_score
+            # Valid Score being added 
+            new_score = current_score - registered_score 
             self.throw_sum += registered_score
 
-            #print("new score: " + str(new_score))
-            #print("sum: " + str(self.throw_sum))
-            #print(self.throws)
-
-            if value != 60:
+            if value != 60:      # If not on track for a perfect leg
                 self.updateCurrentGameState.perfect_leg(player, False)
-            if new_score < 170:
+            if new_score < 170:  # If score under 170, set winning throws
                 outs = self.calculate_winning_throws(new_score)
-                if(len(outs) > 0):
+                if(len(outs) > 0):  # TODO: What does this statement check
                     self.updateCurrentGameState.possible_outs(player, " ".join(outs))
 
+            # Update player
             self.updateCurrentGameState.update_player_score(player, new_score)
-
             self.refresh()
             self.register_statistics(player, score)
-
             self.throw_data["score"] = new_score
 
             #check for win
@@ -80,9 +77,10 @@ class DartRules():
     # reload json_data from current game state json
     def refresh(self):
         self.json_data = self.updateCurrentGameState.get_content()
-        #print(self.json_data)
 
-    # input: score string from scorekeeper; output: numerical value
+    # Input: score string from scorekeeper o
+    # Output: numerical value
+    # Converts the Dart Scoring to points
     def get_score_value(self, score):
         retval = 0
         if(score == "KO"):
@@ -104,19 +102,17 @@ class DartRules():
         
         return retval
 
-    #player string ("player1" or "player2"); score list, (["19" "T20", "DB"])
+    # Input: player string ("player1" or "player2")
+    # Input: score list (["19" "T20", "DB"])
     # registers throws to current game and league statistics 
     def register_statistics(self, player, score):
         
-        #print("registers stats: " + score)
         #Current Match
         stats = self.json_data["stats"][player]
-        #print(stats)
 
         if(self.throws == 3):
             #Average turn score
             current = stats["sum"]
-            print("sum: " + str(current))
             new = (current)/stats["turns"]
             new = round(new, 2)
             self.updateCurrentGameState.update_current_match_stats(player, "Average Turn Score", new)
@@ -130,7 +126,6 @@ class DartRules():
 
             #best turn score
             current = stats["current"]["Best Turn Score"]
-            #print(current)
             if self.throw_sum > current:
                 self.updateCurrentGameState.update_current_match_stats(player, "Best Turn Score", self.throw_sum)
 
@@ -147,7 +142,6 @@ class DartRules():
             self.updateCurrentGameState.update_current_match_stats(player, "Triple 20s Thrown", new)
 
         #League stats
-
         LS = LeagueStats.LeagueStats()
         name = self.json_data[player]["name"]
 
@@ -166,12 +160,6 @@ class DartRules():
             if self.throw_sum == 180:
                 old = LS.get_stat(name, "Lifetime 180s")
                 LS.update_stat(name, "Lifetime 180s", old + 1)
-            
-
-
-
-
-        #TODO Get avg score per turn and avg score per dart
 
         self.refresh()
 
@@ -179,7 +167,8 @@ class DartRules():
     def get_throw_data(self):
         return self.throw_data
 
-    # input
+    # Input: Current Score
+    # Output: a list of what to throw to win
     def calculate_winning_throws(self, score):
         winning_throws = []
         if (score == 170):
