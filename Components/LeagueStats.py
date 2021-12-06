@@ -33,10 +33,7 @@ class LeagueStats():
         self.add_player(player)
         self.content[player][stat] = val 
         self.write()
-
-    def delete_player(self, name):
-        print("HERE")
-        #IMPLEMENT HERE PLZ          
+    
 
     def increment_turn(self, player):
         self.add_player(player)
