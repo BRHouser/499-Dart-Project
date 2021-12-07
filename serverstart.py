@@ -1,3 +1,6 @@
+# This script creates and runs the flask server. it defines various endpoints for server to client communication
+# Authors: Marshall Roosenhoover, Anthony Dahogne, Ben Houser
+# Created 9/17/21, edited 12/6/21
 
 import sys
 sys.path.append('Database')
@@ -248,4 +251,6 @@ if __name__ == '__main__':
 	print(url)
 	webbrowser.open(url)
 
-	app.run("0.0.0.0", "5010", debug=False)
+	from waitress import serve
+	serve(app, host="0.0.0.0", port="5010")
+	#app.run("0.0.0.0", "5010", debug=False)

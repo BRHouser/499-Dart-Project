@@ -1,12 +1,12 @@
 {
     "Gabe Henneberger": {
-        "turns": 9,
-        "sum": 925,
+        "turns": 11,
+        "sum": 1226,
         "League Rank": 1,
-        "Last Win": "2021-12-06",
-        "Average League Score": 102.78,
-        "Lifetime 180s": 3,
-        "Wins": 7
+        "Last Win": "2021-12-07",
+        "Average League Score": 111.45,
+        "Lifetime 180s": 4,
+        "Wins": 8
     },
     "Marshall Rosenhoover": {
         "turns": 7,
@@ -18,12 +18,12 @@
         "Wins": 2
     },
     "Taylor Engram": {
-        "turns": 2,
-        "sum": 301,
+        "turns": 3,
+        "sum": 481,
         "League Rank": 3,
         "Last Win": "2021-12-06",
-        "Average League Score": 150.5,
-        "Lifetime 180s": 1,
+        "Average League Score": 160.33,
+        "Lifetime 180s": 2,
         "Wins": 1
     }
 }
