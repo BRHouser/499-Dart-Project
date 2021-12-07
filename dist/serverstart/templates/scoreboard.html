@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Dart Scoreboard</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" media="all" href="{{ url_for('.static', filename='css/scoreboard.css')}}">
+    </head>
+
+    <body style="max-height: 100%; overflow: hidden;">
+
+        <div class="container-fluid min-100" id="main-content">
+            <div class = "row header" style = "height: 10%">
+                <h1 class= "text-center mx-auto my-auto" id="main-header">No game in progress!</h1>
+            </div>
+            <div class = "row sidebar" style = "height: 90%">
+                <div class="col">
+                    <div class = "text-center d-flex flex-column" id = "player1">
+                        <h1 id="p1-name" style="max-height:143px; overflow: hidden;" class = "name-display">Player 1</h1>
+                        <p class="stats-display" id="p1-throwing"></p>
+                        <p class="stats-display" id="p1-legs-won">Legs : 0, Sets : 0</p>
+                        <p class="score-display" id="p1-score">301</p>
+                        <p class="stats-display" id="p1-match-stats"></p>
+                        <p class="stats-display" id="p1-league-stats"></p>
+                        <p class="stats-display" id="p1-perfect-leg"></p>
+                        <p class="stats-display" id="p1-outs"></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class = "text-center d-flex flex-column" id = "player2">
+                        <h1 id="p2-name" class = "name-display">Player 2</h1>
+                        <p class="stats-display" id="p2-throwing"></p>
+                        <p class="stats-display" id="p2-legs-won">Legs: 0, Sets: 0</p>
+                        <p class="score-display" id="p2-score">301</p>
+                        <p class="stats-display" id="p2-match-stats"></p>
+                        <p class="stats-display" id="p2-league-stats"></p>
+                        <p class="stats-display" id="p2-perfect-leg"></p>
+                        <p class="stats-display" id="p2-outs"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="{{ url_for('.static', filename='javascript/scoreboard.js')}}"></script>
+    </body>
+</html>

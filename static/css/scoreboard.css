@@ -35,18 +35,18 @@ html, body {
 }
 
 .score-display {
-    font-size: calc(900% + 1vw + 1vh);
+    font-size: calc(400% + 3vw + 3vh);
     font-weight: 400;
 }
 
 .name-display {
-    font-size: calc(500% + 1vw + 1vh);
+    font-size: calc(300% + 3vw + 3vh);
     font-weight: 150;
 }
 
 .stats-display {
-    font-size: calc(56% + 1vw + 1vh);
-    font-weight: 150;
+    font-size: calc(50% + 1vw + 1vh);
+    font-weight: 130;
 }
 
 .now-throwing {
