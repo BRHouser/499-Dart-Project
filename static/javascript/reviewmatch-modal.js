@@ -1,3 +1,7 @@
+//JS file to faciltate review match modal: read match history from server and fill in dropdown; fill in modal with appropriate match table
+//Authors: Anthony Dahogne and Ben Houser
+//Created 11/29/21, edited 12/6/21
+
 let history = {}
 let names = ["", ""]
 

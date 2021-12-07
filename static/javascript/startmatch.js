@@ -1,3 +1,7 @@
+// JS file to reuqest current game state, and disable resume game button if there is no current game
+// Author: Ben Houser
+// Created 11/24/21, edited 11/25/21
+
 let data = {"first_read": true}
 let current_game = false
 initial()

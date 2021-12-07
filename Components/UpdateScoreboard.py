@@ -3,6 +3,7 @@ import time
 
 # This class checks the current game state for updates, and returns the current game state once updated
 # Author: Ben Houser
+# Created 10/27/21, edited 11/29/21
 
 class UpdateScoreboard():
 

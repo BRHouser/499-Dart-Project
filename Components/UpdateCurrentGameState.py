@@ -5,6 +5,8 @@ import Components.MatchHistory as MatchHistory
 
 # Class to make any changes to and read info about current game state json
 # Author: Ben Houser
+# Created 10/27/21, edited 12/6/21
+
 class UpdateCurrentGameState():
 
     # The purpose of this function is to initialize the current game state

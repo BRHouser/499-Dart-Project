@@ -1,5 +1,6 @@
 // JS file to request game data and update scoreboard 
 // Author: Ben Houser
+// Created 10/27/21, edited 12/6/21
 
 let loop = true;
 let received = false;

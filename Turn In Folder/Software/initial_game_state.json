@@ -1,0 +1,66 @@
+{
+    "game": {
+        "current_set": 0,
+        "current_leg": 0,
+        "current_turn": 0,
+        "sets": 0,
+        "legs": 0,
+        "score": 0,
+        "won": false,
+        "winner": "",
+        "lastStarter": 0,
+        "MatchName": "",
+        "date": ""
+    },
+    "player1": {
+        "name": "",
+        "score": "",
+        "leagueStats": "",
+        "matchStats": "Average Turn Score: 0",
+        "perfectLeg": true,
+        "possibleOuts": "",
+        "setsWon": 0,
+        "legsWon": 0
+    },
+    "player2": {
+        "name": "",
+        "score": "",
+        "leagueStats": "",
+        "matchStats": "Average Turn Score: 0",
+        "perfectLeg": true,
+        "possibleOuts": "",
+        "setsWon": 0,
+        "legsWon": 0
+    },
+    "stats": {
+        "player1": {
+            "turns": 1,
+            "sum": 0,
+            "current": {
+                "Average Turn Score": 0,
+                "180s In Match": 0,
+                "Best Turn Score": 0,
+                "Bulls Thrown": 0,
+                "Triple 20s Thrown": 0
+            },
+            "league": {
+
+            }
+        },
+        "player2": {
+            "turns": 1,
+            "sum": 0,
+            "current": {
+                "Average Turn Score": 0,
+                "180s In Match": 0,
+                "Best Turn Score": 0,
+                "Bulls Thrown": 0,
+                "Triple 20s Thrown": 0
+            },
+            "league": {
+
+            }
+        }
+    },
+    "throwHistory": [[[]]]
+}
