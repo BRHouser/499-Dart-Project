@@ -45,7 +45,7 @@ class LeagueStats():
     
     # Input: player: Player Name
     # Output: the number of turns
-    # TODO: (IS this correct) The purpose of this function is to keep track of the overall number of 
+    # The purpose of this function is to keep track of the overall number of 
     # throws a player has taken
     def increment_turn(self, player):
         self.add_player(player)             # make sure player is in database and add if not
@@ -81,7 +81,7 @@ class LeagueStats():
             count += 1
         self.write()
 
-    # TODO: What is the purpose of this function
+    # Small helper function used for player_list.sort
     def sort_func(self, pair):
         return pair[1]
 

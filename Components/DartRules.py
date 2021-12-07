@@ -5,8 +5,7 @@ import Components.LeagueStats as LeagueStats
 
 class DartRules():
 
-    # TODO: updateCurrentGameState: Contains .... may want to check the purpose of this function that I described because I wasnt sure
-    #  The purpose of this function is to set the initial values of the game
+    #  The purpose of this function is to initiate the DartRules class and read the current game state json
     def __init__(self, updateCurrentGameState):
         self.json_path = "current_game_state.json"
         self.json_data = updateCurrentGameState.get_content()
@@ -41,14 +40,14 @@ class DartRules():
 
 
             diff = current_score - value                # difference between the scores 
-            if(diff < 0 or diff == 1):                  # if not able to score a 0
+            if(diff < 0 or diff == 1):                  # if bust
                 registered_score = 0
                 self.bust = True
                 self.updateCurrentGameState.perfect_leg(player, False)
-            elif(diff == 0):                            # TODO: What does this if statement check
+            elif(diff == 0):                            # If score is 0, check for double
                 if(score.find("D") >= 0):
                     registered_score = value
-            else:                                       # TODO: What is left
+            else:                                       
                 registered_score = value
 
             # Valid Score being added 
@@ -59,7 +58,7 @@ class DartRules():
                 self.updateCurrentGameState.perfect_leg(player, False)
             if new_score < 170:  # If score under 170, set winning throws
                 outs = self.calculate_winning_throws(new_score)
-                if(len(outs) > 0):  # TODO: What does this statement check
+                if(len(outs) > 0):  # If there are possible outs (some don't have any)
                     self.updateCurrentGameState.possible_outs(player, " ".join(outs))
 
             # Update player

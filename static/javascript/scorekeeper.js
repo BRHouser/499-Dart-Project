@@ -125,7 +125,7 @@ async function initial() {
                 turnUpdate();
                 LegUpdate();
             }
-            else { //TODO: this runs if you update the stats after the last throw
+            else {
 
                 var this_league_stats = game_data["player1"]["leagueStats"]
                 this_league_stats = this_league_stats.substring(0, this_league_stats.search(":"))
