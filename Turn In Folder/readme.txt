@@ -5,7 +5,7 @@ Anthony Dahogne
 Tyler Ball
 
 Directory guide:
-./Software/ contains our source code and executable
+./Software/Run Dart Scorer.exe contains our source code and executable
 
 Python source code can be found in ./Software/Components/ and ./Software/Database/, as well
 as in ./Software/serverstart.py. HTML source code can be found in ./Software/templates/. CSS
