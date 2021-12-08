@@ -1,0 +1,275 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('area').forEach(area => {
+        area.onclick = () => {
+            const request = new XMLHttpRequest();
+            //you can call certain methods by changing the /oooo to something
+            //specified by what was clicked. Here is a link that can help with it
+            //https://iq.opengenus.org/single-page-application-with-flask-ajax/#:~:text=The%20Javascript%20part%20sends%20requests%20%28requests%20for%20information%29,sends%20back%20the%20required%20information%20to%20the%20front-end.
+
+            request.onload = () => {
+                const response = request.responseText;
+                document.getElementById('headerTitle').innerHTML = response;
+             }; 
+            data = {information:"I am testing the send JSON", age:"5"}
+            request.open('POST', '/baseCaseSendInformation');
+            //request.send(JSON.stringify(data));
+          };
+    });    
+});
+
+</script>
+
+<html>
+    <head>
+        <title>Dart Scorekeeper</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" media="all" href="{{ url_for('.static', filename='css/scorekeeper.css')}}">
+
+    </head>
+
+    <body style = "max-height: 100%; overflow: hidden;">
+
+        <div class="modal" id="noGameModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">No Game</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>No game is currently in progress. Please refresh the page or return to the <a href="/">homepage.</a></p>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="modal" id="winModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">No Game</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Game complete! Please return to the <a href="/">homepage</a> to start a new game.</p>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" id="main-content" style = "max-height: 100%">
+            <div class = "row header" id="header" style = "max-height: 10%">
+                <div class= "m-4 col text-center">
+                    <h1 id='headerTitle'>Dart Scorekeeper</h1>
+                </div>
+            </div>
+            <div class = "row" style = "height: 90%">
+                <div class = "col-3 sidebar h-100" id = "side-menu">
+
+                    <h3 class="mt-3">Display Match Statistics</h3>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="matchStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Average Turn Score
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="matchStatsDropdown">
+                          <a class="dropdown-item" href="javascript:updatePlayerStats('Average Turn Score')">Average Turn Score</a>
+                          <a class="dropdown-item" href="javascript:updatePlayerStats('180s In Match')">180s In Match</a>
+                          <a class="dropdown-item" href="javascript:updatePlayerStats('Best Turn Score')">Best Turn Score</a>
+                          <a class="dropdown-item" href="javascript:updatePlayerStats('Triple 20s Thrown')">Triple 20s Thrown</a>
+                          <a class="dropdown-item" href="javascript:updatePlayerStats('Bulls Thrown')">Bulls Thrown</a>
+                        </div>
+                    </div>
+                    <h3 class="mt-3">Display League Statistics</h3>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="leagueStatsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            League Rank
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="leagueStatsDropdown">
+                          <a class="dropdown-item" href="javascript:updateMatchStats('League Rank')">League Rank</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('Last Win')">Last Win</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('Average League Score')">Average League Score</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('Lifetime 180s')">Lifetime 180s</a>
+                          <a class="dropdown-item" href="javascript:updateMatchStats('Wins')">Wins</a>
+                        </div>
+                    </div>
+                    <h3 class="mt-3">Throw History</h3>
+                    <div class="container" style="height: 69%; overflow: scroll" id="reviewThrows">
+                        
+                    </div>
+                </div>
+                <div class = "col-6 main-content text-center h-100" id = "score-input" style = "overflow: hidden;">
+
+                    <h1 class="mt-3" id="player-label" style="max-height:50px; overflow: hidden;">Player 1, Throw 1</h1>
+                    <!-- Image Map for dartboard -->
+                    <!-- <div class="overlay mt-1" style = " background-repeat: no-repeat; background-image: url('static/images/dart-board-1614051_640.png')"> -->
+
+                    <img class="dartboard-image mt-1" src="{{ url_for('.static', filename='images/dart-board-1614051_640.png')}}" usemap="#image-map">
+                    <div id="throw-icon-container">
+                    </div>
+                    
+
+                    <map name="image-map">
+                        <area id="square1" alt="DB" class="DB" href="" coords="307,307,14" shape="circle">
+                        <area id="square2" alt="B" class="B" href="" coords="307,308,37" shape="circle">
+                        <area id="square3" alt="20" class="20" href="" coords="302,268,313,270,325,188,289,188" shape="poly">
+                        <area id="square4" alt="T20" class="T20" href="" coords="290,186,326,187,327,171,287,171,288,178" shape="poly">
+                        <area id="square5" alt="20" class="20" href="" coords="277,103,338,104,328,167,285,168" shape="poly">
+                        <area id="square6" alt="D20" class="D20" href="" coords="273,84,309,78,341,84,338,101,276,101" shape="poly">
+                        <area id="square7" alt="1" class="1" href="" coords="312,269,325,188,362,199,328,271" shape="poly">
+                        <area id="square8" alt="T1" class="T1" href="" coords="328,170,369,182,361,197,326,185" shape="poly">
+                        <area id="square9" alt="1" class="1" href="" coords="340,102,400,121,369,180,329,169" shape="poly">
+                        <area id="square10" alt="D1" class="D1" href="" coords="342,85,409,106,401,122,339,100" shape="poly">
+                        <area id="square11" alt="18" class="18" href="" coords="325,272,362,200,391,220,334,279" shape="poly">
+                        <area id="square12" alt="T18" class="T18" href="" coords="362,200,371,185,405,209,393,219" shape="poly">
+                        <area id="square13" alt="18" class="18" href="" coords="371,182,401,123,451,158,404,206" shape="poly">
+                        <area id="square14" alt="D18" class="D18" href="" coords="409,105,437,120,467,147,454,159,402,122" shape="poly">
+                        <area id="square15" alt="5" class="5" href="" coords="289,272,300,268,287,189,252,200" shape="poly">
+                        <area id="square16" alt="T5" class="T5" href="" coords="244,183,285,169,288,185,251,197" shape="poly">
+                        <area id="square17" alt="5" class="5" href="" coords="243,182,285,167,275,103,212,123" shape="poly">
+                        <area id="square18" alt="D5" class="D5" href="" coords="204,107,270,83,273,100,212,121" shape="poly">
+                        <area id="square19" alt="4" class="4" href="" coords="334,279,392,222,414,251,341,289" shape="poly">
+                        <area id="square20" alt="T4" class="T4" href="" coords="405,209,430,244,414,250,392,221" shape="poly">
+                        <area id="square21" alt="4" class="4" href="" coords="452,160,490,212,429,244,406,207" shape="poly">
+                        <area id="square22" alt="D4" class="D4" href="" coords="468,146,511,203,494,211,456,160" shape="poly">
+                        <area id="square23" alt="12" class="12" href="" coords="280,279,290,272,250,200,222,220" shape="poly">
+                        <area id="square24" alt="T12" class="T12" href="" coords="209,208,243,184,250,198,221,220" shape="poly">
+                        <area id="square25" alt="12" class="12" href="" coords="208,208,244,183,212,125,162,160" shape="poly">
+                        <area id="square26" alt="D12" class="D12" href="" coords="149,147,202,106,211,121,160,159" shape="poly">
+                        <area id="square27" alt="9" class="9" href="" coords="271,290,280,279,220,222,201,252" shape="poly">
+                        <area id="square28" alt="T9" class="T9" href="" coords="184,244,209,209,220,221,199,252" shape="poly">
+                        <area id="square29" alt="9" class="9" href="" coords="160,160,210,209,184,244,123,212" shape="poly">
+                        <area id="square30" alt="D9" class="D9" href="" coords="105,204,147,146,161,159,123,212" shape="poly">
+                        <area id="square31" alt="14" class="14" href="" coords="269,301,272,288,200,251,189,288" shape="poly">
+                        <area id="square32" alt="T14" class="T14" href="" coords="182,246,198,252,188,288,171,285" shape="poly">
+                        <area id="square33" alt="14" class="14" href="" coords="121,213,181,244,169,285,104,273" shape="poly">
+                        <area id="square34" alt="D14" class="D14" href="" coords="104,205,83,270,102,272,121,213" shape="poly">
+                        <area id="square35" alt="11" class="11" href="" coords="270,313,269,299,190,287,188,325" shape="poly">
+                        <area id="square36" alt="T11" class="T11" href="" coords="170,286,187,290,186,323,170,327" shape="poly">
+                        <area id="square37" alt="11" class="11" href="" coords="168,286,102,275,103,338,168,328" shape="poly">
+                        <area id="square38" alt="D11" class="D11" href="" coords="80,271,100,273,101,339,83,342" shape="poly">
+                        <area id="square39" alt="13" class="13" href="" coords="341,290,417,253,428,287,346,300" shape="poly">
+                        <area id="square40" alt="T13" class="T13" href="" coords="427,288,444,284,431,246,417,252" shape="poly">
+                        <area id="square41" alt="13" class="13" href="" coords="431,243,492,214,513,275,445,285" shape="poly">
+                        <area id="square42" alt="D13" class="D13" href="" coords="492,213,510,204,531,272,512,274" shape="poly">
+                        <area id="square43" alt="8" class="8" href="" coords="189,327,267,315,273,325,200,361" shape="poly">
+                        <area id="square44" alt="T8" class="T8" href="" coords="188,326,198,360,184,371,171,329" shape="poly">
+                        <area id="square45" alt="8" class="8" href="" coords="169,328,103,340,123,398,182,371" shape="poly">
+                        <area id="square46" alt="D8" class="D8" href="" coords="84,345,101,340,123,401,105,411,93,381" shape="poly">
+                        <area id="square47" alt="6" class="6" href="" coords="347,301,425,289,425,325,345,314" shape="poly">
+                        <area id="square48" alt="T6" class="T6" href="" coords="429,288,443,285,444,329,429,326" shape="poly">
+                        <area id="square49" alt="6" class="6" href="" coords="444,284,510,272,511,340,445,328" shape="poly">
+                        <area id="square50" alt="D6" class="D6" href="" coords="512,272,530,270,534,342,512,339" shape="poly">
+                        <area id="square51" alt="16" class="16" href="" coords="271,326,280,333,223,392,200,362" shape="poly">
+                        <area id="square52" alt="T16" class="T16" href="" coords="199,363,220,393,209,404,183,371" shape="poly">
+                        <area id="square53" alt="16" class="16" href="" coords="182,370,208,404,161,453,124,401" shape="poly">
+                        <area id="square54" alt="D16" class="D16" href="" coords="122,401,160,452,147,466,105,411" shape="poly">
+                        <area id="square55" alt="10" class="10" href="" coords="345,313,425,326,416,360,343,325" shape="poly">
+                        <area id="square56" alt="T10" class="T10" href="" coords="427,327,443,329,431,370,416,361" shape="poly">
+                        <area id="square57" alt="10" class="10" href="" coords="444,329,510,338,490,401,433,369" shape="poly">
+                        <area id="square58" alt="D10" class="D10" href="" coords="511,340,530,343,510,408,491,400" shape="poly">
+                        <area id="square59" alt="7" class="7" href="" coords="280,335,289,341,251,415,222,392" shape="poly">
+                        <area id="square60" alt="T7" class="T7" href="" coords="220,392,250,414,244,431,210,405" shape="poly">
+                        <area id="square61" alt="7" class="7" href="" coords="208,404,243,428,213,490,161,452" shape="poly">
+                        <area id="square62" alt="D7" class="D7" href="" coords="161,456,212,490,205,509,146,468" shape="poly">
+                        <area id="square63" alt="15" class="15" href="" coords="341,325,417,360,392,392,334,333" shape="poly">
+                        <area id="square64" alt="T15" class="T15" href="" coords="414,362,431,368,406,406,392,390" shape="poly">
+                        <area id="square65" alt="15" class="15" href="" coords="430,369,493,400,455,454,406,405" shape="poly">
+                        <area id="square66" alt="D15" class="D15" href="" coords="491,401,511,411,470,468,454,455" shape="poly">
+                        <area id="square67" alt="2" class="2" href="" coords="333,334,326,344,364,414,392,393" shape="poly">
+                        <area id="square68" alt="T2" class="T2" href="" coords="362,413,391,392,406,407,371,431" shape="poly">
+                        <area id="square69" alt="2" class="2" href="" coords="370,433,405,405,452,454,402,490" shape="poly">
+                        <area id="square70" alt="D2" class="D2" href="" coords="452,455,470,468,409,510,404,490" shape="poly">
+                        <area id="square71" alt="19" class="19" href="" coords="290,340,299,342,289,425,254,413" shape="poly">
+                        <area id="square72" alt="T19" class="T19" href="" coords="251,414,288,426,285,444,243,430" shape="poly">
+                        <area id="square73" alt="19" class="19" href="" coords="245,432,284,445,275,512,212,491" shape="poly">
+                        <area id="square74" alt="D19" class="D19" href="" coords="211,493,274,510,271,533,204,512" shape="poly">
+                        <area id="square75" alt="17" class="17" href="" coords="312,344,323,341,364,413,326,426" shape="poly">
+                        <area id="square76" alt="T17" class="T17" href="" coords="361,416,368,430,329,443,327,427" shape="poly">
+                        <area id="square77" alt="17" class="17" href="" coords="368,431,329,443,339,512,401,491" shape="poly">
+                        <area id="square78" alt="D17" class="D17" href="" coords="403,492,409,510,344,531,342,513" shape="poly">
+                        <area id="square79" alt="3" class="3" href="" coords="301,344,311,343,327,426,287,426" shape="poly">
+                        <area id="square80" alt="T3" class="T3" href="" coords="287,427,323,427,329,443,286,443" shape="poly">
+                        <area id="square81" alt="3" class="3" href="" coords="285,443,327,443,341,511,277,511" shape="poly">
+                        <area id="square82" alt="D3" class="D3" href="" coords="274,512,339,511,343,532,273,531" shape="poly">
+                    </map>
+                </div>
+                <div class = "col-3 main-content text-center h-100" style = "overflow:hidden">
+                    <div class = "main-content">
+                        <h2>Dartboard Position:</h2>
+                        <h2 id="score-preview">None</h2>
+                   
+                        <button type="button" style="margin-top: 5%;" id="foulButton" class="btn btn-secondary btn-block">Foul</button>
+                        <button type="button" style="margin-top: 5%;" id="bounceout-button" class="btn btn-secondary btn-block">Bounce Out</button>
+                        <div class="dropdown">
+                            <button type="button" style="margin-top: 5%;" class="btn btn-secondary btn-block dropdown-toggle"type="button" id="knockoutDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Knock Out
+                            </button>
+                            <div id="knockoutDropdownContainer" class="btn-block dropdown-menu" aria-labelledby="knockoutDropdown">
+                            </div>
+                        </div>
+                        <br>
+
+                        <button type="button" style="margin-top: 5%;" id="previous-button" class="btn btn-secondary btn-block">Undo Throw</button>   
+                        <button type="button" style="margin-top: 5%;" id="nextturn-button" class="btn btn-secondary btn-block disabled">Next Turn</button>
+                        <br>
+                        
+                        <h2 id ="legDisplayHeader">Leg Number:</h2>
+                        <div>
+                            <h4 id = "LegNumberDisplay"></h4>
+                        </div>
+                        <h2 id = "MatchNameHeader">Match Name:</h2>
+                        <div>
+                            <h4 id ="MatchNameDisplay"></h4>
+                        </div>
+                        <h2 id="throwsDisplayHeader" style="display: none">Current Turn:</h2>
+                        <div>
+                            <h4 id="throwsDisplay"></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="{{ url_for('.static', filename='javascript/scorekeeper.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+        <template id="throw-header">
+            <div>
+                <table class="table table-dark">
+                    <h4 class="leg-header"></h4>
+                    <thead>
+                        <tr>
+                            <th scope="col">Throw #</th>
+                            <th scope="col">Player 1</th>
+                            <th scope="col">Player 2</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            
+        </template>
+        <template id="throw-row">
+            <tr>
+                <th scope="row">1</th>
+                <td></td>
+                <td></td>
+            </tr>
+        </template>
+        <template id="throw-bottom">
+                    </tbody>
+                </table>
+            </div>
+        </template>
+    
+    </body>
+</html>

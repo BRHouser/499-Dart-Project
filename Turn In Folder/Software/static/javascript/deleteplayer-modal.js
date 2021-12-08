@@ -1,3 +1,7 @@
+//Contains all functions for delete player modal
+//Author: Marshall Rosenhoover
+//Created 10/18/21
+
 //The purpose of this function is to call the function getPlayers in the server and return a dictionary
 function getPlayersList(){
     const request = new XMLHttpRequest();

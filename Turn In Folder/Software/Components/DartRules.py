@@ -2,6 +2,7 @@ import Components.LeagueStats as LeagueStats
 
 #Class to apply dart gameplay rules: score arithmetic, check for win, calculate outs, and register dart statistics.
 #Authors: Ben Houser and Anthony Dohogne
+#Created 11/1/21, edited 12/6/21
 
 class DartRules():
 

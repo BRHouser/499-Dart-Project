@@ -2,6 +2,8 @@ import os
 import json
 
 # Class to update, read, and validate league stats database
+# Author: Ben Houser
+# Created 11/30/21, edited 12/6/21
 class LeagueStats():
 
     # Sets the initial scores of a player added to the database to 0 or nothing

@@ -1,6 +1,10 @@
 import os
 import json
 
+# Class to add completed match data to match_history.json
+# Author: Tyler Ball
+# Created 12/5/21, edited 12/5/21
+
 class MatchHistory():
 
     # The purpose of this function is to initialize the history of a match

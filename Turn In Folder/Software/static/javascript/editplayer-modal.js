@@ -1,4 +1,8 @@
- //Input firstname (String): The first name of the Player
+//Contains all functions for edit player modal
+//Author: Marshall Rosenhoover
+//Created 10/11/21, edited 12/5/21
+
+//Input firstname (String): The first name of the Player
 //Input lastname (String): The last name of the Player
 //Ouput dictionary of the table of specified person
 //The purpose of this function is to call getPlayerStatistics in the server

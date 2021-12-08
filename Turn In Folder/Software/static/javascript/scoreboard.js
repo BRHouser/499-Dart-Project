@@ -1,5 +1,6 @@
 // JS file to request game data and update scoreboard 
 // Author: Ben Houser
+// Created 10/27/21, edited 12/6/21
 
 let loop = true;
 let received = false;
@@ -19,7 +20,6 @@ async function updateGameState() {
     let game_data = await requestGameState();
 
     if(Object.keys(game_data).length != 0) {
-        //TODO: display match location, date, and game info in header
 
         let sets_num = game_data["game"]["sets"]
 

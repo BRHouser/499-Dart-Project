@@ -2,6 +2,9 @@ import sqlite3
 from sqlite3 import Error
 import os
 
+# Class to facilitate storage and retrieval of sql database info
+# Author: Marshall Roosenhoover
+# Created 9/17/21, edited 12/1/21
 
 # Input: The address of the database, a 2D Array of the header rows of the databases
 # Output: The connection to the database

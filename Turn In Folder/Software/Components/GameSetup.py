@@ -4,6 +4,7 @@ import Components.LeagueStats as LeagueStats
 
 #Class to set up the game, takes in form data from match setup webpage
 #Author: Ben Houser
+#Created 11/16/21, edited 11/30/21
 
 class GameSetup():
 

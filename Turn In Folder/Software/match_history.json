@@ -1,7 +1,7 @@
 {
-    "sdfjl": {
-        "player1": "John Doe",
-        "player2": "Jane Doe",
+    "Demo Match 1": {
+        "player1": "Gabe Henneberger",
+        "player2": "Marshall Rosenhoover",
         "throws": [
             [
                 [
@@ -17,255 +17,14 @@
                     {
                         "player": "player2",
                         "throws": [
-                            "T20",
-                            5,
-                            20
-                        ],
-                        "score": 216
-                    },
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "T20",
-                            "T11",
-                            "D14"
-                        ],
-                        "score": 0
-                    }
-                ]
-            ]
-        ]
-    },
-    "Try Again": {
-        "player1": "John Doe",
-        "player2": "Marshall Rosenhoover",
-        "throws": [
-            [
-                [
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "T20",
-                            "T20",
-                            20
-                        ],
-                        "score": 161
-                    },
-                    {
-                        "player": "player2",
-                        "throws": [
                             1,
-                            5,
-                            20
-                        ],
-                        "score": 275
-                    },
-                    {
-                        "player": "player1",
-                        "throws": [
-                            11,
-                            12,
-                            18
-                        ],
-                        "score": 120
-                    },
-                    {
-                        "player": "player2",
-                        "throws": [
                             18,
-                            12,
-                            14
+                            4
                         ],
-                        "score": 231
+                        "score": 278
                     },
                     {
                         "player": "player1",
-                        "throws": [
-                            "T9",
-                            1,
-                            "D13"
-                        ],
-                        "score": 66
-                    },
-                    {
-                        "player": "player2",
-                        "throws": [
-                            9,
-                            1,
-                            "T13"
-                        ],
-                        "score": 182
-                    },
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "D8",
-                            "DB"
-                        ],
-                        "score": 0
-                    }
-                ]
-            ]
-        ]
-    },
-    "Demo2": {
-        "player1": "Gabe Henneberger",
-        "player2": "Marshall Rosenhoover",
-        "throws": [
-            [
-                [
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "T20",
-                            "T20",
-                            "T20"
-                        ],
-                        "score": 121
-                    },
-                    {
-                        "player": "player2",
-                        "throws": [
-                            "T20",
-                            "T20",
-                            "T18"
-                        ],
-                        "score": 127
-                    },
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "T20",
-                            "T11",
-                            "D14"
-                        ],
-                        "score": 0
-                    }
-                ]
-            ]
-        ],
-        "date": "2021-12-06"
-    },
-    "Demo3": {
-        "player1": "Taylor Engram",
-        "player2": "Gabe Henneberger",
-        "throws": [
-            [
-                [
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "T20",
-                            "T20",
-                            "T20"
-                        ],
-                        "score": 121
-                    },
-                    {
-                        "player": "player2",
-                        "throws": [
-                            "T1",
-                            "B",
-                            9
-                        ],
-                        "score": 264
-                    },
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "T20",
-                            "T11",
-                            "D14"
-                        ],
-                        "score": 0
-                    }
-                ]
-            ]
-        ],
-        "date": "2021-12-06"
-    },
-    "Demo1": {
-        "player1": "Gabe Henneberger",
-        "player2": "Marshall Rosenhoover",
-        "throws": [
-            [
-                [
-                    {
-                        "player": "player1",
-                        "throws": [
-                            1,
-                            20,
-                            "T20"
-                        ],
-                        "score": 220
-                    },
-                    {
-                        "player": "player2",
-                        "throws": [
-                            "T20",
-                            "T20",
-                            "T20"
-                        ],
-                        "score": 121
-                    },
-                    {
-                        "player": "player1",
-                        "throws": [
-                            20,
-                            1,
-                            18
-                        ],
-                        "score": 181
-                    },
-                    {
-                        "player": "player2",
-                        "throws": [
-                            "T20",
-                            "T11",
-                            "D14"
-                        ],
-                        "score": 0
-                    }
-                ]
-            ]
-        ],
-        "date": "2021-12-06"
-    },
-    "Demo5": {
-        "player1": "Gabe Henneberger",
-        "player2": "Marshall Rosenhoover",
-        "throws": [
-            [
-                [
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "T20",
-                            "T20",
-                            "T20"
-                        ],
-                        "score": 121
-                    },
-                    {
-                        "player": "player2",
-                        "throws": [
-                            "T20",
-                            "T20",
-                            "T20"
-                        ],
-                        "score": 121
-                    },
-                    {
-                        "player": "player1",
-                        "throws": [
-                            "T1",
-                            "T20",
-                            5
-                        ],
-                        "score": 53
-                    },
-                    {
-                        "player": "player2",
                         "throws": [
                             "T20",
                             "T11",
@@ -278,6 +37,15 @@
                     {
                         "player": "player2",
                         "throws": [
+                            20,
+                            1,
+                            18
+                        ],
+                        "score": 262
+                    },
+                    {
+                        "player": "player1",
+                        "throws": [
                             "T20",
                             "T20",
                             "T20"
@@ -285,7 +53,45 @@
                         "score": 121
                     },
                     {
+                        "player": "player2",
+                        "throws": [
+                            20,
+                            1,
+                            18
+                        ],
+                        "score": 223
+                    },
+                    {
                         "player": "player1",
+                        "throws": [
+                            "T20",
+                            "T11",
+                            "D14"
+                        ],
+                        "score": 0
+                    }
+                ]
+            ]
+        ],
+        "date": "2021-12-07"
+    },
+    "Demo Match 2": {
+        "player1": "Taylor Engram",
+        "player2": "Marshall Rosenhoover",
+        "throws": [
+            [
+                [
+                    {
+                        "player": "player1",
+                        "throws": [
+                            "T20",
+                            "T20",
+                            "T20"
+                        ],
+                        "score": 121
+                    },
+                    {
+                        "player": "player2",
                         "throws": [
                             20,
                             1,
@@ -294,7 +100,7 @@
                         "score": 262
                     },
                     {
-                        "player": "player2",
+                        "player": "player1",
                         "throws": [
                             "T20",
                             "T11",

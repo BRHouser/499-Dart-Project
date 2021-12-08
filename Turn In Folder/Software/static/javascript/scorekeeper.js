@@ -1,5 +1,6 @@
 // JS file to control scorekeeper.
 // Author: Ben Houser
+// Created 10/27/21, edited 12/6/21
 
 //scores are sent to db at the end of each turn
 let throws = [[],[]] //array of two lists of strings to represent throws in turn, ex: [["20", "D19", "B"], ["DB", "D20", "17"]]

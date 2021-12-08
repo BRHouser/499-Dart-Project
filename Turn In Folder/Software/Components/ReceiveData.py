@@ -3,6 +3,8 @@ import Components.DartRules as DartRules
 
 # Class to process all incoming data from scorekeeper: change displayed stats or upload scores
 # Author: Ben Houser
+# Created 10/27/21, edited 11/30/21
+
 class ReceiveData():
 
     # TODO: what is the clear purpose of this, I dont think I could describe it accurately
