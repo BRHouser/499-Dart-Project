@@ -1,3 +1,7 @@
+//JS file to faciltate review match modal: read match history from server and fill in dropdown; fill in modal with appropriate match table
+//Authors: Anthony Dahogne and Ben Houser
+//Created 11/29/21, edited 12/6/21
+
 function addMatch(P1Name, P2Name, ScoreLimit, MatchType, NumbersOfSets, NumberOfLegs, Official, MatchName,Location,DateOfMatch,MatchStats,LeagueStats)
 { 
     data = {Player1Name: P1Name, Player2Name: P2Name, Score:ScoreLimit, MatchType:MatchType, SetNumber:NumbersOfSets.toString(), NumberOfLegs:NumberOfLegs.toString(), MatchOfficial:Official, NameofMatch: MatchName, Location:Location, DateOfMatch:DateOfMatch, MatchStats:MatchStats, LeagueStats:LeagueStats}
@@ -40,6 +44,7 @@ function resetSetupMatch()
 
 }
 
+// 
 async function closeMatchModal(){
     //Variable initialize
     submit = true;
