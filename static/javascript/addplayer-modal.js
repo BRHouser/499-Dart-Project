@@ -1,3 +1,7 @@
+//Contains all functions for add player modal
+//Author: Marshall Rosenhoover
+//Created 10/11/21, edited 11/30/21
+
 //Input FirstName (String): The first name of the Player
 //Input LastName (String): The last name of the Player
 //The purpose of this function is to add the changed player in the database by calling the server function addPlayer

@@ -2,7 +2,9 @@ import os
 import sys
 from datetime import datetime
 
-# NEED TO CONTROL WHERE THE OUTPUT FILES OF THE ROBOT FILES GO
+#Script for automated testing
+#Author: Marshall Rosenhoover
+#Created 10/10/21, edited 11/30/21
 
 start_time = 0
 end_time = 0

@@ -1,3 +1,7 @@
+#Automated Test
+#Author: Marshall Rosenhoover
+#Created 11/1/21
+
 *** Settings ***
 Library           OperatingSystem
 Library           Selenium2Library
